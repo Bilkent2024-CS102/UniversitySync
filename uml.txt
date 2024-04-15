@@ -5,61 +5,78 @@ class Campus{
   -ArrayList<User> students
   -Arraylist<AdminUser> admins
 }
-package user{
-  abstract class AbstractUser{
+
+  class User{
+    -String name
+    -ArrayList<User> friends
+    -Room room
+    -String biography
     -String email
     -String password
     -Image profilePicture
-    +abstract boolean isValidLogin(String email, String pass)
-  }
-  
-  
-  class AdminUser extends AbstractUser{
-    +void approvePost(Post p)
-    +void removePost(Post p)
-    +void addLocation(Location l, Campus c)
-    +void announce(Forum f)
-  }
-  
-  class User extends AbstractUser{
-    -ArrayList<User> friends
-    -Room room
+    -ArrayList<Post> liked
+    -ArrayList<EventPost> followedEvents
+    -ArrayList<friendRequest> 
+    -ArrayList<friendRequest> pendingRequests
+    -Major
     
     +void post(Post p)
     +ArrayList<User> getFriends()
-    +void addFriend(User f)
-    +void removeFriend(User f)
+    +void unFriendWith(User f)
     +void display()
+    +boolean isValidLogin
+     (String email, String pass)
   }
-  
-  class Member extends User{
-    Group memberOf
-  }
-}
 
 interface Reviewable
-  {
-    Shops, activities, dorms, 
-    users may implement this
-    + addReview()
-    - ArrayList<Review> reviews
-  }
+{
+  Shops, activities, dorms, 
+  users may implement this
+  + addReview()
+  - ArrayList<Review> reviews
+}
 
 package location{
   
-  abstract class Location{
-    -int x, y
-    +int[] getPoint()
-    +void setPoint(int x, int y)
+  abstract class Location implements .Reviewable
+  {
+    - String name
+    - String description
+    - double rating
   }
   
-  class Dormitory extends Location{
+  package cafeteria
+  {
+    class Cafeteria extends location.Location
+    {
+      - Menu menu
+      - priceRange
+    }
+    class Menu
+    {
+      - ArrayList<MenuItem> items
+      + void addItem(MenuItem item)
+      + void removeItem(MenuItem item)
+    }
+    
+    class MenuItem
+    {
+      - String name
+      - double price
+    }
+  }
+  
+  class Dormitory extends Location
+  {
     -Room[] rooms
+    -boolean isEast
+    -boolean privateBathroom
     +int[] checkAvailability() 
     +void addStudent(Room r)
   }
   
-  class Room{
+  class Room
+  {
     -final int roomNo
     -final int capacity
     -int availableBed
@@ -67,31 +84,34 @@ package location{
     -final Dormitory dorm
     -boolean checkAvailability()
   }
+  
   Dormitory "1" *-- "many" Room : contains
   
 }
 Campus "1" *-- "many" Location : contains
-Campus "1" *-- "many" AbstractUser : contains
+Campus "1" *-- "many" User : contains
+
+
+class friendRequest
+{
+  - Status
+  - User sender
+  - User receiver
+}
+
 
 package userContent
 {
   abstract class UserContentItem 
   {
     - String description
-    - final Date date
+    - final Date date 
+    ** Java Date Class **
     - final User owner
     __
     + void edit(String description)
     use setDate() internally to 
     show last edit date
-    ..Getters..
-    + String getDescription()
-    + Date getDate()
-    + User getUser()
-    ..Setters..
-    - void setDescription()
-    - void setDate()
-    
   }
   
   package post
@@ -101,37 +121,42 @@ package userContent
     {
       - String heading
       - ArrayList<Answer> answers
+      - ArrayList<File> attachments
       __
       @Overload
       + void edit(String heading,
       String Description)
+      + void likeBy(User user)
     }
     
-    class LFPost extends Post
+    class ForumPost extends Post
     {
-      - Image img
-      - Location loc
+      - ArrayList<Tags> tags
+      - ArrayList<Answer> answers
+      + void addAnswer()
     }
-    class DormFriendPost extends Post
+    class DormTransferPost extends Post
     {
-      - Dorm dorm
-      _specifications_
-      - boolean doesntSmoke
-      - int usualSleepingHour
-      etc.
+      - Room room
+      
     }
     
-    class GroupPost extends Post
-    {
-      - Group group
-    }
-    class ActivityPost extends Post
+    class EventPost extends Post
     {
       - Location loc
       - Date eventDate
+      - String importantInfo
+      
+      + void follow()
     }
     
   }
+  
+  class Message extends UserContentItem
+  {
+    - User receiver
+  }
+  
   class Review extends UserContentItem
   {
     - Reviewable r
@@ -142,43 +167,6 @@ package userContent
     - Post previous
       
   }
-}
-  
-package group
-{
-  abstract class Group
-  {
-    - ArrayList<Member> members
-    # addMember(Member m)
-    # removeMember(Member m)
-    
-  }
-  
-  class StudyGroup extends Group
-  {
-    - Course c
-    
-  }
-  
-  class SportGroup extends Group
-  {
-    Sport s
-    String gender
-    gender can be male
-    female or mixed
-  }
-  
-}
-
-class Course
-{
-  -String courseName
-  String linkToSyllabus
-  
-}
-class Sport
-{
-  -String sportName
 }
 
 @enduml
