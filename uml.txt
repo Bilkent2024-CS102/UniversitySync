@@ -8,7 +8,8 @@ class University
 
 class Campus
 {
-  -Arraylist<Dormitory> dormitories
+  -Arraylist<Dormitories> dormitories
+  -Arraylist<Cafeteria> cafeterias
 }
 
   class User{
@@ -85,8 +86,6 @@ package location{
     -boolean privateBathroom
     -final Dormitory dorm
   }
-  
-  Dormitory "1" *-- "many" Room : contains
   
 }
 
@@ -168,17 +167,18 @@ package userContent
   class Reply extends UserContentItem
   {
     - Post previous
-      
-  }
+    
+  }
 }
 
-University "1" *-- "many" Campus : contains
-University "1" *-- "many" User : contains
-Campus "1" *-- "many" Location : contains
-Cafeteria "1" *-- "many" MenuItem : contains
-FriendRequest "1" *-- "two" User : contains
-Post "1" *-- "many" Reply : contains
-Reviewable "1" *-- "many" Review : contains
+University *-- Campus
+University *-- User
+Campus *-- Location
+Cafeteria *-- MenuItem
+FriendRequest *-- User
+Post *-- Reply
+Reviewable *-- Review
+Dormitory *-- Room
 
 
 
