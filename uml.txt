@@ -7,25 +7,29 @@ class Campus{
 }
 
   class User{
+    ..personal info of user..
     -String name
-    -ArrayList<User> friends
     -Room room
     -String biography
     -String email
     -String password
     -Image profilePicture
+    -Major
+    
+    ..relations with other users and content..
+    -ArrayList<User> friends
     -ArrayList<Post> liked
     -ArrayList<EventPost> followedEvents
-    -ArrayList<friendRequest> 
+    -ArrayList<friendRequest> pendingIncomingRequests
     -ArrayList<friendRequest> pendingRequests
-    -Major
+    
     
     +void post(Post p)
     +ArrayList<User> getFriends()
     +void unFriendWith(User f)
+    +void friendRequestTo(User f)
     +void display()
-    +boolean isValidLogin
-     (String email, String pass)
+    +boolean isValidLogin(String email, String pass)
   }
 
 interface Reviewable
@@ -70,7 +74,6 @@ package location{
   {
     -Room[] rooms
     -boolean isEast
-    -boolean privateBathroom
     +int[] checkAvailability() 
     +void addStudent(Room r)
   }
@@ -81,6 +84,7 @@ package location{
     -final int capacity
     -int availableBed
     -boolean isBunked
+    -boolean privateBathroom
     -final Dormitory dorm
     -boolean checkAvailability()
   }
@@ -120,6 +124,7 @@ package userContent
     abstract class Post extends userContent.UserContentItem
     {
       - String heading
+      - int likeCount
       - ArrayList<Answer> answers
       - ArrayList<File> attachments
       __
