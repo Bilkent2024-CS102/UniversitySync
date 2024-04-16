@@ -1,9 +1,14 @@
 @startuml
 
-class Campus{
-  -ArrayList<Location> locations
+class University
+{
+  -ArrayList<Campus> campuses
   -ArrayList<User> students
-  -Arraylist<AdminUser> admins
+}
+
+class Campus
+{
+  -Arraylist<Dormitory> dormitories
 }
 
   class User{
@@ -34,8 +39,6 @@ class Campus{
 
 interface Reviewable
 {
-  Shops, activities, dorms, 
-  users may implement this
   + addReview()
   - ArrayList<Review> reviews
 }
@@ -53,14 +56,10 @@ package location{
   {
     class Cafeteria extends location.Location
     {
-      - Menu menu
       - priceRange
-    }
-    class Menu
-    {
       - ArrayList<MenuItem> items
-      + void addItem(MenuItem item)
-      + void removeItem(MenuItem item)
+      - void addItem(MenuItem item)
+      - void removeItem(MenuItem item)
     }
     
     class MenuItem
@@ -72,10 +71,9 @@ package location{
   
   class Dormitory extends Location
   {
+  
     -Room[] rooms
-    -boolean isEast
-    +int[] checkAvailability() 
-    +void addStudent(Room r)
+    -Campus campus
   }
   
   class Room
@@ -86,19 +84,14 @@ package location{
     -boolean isBunked
     -boolean privateBathroom
     -final Dormitory dorm
-    -boolean checkAvailability()
   }
   
   Dormitory "1" *-- "many" Room : contains
   
 }
-Campus "1" *-- "many" Location : contains
-Campus "1" *-- "many" User : contains
 
-
-class friendRequest
+class FriendRequest
 {
-  - Status
   - User sender
   - User receiver
 }
@@ -124,8 +117,7 @@ package userContent
     abstract class Post extends userContent.UserContentItem
     {
       - String heading
-      - int likeCount
-      - ArrayList<Answer> answers
+      - ArrayList<Reply> replies
       - ArrayList<File> attachments
       __
       @Overload
@@ -136,23 +128,29 @@ package userContent
     
     class ForumPost extends Post
     {
-      - ArrayList<Tags> tags
-      - ArrayList<Answer> answers
-      + void addAnswer()
+      - int likeCount
+      - ArrayList<Tag> tags
+      - ArrayList<Reply> replies
+      + void addReply()
     }
     class DormTransferPost extends Post
     {
       - Room room
-      
     }
     
     class EventPost extends Post
     {
-      - Location loc
+      - String location
       - Date eventDate
       - String importantInfo
       
       + void follow()
+    }
+    
+    class Tag
+    {
+      -String tag
+      
     }
     
   }
@@ -167,11 +165,21 @@ package userContent
     - Reviewable r
   }
   
-  class Answer extends UserContentItem
+  class Reply extends UserContentItem
   {
     - Post previous
-      
-  }
+      
+  }
 }
+
+University "1" *-- "many" Campus : contains
+University "1" *-- "many" User : contains
+Campus "1" *-- "many" Location : contains
+Cafeteria "1" *-- "many" MenuItem : contains
+FriendRequest "1" *-- "two" User : contains
+Post "1" *-- "many" Reply : contains
+Reviewable "1" *-- "many" Review : contains
+
+
 
 @enduml
