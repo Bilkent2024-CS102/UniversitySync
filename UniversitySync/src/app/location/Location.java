@@ -15,6 +15,46 @@ public abstract class Location {
     private double rating;
     private Campus campus;
 
+    /*
+    * Getters
+    */
+    public static int getNumberOfInstances()
+    {
+        return numberOfInstances;
+    }
+    public int getId()
+    {
+        return id;
+    }
+    public ArrayList<Review> getReviews()
+    {
+        return reviews;
+    }
+    public Image getImage()
+    {
+        return image;
+    }
+    public String getName()
+    {
+        return name;
+    }
+    public String getDescription()
+    {
+        return description;
+    }
+    public double getRating()
+    {
+        return rating;
+    }
+    public Campus getCampus()
+    {
+        return campus;
+    }
+
+    /*
+     * Setters
+    */
+
     public void addReview(Review r)
     {
 
