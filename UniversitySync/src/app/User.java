@@ -1,15 +1,17 @@
+package app;
+
 import java.util.ArrayList;
-import location.Dormitory;
-import location.Room;
-import userContent.Review;
-import userContent.post.Post;
-import userContent.post.ForumPost;
-import userContent.post.EventPost;
+import app.location.Dormitory;
+import app.location.Room;
+import app.userContent.Review;
+import app.userContent.post.Post;
+import app.userContent.post.ForumPost;
+import app.userContent.post.EventPost;
 
 public class User {
 
     private static int numberOfInstances;
-    private int id;
+    private int userId;
 
     private String name;
     private Room room;
@@ -33,9 +35,8 @@ public class User {
     {
         return numberOfInstances;
     }
-    public int getId()
-    {
-        return id;
+    public int getUserId() {
+        return userId;
     }
     public String getName()
     {

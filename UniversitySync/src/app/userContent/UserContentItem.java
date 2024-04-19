@@ -1,6 +1,6 @@
-package userContent;
+package app.userContent;
 
-import User;
+import app.User;
 import java.util.Date;
 
 public abstract class UserContentItem {
@@ -9,7 +9,7 @@ public abstract class UserContentItem {
     private final Date creationDate;
     private final User owner;
 
-    private int id;
+    private int userContentItemId;
     private String mainText;
     private Date lastEditDate;
 
@@ -29,9 +29,9 @@ public abstract class UserContentItem {
     {
         return owner;
     }
-    public int getId()
+    public int getUserContentItemId()
     {
-        return id;
+        return userContentItemId;
     }
     public String getMainText()
     {

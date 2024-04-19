@@ -1,6 +1,6 @@
-package userContent;
+package app.userContent;
 
-import userContent.post.Post;
+import app.userContent.post.Post;
 
 public class Reply extends UserContentItem{
     Post previous;

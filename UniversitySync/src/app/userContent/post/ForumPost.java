@@ -1,8 +1,8 @@
-package userContent.post;
+package app.userContent.post;
 
 import java.util.ArrayList;
-import userContent.Reply;
-import User;
+import app.userContent.Reply;
+import app.User;
 
 public class ForumPost extends Post{
     private int likeCount;

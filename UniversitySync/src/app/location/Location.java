@@ -1,13 +1,13 @@
-package location;
+package app.location;
 
 import java.util.ArrayList;
 
-import Campus;
-import userContent.Review;
+import app.Campus;
+import app.userContent.Review;
 
 public abstract class Location {
-    protected static int numberOfInstances;
-    private int id;
+    private static int numberOfInstances;
+    private int locationId;
     private ArrayList<Review> reviews;
     private Image image;
     private String name;
@@ -22,9 +22,9 @@ public abstract class Location {
     {
         return numberOfInstances;
     }
-    public int getId()
+    public int getLocationId()
     {
-        return id;
+        return locationId;
     }
     public ArrayList<Review> getReviews()
     {

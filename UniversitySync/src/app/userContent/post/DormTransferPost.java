@@ -1,6 +1,6 @@
-package userContent.post;
+package app.userContent.post;
 
-import location.Room;
+import app.location.Room;
 
 public class DormTransferPost extends Post{
     Room room;

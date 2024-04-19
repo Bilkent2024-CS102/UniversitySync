@@ -1,4 +1,4 @@
-import app.User;
+package app;
 
 public class FriendRequest {
     

@@ -1,8 +1,8 @@
-package userContent.post;
+package app.userContent.post;
 
 import java.util.ArrayList;
 import java.util.Date;
-import User;
+import app.User;
 
 public class EventPost extends Post{
     String location;

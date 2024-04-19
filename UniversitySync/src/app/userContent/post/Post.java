@@ -1,8 +1,8 @@
-package userContent.post;
+package app.userContent.post;
 
 import java.io.File;
 import java.util.ArrayList;
-import userContent.UserContentItem;
+import app.userContent.UserContentItem;
 
 public abstract class Post extends UserContentItem {
     
@@ -12,10 +12,6 @@ public abstract class Post extends UserContentItem {
     /*
      * Getters
      */
-    public int getId()
-    {
-        return id;
-    }
     public String getHeading()
     {
         return heading;
@@ -29,10 +25,6 @@ public abstract class Post extends UserContentItem {
      * Setters
      * TODO add validation
      */
-    public void setId(int id)
-    {
-        this.id = id;
-    }
     public void setHeading(String heading)
     {
         this.heading = heading;

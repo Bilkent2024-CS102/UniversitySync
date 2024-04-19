@@ -1,6 +1,15 @@
-package userContent.post;
+package app.userContent.post;
 
 public class Tag {
-    protected static int numberOfInstances;
+    private static int numberOfInstances;
+    private int tagId;
     String tag;
+
+    public static int getNumberOfInstances() {
+        return numberOfInstances;
+    }
+    
+    public int getTagId() {
+        return tagId;
+    }
 }

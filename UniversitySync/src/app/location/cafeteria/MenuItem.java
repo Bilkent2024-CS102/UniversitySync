@@ -1,9 +1,9 @@
-package location.cafeteria;
+package app.location.cafeteria;
 
 public class MenuItem {
     private static int numberOfInstances;
 
-    private int id;
+    private int menuItemId;
     private String name;
     private double price;
     private Image image;
@@ -15,9 +15,9 @@ public class MenuItem {
     {
         return numberOfInstances;
     }
-    public int getId()
+    public int getMenuItemId()
     {
-        return id;
+        return menuItemId;
     }
     public String getName()
     {
@@ -36,9 +36,9 @@ public class MenuItem {
     * Setters
     * TODO validation
     */
-    public void setId(int id)
+    public void setMenuItemId(int id)
     {
-        this.id = id;
+        this.menuItemId = id;
     }
     public void setName(String name)
     {

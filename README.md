@@ -1,5 +1,8 @@
 # UniversitySync
 Term project for CS102.
+## IMPORTANT WARNING
+If you get some import or package errors double-check that the only source path is UniversitySync\src.
+You can do this by CTRL+SHIFT+P (Command palette), choose "Java: Configure Classpath" and change it to UniversitySync\src ONLY and "Apply Settings" below.
 ## About UML
 You can find the text file for generating the whole UML diagram (uml.txt). To access the diagram easily, you may just 
 1) Go to this website: https://www.planttext.com/

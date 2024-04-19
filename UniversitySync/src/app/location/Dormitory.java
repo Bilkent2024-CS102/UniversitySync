@@ -1,4 +1,4 @@
-package location;
+package app.location;
 
 import java.util.ArrayList;
 

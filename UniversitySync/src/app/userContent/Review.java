@@ -1,6 +1,6 @@
-package userContent;
+package app.userContent;
 
-import Reviewable;
+import app.Reviewable;
 
 public class Review extends UserContentItem {
     private Reviewable r;
