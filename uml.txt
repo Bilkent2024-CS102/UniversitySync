@@ -2,15 +2,15 @@
 
 class University
 {
-  #Static int numberOfInstances
-  - int id
+  -Static int numberOfInstances
+  - int universityId
   -ArrayList<Campus> campuses
   -ArrayList<User> students
 }
 
 class User{
-  #Static int numberOfInstances
-  -int id
+  -Static int numberOfInstances
+  -int userId
   ..personal info of user..
   -String name
   -Room room
@@ -37,8 +37,8 @@ class User{
 
 class Campus
 {
-  #Static int numberOfInstances
-  -int id
+  -Static int numberOfInstances
+  -int campusId
   -String name
   -Arraylist<Dormitory> dormitories
   -Arraylist<Cafeteria> cafeterias
@@ -53,8 +53,8 @@ package location{
   
   abstract class Location implements .Reviewable
   {
-    # Static int numberOfInstances
-    - int id
+    - Static int numberOfInstances
+    - int locationId
     - ArrayList<Review> reviews
     - Image image
     - String name
@@ -69,7 +69,6 @@ package location{
   {
     class Cafeteria extends location.Location
     {
-      -int id
       - double minPrice
       - double maxPrice
       - ArrayList<MenuItem> items
@@ -77,8 +76,8 @@ package location{
     
     class MenuItem
     {
-      #Static int numberOfInstances
-      - int id
+      -Static int numberOfInstances
+      - int menuItemId
       - String name
       - double price
       - Image image
@@ -87,16 +86,15 @@ package location{
   
   class Dormitory extends Location
   {
-    -int id
     -Room[] rooms
   }
   
   class Room
   {
-    #Static int numberOfInstances
+    -Static int numberOfInstances
     -final int capacity
     -final Dormitory dorm
-    -int id
+    -int roomId
     -int availableBed
     -boolean isBunked
     -boolean privateBathroom
@@ -106,8 +104,8 @@ package location{
 
 class FriendRequest
 {
-  #Static int numberOfInstances
-  - int id
+  -Static int numberOfInstances
+  - int friendRequestId
   - User sender
   - User receiver
   + void acceptRequest()
@@ -119,9 +117,9 @@ package userContent
 {
   abstract class UserContentItem 
   {
-    #Static int numberOfInstances
+    -Static int numberOfInstances
     - final Date creationDate
-    - int id
+    - int userContentItemId
     - String mainText
     - Date lastEditDate
     ** Java Date Class **
@@ -138,7 +136,6 @@ package userContent
 
     abstract class Post extends userContent.UserContentItem
     {
-      - int id
       - String heading
       - ArrayList<File> attachments
       __
@@ -150,7 +147,6 @@ package userContent
     
     class ForumPost extends Post
     {
-      -int id
       - int likeCount
       - ArrayList<Tag> tags
       - ArrayList<Reply> replies
@@ -162,13 +158,11 @@ package userContent
     }
     class DormTransferPost extends Post
     {
-      -int id
       - Room room
     }
     
     class EventPost extends Post
     {
-      -int id
       - String location
       - Date eventDate
       - String importantInfo
@@ -181,8 +175,8 @@ package userContent
     
     class Tag
     {
-      #Static int numberOfInstances
-      - int id
+      -Static int numberOfInstances
+      - int tagId
       -String tag
       
     }
@@ -191,13 +185,11 @@ package userContent
   
   class Message extends UserContentItem
   {
-    -int id
     - User receiver
   }
   
   class Review extends UserContentItem
   {
-    -int id
     - Reviewable r
     - double rateGiven
     + void edit(String newText, double newRating)
@@ -205,7 +197,6 @@ package userContent
   
   class Reply extends UserContentItem
   {
-    -int id
     - Post previous
     
   }
