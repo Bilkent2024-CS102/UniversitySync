@@ -2,13 +2,21 @@
 
 class University
 {
+  + University(String name, ArrayList<Campus> campuses)
+  + University(String name,
+              ArrayList<Campus> campuses, ArrayList<User> students)
+  __
   -Static int numberOfInstances
   - int universityId
+  - String name
   -ArrayList<Campus> campuses
   -ArrayList<User> students
 }
 
 class User{
+  + User(String name, String email, String password)
+  + User(String name, String email, String password, Room room)
+  __
   -Static int numberOfInstances
   -int userId
   ..personal info of user..
@@ -37,11 +45,13 @@ class User{
 
 class Campus
 {
-  -Static int numberOfInstances
-  -int campusId
-  -String name
-  -Arraylist<Dormitory> dormitories
-  -Arraylist<Cafeteria> cafeterias
+  + Campus(String name)
+  __
+  - Static int numberOfInstances
+  - int campusId
+  - String name
+  - ArrayList<Dormitory> dormitories
+  - ArrayList<Cafeteria> cafeterias
 }
 
 interface Reviewable
@@ -53,6 +63,9 @@ package location{
   
   abstract class Location implements .Reviewable
   {
+    + Location(String name, String description, Campus campus)
+    + Location(String name, String description, Campus campus, Image image)
+    __
     - Static int numberOfInstances
     - int locationId
     - ArrayList<Review> reviews
@@ -69,6 +82,12 @@ package location{
   {
     class Cafeteria extends location.Location
     {
+      + Cafeteria(String name, String description, Campus campus)
+      + Cafeteria(String name, String description, Campus campus,
+                  Image image)
+      + Cafeteria(String name, String description, Campus campus,
+                  Image image, ArrayList<MenuItem> items)
+      __
       - double minPrice
       - double maxPrice
       - ArrayList<MenuItem> items
@@ -76,7 +95,10 @@ package location{
     
     class MenuItem
     {
-      -Static int numberOfInstances
+      + MenuItem(String name, double price)
+      + MenuItem(String name, double price, Image image)
+      __
+      - Static int numberOfInstances
       - int menuItemId
       - String name
       - double price
@@ -86,25 +108,34 @@ package location{
   
   class Dormitory extends Location
   {
-    -Room[] rooms
+    + Dormitory(String name, String description, Campus campus)
+    + Dormitory(String name, String description, Campus campus,
+                Image image, ArrayList<Room> rooms)
+    __
+    - ArrayList<Room> rooms
   }
   
   class Room
   {
-    -Static int numberOfInstances
-    -final int capacity
-    -final Dormitory dorm
-    -int roomId
-    -int availableBed
-    -boolean isBunked
-    -boolean privateBathroom
+    + Room(int capacity, Dormitory Dorm,
+          boolaen isBunk, boolean privateBathroom)
+    __
+    - Static int numberOfInstances
+    - int capacity
+    - Dormitory dorm
+    - int roomId
+    - int availableBed
+    - boolean isBunk
+    - boolean privateBathroom
   }
   
 }
 
 class FriendRequest
 {
-  -Static int numberOfInstances
+  + FriendRequest(User sender, User, reciever)
+  __
+  - Static int numberOfInstances
   - int friendRequestId
   - User sender
   - User receiver
@@ -117,7 +148,9 @@ package userContent
 {
   abstract class UserContentItem 
   {
-    -Static int numberOfInstances
+    + UserContentItem(User owner, String mainText)
+    __
+    - Static int numberOfInstances
     - final Date creationDate
     - int userContentItemId
     - String mainText
@@ -133,9 +166,11 @@ package userContent
   
   package post
   {
-
     abstract class Post extends userContent.UserContentItem
     {
+      + Post(User owner, String mainText, String heading, ArrayList<File> files)
+      + Post(User owner, String mainText, String heading)
+      __
       - String heading
       - ArrayList<File> attachments
       __
@@ -147,6 +182,10 @@ package userContent
     
     class ForumPost extends Post
     {
+      + ForumPost(User owner, String mainText, ArrayList<Tags> tags)
+      + ForumPost(User owner, String mainText, ArrayList<Tag> tags,
+                  ArrayList<Reply> replies, ArrayList<User> likedBy)
+      __
       - int likeCount
       - ArrayList<Tag> tags
       - ArrayList<Reply> replies
@@ -158,11 +197,15 @@ package userContent
     }
     class DormTransferPost extends Post
     {
+      + DormTransferPost(User owner, String mainText, Room room)
+      __
       - Room room
     }
     
     class EventPost extends Post
     {
+      + EventPost(String place, Date date, String info)
+      __
       - String location
       - Date eventDate
       - String importantInfo
@@ -175,9 +218,11 @@ package userContent
     
     class Tag
     {
-      -Static int numberOfInstances
+      + Tag(String tagName)
+      __
+      - Static int numberOfInstances
       - int tagId
-      -String tag
+      - tag
       
     }
     
@@ -185,11 +230,15 @@ package userContent
   
   class Message extends UserContentItem
   {
+    + Message(User owner, String mainText, User reciever)
+    __
     - User receiver
   }
   
   class Review extends UserContentItem
   {
+    + Review(Reviewable r, double rating)
+    __
     - Reviewable r
     - double rateGiven
     + void edit(String newText, double newRating)
@@ -197,8 +246,9 @@ package userContent
   
   class Reply extends UserContentItem
   {
+    + Reply(User owner, String mainText, Post previous)
+    __
     - Post previous
-    
   }
 }
 
