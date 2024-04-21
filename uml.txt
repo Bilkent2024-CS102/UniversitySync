@@ -40,6 +40,12 @@ class User{
   ..adders and removers for above..
   ..6 arraylists..
   
+  --- Comparator Classes ---
+  ... all override compare method ...
+  + static class idComparator
+  implements Comparator<User>
+  + static class nameComparator
+  implements Comparator<User>
   
 }
 
@@ -76,6 +82,15 @@ package location{
     - Campus campus
     + void addReview(Review r)
     + void removeReview(Review r)
+    
+  --- Comparator Classes ---
+  ... all override compare method ...
+  + static class idComparator
+  implements Comparator<Location>
+  + static class nameComparator
+  implements Comparator<Location>
+  + static class ratingComparator
+  implements Comparator<Location>
   }
   
   package cafeteria
@@ -91,6 +106,10 @@ package location{
       - double minPrice
       - double maxPrice
       - ArrayList<MenuItem> items
+      --- Comparator Classes ---
+      ... all override compare method ...
+      + static class priceComparator
+      implements Comparator<Cafeteria>
     }
     
     class MenuItem
@@ -103,6 +122,14 @@ package location{
       - String name
       - double price
       - Image image
+      --- Comparator Classes ---
+      ... all override compare method ...
+      + static class idComparator
+      implements Comparator<MenuItem>
+      + static class nameComparator
+      implements Comparator<MenuItem>
+     + static class priceComparator
+      implements Comparator<MenuItem>
     }
   }
   
@@ -113,6 +140,12 @@ package location{
                 Image image, ArrayList<Room> rooms)
     __
     - ArrayList<Room> rooms
+    --- Comparator Classes ---
+    ... all override compare method ...
+    + static class capacityComparator
+    implements Comparator<Dormitory>
+    + static class availabilityComparator
+    implements Comparator<Dormitory>
   }
   
   class Room
@@ -121,12 +154,26 @@ package location{
           boolaen isBunk, boolean privateBathroom)
     __
     - Static int numberOfInstances
+    - int price
+    - int roomId
     - int capacity
     - Dormitory dorm
-    - int roomId
     - int availableBed
     - boolean isBunk
     - boolean privateBathroom
+    
+    --- Comparator Classes ---
+    ... all override compare method ...
+    + static class idComparator
+    implements Comparator<Room>
+    + static class priceComparator
+    implements Comparator<Room>
+    + static class capacityComparator
+    implements Comparator<Room>
+    + static class luxuryComparator
+    implements Comparator<Room>
+    + static class availabilityComparator
+    implements Comparator<Room>
   }
   
 }
@@ -141,6 +188,11 @@ class FriendRequest
   - User receiver
   + void acceptRequest()
   + void rejectRequest()
+  --- Comparator Classes ---
+  ... all override compare method ...
+  + static class idComparator
+  implements Comparator<FriendRequest>
+
 }
 
 
@@ -162,6 +214,14 @@ package userContent
     use setDate() internally to 
     show last edit date
     + void delete()
+    
+    --- Comparator Classes ---
+    ... all override compare method ...
+    + static class idComparator
+    implements Comparator<UserContentItem>
+    + static class dateComparator
+    implements Comparator<UserContentItem>
+    
   }
   
   package post
@@ -194,6 +254,12 @@ package userContent
       + void removeReply(Reply r)
       + void likeBy(User user)
       + void removeLike(User user)
+      
+      --- Comparator Classes ---
+      ... all override compare method ...
+      + static class likeCountComparator
+      implements Comparator<ForumPost>
+    
     }
     class DormTransferPost extends Post
     {
@@ -214,6 +280,12 @@ package userContent
       + void addFollower(User u)
       + void removeFollower(User u)
       + void notifyFollowers()
+      
+      --- Comparator Classes ---
+      ... all override compare method ...
+      + static class followerCountComparator
+      implements Comparator<EventPost>
+    
     }
     
     class Tag
@@ -222,7 +294,14 @@ package userContent
       __
       - Static int numberOfInstances
       - int tagId
-      - tag
+      - String tagName
+      
+      --- Comparator Classes ---
+      ... all override compare method ...
+      + static class idComparator
+      implements Comparator<Tag>
+      + static class nameComparator
+      implements Comparator<Tag>
       
     }
     
