@@ -1,0 +1,46 @@
+@startuml
+!theme aws-orange
+database mySqlDatabase [
+  This is a <b>MySQL database</b>
+  ----
+  Stores updated object states in 
+  the disk, so that all future 
+  sessions are able to access them.
+  ----
+  Can be accessed by admin 
+  through MySQL workbench.
+  ]
+  
+  :User:
+  :Admin:
+  
+  package src {
+    folder Model [
+    This is the <b>Model</b> part.
+    ----
+    Model implements object-oriented
+    logic with Java classes and their
+    related fields and methods.
+    ]
+    
+    folder UI [
+      UI
+      ----
+      UI part is constructed with 
+      JavaFX code rendering fxml.
+    ]
+    folder "UI" {
+      [JavaFX]
+      [fxml]
+      artifact UIComponents
+    }
+  }
+  JavaFX <-- fxml : rendered
+  mySqlDatabase <-u- Model : Model updates\n database
+  Model <-- mySqlDatabase : Model instances are\n constructed and updated\n by information from database
+  JavaFX <-- Model : Constructs UI from\n object states
+  UIComponents <-- JavaFX : Produces\nand\nlistens
+  User <-left-> UIComponents : User Interacts with UI
+  Admin --> mySqlDatabase : Admin can interact with \n database directly
+  Model <-- JavaFX : Invokes callbacks
+@enduml
