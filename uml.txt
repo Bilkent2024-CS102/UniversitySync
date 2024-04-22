@@ -2,13 +2,21 @@
 
 class University
 {
+  + University(String name, ArrayList<Campus> campuses)
+  + University(String name,
+              ArrayList<Campus> campuses, ArrayList<User> students)
+  __
   -Static int numberOfInstances
   - int universityId
+  - String name
   -ArrayList<Campus> campuses
   -ArrayList<User> students
 }
 
 class User{
+  + User(String name, String email, String password)
+  + User(String name, String email, String password, Room room)
+  __
   -Static int numberOfInstances
   -int userId
   ..personal info of user..
@@ -32,16 +40,24 @@ class User{
   ..adders and removers for above..
   ..6 arraylists..
   
+  --- Comparator Classes ---
+  ... all override compare method ...
+  + static class idComparator
+  implements Comparator<User>
+  + static class nameComparator
+  implements Comparator<User>
   
 }
 
 class Campus
 {
-  -Static int numberOfInstances
-  -int campusId
-  -String name
-  -Arraylist<Dormitory> dormitories
-  -Arraylist<Cafeteria> cafeterias
+  + Campus(String name)
+  __
+  - Static int numberOfInstances
+  - int campusId
+  - String name
+  - ArrayList<Dormitory> dormitories
+  - ArrayList<Cafeteria> cafeterias
 }
 
 interface Reviewable
@@ -53,6 +69,9 @@ package location{
   
   abstract class Location implements .Reviewable
   {
+    + Location(String name, String description, Campus campus)
+    + Location(String name, String description, Campus campus, Image image)
+    __
     - Static int numberOfInstances
     - int locationId
     - ArrayList<Review> reviews
@@ -63,53 +82,117 @@ package location{
     - Campus campus
     + void addReview(Review r)
     + void removeReview(Review r)
+    
+  --- Comparator Classes ---
+  ... all override compare method ...
+  + static class idComparator
+  implements Comparator<Location>
+  + static class nameComparator
+  implements Comparator<Location>
+  + static class ratingComparator
+  implements Comparator<Location>
   }
   
   package cafeteria
   {
     class Cafeteria extends location.Location
     {
+      + Cafeteria(String name, String description, Campus campus)
+      + Cafeteria(String name, String description, Campus campus,
+                  Image image)
+      + Cafeteria(String name, String description, Campus campus,
+                  Image image, ArrayList<MenuItem> items)
+      __
       - double minPrice
       - double maxPrice
       - ArrayList<MenuItem> items
+      --- Comparator Classes ---
+      ... all override compare method ...
+      + static class priceComparator
+      implements Comparator<Cafeteria>
     }
     
     class MenuItem
     {
-      -Static int numberOfInstances
+      + MenuItem(String name, double price)
+      + MenuItem(String name, double price, Image image)
+      __
+      - Static int numberOfInstances
       - int menuItemId
       - String name
       - double price
       - Image image
+      --- Comparator Classes ---
+      ... all override compare method ...
+      + static class idComparator
+      implements Comparator<MenuItem>
+      + static class nameComparator
+      implements Comparator<MenuItem>
+     + static class priceComparator
+      implements Comparator<MenuItem>
     }
   }
   
   class Dormitory extends Location
   {
-    -Room[] rooms
+    + Dormitory(String name, String description, Campus campus)
+    + Dormitory(String name, String description, Campus campus,
+                Image image, ArrayList<Room> rooms)
+    __
+    - ArrayList<Room> rooms
+    --- Comparator Classes ---
+    ... all override compare method ...
+    + static class capacityComparator
+    implements Comparator<Dormitory>
+    + static class availabilityComparator
+    implements Comparator<Dormitory>
   }
   
   class Room
   {
-    -Static int numberOfInstances
-    -final int capacity
-    -final Dormitory dorm
-    -int roomId
-    -int availableBed
-    -boolean isBunked
-    -boolean privateBathroom
+    + Room(int capacity, Dormitory Dorm,
+          boolaen isBunk, boolean privateBathroom)
+    __
+    - Static int numberOfInstances
+    - int price
+    - int roomId
+    - int capacity
+    - Dormitory dorm
+    - int availableBed
+    - boolean isBunk
+    - boolean privateBathroom
+    
+    --- Comparator Classes ---
+    ... all override compare method ...
+    + static class idComparator
+    implements Comparator<Room>
+    + static class priceComparator
+    implements Comparator<Room>
+    + static class capacityComparator
+    implements Comparator<Room>
+    + static class luxuryComparator
+    implements Comparator<Room>
+    + static class availabilityComparator
+    implements Comparator<Room>
   }
   
 }
 
 class FriendRequest
 {
-  -Static int numberOfInstances
+  + FriendRequest(User sender, User, reciever)
+  __
+  - Static int numberOfInstances
   - int friendRequestId
   - User sender
   - User receiver
   + void acceptRequest()
   + void rejectRequest()
+  --- Comparator Classes ---
+  ... all override compare method ...
+  + static class idComparator
+  implements Comparator<FriendRequest>
+
 }
 
 
@@ -117,7 +200,9 @@ package userContent
 {
   abstract class UserContentItem 
   {
-    -Static int numberOfInstances
+    + UserContentItem(User owner, String mainText)
+    __
+    - Static int numberOfInstances
     - final Date creationDate
     - int userContentItemId
     - String mainText
@@ -129,13 +214,23 @@ package userContent
     use setDate() internally to 
     show last edit date
     + void delete()
+    
+    --- Comparator Classes ---
+    ... all override compare method ...
+    + static class idComparator
+    implements Comparator<UserContentItem>
+    + static class dateComparator
+    implements Comparator<UserContentItem>
+    
   }
   
   package post
   {
-
     abstract class Post extends userContent.UserContentItem
     {
+      + Post(User owner, String mainText, String heading, ArrayList<File> files)
+      + Post(User owner, String mainText, String heading)
+      __
       - String heading
       - ArrayList<File> attachments
       __
@@ -147,6 +242,10 @@ package userContent
     
     class ForumPost extends Post
     {
+      + ForumPost(User owner, String mainText, ArrayList<Tags> tags)
+      + ForumPost(User owner, String mainText, ArrayList<Tag> tags,
+                  ArrayList<Reply> replies, ArrayList<User> likedBy)
+      __
       - int likeCount
       - ArrayList<Tag> tags
       - ArrayList<Reply> replies
@@ -155,14 +254,24 @@ package userContent
       + void removeReply(Reply r)
       + void likeBy(User user)
       + void removeLike(User user)
+      
+      --- Comparator Classes ---
+      ... all override compare method ...
+      + static class likeCountComparator
+      implements Comparator<ForumPost>
+    
     }
     class DormTransferPost extends Post
     {
+      + DormTransferPost(User owner, String mainText, Room room)
+      __
       - Room room
     }
     
     class EventPost extends Post
     {
+      + EventPost(String place, Date date, String info)
+      __
       - String location
       - Date eventDate
       - String importantInfo
@@ -171,13 +280,28 @@ package userContent
       + void addFollower(User u)
       + void removeFollower(User u)
       + void notifyFollowers()
+      
+      --- Comparator Classes ---
+      ... all override compare method ...
+      + static class followerCountComparator
+      implements Comparator<EventPost>
+    
     }
     
     class Tag
     {
-      -Static int numberOfInstances
+      + Tag(String tagName)
+      __
+      - Static int numberOfInstances
       - int tagId
-      -String tag
+      - String tagName
+      
+      --- Comparator Classes ---
+      ... all override compare method ...
+      + static class idComparator
+      implements Comparator<Tag>
+      + static class nameComparator
+      implements Comparator<Tag>
       
     }
     
@@ -185,11 +309,15 @@ package userContent
   
   class Message extends UserContentItem
   {
+    + Message(User owner, String mainText, User reciever)
+    __
     - User receiver
   }
   
   class Review extends UserContentItem
   {
+    + Review(Reviewable r, double rating)
+    __
     - Reviewable r
     - double rateGiven
     + void edit(String newText, double newRating)
@@ -197,8 +325,9 @@ package userContent
   
   class Reply extends UserContentItem
   {
+    + Reply(User owner, String mainText, Post previous)
+    __
     - Post previous
-    
   }
 }
 
