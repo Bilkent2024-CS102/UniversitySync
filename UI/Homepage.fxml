@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.homepage.HelloController">
+   <top>
+      <HBox fx:id="topHBoxID" prefHeight="180.0" prefWidth="1400.0" BorderPane.alignment="CENTER">
+            <Separator orientation="VERTICAL" prefHeight="180.0" prefWidth="0.0" style="-fx-background-color: Black;" />
+            <Button fx:id="homeID" mnemonicParsing="false" onAction="#homeTab" prefHeight="180.0" prefWidth="230.0" style="-fx-font-size: 34;" text="Home">
+               <font>
+                  <Font size="34.0" />
+               </font></Button>
+         <Line endX="100.0" startX="100.0" startY="170.0" strokeWidth="10.0" />
+            <Button fx:id="foodID" mnemonicParsing="false" onAction="#foodTab" prefHeight="180.0" prefWidth="230.0" style="-fx-font-size: 34;" text="Food">
+               <font>
+                  <Font size="34.0" />
+               </font></Button>
+         <Line endX="100.0" startX="100.0" startY="170.0" strokeWidth="10.0" />
+         <MenuButton fx:id="dormitoriesID" mnemonicParsing="false" prefHeight="180.0" prefWidth="270.0" style="-fx-font-size: 34;" text="Dormitories">
+           <items>
+             <MenuItem mnemonicParsing="false" onAction="#dormInfo" text="Dormitory Info" />
+             <MenuItem mnemonicParsing="false" onAction="#dormTransfer" text="Dormitory Transfer" />
+           </items>
+            <font>
+               <Font size="34.0" />
+            </font>
+         </MenuButton>
+         <Line endX="100.0" startX="100.0" startY="170.0" strokeWidth="10.0" />
+            <Button fx:id="socialID" mnemonicParsing="false" onAction="#socialTab" prefHeight="180.0" prefWidth="230.0" style="-fx-font-size: 34;" text="Social">
+               <font>
+                  <Font size="34.0" />
+               </font></Button>
+         <Line endX="100.0" startX="100.0" startY="170.0" strokeWidth="10.0" />
+            <Button fx:id="forumID" mnemonicParsing="false" onAction="#forumTab" prefHeight="180.0" prefWidth="230.0" style="-fx-font-size: 34;" text="Forum">
+               <font>
+                  <Font size="34.0" />
+               </font></Button>
+         <Line endX="100.0" startX="100.0" startY="170.0" strokeWidth="10.0" />
+         <MenuButton fx:id="profileID" graphicTextGap="20.0" mnemonicParsing="false" prefHeight="180.0" prefWidth="470.0" style="-fx-font-size: 34;" text="Zaeem Masood Sheikh ">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#profile" text="Profile" />
+               <MenuItem mnemonicParsing="false" onAction="#liked" text="Liked" />
+               <MenuItem mnemonicParsing="false" onAction="#contactUs" text="Contact Us" />
+               <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
+            </items>
+            <font>
+               <Font size="34.0" />
+            </font>
+            <graphic>
+               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
+                  <image>
+                     <Image url="@icons/user_8742495.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </MenuButton>
+            <Separator orientation="VERTICAL" prefHeight="180.0" prefWidth="4.0" style="-fx-background-color: Black;" />
+      </HBox>
+   </top>
+   <right>
+      <BorderPane prefHeight="820.0" prefWidth="478.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label alignment="CENTER" prefHeight="140.0" prefWidth="665.0" style="-fx-background-color: black;" text="Events" textFill="WHITE" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+         </top>
+         <center>
+            <ScrollPane prefHeight="553.0" prefWidth="463.0" BorderPane.alignment="CENTER">
+               <content>
+                  <VBox fx:id="Event_VBox_ID" alignment="CENTER" prefWidth="476.0">
+                     <children>
+                        <TextArea prefHeight="267.0" prefWidth="476.0" text="&#10;An event is coming up on 3rd Jan 2025 in the B&#10;Building&#10;Time: 5:00 PM&#10;Location: B Binasi&#10;&#10;">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" top="30.0" />
+                           </VBox.margin></TextArea>
+                         <ToggleButton mnemonicParsing="false" prefHeight="65.0" prefWidth="369.0" style="-fx-text-fill: white;" text="Follow" textFill="WHITE">
+                             <font>
+                                 <Font name="Helvetica Neue Bold" size="27.0" />
+                             </font>
+                             <effect>
+                                 <Lighting diffuseConstant="2.0" specularConstant="0.67" specularExponent="17.69" surfaceScale="10.0"> </Lighting>
+                             </effect>
+                           <VBox.margin>
+                              <Insets top="4.0" />
+                           </VBox.margin>
+                         </ToggleButton>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </center>
+         <bottom>
+            <Pane prefHeight="117.0" prefWidth="298.0" style="-fx-background-color: linear-gradient(to bottom, #20AFFF, #8EADC0, #2E3235); -fx-background-radius: 20;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="EventAddButtonID" layoutX="38.0" layoutY="65.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="129.0" style="-fx-background-color: White; -fx-background-radius: 15;" text="Add">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+                  <Text fill="WHITE" layoutX="2.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add your events here" textAlignment="CENTER" translateY="3.0" wrappingWidth="176.970458984375">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="15.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="20.0" fitWidth="30.0" layoutX="134.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/888_edit.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="22.0" left="90.0" right="90.0" top="15.0" />
+               </BorderPane.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Pane>
+         </bottom>
+      </BorderPane>
+   </right>
+   <center>
+      <VBox prefHeight="820.0" prefWidth="1198.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="108.0" prefWidth="1222.0" style="-fx-background-color: #20368f;" text="Recent Posts" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+            <ScrollPane prefHeight="765.0" prefWidth="1222.0">
+               <content>
+                  <VBox>
+                     <children>
+                        <Pane prefHeight="592.0" prefWidth="978.0" style="-fx-background-color: #829CD0;">
+                           <children>
+                              <TextArea layoutX="14.0" layoutY="84.0" prefHeight="401.0" prefWidth="949.0" />
+                              <HBox layoutX="45.0" layoutY="505.0" prefHeight="70.0" prefWidth="895.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="185.0" text="Like" />
+                                    <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="185.0" text="Message" translateX="50.0" />
+                                    <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="185.0" text="Comment" translateX="100.0" />
+                                    <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="185.0" text="Add Friend" translateX="150.0" />
+                                 </children>
+                              </HBox>
+                              <Label layoutX="116.0" layoutY="30.0" prefHeight="36.0" prefWidth="370.0" text="zaeem_sheikh383">
+                                 <font>
+                                    <Font name="SansSerif Bold Italic" size="30.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="120.0" right="120.0" top="60.0" />
+                           </VBox.margin>
+                        </Pane>
+                        <Pane prefHeight="592.0" prefWidth="978.0" style="-fx-background-color: #829CD0;">
+                           <children>
+                              <TextArea layoutX="14.0" layoutY="84.0" prefHeight="401.0" prefWidth="949.0" />
+                              <HBox layoutX="45.0" layoutY="505.0" prefHeight="70.0" prefWidth="895.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="185.0" text="Like" />
+                                    <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="185.0" text="Message" translateX="50.0" />
+                                    <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="185.0" text="Comment" translateX="100.0" />
+                                    <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="185.0" text="Add Friend" translateX="150.0" />
+                                 </children>
+                              </HBox>
+                              <Label layoutX="116.0" layoutY="30.0" prefHeight="36.0" prefWidth="370.0" text="zaeem_sheikh383">
+                                 <font>
+                                    <Font name="SansSerif Bold Italic" size="30.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="120.0" right="120.0" top="60.0" />
+                           </VBox.margin>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
