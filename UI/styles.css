@@ -1,0 +1,40 @@
+/*TOP TAB*/
+#topHBoxID Button, MenuButton {
+    /* Button styles here */
+    -fx-background-color: #829CD0; /* Default color */
+    -fx-text-fill: black; /* Text color */
+
+    /* Add some padding and margin for better appearance */
+    -fx-padding: 5px 10px;
+    -fx-margin: 5px;
+}
+
+#topHBoxID Button:hover {
+    /* Hover state */
+    -fx-background-color: #A3B9E4; /* Lighter version of default color */
+}
+#topHBoxID MenuButton:hover {
+    /* Hover state */
+    -fx-background-color: #A3B9E4; /* Lighter version of default color */
+}
+
+#topHBoxID Button:pressed {
+    /* Pressed state */
+    -fx-background-color: #6D87B8; /* Slightly darker than default color */
+}
+#topHBoxID MenuButton:pressed {
+    /* Pressed state */
+    -fx-background-color: #6D87B8; /* Slightly darker than default color */
+}
+
+
+
+/*EVENT TAB*/
+#Event_VBox_ID ToggleButton {
+    -fx-background-color: #87CEEB;
+}
+
+#Event_VBox_ID ToggleButton:hover {
+    -fx-background-color: #B0E4FF;
+}
+
