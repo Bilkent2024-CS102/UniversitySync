@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--<fx:include source="../Profile_TOP_TAB.fxml"/>-->
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <fx:include source="../TOP_TAB.fxml" />
+    </top>
+   <center>
+      <VBox prefHeight="785.0" prefWidth="1080.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER">
+         <fx:include source="../Profile_TOP_TAB.fxml" />
+         <BorderPane.margin>
+            <Insets top="35.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <left>
+       <fx:include source="profile_LEFT_DISPLAY.fxml" />
+   </left>
+</BorderPane>
