@@ -38,3 +38,31 @@
     -fx-background-color: #B0E4FF;
 }
 
+/*****************************************************  SOCIAL PAGE  **************************************************/
+#social_topHBox_ID Button {
+    -fx-background-color: #67B2B7;
+}
+#social_topHBox_ID Button:hover {
+    /* Hover state */
+    -fx-background-color: #4D9297; /* Lighter version of default color */
+}
+
+#social_topHBox_ID Button:pressed {
+    /* Pressed state */
+    -fx-background-color: black; /* Slightly darker than default color */
+}
+
+/*****************************************************  Profile PAGE  **************************************************/
+
+#profile_topHBox_ID Button {
+    -fx-background-color:   #959595;
+}
+#profile_topHBox_ID Button:hover {
+    /* Hover state */
+    -fx-background-color: #C1C1C1; /* Lighter version of default color */
+}
+
+#profile_topHBox_ID Button:pressed {
+    /* Pressed state */
+    -fx-background-color: black; /* Slightly darker than default color */
+}
