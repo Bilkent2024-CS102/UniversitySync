@@ -154,7 +154,6 @@ package location{
           boolaen isBunk, boolean privateBathroom)
     __
     - Static int numberOfInstances
-    - int price
     - int roomId
     - int capacity
     - Dormitory dorm
@@ -165,8 +164,6 @@ package location{
     --- Comparator Classes ---
     ... all override compare method ...
     + static class idComparator
-    implements Comparator<Room>
-    + static class priceComparator
     implements Comparator<Room>
     + static class capacityComparator
     implements Comparator<Room>
