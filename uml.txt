@@ -1,5 +1,38 @@
 @startuml
 
+class DatabaseConnector{
+  - Connection con
+  - int sortCriteria
+  - static final int SORT_ACCORDING_LIKE_COUNT = 1
+  - static final int SORT_ACCORDING_DATE = 2
+  ...
+  static final integers defined to enumerate sort criterias.
+  ___
+  + DatabaseConnector()
+  + int getUserID(String username, String password)
+  it provides login or returns 0 if no such user exists
+  + int registerUser(User u)
+  it adds user to database and returns their id,
+  if addition is insuccessful or such user already exists,
+  returns 0
+  
+  ArrayList<EventPost> getEventPosts(int sortCriteria)
+  ArrayList<EventPost> getFollowedPosts(User byUser, int sortCriteria)
+  ArrayList<ForumPost> getLikedPosts(User byUser, int sortCriteria)
+  ArrayList<Post> getOwnedPosts(User byUser, int sortCriteria)
+  
+  boolean updateEventPosts(EventPost modification, boolean isAdd)
+  boolean updateFollowedPosts(User u, EventPost modification, boolean isAdd)
+  boolean updateLikedPosts(User u, EventPost modification, boolean isAdd)
+  boolean updateOwnedPosts(User u, EventPost modification, boolean isAdd)
+  
+  ArrayList<Message> getMessagesBetween(User first, User second)
+  boolean editUserContentItem(int idInTable, String newText)
+  boolean swapDormInfo(User first, User second)
+  boolean addReview(Review r, Location toLocation)
+}
+
+
 class University
 {
   + University(String name, ArrayList<Campus> campuses)
