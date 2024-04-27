@@ -69,9 +69,7 @@ class User{
   -ArrayList<FriendRequest> pendingRequests
   -ArrayList<Post> postsOwned
   
-  
   ..adders and removers for above..
-  ..6 arraylists..
 
   + void transferDorm(User u)
   + void transferDorm(Room room)
