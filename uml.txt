@@ -39,7 +39,7 @@ class University
   + University(String name,
               ArrayList<Campus> campuses, ArrayList<User> students)
   __
-  -Static int numberOfInstances
+  - static int numberOfInstances
   - int universityId
   - String name
   -ArrayList<Campus> campuses
@@ -50,7 +50,7 @@ class User{
   + User(String name, String email, String password)
   + User(String name, String email, String password, Room room)
   __
-  -Static int numberOfInstances
+  - static int numberOfInstances
   -int userId
   ..personal info of user..
   -String name
@@ -72,20 +72,15 @@ class User{
   
   ..adders and removers for above..
   ..6 arraylists..
-  
+
+  + void transferDorm(User u)
   + void transferDorm(Room room)
-  + void editName(String newName)
-  + void changePassword(String newPass)
-  + void changeProfilePic(Image i)
-  + void sendMessage(Message m)
-  + void makePost(String text)
-  + void sendFriendRequest(User user)
   
   --- Comparator Classes ---
   ... all override compare method ...
-  + static class idComparator
+  + static class IDComparator
   implements Comparator<User>
-  + static class nameComparator
+  + static class NameComparator
   implements Comparator<User>
   
 }
@@ -94,7 +89,7 @@ class Campus
 {
   + Campus(String name)
   __
-  - Static int numberOfInstances
+  - static int numberOfInstances
   - int campusId
   - String name
   - ArrayList<Dormitory> dormitories
@@ -113,7 +108,7 @@ package location{
     + Location(String name, String description, Campus campus)
     + Location(String name, String description, Campus campus, Image image)
     __
-    - Static int numberOfInstances
+    - static int numberOfInstances
     - int locationId
     - ArrayList<Review> reviews
     - Image image
@@ -126,11 +121,11 @@ package location{
     
   --- Comparator Classes ---
   ... all override compare method ...
-  + static class idComparator
+  + static class IDComparator
   implements Comparator<Location>
-  + static class nameComparator
+  + static class NameComparator
   implements Comparator<Location>
-  + static class ratingComparator
+  + static class RatingComparator
   implements Comparator<Location>
   }
   
@@ -149,7 +144,7 @@ package location{
       - ArrayList<MenuItem> items
       --- Comparator Classes ---
       ... all override compare method ...
-      + static class priceComparator
+      + static class PriceComparator
       implements Comparator<Cafeteria>
     }
     
@@ -158,18 +153,18 @@ package location{
       + MenuItem(String name, double price)
       + MenuItem(String name, double price, Image image)
       __
-      - Static int numberOfInstances
+      - static int numberOfInstances
       - int menuItemId
       - String name
       - double price
       - Image image
       --- Comparator Classes ---
       ... all override compare method ...
-      + static class idComparator
+      + static class IDComparator
       implements Comparator<MenuItem>
-      + static class nameComparator
+      + static class NameComparator
       implements Comparator<MenuItem>
-     + static class priceComparator
+     + static class PriceComparator
       implements Comparator<MenuItem>
     }
   }
@@ -183,9 +178,9 @@ package location{
     - ArrayList<Room> rooms
     --- Comparator Classes ---
     ... all override compare method ...
-    + static class capacityComparator
+    + static class CapacityComparator
     implements Comparator<Dormitory>
-    + static class availabilityComparator
+    + static class AvailabilityComparator
     implements Comparator<Dormitory>
   }
   
@@ -194,7 +189,7 @@ package location{
     + Room(int capacity, Dormitory Dorm,
           boolaen isBunk, boolean privateBathroom)
     __
-    - Static int numberOfInstances
+    - static int numberOfInstances
     - int roomId
     - int capacity
     - Dormitory dorm
@@ -204,13 +199,13 @@ package location{
     
     --- Comparator Classes ---
     ... all override compare method ...
-    + static class idComparator
+    + static class IDComparator
     implements Comparator<Room>
-    + static class capacityComparator
+    + static class CapacityComparator
     implements Comparator<Room>
-    + static class luxuryComparator
+    + static class LuxuryComparator
     implements Comparator<Room>
-    + static class availabilityComparator
+    + static class AvailabilityComparator
     implements Comparator<Room>
   }
   
@@ -220,7 +215,7 @@ class FriendRequest
 {
   + FriendRequest(User sender, User, reciever)
   __
-  - Static int numberOfInstances
+  - static int numberOfInstances
   - int friendRequestId
   - User sender
   - User receiver
@@ -228,7 +223,7 @@ class FriendRequest
   + void rejectRequest()
   --- Comparator Classes ---
   ... all override compare method ...
-  + static class idComparator
+  + static class IDComparator
   implements Comparator<FriendRequest>
 
 }
@@ -240,7 +235,7 @@ package userContent
   {
     + UserContentItem(User owner, String mainText)
     __
-    - Static int numberOfInstances
+    - static int numberOfInstances
     - final Date creationDate
     - int userContentItemId
     - String mainText
@@ -255,9 +250,9 @@ package userContent
     
     --- Comparator Classes ---
     ... all override compare method ...
-    + static class idComparator
+    + static class IDComparator
     implements Comparator<UserContentItem>
-    + static class dateComparator
+    + static class DateComparator
     implements Comparator<UserContentItem>
     
   }
@@ -288,14 +283,14 @@ package userContent
       - ArrayList<Tag> tags
       - ArrayList<Reply> replies
       - ArrayList<User> likedBy
-      + void addReply(Reply r, User user)
-      + void removeReply(Reply r, User user)
+      + void addReply(Reply r)
+      + void removeReply(Reply r)
       + void likeBy(User user)
       + void removeLike(User user)
       
       --- Comparator Classes ---
       ... all override compare method ...
-      + static class likeCountComparator
+      + static class LikeCountComparator
       implements Comparator<ForumPost>
     
     }
@@ -321,7 +316,7 @@ package userContent
       
       --- Comparator Classes ---
       ... all override compare method ...
-      + static class followerCountComparator
+      + static class FollowerCountComparator
       implements Comparator<EventPost>
     
     }
@@ -330,15 +325,15 @@ package userContent
     {
       + Tag(String tagName)
       __
-      - Static int numberOfInstances
+      - static int numberOfInstances
       - int tagId
       - String tagName
       
       --- Comparator Classes ---
       ... all override compare method ...
-      + static class idComparator
+      + static class IDComparator
       implements Comparator<Tag>
-      + static class nameComparator
+      + static class NameComparator
       implements Comparator<Tag>
       
     }
