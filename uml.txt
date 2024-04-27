@@ -40,6 +40,14 @@ class User{
   ..adders and removers for above..
   ..6 arraylists..
   
+  + void transferDorm(Room room)
+  + void editName(String newName)
+  + void changePassword(String newPass)
+  + void changeProfilePic(Image i)
+  + void sendMessage(Message m)
+  + void makePost(String text)
+  + void sendFriendRequest(User user)
+  
   --- Comparator Classes ---
   ... all override compare method ...
   + static class idComparator
@@ -247,8 +255,8 @@ package userContent
       - ArrayList<Tag> tags
       - ArrayList<Reply> replies
       - ArrayList<User> likedBy
-      + void addReply(Reply r)
-      + void removeReply(Reply r)
+      + void addReply(Reply r, User user)
+      + void removeReply(Reply r, User user)
       + void likeBy(User user)
       + void removeLike(User user)
       
