@@ -29,15 +29,26 @@
 
 
 
-/*EVENT TAB*/
-#Event_VBox_ID ToggleButton {
+/*****************************************************  RIGHT EVENT TAB  **************************************************/
+/*#Event_VBox_ID ToggleButton {
     -fx-background-color: #87CEEB;
 }
-
 #Event_VBox_ID ToggleButton:hover {
     -fx-background-color: #B0E4FF;
+}*/
+/*Targeting specific button in place of all buttons like above*/
+#followEventButtonID {
+    -fx-background-color: #87CEEB;
 }
-
+#followEventButtonID:hover {
+    -fx-background-color: #B0E4FF;
+}
+#AddEvent_Display_ButtonID {
+    -fx-background-color: white;
+}
+#AddEvent_Display_ButtonID:hover {
+    -fx-background-color: LightGrey;
+}
 /*****************************************************  SOCIAL PAGE  **************************************************/
 #social_topHBox_ID Button {
     -fx-background-color: #67B2B7;
@@ -53,7 +64,6 @@
 }
 
 /*****************************************************  Profile PAGE  **************************************************/
-
 #profile_topHBox_ID Button {
     -fx-background-color:   #959595;
 }
@@ -65,4 +75,32 @@
 #profile_topHBox_ID Button:pressed {
     /* Pressed state */
     -fx-background-color: black; /* Slightly darker than default color */
+}
+
+/*****************************************************  Cafeteria Page  **************************************************/
+
+#cafeteriaName_HBox_ID {
+    -fx-background-color: lightgrey;
+}
+#cafeteriaName_HBox_ID:hover {
+    -fx-background-color: grey; /* Lighter version of default color */
+}
+
+
+#cafeName_Button_ID {
+   -fx-text-fill: #4267B2;
+   -fx-background-color: lightgrey;
+}
+#cafeName_Button_ID:hover {
+    -fx-text-fill: yellow;
+    -fx-background-color: black;
+}
+
+/*After you press any Cafe: >>*/
+
+#clickHereReviewText_ID  {
+    -fx-text-fill: #4267B2;
+}
+#clickHereReviewText_ID:hover {
+    -fx-text-fill: yellow;
 }
