@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="social_topHBox_ID" alignment="CENTER" prefHeight="120.0" prefWidth="1228.0" spacing="50.0" style="-fx-background-color: #67B2B7;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.homepage.Social_TOP_TAB_Controller">
+   <children>
+      <Button fx:id="social_myFriendsID" mnemonicParsing="false" onAction="#switchToMyFriends" prefHeight="70.0" prefWidth="210.0" text="My Friends" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="social_allMessagesID" mnemonicParsing="false" onAction="#switchToAllMessages" prefHeight="70.0" prefWidth="254.0" text="All Messages" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="social_eventsID" mnemonicParsing="false" onAction="#switchToEvents" prefHeight="70.0" prefWidth="210.0" text="Events" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="social_friendRequestID" mnemonicParsing="false" onAction="#switchToFriendRequests" prefHeight="70.0" prefWidth="277.0" text="Friend Requests" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Button>
+   </children>
+   <BorderPane.margin>
+      <Insets top="30.0" />
+   </BorderPane.margin>
+</HBox>

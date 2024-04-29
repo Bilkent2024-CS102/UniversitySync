@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<!--<fx:include source="TOP_TAB.fxml"/>-->
+
+<HBox fx:id="topHBoxID" prefHeight="180.0" prefWidth="1400.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.homepage.TOP_TAB_Controller">
+   <Separator orientation="VERTICAL" prefHeight="180.0" prefWidth="0.0" style="-fx-background-color: Black;" />
+   <Button fx:id="homeID" mnemonicParsing="false" onAction="#switchToHomePage" prefHeight="180.0" prefWidth="230.0" style="-fx-font-size: 34;" text="Home">
+      <font>
+         <Font size="34.0" />
+      </font></Button>
+   <Line endX="100.0" startX="100.0" startY="170.0" strokeWidth="10.0" />
+   <Button fx:id="foodID" mnemonicParsing="false" onAction="#switchToCafeteriaPage" prefHeight="180.0" prefWidth="230.0" style="-fx-font-size: 34;" text="Food">
+      <font>
+         <Font size="34.0" />
+      </font></Button>
+   <Line endX="100.0" startX="100.0" startY="170.0" strokeWidth="10.0" />
+   <MenuButton fx:id="dormitoriesID" mnemonicParsing="false" prefHeight="180.0" prefWidth="270.0" style="-fx-font-size: 34;" text="Dormitories">
+      <items>
+         <MenuItem mnemonicParsing="false" text="Dormitory Info" />
+         <MenuItem mnemonicParsing="false" text="Dormitory Transfer" />
+      </items>
+      <font>
+         <Font size="34.0" />
+      </font>
+   </MenuButton>
+   <Line endX="100.0" startX="100.0" startY="170.0" strokeWidth="10.0" />
+   <Button fx:id="socialID" mnemonicParsing="false" onAction="#switchToMyFriends" prefHeight="180.0" prefWidth="230.0" style="-fx-font-size: 34;" text="Social">
+      <font>
+         <Font size="34.0" />
+      </font></Button>
+   <Line endX="100.0" startX="100.0" startY="170.0" strokeWidth="10.0" />
+   <Button fx:id="forumID" mnemonicParsing="false" prefHeight="180.0" prefWidth="230.0" style="-fx-font-size: 34;" text="Forum">
+      <font>
+         <Font size="34.0" />
+      </font></Button>
+   <Line endX="100.0" startX="100.0" startY="170.0" strokeWidth="10.0" />
+   <MenuButton fx:id="profileID" graphicTextGap="20.0" mnemonicParsing="false" prefHeight="180.0" prefWidth="470.0" style="-fx-font-size: 34;" text="Zaeem Masood Sheikh ">
+      <items>
+         <MenuItem mnemonicParsing="false" onAction="#switchToProfilePage" text="Profile" />
+         <MenuItem mnemonicParsing="false" onAction="#switchToLikedPage" text="Liked" />
+         <MenuItem mnemonicParsing="false" onAction="#switchToContactUsPage" text="Contact Us" />
+         <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
+      </items>
+      <font>
+         <Font size="34.0" />
+      </font>
+      <graphic>
+         <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
+            <image>
+               <Image url="@icons/user_8742495.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </MenuButton>
+   <Separator orientation="VERTICAL" prefHeight="180.0" prefWidth="4.0" style="-fx-background-color: Black;" />
+</HBox>
