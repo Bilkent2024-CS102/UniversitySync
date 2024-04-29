@@ -70,16 +70,9 @@ class User{
   -ArrayList<Post> postsOwned
   
   
-  ..adders and removers for above..
-  ..6 arraylists..
+  ..adders and removers for above arraylists..
   
-  + void transferDorm(Room room)
-  + void editName(String newName)
-  + void changePassword(String newPass)
-  + void changeProfilePic(Image i)
-  + void sendMessage(Message m)
-  + void makePost(String text)
-  + void sendFriendRequest(User user)
+  + void transferDorm(User user)
   
   --- Comparator Classes ---
   ... all override compare method ...
@@ -288,8 +281,8 @@ package userContent
       - ArrayList<Tag> tags
       - ArrayList<Reply> replies
       - ArrayList<User> likedBy
-      + void addReply(Reply r, User user)
-      + void removeReply(Reply r, User user)
+      + void addReply(Reply r)
+      + void removeReply(Reply r)
       + void likeBy(User user)
       + void removeLike(User user)
       
