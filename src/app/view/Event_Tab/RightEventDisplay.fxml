@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="820.0" prefWidth="478.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.RightEventTabController">
+   <top>
+      <Label alignment="CENTER" contentDisplay="TOP" graphicTextGap="23.0" prefHeight="159.0" prefWidth="478.0" style="-fx-background-color: black;" text="Events" textFill="WHITE" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="SansSerif Bold" size="42.0" />
+         </font>
+         <padding>
+            <Insets top="-30.0" />
+         </padding>
+         <graphic>
+            <HBox prefHeight="58.0" prefWidth="471.0" style="-fx-background-color: white;">
+               <children>
+                  <ImageView fitHeight="43.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" translateY="10.0">
+                     <image>
+                        <Image url="@../icons/search.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField fx:id="search_User_ID" prefHeight="61.0" prefWidth="408.0" promptText="Search User">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+         </graphic>
+      </Label>
+   </top>
+   <center>
+      <ScrollPane prefHeight="553.0" prefWidth="463.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
+         <content>
+            <VBox fx:id="Event_VBox_ID" alignment="CENTER" prefWidth="476.0">
+               <children>
+                  <TextArea prefHeight="267.0" prefWidth="476.0" text="&#10;An event is coming up on 3rd Jan 2025 in the B&#10;Building&#10;Time: 5:00 PM&#10;Location: B Binasi&#10;&#10;">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="30.0" />
+                     </VBox.margin></TextArea>
+                  <ToggleButton fx:id="followEventButtonID" mnemonicParsing="false" onAction="#followEvent" prefHeight="65.0" prefWidth="369.0" style="-fx-text-fill: white;" text="Follow" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Neue Bold" size="27.0" />
+                     </font>
+                     <effect>
+                        <Lighting diffuseConstant="2.0" specularConstant="0.67" specularExponent="17.69" surfaceScale="10.0"> </Lighting>
+                     </effect>
+                     <VBox.margin>
+                        <Insets top="4.0" />
+                     </VBox.margin>
+                  </ToggleButton>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+   <bottom>
+      <Pane prefHeight="117.0" prefWidth="298.0" style="-fx-background-color: linear-gradient(to bottom, #20AFFF, #8EADC0, #2E3235); -fx-background-radius: 20;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
+         <children>
+            <Button fx:id="AddEvent_Display_ButtonID" layoutX="38.0" layoutY="65.0" mnemonicParsing="false" onAction="#displayAddEventPopup" prefHeight="34.0" prefWidth="129.0" style="-fx-background-radius: 15;" text="Add">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Text fill="WHITE" layoutX="2.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add your events here" textAlignment="CENTER" translateY="3.0" wrappingWidth="176.970458984375">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="15.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="20.0" fitWidth="30.0" layoutX="134.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/888_edit.jpg" />
+               </image>
+            </ImageView>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="22.0" left="90.0" right="90.0" top="15.0" />
+         </BorderPane.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Pane>
+   </bottom>
+</BorderPane>
