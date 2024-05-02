@@ -28,26 +28,6 @@
                   <Font name="PT Serif Bold" size="26.0" />
                </font>
             </Label>
-            <Label layoutX="500.0" layoutY="140.0" prefHeight="48.0" prefWidth="161.0" text="Location">
-               <font>
-                  <Font name="PT Serif Bold" size="26.0" />
-               </font>
-            </Label>
-            <Label layoutX="70.0" layoutY="280.0" prefHeight="48.0" prefWidth="161.0" text="Choose Date">
-               <font>
-                  <Font name="PT Serif Bold" size="26.0" />
-               </font>
-            </Label>
-            <Label layoutX="70.0" layoutY="420.0" prefHeight="48.0" prefWidth="188.0" text="Choose Time">
-               <font>
-                  <Font name="PT Serif Bold" size="26.0" />
-               </font>
-            </Label>
-            <Label layoutX="500.0" layoutY="280.0" prefHeight="48.0" prefWidth="292.0" text="Write Description">
-               <font>
-                  <Font name="PT Serif Bold" size="26.0" />
-               </font>
-            </Label>
             <Button alignment="BOTTOM_LEFT" contentDisplay="RIGHT" layoutX="780.0" layoutY="560.0" mnemonicParsing="false" onAction="#applyFilter" prefHeight="53.0" prefWidth="133.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="  Apply" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="28.0" />
