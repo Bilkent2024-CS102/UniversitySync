@@ -1,4 +1,4 @@
-package com.example.dao; // TODO: be sure to correct this!
+package app.dao; // TODO: be sure to correct this!
 
 import java.sql.*;
 import java.util.*;
