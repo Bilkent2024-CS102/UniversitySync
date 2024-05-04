@@ -1,12 +1,14 @@
 package app.model.location.cafeteria;
 
+import java.awt.*;
+
 public class MenuItem {
     private static int numberOfInstances;
 
     private int menuItemId;
     private String name;
     private double price;
-    private Image image;
+    private String imagePath;
 
     /*
     * Getters
@@ -27,9 +29,9 @@ public class MenuItem {
     {
         return price;
     }
-    public Image getImage()
+    public String getImagePath()
     {
-        return image;
+        return imagePath;
     }
 
     /*
@@ -48,8 +50,8 @@ public class MenuItem {
     {
         this.price = price;
     }
-    public void setImage(Image image)
+    public void setImagePath(String imagePath)
     {
-        this.image = image;
+        this.imagePath = imagePath;
     }
 }

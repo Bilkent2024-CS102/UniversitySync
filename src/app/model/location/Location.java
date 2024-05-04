@@ -1,5 +1,6 @@
 package app.model.location;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import app.model.Campus;
@@ -9,7 +10,7 @@ public abstract class Location {
     private static int numberOfInstances;
     private int locationId;
     private ArrayList<Review> reviews;
-    private Image image;
+    private String imagePath;
     private String name;
     private String description;
     private double rating;
@@ -33,11 +34,11 @@ public abstract class Location {
     public void setReviews(ArrayList<Review> reviews) {
         this.reviews = reviews;
     }
-    public Image getImage() {
-        return image;
+    public String getImagePath() {
+        return imagePath;
     }
-    public void setImage(Image image) {
-        this.image = image;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
     public String getName() {
         return name;

@@ -2,9 +2,9 @@ package app.model.location;
 
 public class Room {
     private static int numberOfInstances;
-    private final Dormitory dorm;
-    private final int roomNo;
-    private final int capacity;
+    private Dormitory dorm;
+    private int roomNo;
+    private int capacity;
     private int roomId;
     private int availableBed;
     private boolean isBunked;

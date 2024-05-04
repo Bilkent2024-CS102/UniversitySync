@@ -7,8 +7,8 @@ import app.model.User;
 public abstract class UserContentItem {
     private static int numberOfInstances;
 
-    private final Date creationDate;
-    private final User owner;
+    private Date creationDate;
+    private User owner;
 
     private int userContentItemId;
     private String mainText;

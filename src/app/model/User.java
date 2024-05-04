@@ -1,10 +1,9 @@
 package app.model;
 
+import java.awt.*;
 import java.util.ArrayList;
 
-import app.model.location.Dormitory;
 import app.model.location.Room;
-import app.model.userContent.Review;
 import app.model.userContent.post.EventPost;
 import app.model.userContent.post.ForumPost;
 import app.model.userContent.post.Post;
@@ -18,7 +17,7 @@ public class User {
     private Room room;
     private String email;
     private String password;
-    private Image profilePicture; //What is Image class?
+    private String profilePicturePath; //What is Image class?
     //TODO Add enum Major here (how?)
 
     private ArrayList<User> friends;
@@ -62,9 +61,9 @@ public class User {
     {
         return password;
     }
-    public Image getProfilePicture()
+    public String getProfilePicturePath()
     {
-        return profilePicture;
+        return profilePicturePath;
     }
     public ArrayList<User> getFriends()
     {
@@ -97,7 +96,7 @@ public class User {
     */
     public void setId(int id)
     {
-        this.id = id;
+        this.userId = id;
     }
     public void setName(String name)
     {
@@ -115,9 +114,9 @@ public class User {
     {
         this.password = password;
     }
-    public void setProfilePicture(Image profilePicture)
+    public void setProfilePicturePath(String profilePicturePath)
     {
-        this.profilePicture = profilePicture;
+        this.profilePicturePath = profilePicturePath;
     }
     public void setFriends(ArrayList<User> friends)
     {

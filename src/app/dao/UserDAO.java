@@ -37,9 +37,11 @@ public class UserDAO {
             }
             resultSet.close();
             pst.close();
+            return students;
         }
         catch (SQLException sqle){
             sqle.printStackTrace();
+            return null;
         }
     }
 }
