@@ -142,4 +142,21 @@ public class User {
     {
         this.postsOwned = postsOwned;
     }
+
+    public void addFriend(User friend)
+    {
+        friends.add(friend);
+        if (pendingIncomingRequests.get(friend) != -1)
+        {
+            pendingIncomingRequests.remove(friend);
+        }
+        else
+        {
+            pendingRequests.remove(friend);
+        }
+    }
+    public void removeFriend(User friend)
+    {
+        friends.remove(friend);
+    }
 }

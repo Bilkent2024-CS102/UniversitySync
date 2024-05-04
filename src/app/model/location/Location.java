@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import app.model.Campus;
 import app.model.userContent.Review;
 
-public abstract class Location {
+public abstract class Location implements Reviewable {
     private static int numberOfInstances;
     private int locationId;
     private ArrayList<Review> reviews;
@@ -65,4 +65,8 @@ public abstract class Location {
         this.campus = campus;
     }
 
+    public void addReview(Review review)
+    {
+        reviews.add(review);
+    }
 }
