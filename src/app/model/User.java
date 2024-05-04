@@ -28,6 +28,13 @@ public class User {
     private ArrayList<FriendRequest> pendingRequests;
     private ArrayList<Post> postsOwned;
 
+    public User(int id, String name, String email, String password)
+    {
+        setId(id);
+        setName(name);
+        setEmail(email);
+        setPassword(password);
+    }
 
     /*
      * Getters

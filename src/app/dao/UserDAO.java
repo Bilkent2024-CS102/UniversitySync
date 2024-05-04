@@ -1,6 +1,8 @@
 package app.dao; //TODO: be sure to correct this
 
 import java.sql.*;
+import java.util.ArrayList;
+import app.model.User;
 
 public class UserDAO {
 
@@ -17,5 +19,27 @@ public class UserDAO {
             return false;
         }
         return true;
+    }
+
+    public static ArrayList<User> getUsers()
+    {
+        String query = "SELECT * FROM student";
+        ArrayList<User> students = new ArrayList<>();
+
+        try{
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
+                                resultSet.getString("email"), resultSet.getString("pass"));
+                                //TODO DB columns don't match with fields in java and vice versa!
+                students.add(u);
+            }
+            resultSet.close();
+            pst.close();
+        }
+        catch (SQLException sqle){
+            sqle.printStackTrace();
+        }
     }
 }
