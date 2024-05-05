@@ -1,7 +1,8 @@
 package app.dao; // TODO: be sure to correct this!
 
-import java.sql.*;
-import java.util.*;
+import app.model.User;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws Exception{
@@ -26,6 +27,11 @@ public class Main {
         }*/
 
         DBConnectionManager.initializeConnection(url, username, password);
-        UserDAO.addUser("arda", 2);
+
+        //User u = new User("hahahaha", "hahahahaha@gmail.com", "pass12345");
+        //UserDao.addUser(u);
+        ArrayList<User> users = UserDao.getUsers();
+        System.out.println(UserDao.concludeFriendRequest(users.get(0), users.get(3), false));
+        System.out.println("lalalaal");
     }
 }
