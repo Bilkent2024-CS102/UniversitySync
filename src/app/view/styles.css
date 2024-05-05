@@ -111,3 +111,12 @@
 #dormitoryPostingVBOX_ID Pane:pressed {
     -fx-background-color: #A3B9E4;
 }
+/*Dorm Transfer Buttons */
+#transferScrollID Button {
+    -fx-background-color: Black;
+}
+#transferScrollID Button:hover {
+    -fx-background-color: grey;
+}#transferScrollID Button:pressed {
+     -fx-background-color: lightgrey;
+ }

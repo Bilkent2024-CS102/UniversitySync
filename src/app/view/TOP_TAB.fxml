@@ -28,7 +28,7 @@
    <MenuButton fx:id="dormitoriesID" mnemonicParsing="false" prefHeight="180.0" prefWidth="270.0" style="-fx-font-size: 34;" text="Dormitories">
       <items>
          <MenuItem mnemonicParsing="false" onAction="#switchToDormitoryPosting" text="Dormitory Info" />
-         <MenuItem mnemonicParsing="false" text="Dormitory Transfer" />
+         <MenuItem mnemonicParsing="false" onAction="#switchToDormitoryTransfer" text="Dormitory Transfer" />
       </items>
       <font>
          <Font size="34.0" />
