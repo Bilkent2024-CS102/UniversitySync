@@ -36,7 +36,7 @@ public class CafeteriaController{
 //        switchToFXML("Add_New_Event.fxml", event);
 
         // Load the FXML file for the filter screen
-        fxmlLoader = new FXMLLoader(new File("src/app/view/AddFilter_popup.fxml").toURI().toURL());
+        fxmlLoader = new FXMLLoader(new File("src/app/view/CafeteriaPage/AddFilter_popup.fxml").toURI().toURL());
         Parent root = fxmlLoader.load();
 
         // Create a new stage for the filter screen
