@@ -4,21 +4,29 @@ import java.sql.*;
 import java.util.ArrayList;
 import app.model.User;
 
-public class UserDAO {
+import javax.swing.plaf.nimbus.State;
 
-    public static boolean addUser(String name, int majorID){
+public class UserDao {
+
+    public static int addUser(User u){
         try{
-            String query = "INSERT INTO university_sync.student (student_name, student_major_id) VALUES (?, ?);";
+            String query = "INSERT INTO university_sync.student (full_name, email, pass) VALUES (?, ? ,?);";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            pst.setString(1, name);
-            pst.setInt(2, majorID);
+            pst.setString(1, u.getName());
+            pst.setString(2, u.getEmail());
+            pst.setString(3, u.getPassword());
             pst.executeUpdate();
+            Statement st = DBConnectionManager.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
+            rs.next();
+            int idOfNewUser = rs.getInt(1);
+            System.out.println(idOfNewUser);
+            return idOfNewUser;
         }
         catch (SQLException sqle){
             sqle.printStackTrace();
-            return false;
+            return -1;
         }
-        return true;
     }
 
     public static ArrayList<User> getUsers()
@@ -43,5 +51,13 @@ public class UserDAO {
             sqle.printStackTrace();
             return null;
         }
+    }
+
+    public static boolean authenticate(String email, String password){
+        return true;
+    }
+
+    public static User getUserByEmail(String email){
+        return null;
     }
 }

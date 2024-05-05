@@ -1,3 +1,7 @@
+package app.controller;
+
+import app.model.User;
+
 public class SessionManager {
 
     private User currentUser;

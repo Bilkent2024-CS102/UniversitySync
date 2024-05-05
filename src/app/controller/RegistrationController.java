@@ -1,7 +1,22 @@
+package app.controller;
+
 import java.awt.event.ActionEvent;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.fxml.FXML;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
+
+import app.dao.UserDao;
+import app.model.User;
 
 public class RegistrationController {
     
@@ -17,7 +32,7 @@ public class RegistrationController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
-    UserDAO userDao = new UserDao();
+    UserDao userDao = new UserDao();
 
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
@@ -34,22 +49,22 @@ public class RegistrationController {
         return pass.equals(passRepeat) && pass.length() >= 8;
     }
 
-    public void registerUser(ActionEvent e)
-    {
+    public void registerUser(ActionEvent e) throws IOException {
         String name = nameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
         String repeatPassword = confirmPasswordField.getText();
         if (isPasswordValid(password, repeatPassword) && validateInputs(name, email, password, repeatPassword))
         {
-            userDao.addUser(name, email, password);
-            int id = userDao.getUserIDByEmail(email);
-            User newUser = new User(id, name, email, password);
+            //User newUser = new User(id, name, email, password);
+            //UserDao.addUser(name, email, password);
+            //int id = userDao.getUserIDByEmail(email);
+
             switchToFXML(null, e); // need to replace null with login page's fxml path
         }
         else
         {
-            Alert alert = new Alert(AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Registration Error");
             alert.setHeaderText("Invalid Credentials");
             alert.setContentText("Please check your the information you are entering.");
@@ -79,11 +94,7 @@ public class RegistrationController {
 
     private boolean emailExists(String email)
     {
-        User u = userDao.getUserByEmail();
-        if (u == null)
-        {
-            return false;
-        }
-        return true;
+        User u = UserDao.getUserByEmail(email);
+        return u != null;
     }
 }

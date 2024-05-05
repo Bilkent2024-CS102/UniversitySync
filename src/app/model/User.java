@@ -8,6 +8,8 @@ import app.model.userContent.post.EventPost;
 import app.model.userContent.post.ForumPost;
 import app.model.userContent.post.Post;
 
+import app.dao.UserDao;
+
 public class User {
 
     private static int numberOfInstances;
@@ -27,13 +29,37 @@ public class User {
     private ArrayList<FriendRequest> pendingRequests;
     private ArrayList<Post> postsOwned;
 
-    public User(int id, String name, String email, String password)
+    /**
+     * when adding a new user to database (i.e. registration) add user without id and then pull the auto assigned
+     * id from database.
+     * @param name
+     * @param email
+     * @param password
+     */
+    public User(String name, String email, String password)
     {
-        setId(id);
         setName(name);
         setEmail(email);
         setPassword(password);
+        int id = UserDao.addUser(this);
+        setId(id);
     }
+
+    /**
+     * for constructing a user that already exists in database
+     * @param id
+     * @param name
+     * @param email
+     * @param password
+     */
+    public User(int id, String name, String email, String password)
+    {
+        setName(name);
+        setEmail(email);
+        setPassword(password);
+        setId(id);
+    }
+
 
     /*
      * Getters
@@ -146,7 +172,7 @@ public class User {
     public void addFriend(User friend)
     {
         friends.add(friend);
-        if (pendingIncomingRequests.get(friend) != -1)
+        if (pendingIncomingRequests.contains(friend))
         {
             pendingIncomingRequests.remove(friend);
         }

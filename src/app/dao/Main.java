@@ -1,7 +1,6 @@
 package app.dao; // TODO: be sure to correct this!
 
-import java.sql.*;
-import java.util.*;
+import app.model.User;
 
 public class Main {
     public static void main(String[] args) throws Exception{
@@ -26,6 +25,8 @@ public class Main {
         }*/
 
         DBConnectionManager.initializeConnection(url, username, password);
-        UserDAO.addUser("arda", 2);
+
+        User u = new User("arda", "ardablabla@gmail.com", "pass1234");
+        //UserDao.addUser(u);
     }
 }

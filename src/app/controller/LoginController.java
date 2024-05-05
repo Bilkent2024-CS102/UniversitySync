@@ -1,8 +1,22 @@
+package app.controller;
+
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
+
+import app.dao.UserDao;
+import app.model.User;
 
 public class LoginController {
     
@@ -16,7 +30,7 @@ public class LoginController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
-    UserDAO userDao = new UserDao();
+    UserDao userDao = new UserDao();
 
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
@@ -29,20 +43,19 @@ public class LoginController {
     }
 
     
-    public void signIn(ActionEvent e)
-    {
+    public void signIn(ActionEvent e) throws IOException {
         String email = emailField.getText();
         String password = passwordField.getText();
         
         if (userDao.authenticate(email, password)) // need method to validate email and password
         {
-            User currentUser = UserDAO.getUserByEmail(email);
+            User currentUser = UserDao.getUserByEmail(email);
             sessionManager.loginUser(currentUser);
             switchToFXML("src/app/view/Homepage.fxml", e);
         }
         else
         {
-            Alert alert = new Alert(AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Login Error");
             alert.setHeaderText("Invalid Credentials");
             alert.setContentText("Please check your email and password.");
@@ -50,8 +63,7 @@ public class LoginController {
         }
     }
 
-    public void switchToSignUpPage(ActionEvent e)
-    {
+    public void switchToSignUpPage(ActionEvent e) throws IOException {
         switchToFXML(null, e); // need to replace null with path to registration javafx file
     }
 

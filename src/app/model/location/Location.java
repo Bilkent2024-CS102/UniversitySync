@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 import app.model.Campus;
+import app.model.Reviewable;
 import app.model.userContent.Review;
 
 public abstract class Location implements Reviewable {
