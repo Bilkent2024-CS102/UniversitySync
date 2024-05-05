@@ -19,14 +19,14 @@ import app.dao.UserDao;
 import app.model.User;
 
 public class LoginController {
-    
+
     @FXML
     private TextField emailField;
     @FXML
     private TextField passwordField;
-    
+
     private SessionManager sessionManager = new SessionManager();
-    
+
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
@@ -42,11 +42,11 @@ public class LoginController {
         stage.show();
     }
 
-    
+
     public void signIn(ActionEvent e) throws IOException {
         String email = emailField.getText();
         String password = passwordField.getText();
-        
+
         if (userDao.authenticate(email, password)) // need method to validate email and password
         {
             User currentUser = UserDao.getUserByEmail(email);
