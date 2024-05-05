@@ -2,23 +2,19 @@ package app.controller;
 
 import app.model.User;
 
+
 public class SessionManager {
 
-    private User currentUser;
+    private static User currentUser;
 
     public void loginUser(User newUser)
     {
-        currentUser = newUser;
+        setCurrentUser(newUser);
     }
 
     public void logoutUser()
     {
-        currentUser = null;
-    }
-
-    public User getCurrentUser()
-    {
-        return currentUser;
+        setCurrentUser(null);
     }
 
     public boolean isUserLoggedIn()
@@ -26,4 +22,11 @@ public class SessionManager {
         return currentUser != null;
     }
 
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        SessionManager.currentUser = currentUser;
+    }
 }
