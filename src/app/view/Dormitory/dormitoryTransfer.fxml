@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.DormitoryController">
+   <top>
+      <fx:include source="../TOP_TAB.fxml" />
+   </top>
+   <right>
+   </right>
+   <center>
+      <VBox prefHeight="603.0" prefWidth="1700.0" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane prefHeight="815.0" prefWidth="1700.0">
+               <content>
+                  <VBox fx:id="dormitoryPostingVBOX_ID" prefHeight="814.0" prefWidth="1680.0" spacing="50.0">
+                     <children>
+                        <Pane prefHeight="668.0" prefWidth="1280.0">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fitHeight="456.0" fitWidth="639.0" layoutX="709.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/61orm_IMG_4929.jpeg" />
+                                 </image>
+                              </ImageView>
+                              <VBox layoutX="35.0" layoutY="42.0" prefHeight="595.0" prefWidth="632.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="135.0" prefWidth="636.0" text="Transfer Posting">
+                                       <font>
+                                          <Font name="Apple SD Gothic Neo ExtraBold" size="44.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </children>
+                     <padding>
+                        <Insets left="150.0" right="150.0" />
+                     </padding>
+                  </VBox>
+               </content></ScrollPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

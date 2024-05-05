@@ -1,10 +1,10 @@
-/*TOP TAB*/
+
+
+/*****************************************************  TOP TAB  **************************************************/
 #topHBoxID Button, MenuButton {
-    /* Button styles here */
     -fx-background-color: #829CD0; /* Default color */
     -fx-text-fill: black; /* Text color */
 
-    /* Add some padding and margin for better appearance */
     -fx-padding: 5px 10px;
     -fx-margin: 5px;
 }
@@ -49,6 +49,7 @@
 #AddEvent_Display_ButtonID:hover {
     -fx-background-color: LightGrey;
 }
+
 /*****************************************************  SOCIAL PAGE  **************************************************/
 #social_topHBox_ID Button {
     -fx-background-color: #67B2B7;
@@ -57,7 +58,6 @@
     /* Hover state */
     -fx-background-color: #4D9297; /* Lighter version of default color */
 }
-
 #social_topHBox_ID Button:pressed {
     /* Pressed state */
     -fx-background-color: black; /* Slightly darker than default color */
@@ -68,24 +68,20 @@
     -fx-background-color:   #959595;
 }
 #profile_topHBox_ID Button:hover {
-    /* Hover state */
     -fx-background-color: #C1C1C1; /* Lighter version of default color */
 }
 
 #profile_topHBox_ID Button:pressed {
-    /* Pressed state */
     -fx-background-color: black; /* Slightly darker than default color */
 }
 
 /*****************************************************  Cafeteria Page  **************************************************/
-
 #cafeteriaName_HBox_ID {
     -fx-background-color: lightgrey;
 }
 #cafeteriaName_HBox_ID:hover {
     -fx-background-color: grey; /* Lighter version of default color */
 }
-
 
 #cafeName_Button_ID {
    -fx-text-fill: #4267B2;
@@ -97,10 +93,21 @@
 }
 
 /*After you press any Cafe: >>*/
-
 #clickHereReviewText_ID  {
     -fx-text-fill: #4267B2;
 }
 #clickHereReviewText_ID:hover {
     -fx-text-fill: yellow;
+}
+
+/*****************************************************  Dormitory  **************************************************/
+
+#dormitoryPostingVBOX_ID Pane {
+    -fx-background-color: #829CD0;
+}
+#dormitoryPostingVBOX_ID Pane:hover {
+    -fx-background-color: pink;
+}
+#dormitoryPostingVBOX_ID Pane:pressed {
+    -fx-background-color: #A3B9E4;
 }

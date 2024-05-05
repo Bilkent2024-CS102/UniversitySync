@@ -3,13 +3,15 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CafeteriaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.DormitoryController">
    <top>
       <fx:include source="../TOP_TAB.fxml" />
    </top>
@@ -18,41 +20,142 @@
    <center>
       <VBox prefHeight="603.0" prefWidth="1700.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="149.0" prefWidth="1700.0" style="-fx-background-color: #67B2B7;">
+            <Pane prefHeight="124.0" prefWidth="1700.0" style="-fx-background-color: #67B2B7;">
                <VBox.margin>
-                  <Insets bottom="30.0" top="30.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
                <children>
-                  <Label layoutX="38.0" layoutY="25.0" text="Cafeterias">
+                  <Label layoutX="66.0" layoutY="35.0" text="Open Dormitory Postings">
                      <font>
-                        <Font size="78.0" />
+                        <Font name="SansSerif Bold" size="49.0" />
                      </font>
                   </Label>
-                  <Button layoutX="773.0" layoutY="41.0" mnemonicParsing="false" onAction="#displayAddFilterPopup" prefHeight="74.0" prefWidth="239.0" text="Filter">
+                  <Button fx:id="dormFilterID" layoutX="819.0" layoutY="32.0" mnemonicParsing="false" onAction="#displayFilterPopup" prefHeight="66.0" prefWidth="226.0" text="Filter">
                      <font>
                         <Font name="System Italic" size="28.0" />
                      </font></Button>
-               </children>
-            </Pane>
-            <HBox fx:id="cafeteriaName_HBox_ID" onMouseDragEntered="#switchToCafe1" prefHeight="110.0" prefWidth="1700.0" spacing="200.0">
-               <children>
-                  <Button fx:id="cafeName_Button_ID" mnemonicParsing="false" onAction="#switchToCafe1" prefHeight="110.0" prefWidth="452.0" style="-fx-underline: true;" text="Cafe 1">
+                  <Button layoutX="1173.0" layoutY="32.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="225.0" text="Make a post">
                      <font>
-                        <Font name="SansSerif Regular" size="42.0" />
+                        <Font name="System Italic" size="28.0" />
                      </font>
                   </Button>
-                  <Label fx:id="food_cafeRating_ID" prefHeight="110.0" prefWidth="329.0" text="Rated 4.8/5">
-                     <font>
-                        <Font name="SansSerif Regular" size="42.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="food_cafePriceRange_ID" prefHeight="110.0" prefWidth="502.0" text="Price Range: $100-$200">
-                     <font>
-                        <Font name="SansSerif Regular" size="42.0" />
-                     </font>
-                  </Label>
                </children>
-            </HBox>
+            </Pane>
+            <ScrollPane prefHeight="685.0" prefWidth="1700.0">
+               <content>
+                  <VBox fx:id="dormitoryPostingVBOX_ID" prefWidth="1680.0" spacing="50.0">
+                     <children>
+                        <Pane prefHeight="553.0" prefWidth="1280.0">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fitHeight="644.0" fitWidth="715.0" layoutX="47.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/61orm_IMG_4929.jpeg" />
+                                 </image>
+                              </ImageView>
+                              <VBox layoutX="812.0" layoutY="64.0" prefHeight="433.0" prefWidth="423.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Main Campus">
+                                       <font>
+                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Dorm 81">
+                                       <font>
+                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Double Room">
+                                       <font>
+                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="553.0" prefWidth="1288.0">
+                           <children>
+                              <ImageView fitHeight="644.0" fitWidth="715.0" layoutX="47.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/61orm_IMG_4929.jpeg" />
+                                 </image>
+                              </ImageView>
+                              <VBox layoutX="812.0" layoutY="64.0" prefHeight="433.0" prefWidth="423.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Main Campus">
+                                       <font>
+                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Dorm 81">
+                                       <font>
+                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Double Room">
+                                       <font>
+                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="553.0" prefWidth="1288.0">
+                           <children>
+                              <ImageView fitHeight="644.0" fitWidth="715.0" layoutX="47.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/61orm_IMG_4929.jpeg" />
+                                 </image>
+                              </ImageView>
+                              <VBox layoutX="812.0" layoutY="64.0" prefHeight="433.0" prefWidth="423.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Main Campus">
+                                       <font>
+                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Dorm 81">
+                                       <font>
+                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Double Room">
+                                       <font>
+                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </children>
+                     <padding>
+                        <Insets left="200.0" right="200.0" />
+                     </padding>
+                  </VBox>
+               </content></ScrollPane>
          </children>
       </VBox>
    </center>

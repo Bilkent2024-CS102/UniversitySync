@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.DormitoryController">
+   <top>
+<!--      <fx:include source="TOP_TAB.fxml" />-->
+   </top>
+   <right>
+<!--      <fx:include source="RightEventDisplay.fxml" />-->
+   </right>
+   <center>
+      <Pane prefHeight="557.0" prefWidth="878.0" style="-fx-background-color: #B7B7B7;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="265.0" layoutY="24.0" prefHeight="59.0" prefWidth="379.0" text="Add Dorm Filter">
+               <font>
+                  <Font name="Arial Black" size="40.0" />
+               </font>
+            </Label>
+            <Label layoutX="80.0" layoutY="140.0" prefHeight="48.0" prefWidth="161.0" text="Campus:">
+               <font>
+                  <Font name="PT Serif Bold" size="32.0" />
+               </font>
+            </Label>
+            <Button alignment="BOTTOM_LEFT" contentDisplay="RIGHT" layoutX="707.0" layoutY="473.0" mnemonicParsing="false" onAction="#addFilter" prefHeight="53.0" prefWidth="133.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="  Apply" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Button>
+            <Button alignment="BOTTOM_LEFT" contentDisplay="RIGHT" layoutX="561.0" layoutY="473.0" mnemonicParsing="false" onAction="#cancelFilter" prefHeight="53.0" prefWidth="121.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Button>
+            <RadioButton layoutX="350.0" layoutY="146.0" mnemonicParsing="false" text="Main">
+               <font>
+                  <Font name="PT Serif" size="26.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="540.0" layoutY="146.0" mnemonicParsing="false" text="East">
+               <font>
+                  <Font name="PT Serif" size="26.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="80.0" layoutY="250.0" prefHeight="48.0" prefWidth="161.0" text="Dorm:">
+               <font>
+                  <Font name="PT Serif Bold" size="32.0" />
+               </font>
+            </Label>
+            <Label layoutX="80.0" layoutY="360.0" prefHeight="48.0" prefWidth="202.0" text="Roommates:">
+               <font>
+                  <Font name="PT Serif Bold" size="32.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="dormChoiceBoxID" layoutX="350.0" layoutY="250.0" onMouseClicked="#addDormNames" prefHeight="43.0" prefWidth="226.0" />
+            <ChoiceBox layoutX="350.0" layoutY="360.0" prefHeight="43.0" prefWidth="226.0" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

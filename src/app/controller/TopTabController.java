@@ -32,7 +32,7 @@ public class TopTabController {
         stage.setFullScreen(true);     //it should be after stage.setScene
         stage.show();
     }
-    public void switchToMyFriends(ActionEvent event) throws IOException {
+    public void switchToSocial(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/SocialPage/socialMyFriends.fxml", event);
     }
     public void switchToHomePage(ActionEvent event) throws IOException {
@@ -44,7 +44,9 @@ public class TopTabController {
     public void switchToCafeteriaPage(ActionEvent event) throws IOException {
         /*switchToFXML("CafeteriaPage/FoodPage.fxml", event);*/
         switchToFXML("src/app/view/CafeteriaPage/FoodPage.fxml", event);
-
+    }
+    public void switchToDormitoryPosting(ActionEvent event) throws IOException {
+        switchToFXML("src/app/view/Dormitory/dormitoryPosting.fxml", event);
     }
     public void switchToForumPage(ActionEvent event) throws IOException {
         switchToFXML("", event);

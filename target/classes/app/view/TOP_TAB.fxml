@@ -27,7 +27,7 @@
    <Line endX="100.0" startX="100.0" startY="170.0" strokeWidth="10.0" />
    <MenuButton fx:id="dormitoriesID" mnemonicParsing="false" prefHeight="180.0" prefWidth="270.0" style="-fx-font-size: 34;" text="Dormitories">
       <items>
-         <MenuItem mnemonicParsing="false" text="Dormitory Info" />
+         <MenuItem mnemonicParsing="false" onAction="#switchToDormitoryPosting" text="Dormitory Info" />
          <MenuItem mnemonicParsing="false" text="Dormitory Transfer" />
       </items>
       <font>
@@ -35,7 +35,7 @@
       </font>
    </MenuButton>
    <Line endX="100.0" startX="100.0" startY="170.0" strokeWidth="10.0" />
-   <Button fx:id="socialID" mnemonicParsing="false" onAction="#switchToMyFriends" prefHeight="180.0" prefWidth="230.0" style="-fx-font-size: 34;" text="Social">
+   <Button fx:id="socialID" mnemonicParsing="false" onAction="#switchToSocial" prefHeight="180.0" prefWidth="230.0" style="-fx-font-size: 34;" text="Social">
       <font>
          <Font size="34.0" />
       </font></Button>
