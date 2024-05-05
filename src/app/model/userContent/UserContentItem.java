@@ -6,14 +6,19 @@ import app.model.User;
 
 public abstract class UserContentItem {
     private static int numberOfInstances;
-
-    private Date creationDate;
-    private User owner;
-
     private int userContentItemId;
+
+    private User owner;
     private String mainText;
     private Date lastEditDate;
+    private Date creationDate;
 
+    public UserContentItem(User own, String text, Date creation, Date lastEdit){
+        setOwner(own);
+        setMainText(text);
+        setCreationDate(creation);
+        setLastEditDate(lastEdit);
+    }
     /*
     * Getters
     * TODO add validation

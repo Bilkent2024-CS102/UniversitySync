@@ -1,4 +1,4 @@
-package app.dao; //TODO: be sure to correct this
+package app.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -42,7 +42,6 @@ public class UserDao {
             while (resultSet.next()) {
                 User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
                                 resultSet.getString("email"), resultSet.getString("pass"));
-                                //TODO DB columns don't match with fields in java and vice versa!
                 students.add(u);
             }
             resultSet.close();
