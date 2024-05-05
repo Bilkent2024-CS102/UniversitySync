@@ -27,11 +27,10 @@ CREATE TABLE IF NOT EXISTS university_sync.dormitory(
 
 CREATE TABLE IF NOT EXISTS university_sync.room_type(
 	room_type_id int AUTO_INCREMENT,
+    room_type_description varchar(255),
     capacity int,
     is_bunk bool,
     has_private_bathroom bool,
-    size_m2 float(20),
-    price int,
     room_in_dormitory_id int,
     CONSTRAINT pk_room_type_id PRIMARY KEY (room_type_id),
     CONSTRAINT fk_room_type_dormitory_id FOREIGN KEY (room_in_dormitory_id) REFERENCES dormitory(dormitory_id)
@@ -63,13 +62,15 @@ CREATE TABLE IF NOT EXISTS university_sync.menu_item(
 CREATE TABLE IF NOT EXISTS university_sync.student(
 	student_id int AUTO_INCREMENT,
     full_name varchar(50),
-    student_name varchar(50),
+    email varchar(100),
     pass varchar(50),
     biography varchar(255),
+    link_to_profile_picture varchar(100),
     student_major_id int NOT NULL,
-    link_to_profile_picture varchar(50),
+    student_room_type_id int,
     CONSTRAINT pk_student PRIMARY KEY (student_id),
-    CONSTRAINT fk_student_major_id FOREIGN KEY (student_major_id) REFERENCES major(major_id)
+    CONSTRAINT fk_student_major_id FOREIGN KEY (student_major_id) REFERENCES major(major_id),
+    CONSTRAINT fk_student_room_type_id FOREIGN KEY (student_room_type_id) REFERENCES room_type(room_type_id)
 );
 
 CREATE TABLE IF NOT EXISTS university_sync.friend_request(
