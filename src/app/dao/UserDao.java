@@ -6,6 +6,9 @@ import app.model.User;
 
 import javax.swing.plaf.nimbus.State;
 
+/**
+ * database access class for user and user related data.
+ */
 public class UserDao {
 
     public static int addUser(User u){
@@ -20,7 +23,6 @@ public class UserDao {
             ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
             rs.next();
             int idOfNewUser = rs.getInt(1);
-            System.out.println(idOfNewUser);
             return idOfNewUser;
         }
         catch (SQLException sqle){
@@ -50,6 +52,99 @@ public class UserDao {
         catch (SQLException sqle){
             sqle.printStackTrace();
             return null;
+        }
+    }
+
+    public static boolean addFriend(User u1, User u2){
+
+        if(isFriend(u1, u2)){
+            System.out.println("they are friends");
+            return false;
+        }
+        try{
+            String query = "INSERT INTO university_sync.student_friendship (first_student_id, second_student_id) VALUES (? ,?);";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            int firstId = u1.getUserId();
+            int secondId = u2.getUserId();
+            if (firstId == secondId){
+                return false;
+            }
+            pst.setInt(1, Math.min(firstId, secondId));
+            pst.setInt(2, Math.max(firstId, secondId));
+            pst.executeUpdate();
+
+            return true;
+        }
+        catch (SQLException sqle){
+            sqle.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean isFriend(User u1, User u2){
+        try{
+            String query = "SELECT * FROM university_sync.student_friendship WHERE first_student_id = ? AND second_student_id = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            int firstId = u1.getUserId();
+            int secondId = u2.getUserId();
+            if (firstId == secondId){
+                return false;
+            }
+            pst.setInt(1, Math.min(firstId, secondId));
+            pst.setInt(2, Math.max(firstId, secondId));
+            ResultSet rs = pst.executeQuery();
+            boolean isFriend = false;
+            while (rs.next()){
+                isFriend = true;
+            }
+            return isFriend;
+
+        }catch (SQLException sqle){
+            sqle.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean addFriendRequest(User sender, User receiver){
+
+        if(isFriend(sender, receiver)){
+            return false;
+        }
+        try {
+            String query = "INSERT INTO university_sync.friend_request (sender_id, receiver_id) VALUES (?, ?)";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            int firstId = sender.getUserId();
+            int secondId = receiver.getUserId();
+            if (firstId == secondId){
+                return false;
+            }
+            pst.setInt(1, Math.min(firstId, secondId));
+            pst.setInt(2, Math.max(firstId, secondId));
+            pst.executeUpdate();
+            return true;
+
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean concludeFriendRequest(User sender, User receiver, boolean isAccepted){
+
+        try {
+            String query = "DELETE FROM university_sync.friend_request WHERE sender_id = ? AND receiver_id = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, sender.getUserId());
+            pst.setInt(2, receiver.getUserId());
+            pst.executeUpdate();
+            if (isAccepted){
+                return addFriend(sender, receiver);
+            }
+            return true;
+
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return false;
         }
     }
 

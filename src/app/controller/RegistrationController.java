@@ -56,9 +56,7 @@ public class RegistrationController {
         String repeatPassword = confirmPasswordField.getText();
         if (isPasswordValid(password, repeatPassword) && validateInputs(name, email, password, repeatPassword))
         {
-            //User newUser = new User(id, name, email, password);
-            //UserDao.addUser(name, email, password);
-            //int id = userDao.getUserIDByEmail(email);
+            User newUser = new User(name, email, password);
 
             switchToFXML(null, e); // need to replace null with login page's fxml path
         }
