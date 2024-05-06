@@ -8,6 +8,11 @@ public class University
     private int universityId;
     private ArrayList<Campus> campuses;
     private ArrayList<User> students;
+
+    public University(ArrayList<Campus> campuses, ArrayList<User> students){
+        setCampuses(campuses);
+        setStudents(students);
+    }
     
     public static int getNumberOfInstances() {
         return numberOfInstances;

@@ -16,6 +16,16 @@ public abstract class Location implements Reviewable {
     private String description;
     private double rating;
     private Campus campus;
+
+    public Location (int id, ArrayList<Review> revs, String imagePath, String n, String desc, double rate, Campus c){
+        setLocationId(id);
+        setReviews(revs);
+        setImagePath(imagePath);
+        setName(n);
+        setDescription(desc);
+        setRating(rate);
+        setCampus(c);
+    }
     
     public static int getNumberOfInstances() {
         return numberOfInstances;

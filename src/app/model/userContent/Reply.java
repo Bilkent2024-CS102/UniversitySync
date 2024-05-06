@@ -6,6 +6,8 @@ import app.model.userContent.post.Post;
 
 import app.dao.ReplyDao;
 
+import java.sql.Date;
+
 public class Reply extends UserContentItem{
     Post previous;
     private int replyID;

@@ -11,6 +11,13 @@ public class Campus {
     private String name;
     private ArrayList<Dormitory> dormitories;
     private ArrayList<Cafeteria> cafeterias;
+
+    public Campus (int id, String name, ArrayList<Dormitory> dorms, ArrayList<Cafeteria> cafes){
+        setCampusId(id);
+        setCafeterias(cafes);
+        setName(name);
+        setDormitories(dorms);
+    }
     
     public static int getNumberOfInstances() {
         return numberOfInstances;

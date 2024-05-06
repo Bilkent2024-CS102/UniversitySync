@@ -1,5 +1,6 @@
 package app.controller;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import app.dao.UserDao;
@@ -63,7 +64,9 @@ public class HomePageController
         // through thew commentPane invoked.
         ForumPost post = e.getSource().getForumPost();
         String commentContent = e.getSource().getCommentContent();
-        Reply comment = new Reply(SessionManager.getCurrentUser(), commentContent, post);
+        Date createdAt = null;
+        Date lastEdit = null;
+        Reply comment = new Reply(SessionManager.getCurrentUser(), commentContent, createdAt, lastEdit, post);
         ForumPostDao.addComment(post, comment);
         // TODO: show success message.
     }

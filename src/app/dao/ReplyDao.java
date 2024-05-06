@@ -3,11 +3,13 @@ package app.dao;
 import java.sql.*;
 import java.util.ArrayList;
 import app.model.*;
+import app.model.userContent.Reply;
+import app.model.userContent.post.ForumPost;
 
 /**
  * manages database access operations for replies to forum posts.
  */
-class ReplyDao {
+public class ReplyDao {
 
     //TODO: this method will return the database id of the newly inserted reply
     public static int addReply(Reply r){

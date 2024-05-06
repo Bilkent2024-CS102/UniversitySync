@@ -19,6 +19,10 @@ public abstract class UserContentItem {
         setCreationDate(creation);
         setLastEditDate(lastEdit);
     }
+
+    public UserContentItem(){
+
+    }
     /*
     * Getters
     * TODO add validation
@@ -52,21 +56,21 @@ public abstract class UserContentItem {
     * Setters
     * TODO add validation
     */
-    public void setCreationDate(Date lastEditDate)
+    public void setCreationDate(Date creationDate)
     {
-        this.lastEditDate = lastEditDate;
+        this.creationDate = creationDate;
     }
     public void setLastEditDate(Date lastEditDate)
     {
         this.lastEditDate = lastEditDate;
     }
-    public void setOwner(Date lastEditDate)
+    public void setOwner(User owner)
     {
-        this.lastEditDate = lastEditDate;
+        this.owner = owner;
     }
-    public void setID(Date lastEditDate) //TODO MIGHT BE REMOVED - not useful (?)
+    public void setID(int id) //TODO MIGHT BE REMOVED - not useful (?)
     { 
-        this.lastEditDate = lastEditDate;
+        this.userContentItemId = id;
     }
     public void setMainText(String mainText)
     {
