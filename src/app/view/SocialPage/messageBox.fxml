@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="514.0" prefWidth="824.0" style="-fx-background-color: #D3D3D3; -fx-background-radius: 50;" BorderPane.alignment="CENTER">
+    <BorderPane.margin>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+    </BorderPane.margin>
+    <children>
+        <ScrollPane layoutX="23.0" layoutY="24.0" prefHeight="496.0" prefWidth="805.0">
+            <content>
+                <VBox prefWidth="789.0" spacing="30.0" style="-fx-background-color: #D3D3D3;">
+                    <children>
+                        <Label alignment="CENTER" lineSpacing="5.0" maxWidth="370.0" opacity="0.89" style="-fx-background-color: white; -fx-background-radius: 40;" text="Hello I am Arda" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="10.0" top="20.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" lineSpacing="5.0" maxWidth="370.0" opacity="0.89" style="-fx-background-color: white; -fx-background-radius: 40;" text="hello" textAlignment="CENTER" translateX="400.0" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" lineSpacing="5.0" maxWidth="370.0" opacity="0.89" style="-fx-background-color: white; -fx-background-radius: 40;" text="How are you?" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER" lineSpacing="5.0" maxWidth="370.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" translateX="400.0" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" lineSpacing="5.0" maxWidth="370.0" opacity="0.89" style="-fx-background-color: white; -fx-background-radius: 40;" text="Fine" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER" lineSpacing="5.0" maxWidth="370.0" opacity="0.89" style="-fx-background-color: white; -fx-background-radius: 40;" text="where are you" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" translateX="400.0" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" translateX="400.0" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" translateX="400.0" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="ok" textAlignment="CENTER" translateX="400.0" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font name="Helvetica" size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</Pane>

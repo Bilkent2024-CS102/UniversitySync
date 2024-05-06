@@ -120,3 +120,18 @@
 }#transferScrollID Button:pressed {
      -fx-background-color: lightgrey;
  }
+
+/***************************************** Social > All Messages ***************************************/
+
+#messageLeftDisplayVBox_ID HBox {
+     -fx-background-color: #404040;
+}
+#messageLeftDisplayVBox_ID HBox:hover {
+     -fx-background-color: #606060;
+}
+#messageLeftDisplayVBox_ID HBox:pressed {
+     -fx-background-color: #808080;
+}
+
+
+
