@@ -19,7 +19,7 @@ import app.dao.UserDao;
 import app.model.User;
 
 public class RegistrationController {
-    
+
     @FXML
     private TextField nameField;
     @FXML
@@ -28,7 +28,7 @@ public class RegistrationController {
     private TextField passwordField;
     @FXML
     private TextField confirmPasswordField;
-    
+
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
