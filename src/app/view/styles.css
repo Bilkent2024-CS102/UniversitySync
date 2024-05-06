@@ -134,7 +134,16 @@
 .unfriendButton:hover {
     -fx-background-color: #8C93A6;
 }
+.addFriendsButton {
+    -fx-background-color: #03A9F1;
+}
+.addFriendsButton:hover {
+    -fx-background-color: #0289C7;
 
+}
+.addFriendsButton:pressed {
+    -fx-background-color: #41C0FF;
+}
 
 /***************************************** Social > All Messages ***************************************/
 #messageLeftDisplayVBox_ID HBox {
@@ -147,7 +156,28 @@
      -fx-background-color: #808080;
 }
 
+/***************************************** Social > Friend Request ***************************************/
 
+.acceptRequestButton{
+    -fx-background-color: #4BAB5A;
+}
+.acceptRequestButton:hover {
+    -fx-background-color: green;
+
+}
+.acceptRequestButton:pressed {
+    -fx-background-color: white;
+}
+.denytRequestButton{
+    -fx-background-color: #E63030;
+}
+.denytRequestButton:hover {
+    -fx-background-color: orange;
+
+}
+.denytRequestButton:pressed {
+    -fx-background-color: white;
+}
 
 
 

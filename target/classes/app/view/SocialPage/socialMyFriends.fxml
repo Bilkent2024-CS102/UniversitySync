@@ -4,9 +4,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -43,9 +45,9 @@
             </VBox>
          </top>
          <center>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <ScrollPane prefHeight="615.0" prefWidth="1189.0" BorderPane.alignment="CENTER">
                <content>
-                  <VBox prefWidth="959.0" spacing="30.0">
+                  <VBox prefHeight="962.0" prefWidth="888.0" spacing="30.0">
                      <children>
                         <Pane prefHeight="132.0" prefWidth="413.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">
                            <children>
@@ -196,12 +198,43 @@
                         </Pane>
                      </children>
                      <padding>
-                        <Insets left="200.0" />
+                        <Insets left="140.0" />
                      </padding>
                   </VBox>
                </content>
             </ScrollPane>
          </center>
+         <bottom>
+            <HBox prefHeight="122.0" prefWidth="1222.0" spacing="300.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="92.0" prefWidth="246.0" style="-fx-background-radius: 30;" styleClass="addFriendsButton" text="Add New Friends" textFill="WHITE">
+                     <font>
+                        <Font name="SansSerif Bold" size="25.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="25.0" left="100.0" top="25.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Pane prefHeight="75.0" prefWidth="505.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+                     <HBox.margin>
+                        <Insets bottom="25.0" top="25.0" />
+                     </HBox.margin>
+                     <children>
+                        <ImageView fitHeight="46.0" fitWidth="47.0" layoutX="13.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/search.png" />
+                           </image>
+                        </ImageView>
+                        <TextField layoutX="75.0" layoutY="12.0" prefHeight="49.0" prefWidth="406.0" promptText="Search Friend">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </bottom>
       </BorderPane>
    </center>
 </BorderPane>
