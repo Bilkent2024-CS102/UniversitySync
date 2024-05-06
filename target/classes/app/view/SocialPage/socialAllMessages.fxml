@@ -2,8 +2,13 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
@@ -18,33 +23,62 @@
          <top>
              <fx:include source="Social_TOP_TAB.fxml" translateY="-27.0" />
          </top>
-         <bottom>
-            <Label prefHeight="577.0" prefWidth="1042.0" style="-fx-background-color: yellow;" text="All Messages are Here" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-         </bottom>
-         <center>
-            <Pane maxHeight="75.0" minHeight="-Infinity" prefWidth="1222.0" style="-fx-background-color: #20368f;" translateY="-30.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label layoutX="491.0" layoutY="13.0" text="Messages" textFill="WHITE">
-                     <font>
-                        <Font name="SansSerif Bold" size="43.0" />
-                     </font>
-                  </Label>
-               </children>
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-            </Pane>
-         </center>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <padding>
             <Insets bottom="30.0" />
          </padding>
+         <center>
+            <VBox spacing="30.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane minHeight="-Infinity" style="-fx-background-color: #20368f;">
+                     <children>
+                        <Label layoutX="491.0" layoutY="13.0" text="Messages" textFill="WHITE">
+                           <font>
+                              <Font name="SansSerif Bold" size="43.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <BorderPane prefHeight="617.0" prefWidth="1222.0">
+                     <left>
+                        <ScrollPane prefHeight="568.0" prefWidth="309.0" BorderPane.alignment="CENTER">
+                           <content>
+                              <VBox prefHeight="551.0" prefWidth="298.0">
+                                 <children>
+                                    <HBox prefHeight="46.0" prefWidth="298.0">
+                                       <children>
+                                          <ImageView fitHeight="45.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../../../../icons%20for%20scene%20builder/png-transparent-anonymous-person-login-google-account-computer-icons-user-activity-miscellaneous-computer-monochrome.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="7.0" top="4.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                          <Label prefHeight="38.0" prefWidth="200.0" text="Mr. abc user">
+                                             <font>
+                                                <Font name="SansSerif Bold" size="19.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="30.0" top="6.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </left>
+                  </BorderPane>
+               </children>
+               <BorderPane.margin>
+                  <Insets top="-20.0" />
+               </BorderPane.margin>
+            </VBox>
+         </center>
       </BorderPane>
    </center>
 </BorderPane>
