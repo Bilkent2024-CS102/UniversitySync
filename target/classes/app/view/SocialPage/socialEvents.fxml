@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
@@ -14,27 +19,101 @@
     </right>
     <center>
         <BorderPane fx:id="social_BorderPaneID" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <top>
-                <fx:include source="Social_TOP_TAB.fxml" translateY="-27.0" />
-            </top>
-         <bottom>
-                <Label prefHeight="598.0" prefWidth="1042.0" style="-fx-background-color: pink;" text="       Events Tab" BorderPane.alignment="CENTER">
-                    <font>
-                        <Font size="48.0" />
-                    </font>
-                </Label>
-         </bottom>
-            <center>
-                <Pane maxHeight="75.0" prefWidth="1222.0" style="-fx-background-color: #20368f;" translateY="-30.0" BorderPane.alignment="CENTER">
-                    <children>
-                        <Label layoutX="447.0" layoutY="13.0" text="Followed Events" textFill="WHITE">
-                            <font>
-                                <Font name="SansSerif Bold" size="43.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </Pane>
-            </center>
+         <top>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                      <fx:include source="Social_TOP_TAB.fxml" />
+                      <Pane maxHeight="75.0" prefHeight="74.0" prefWidth="1222.0" style="-fx-background-color: #20368f;">
+                          <children>
+                              <Label layoutX="456.0" layoutY="16.0" text="Followed Events" textFill="WHITE">
+                                  <font>
+                                      <Font name="SansSerif Bold" size="40.0" />
+                                  </font>
+                              </Label>
+                          </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                      </Pane>
+               </children>
+               <BorderPane.margin>
+                  <Insets top="5.0" />
+               </BorderPane.margin>
+            </VBox>
+         </top>
+         <center>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <content>
+                  <HBox prefHeight="518.0" spacing="110.0" translateY="60.0">
+                     <children>
+                        <BorderPane prefHeight="472.0" prefWidth="632.0">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                           <top>
+                              <Label alignment="CENTER" prefHeight="99.0" prefWidth="632.0" style="-fx-background-color: lightgrey;" text="Innovation - 250" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="54.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                           <center>
+                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #829CD0;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TextArea layoutX="40.0" layoutY="31.0" prefHeight="357.0" prefWidth="557.0" text="&#10;An event is coming up on 3rd Jan &#10;2025 in the B&#10;Building&#10;Time: 5:00 PM&#10;Location: B Binasi&#10;#please come&#10;" wrapText="true">
+                                       <font>
+                                          <Font size="32.0" />
+                                       </font>
+                                    </TextArea>
+                                 </children>
+                              </Pane>
+                           </center>
+                        </BorderPane>
+                        <BorderPane prefHeight="472.0" prefWidth="632.0">
+                           <top>
+                              <Label alignment="CENTER" prefHeight="99.0" prefWidth="632.0" style="-fx-background-color: lightgrey;" text="Industry - 250" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="54.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                           <center>
+                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #829CD0;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TextArea layoutX="40.0" layoutY="31.0" prefHeight="357.0" prefWidth="557.0" text="&#10;An industrial management session is coming up on 3rd Jan &#10;&#10;2025 in the B&#10;Building&#10;Time: 5:00 PM&#10;Location: B Binasi&#10;#please come&#10;" wrapText="true">
+                                       <font>
+                                          <Font size="32.0" />
+                                       </font>
+                                    </TextArea>
+                                 </children>
+                              </Pane>
+                           </center>
+                        </BorderPane>
+                        <BorderPane prefHeight="472.0" prefWidth="632.0">
+                           <top>
+                              <Label alignment="CENTER" prefHeight="99.0" prefWidth="632.0" style="-fx-background-color: lightgrey;" text="Water Polo Sports" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="54.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                           <center>
+                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #829CD0;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TextArea layoutX="40.0" layoutY="31.0" prefHeight="357.0" prefWidth="557.0" text="&#10;Match between ODTU and Bilkent is going to take place in the swimming pool near sports hall&#10;Building&#10;Time: 5:00 PM&#10;Location: B Binasi&#10;#please come&#10;" wrapText="true">
+                                       <font>
+                                          <Font size="32.0" />
+                                       </font>
+                                    </TextArea>
+                                 </children>
+                              </Pane>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </HBox>
+               </content>
+            </ScrollPane>
+         </center>
         </BorderPane>
     </center>
 </BorderPane>

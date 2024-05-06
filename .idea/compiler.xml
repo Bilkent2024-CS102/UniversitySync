@@ -16,6 +16,14 @@
       <file url="file://$PROJECT_DIR$/src/app/model/userContent/post/EventPost.java" />
       <file url="file://$PROJECT_DIR$/src/app/model/Reviewable.java" />
       <file url="file://$PROJECT_DIR$/src/app/model/userContent/post/DormTransferPost.java" />
+      <file url="file://$PROJECT_DIR$/src/app/model/location/Dormitory.java" />
+      <file url="file://$PROJECT_DIR$/src/app/model/location/cafeteria/Cafeteria.java" />
+      <file url="file://$PROJECT_DIR$/src/app/dao/Main.java" />
+      <file url="file://$PROJECT_DIR$/src/app/dao/ReviewDao.java" />
+      <file url="file://$PROJECT_DIR$/src/app/dao/DormitoryDao.java" />
+      <file url="file://$PROJECT_DIR$/src/app/model/Campus.java" />
+      <file url="file://$PROJECT_DIR$/src/app/model/location/Room.java" />
+      <file url="file://$PROJECT_DIR$/src/app/model/University.java" />
     </excludeFromCompile>
     <annotationProcessing>
       <profile name="Maven default annotation processors profile" enabled="true">

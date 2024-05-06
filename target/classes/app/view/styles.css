@@ -121,8 +121,22 @@
      -fx-background-color: lightgrey;
  }
 
-/***************************************** Social > All Messages ***************************************/
+/***************************************** Social > My Friends ***************************************/
+.messageButton {
+    -fx-background-color: #373E4E;
+}
+.messageButton:hover {
+    -fx-background-color: #4D566D;
+}
+.unfriendButton {
+    -fx-background-color: #7A8194;
+}
+.unfriendButton:hover {
+    -fx-background-color: #8C93A6;
+}
 
+
+/***************************************** Social > All Messages ***************************************/
 #messageLeftDisplayVBox_ID HBox {
      -fx-background-color: #404040;
 }
@@ -132,6 +146,8 @@
 #messageLeftDisplayVBox_ID HBox:pressed {
      -fx-background-color: #808080;
 }
+
+
 
 
 

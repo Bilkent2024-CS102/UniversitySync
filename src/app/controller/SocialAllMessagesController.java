@@ -20,9 +20,11 @@ public class SocialAllMessagesController {
     private BorderPane borderTextBox_ID;
 
     public void displayTextScreen(MouseEvent event) throws IOException {
+
            fxmlLoader = new FXMLLoader(new File("src/app/view/SocialPage/messageBox.fxml").toURI().toURL());
            Pane newScene = fxmlLoader.load();
            borderTextBox_ID.setCenter(newScene);
+
     }
 
 }
