@@ -4,7 +4,11 @@ public class Tag {
     private static int numberOfInstances;
     private int tagId;
     private String tag;
-    
+
+    public Tag(String tag){
+        setTag(tag);
+    }
+
     public static int getNumberOfInstances() {
         return numberOfInstances;
     }
