@@ -147,11 +147,44 @@ public class UserDao {
         }
     }
 
+    //TODO This might not work
     public static boolean authenticate(String email, String password){
-        return true;
+        try
+        {
+            String query = "SELECT (email, pass) FROM student WHERE email = ? AND pass = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setString(1, email);
+            pst.setString(2, password);
+            ResultSet resultSet = pst.executeQuery();
+            
+            if (resultSet.next())
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (SQLException sqle)
+        {
+            sqle.printStackTrace();
+            return false;
+        }
     }
 
+    //TODO This should work but double-check
     public static User getUserByEmail(String email){
-        return null;
+        try
+        {
+            String query = "SELECT * FROM student WHERE email = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setString(1, email);
+            ResultSet resultSet = pst.executeQuery();
+            User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
+                                resultSet.getString("email"), resultSet.getString("pass"));
+        }
+        catch (SQLException sqle)
+        {
+            sqle.printStackTrace();
+            return null;
+        }
     }
 }
