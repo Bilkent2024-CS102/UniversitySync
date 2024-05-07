@@ -39,7 +39,7 @@ public class Review extends UserContentItem {
      * @param rateGiven
      * @param id
      */
-    public Review(User own, String text, Date creation, Date lastEdit, Reviewable r, double rateGiven, int id) {
+    public Review(int id, User own, String text, Date creation, Date lastEdit, Reviewable r, double rateGiven) {
         super(own, text, creation, lastEdit);
         setR(r);
         setRateGiven(rateGiven);
