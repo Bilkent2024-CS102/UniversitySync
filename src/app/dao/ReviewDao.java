@@ -2,6 +2,7 @@ package app.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import app.model.*;
 import app.model.location.Location;
 import app.model.userContent.Reply;
@@ -54,19 +55,83 @@ public class ReviewDao {
     }
 
     //TODO: this method will return whether the operation was successful
-    public static boolean removeReview(Review r){
-        return false;
+    public static boolean removeReply(Review r){
+        String query = "DELETE FROM university_sync.review WHERE review_id=" +
+                r.getUserContentItemId();
+        try
+        {
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.executeQuery();
+            return true;
+        }
+        catch (SQLException sqle)
+        {
+            return false;
+        }
     }
 
-    //TODO: this method will update content of the review using newText.
-    //access to old review will be via id of currentReview
-    //return whether the operation is successful
+    /**
+     * access to old review will be via id of currentReview
+     * return whether the operation is successful
+     * @param currentReview is the review to be edited.
+     * @param nexText is the new review text to be set.
+     */
     public static boolean editReview(Review currentReview, String nexText){
-        return false;
+        String query = "UPDATE university_sync.review SET main_text='" +
+                nexText +
+                "' WHERE review_id=" +
+                currentReview.getUserContentItemId();
+        try
+        {
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.executeQuery();
+            return true;
+        }
+        catch (SQLException sqle)
+        {
+            return false;
+        }
     }
 
-    //TODO: this method will return the reviews to a particular Reviewable
+    /**
+     * @param r
+     * @return the arraylist of reviews associated with the given reviewable object r.
+     */
     public static ArrayList<Review> getReviewsOf(Reviewable r){
-        return null;
+        ArrayList<Review> result = new ArrayList<Review>();
+        String query = "";
+        Location loc = (Location) r;
+        int id = loc.getLocationId();
+        String type = ((loc instanceof Cafeteria) ? "cafeteria" : "dormitory");
+        query = "SELECT * FROM university_sync.review " +
+                "WHERE review_to_" + type + "_id=" + id;
+
+        try
+        {
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next())
+            {
+                User u = UserDao.getUserById(resultSet.getInt("owner_student_id"));
+                Review review = new Review(
+                        u,
+                        resultSet.getString("main_text"),
+                        new Date(resultSet.getDate("creation_date").getTime()),
+                        new Date(resultSet.getDate("last_edit_date").getTime()),
+                        loc,
+                        resultSet.getDouble("rating_given")
+                );
+
+                result.add(review);
+            }
+            resultSet.close();
+            pst.close();
+        }
+        catch (SQLException sqle){
+            sqle.printStackTrace();
+            return null;
+        }
+
+        return result;
     }
 }

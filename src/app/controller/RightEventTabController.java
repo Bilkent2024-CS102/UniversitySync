@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+
+import com.mysql.cj.Session;
+
 import javafx.stage.StageStyle;
 
 
@@ -28,9 +31,11 @@ public class RightEventTabController {
 
         if (followEventButtonID.getText().equalsIgnoreCase("Follow")) {
             followEventButtonID.setText("Unfollow");
+            // EventPostDao.addUser(SessionManager.getCurrentUser());
         }
         else {
             followEventButtonID.setText("Follow");
+            // EventPostDao.removeUser(SessionManager.getCurrentUser());
         }
     }
     public void displayAddEventPopup (ActionEvent event) throws IOException {

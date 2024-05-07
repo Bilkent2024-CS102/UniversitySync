@@ -188,4 +188,8 @@ public class UserDao {
             return null;
         }
     }
+
+    public static User getUserById(int ownerStudentId) {
+        return null;
+    }
 }
