@@ -13,8 +13,9 @@ import app.model.userContent.post.ForumPost;
 
 
 public class ReviewDao {
-    //TODO: this method will return the database id of the newly inserted review
-    //will do that according to type of the Reviewable instance of the Review
+
+    //this method returns the database id of the newly inserted review
+    //does that according to type of the Reviewable instance of the Review
     public static int addReview(Review r){
         try {
             String type = "";

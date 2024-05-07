@@ -1,14 +1,17 @@
 package app.dao; // TODO: be sure to correct this!
 
 import app.model.User;
-import app.model.location.Dormitory;
-import app.model.location.Room;
+import app.model.location.cafeteria.Cafeteria;
 import app.model.userContent.Review;
 
 import java.util.ArrayList;
-import java.util.Date;
 
-public class Main {
+
+/**
+ * this is a class for testing database access functionality
+ * this probably will not exist in actual project at the final
+ */
+public class DBAccessTestRunner {
     public static void main(String[] args) throws Exception{
         String url = "jdbc:mysql://localhost:3306/university_sync";
         String username = "root";
@@ -36,16 +39,20 @@ public class Main {
         //UserDao.addUser(u);
         ArrayList<User> users = UserDao.getUsers();
         //System.out.println(UserDao.concludeFriendRequest(users.get(0), users.get(3), false));
-        Dormitory d = DormitoryDao.getDormitoryById(1);
+        //Dormitory d = DormitoryDao.getDormitoryById(1);
+
         //System.out.println(d.getLocationId() + " " + d.getName() + " " + d.getDescription() + " " + d.getRating());
 
-        ArrayList<Room> rooms = DormitoryDao.getRoomTypesIn(d);
-        for (Room r : rooms) {
+        //ArrayList<Room> rooms = DormitoryDao.getRoomTypesIn(d);
+        /*for (Room r : rooms) {
             System.out.println(r.getRoomId() + " " + r.getCapacity() + " " + r.isBunked() + " " + r.isPrivateBathroom() + " " + r.getDescription() + " " + r.getDorm().getName());
-        }
+        }*/
         //Review r = new Review(users.get(3), "this is a very good dormitory", new java.util.Date(), new java.util.Date(), dorms.get(2), 5);
         //ReviewDao.addReview(r);
 
+        Cafeteria c = CafeteriaDao.getCafeteriaById(1);
+
+        Review r = new Review(users.get(3), "nice cafeteria however somewhat expensive", new java.util.Date(), new java.util.Date(), c, 4);
         System.out.println("lalalaal");
     }
 }

@@ -121,8 +121,31 @@
      -fx-background-color: lightgrey;
  }
 
-/***************************************** Social > All Messages ***************************************/
+/***************************************** Social > My Friends ***************************************/
+.messageButton {
+    -fx-background-color: #373E4E;
+}
+.messageButton:hover {
+    -fx-background-color: #4D566D;
+}
+.unfriendButton {
+    -fx-background-color: #7A8194;
+}
+.unfriendButton:hover {
+    -fx-background-color: #8C93A6;
+}
+.addFriendsButton {
+    -fx-background-color: #03A9F1;
+}
+.addFriendsButton:hover {
+    -fx-background-color: #0289C7;
 
+}
+.addFriendsButton:pressed {
+    -fx-background-color: #41C0FF;
+}
+
+/***************************************** Social > All Messages ***************************************/
 #messageLeftDisplayVBox_ID HBox {
      -fx-background-color: #404040;
 }
@@ -131,6 +154,29 @@
 }
 #messageLeftDisplayVBox_ID HBox:pressed {
      -fx-background-color: #808080;
+}
+
+/***************************************** Social > Friend Request ***************************************/
+
+.acceptRequestButton{
+    -fx-background-color: #4BAB5A;
+}
+.acceptRequestButton:hover {
+    -fx-background-color: green;
+
+}
+.acceptRequestButton:pressed {
+    -fx-background-color: white;
+}
+.denytRequestButton{
+    -fx-background-color: #E63030;
+}
+.denytRequestButton:hover {
+    -fx-background-color: orange;
+
+}
+.denytRequestButton:pressed {
+    -fx-background-color: white;
 }
 
 
