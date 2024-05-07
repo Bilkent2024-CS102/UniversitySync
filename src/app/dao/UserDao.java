@@ -154,4 +154,8 @@ public class UserDao {
     public static User getUserByEmail(String email){
         return null;
     }
+
+    public static User getUserById(int ownerStudentId) {
+        return null;
+    }
 }
