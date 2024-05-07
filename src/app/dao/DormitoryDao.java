@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import app.model.User;
 import app.model.location.Dormitory;
 import app.model.location.Room;
+import app.model.userContent.Review;
 
 public class DormitoryDao {
 
@@ -41,6 +42,8 @@ public class DormitoryDao {
             resultSet.next();
             dorm = new Dormitory(resultSet.getInt("dormitory_id"), null, resultSet.getString("link_to_dormitory_picture"),
                         resultSet.getString("dorm_name"), resultSet.getString("dorm_description"), 0, null, null);
+            dorm.setReviews(ReviewDao.getReviewsOf(dorm));
+            dorm.setRooms(DormitoryDao.getRoomTypesIn(dorm));
             resultSet.close();
             pst.close();
             return dorm;

@@ -180,6 +180,7 @@ public class UserDao {
             ResultSet resultSet = pst.executeQuery();
             User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
                                 resultSet.getString("email"), resultSet.getString("pass"));
+            return u;
         }
         catch (SQLException sqle)
         {
