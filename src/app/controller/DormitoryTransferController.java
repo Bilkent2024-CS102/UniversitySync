@@ -39,6 +39,14 @@ public class DormitoryTransferController {
 
     public void transferDorm(ActionEvent e)
     {
-        
+        User user1 = e.getSource().getOwner();
+        Room room1 = whoPosted.getRoom();
+        User current = SessionManager.getCurrentUser();
+        Room room2 = current.getRoom();
+
+        whoPosted.setRoom(room2);
+        current.setRoom(room1);
+        DormitoryDao.update(whoPosted);
+        DormitoryDao.update(current);
     }
 }
