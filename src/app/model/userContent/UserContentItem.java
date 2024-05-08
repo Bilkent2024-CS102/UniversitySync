@@ -2,27 +2,37 @@ package app.model.userContent;
 
 import java.util.Date;
 
-import app.model.User;
-
 public abstract class UserContentItem {
     private static int numberOfInstances;
     private int userContentItemId;
 
-    private User owner;
+    private int ownerId;
     private String mainText;
     private Date lastEditDate;
     private Date creationDate;
 
-    public UserContentItem(User own, String text, Date creation, Date lastEdit){
-        setOwner(own);
+    public UserContentItem(int ownerId, String text, Date creation, Date lastEdit){
+        setOwnerId(ownerId);
         setMainText(text);
         setCreationDate(creation);
         setLastEditDate(lastEdit);
     }
 
-    public UserContentItem(){
-
+    public UserContentItem(int ownerId, String text){
+        setOwnerId(ownerId);
+        setMainText(text);
+        setCreationDate();
+        setLastEditDate();
     }
+
+    private void setLastEditDate() {
+        setCreationDate(new Date());
+    }
+
+    private void setCreationDate() {
+        setLastEditDate(new Date());
+    }
+
     /*
     * Getters
     * TODO add validation
@@ -35,9 +45,9 @@ public abstract class UserContentItem {
     {
         return creationDate;
     }
-    public User getOwner()
+    public int getOwnerId()
     {
-        return owner;
+        return ownerId;
     }
     public int getUserContentItemId()
     {
@@ -64,9 +74,9 @@ public abstract class UserContentItem {
     {
         this.lastEditDate = lastEditDate;
     }
-    public void setOwner(User owner)
+    public void setOwnerId(int ownerId)
     {
-        this.owner = owner;
+        this.ownerId = ownerId;
     }
     public void setID(int id) //TODO MIGHT BE REMOVED - not useful (?)
     { 

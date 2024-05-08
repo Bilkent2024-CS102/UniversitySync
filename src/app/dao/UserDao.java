@@ -120,7 +120,6 @@ public class UserDao {
      */
     public static User getUserById(int ID)
     {
-
         try
         {
             String query = "SELECT * FROM student WHERE student_id = ?;";
@@ -139,7 +138,7 @@ public class UserDao {
         }
     }
 
-    public static boolean addFriend(User u1, User u2){
+    public static boolean addFriend(int u1, int u2){
 
         if(isFriend(u1, u2)){
             System.out.println("they are friends");
@@ -165,7 +164,7 @@ public class UserDao {
         }
     }
 
-    public static boolean isFriend(User u1, User u2){
+    public static boolean isFriend(int u1, int u2){
         try{
             String query = "SELECT * FROM university_sync.student_friendship WHERE first_student_id = ? AND second_student_id = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
@@ -189,7 +188,7 @@ public class UserDao {
         }
     }
 
-    public static boolean addFriendRequest(User sender, User receiver){
+    public static boolean addFriendRequest(int sender, int receiver){
 
         if(isFriend(sender, receiver)){
             return false;
@@ -213,7 +212,7 @@ public class UserDao {
         }
     }
 
-    public static boolean concludeFriendRequest(User sender, User receiver, boolean isAccepted){
+    public static boolean concludeFriendRequest(int sender, int receiver, boolean isAccepted){
 
         try {
             String query = "DELETE FROM university_sync.friend_request WHERE sender_id = ? AND receiver_id = ?;";
@@ -256,7 +255,7 @@ public class UserDao {
     }
 
     //TODO This should work but double-check
-    public static User getUserByEmail(String email){
+    public static int getUserByEmail(String email){
         try
         {
             String query = "SELECT * FROM student WHERE email = ?;";
@@ -264,7 +263,7 @@ public class UserDao {
             pst.setString(1, email);
             ResultSet resultSet = pst.executeQuery();
             resultSet.next();
-            User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
+            int u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
                                 resultSet.getString("email"), resultSet.getString("pass"));
             return u;
         }
