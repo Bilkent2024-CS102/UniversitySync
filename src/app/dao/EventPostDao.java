@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class EventPostDao {
 
@@ -31,6 +32,37 @@ public class EventPostDao {
         catch (SQLException sqle){
             sqle.printStackTrace();
             return -1;
+        }
+    }
+
+    public static boolean addFollower(int eventId, int userId){
+        try {
+            String query = "INSERT INTO university_sync.follow_event_post (followed_by_student_id, followed_event_post_id) VALUES (?, ?)";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+
+            pst.setInt(1, userId);
+            pst.setInt(2, eventId);
+            pst.executeUpdate();
+            return true;
+
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean removeFollower(int eventId, int userId){
+        try {
+            String query = "DELETE FROM university_sync.follow_event_post WHERE followed_by_student_id=? AND followed_event_post_id=?";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, userId);
+            pst.setInt(2, eventId);
+            pst.executeUpdate();
+            return true;
+
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return false;
         }
     }
 }
