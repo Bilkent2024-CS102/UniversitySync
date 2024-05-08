@@ -1,6 +1,6 @@
 package app.model.userContent;
 
-import app.dao.ReplyDao;
+import app.dao.ForumPostDao;
 
 import java.util.Date;
 
@@ -20,7 +20,7 @@ public class Reply extends UserContentItem{
     public Reply(int ownerId, String commentContent, Date creation, Date lastEdit, int postId) {
         super(ownerId, commentContent, creation, lastEdit);
         setPostId(postId);
-        int id = ReplyDao.addReply(this);
+        int id = ForumPostDao.addComment(this);
         setReplyId(id);
     }
 

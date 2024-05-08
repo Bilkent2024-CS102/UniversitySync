@@ -53,9 +53,9 @@ public class ReviewDao {
     }
 
     //TODO: this method will return whether the operation was successful
-    public static boolean removeReply(Review r){
+    public static boolean removeReview(int reviewId){
         String query = "DELETE FROM university_sync.review WHERE review_id=" +
-                r.getUserContentItemId();
+                reviewId;
         try
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
@@ -71,14 +71,14 @@ public class ReviewDao {
     /**
      * access to old review will be via id of currentReview
      * return whether the operation is successful
-     * @param currentReview is the review to be edited.
+     * @param reviewId is the id of the review to be edited.
      * @param nexText is the new review text to be set.
      */
-    public static boolean editReview(Review currentReview, String nexText){
+    public static boolean editReview(int reviewId, String nexText){
         String query = "UPDATE university_sync.review SET main_text='" +
                 nexText +
                 "' WHERE review_id=" +
-                currentReview.getUserContentItemId();
+                reviewId;
         try
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
