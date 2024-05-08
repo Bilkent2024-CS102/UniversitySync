@@ -48,7 +48,7 @@ public class HomePageController
      */
     public void showCommentPane(ActionEvent e)
     {
-        ForumPost post = e.getSource().getForumPost;
+        ForumPost post = e.getSource().getForumPost();
         ArrayList<Reply> comments = ForumPostDao.getReplies(post);
         // TODO: display comments and also a send button for
         //  currentUser's comment.
@@ -82,7 +82,10 @@ public class HomePageController
     public void deletePostButton(ActionEvent e)
     {
         ForumPost post = e.getSource().getForumPost();
-        ForumPostDao.delete(post);
+        if (post.getOwner().getUserId() == SessionManager.getCurrentUser().getUserId)
+        {
+            ForumPostDao.delete(post);
+        }
         // TODO: show success message.
     }
 
