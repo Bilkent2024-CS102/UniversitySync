@@ -2,7 +2,7 @@ package app.model.location;
 
 public class Room {
     private static int numberOfInstances;
-    private Dormitory dorm;
+    private int dormitoryID;
     private int roomNo;
     private int capacity;
     private int roomId;
@@ -27,8 +27,8 @@ public class Room {
     public int getRoomId() {
         return roomId;
     }
-    public Dormitory getDorm() {
-        return dorm;
+    public int getDorm() {
+        return dormitoryID;
     }
     public int getRoomNo() {
         return roomNo;
@@ -64,8 +64,8 @@ public class Room {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-    public void setDorm(Dormitory dorm) {
-        this.dorm = dorm;
+    public void setDorm(int dormId) {
+        this.dormitoryID = dormId;
     }
 
     public String getDescription() {

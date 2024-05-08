@@ -23,7 +23,7 @@ public class ForumPost extends Post{
      * @param lastEdit
      * @param heading
      */
-    public ForumPost(User own, String text, Date creation, Date lastEdit, String heading) {
+    public ForumPost(int own, String text, Date creation, Date lastEdit, String heading) {
         super(own, text, creation, lastEdit, heading);
         tags = new ArrayList<>();
         replies = new ArrayList<>();
@@ -40,7 +40,7 @@ public class ForumPost extends Post{
      * @param lastEdit
      * @param heading
      */
-    public ForumPost(int id, User own, String text, Date creation, Date lastEdit, String heading, ArrayList<Tag> tags, ArrayList<Reply> replies, ArrayList<User> likedBy) {
+    public ForumPost(int id, int own, String text, Date creation, Date lastEdit, String heading, ArrayList<Tag> tags, ArrayList<Reply> replies, ArrayList<User> likedBy) {
         super(own, text, creation, lastEdit, heading);
         setTags(tags);
         setReplies(replies);

@@ -20,7 +20,7 @@ public class DormTransferPost extends Post{
      * @param heading
      * @param room
      */
-    public DormTransferPost(User own, String text, Date creation, Date lastEdit, String heading, Room room) {
+    public DormTransferPost(int own, String text, Date creation, Date lastEdit, String heading, Room room) {
         super(own, text, creation, lastEdit, heading);
         setRoom(room);
         int id = DormTransferPostDao.addEvent(this);
@@ -37,7 +37,7 @@ public class DormTransferPost extends Post{
      * @param heading
      * @param room
      */
-    public DormTransferPost(int id, User own, String text, Date creation, Date lastEdit, String heading, Room room) {
+    public DormTransferPost(int id, int own, String text, Date creation, Date lastEdit, String heading, Room room) {
         super(own, text, creation, lastEdit, heading);
         setRoom(room);
         setID(id);

@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import app.model.*;
 import app.model.location.Location;
-import app.model.userContent.Reply;
 import app.model.userContent.Review;
 import app.model.location.Dormitory;
 import app.model.location.cafeteria.Cafeteria;
-import app.model.userContent.post.ForumPost;
 
 
 public class ReviewDao {
@@ -33,7 +31,7 @@ public class ReviewDao {
                     "VALUES (?, ?, ?, ?, ?, ?)";
 
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            pst.setInt(1, r.getOwner().getUserId());
+            pst.setInt(1, r.getOwnerId());
             pst.setDate(2, new java.sql.Date(r.getCreationDate().getTime()));
             pst.setDate(3, new java.sql.Date(r.getLastEditDate().getTime()));
             pst.setString(4, r.getMainText());
@@ -112,7 +110,7 @@ public class ReviewDao {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next())
             {
-                User u = UserDao.getUserById(resultSet.getInt("owner_student_id"));
+                int u = UserDao.getUserById(resultSet.getInt("owner_student_id"));
                 Review review = new Review(
                         u,
                         resultSet.getString("main_text"),
