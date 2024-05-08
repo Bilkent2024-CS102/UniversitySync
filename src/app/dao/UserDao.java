@@ -54,6 +54,31 @@ public class UserDao {
         }
     }
 
+    /*
+     * Retrieves user object from DB, matching 
+     */
+    public static User getUserByID(int ID)
+    {
+        String query = "SELECT * FROM students WHERE student_id = ?;";
+        PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+        pst.setInt(1, ID);
+        ResultSet resultSet = pst.executeQuery();
+        try
+        {
+            while (resultSet.next())
+            {
+                User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
+                                resultSet.getString("email"), resultSet.getString("pass"));
+                return u;
+            }
+        }
+        catch (SQLException sqle)
+        {
+            sqle.printStackTrace();
+            return null;
+        }
+    }
+
     public static boolean addFriend(User u1, User u2){
 
         if(isFriend(u1, u2)){
