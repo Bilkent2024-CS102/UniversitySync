@@ -12,13 +12,13 @@ public class Room {
 
     private String description;
 
-    public Room(int id, int capacity, boolean bunk, boolean bathroom, String desc, Dormitory dorm){
+    public Room(int id, int capacity, boolean bunk, boolean bathroom, String desc, int dormitoryID){
         setRoomId(id);
         setCapacity(capacity);
         setBunked(bunk);
         setPrivateBathroom(bathroom);
         setDescription(desc);
-        setDorm(dorm);
+        setDormId(dormitoryID);
     }
     
     public static int getNumberOfInstances() {
@@ -27,7 +27,7 @@ public class Room {
     public int getRoomId() {
         return roomId;
     }
-    public int getDorm() {
+    public int getDormId() {
         return dormitoryID;
     }
     public int getRoomNo() {
@@ -64,7 +64,7 @@ public class Room {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-    public void setDorm(int dormId) {
+    public void setDormId(int dormId) {
         this.dormitoryID = dormId;
     }
 

@@ -43,7 +43,7 @@ public class DormitoryDao {
             dorm = new Dormitory(resultSet.getInt("dormitory_id"), null, resultSet.getString("link_to_dormitory_picture"),
                         resultSet.getString("dorm_name"), resultSet.getString("dorm_description"), 0, null, null);
             dorm.setReviews(ReviewDao.getReviewsOf(dorm));
-            dorm.setRooms(DormitoryDao.getRoomTypesIn(dorm));
+            dorm.setRooms(DormitoryDao.getRoomTypesIn(id));
             resultSet.close();
             pst.close();
             return dorm;
@@ -54,17 +54,16 @@ public class DormitoryDao {
         }
     }
 
-    public static ArrayList<Room> getRoomTypesIn(Dormitory d){
-        int id = d.getLocationId();
+    public static ArrayList<Room> getRoomTypesIn(int dormId){
         ArrayList<Room> rooms = new ArrayList<>();
         String query = "SELECT * FROM room_type WHERE room_in_dormitory_id = ?";
         try{
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            pst.setInt(1, id);
+            pst.setInt(1, dormId);
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
                 Room roomType = new Room(resultSet.getInt("room_type_id"), resultSet.getInt("capacity"), resultSet.getBoolean("is_bunk"),
-                        resultSet.getBoolean("has_private_bathroom"), resultSet.getString("room_type_description"), d);
+                        resultSet.getBoolean("has_private_bathroom"), resultSet.getString("room_type_description"), dormId);
                 rooms.add(roomType);
             }
             resultSet.close();
