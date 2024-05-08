@@ -7,6 +7,13 @@ public class FriendRequest {
     private int friendRequestId;
     private User sender;
     private User receiver;
+
+    public FriendRequest(int friendRequestId, User sender, User receiver)
+    {
+        setFriendRequestId(friendRequestId);
+        setSender(sender);
+        setReceiver(receiver);
+    }
     
     public static int getNumberOfInstances() {
         return numberOfInstances;

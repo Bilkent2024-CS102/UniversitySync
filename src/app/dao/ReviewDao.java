@@ -110,7 +110,7 @@ public class ReviewDao {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next())
             {
-                int u = UserDao.getUserById(resultSet.getInt("owner_student_id"));
+                int u = resultSet.getInt("owner_student_id");
                 Review review = new Review(
                         u,
                         resultSet.getString("main_text"),
