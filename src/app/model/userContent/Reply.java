@@ -1,31 +1,39 @@
 package app.model.userContent;
 
-import app.model.User;
-import app.model.userContent.post.ForumPost;
-import app.model.userContent.post.Post;
-
 import app.dao.ReplyDao;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Reply extends UserContentItem{
-    Post previous;
-    private int replyID;
+    private int postId;
+    private int replyId;
 
     /**
      * when adding a new reply to database (i.e. posting a reply) add reply without id and then pull the auto assigned
      * id from database.
-     * @param own
+     * @param ownerId
      * @param commentContent
      * @param creation
      * @param lastEdit
-     * @param toPost
+     * @param postId
      */
-    public Reply(User own, String commentContent, Date creation, Date lastEdit, ForumPost toPost) {
-        super(own, commentContent, creation, lastEdit);
-        setPrevious(toPost);
+    public Reply(int ownerId, String commentContent, Date creation, Date lastEdit, int postId) {
+        super(ownerId, commentContent, creation, lastEdit);
+        setPostId(postId);
         int id = ReplyDao.addReply(this);
-        setReplyID(id);
+        setReplyId(id);
+    }
+
+    public Reply(int ownerId, String commentContent, int toPost)
+    {
+        this(
+                ownerId,
+                commentContent,
+                new Date(),
+                new Date(),
+                toPost
+        );
+
     }
 
     /**
@@ -37,33 +45,33 @@ public class Reply extends UserContentItem{
      * @param toPost
      * @param id
      */
-    public Reply(User own, String commentContent, Date creation, Date lastEdit, ForumPost toPost, int id) {
+    public Reply(int own, String commentContent, Date creation, Date lastEdit, int toPost, int id) {
         super(own, commentContent, creation, lastEdit);
-        setPrevious(toPost);
-        setReplyID(id);
+        setPostId(toPost);
+        setReplyId(id);
     }
 
     /*
      * Getters
      */
-    public Post getPrevious()
+    public int getPostId()
     {
-        return previous;
+        return postId;
     }
 
-    public int getReplyID() {
-        return replyID;
+    public int getReplyId() {
+        return replyId;
     }
 
     /*
      * Setters
      */
-    public void setPrevious(Post previous)
+    public void setPostId(int postId)
     {
-        this.previous = previous;
+        this.postId = postId;
     }
 
-    public void setReplyID(int replyID) {
-        this.replyID = replyID;
+    public void setReplyId(int replyId) {
+        this.replyId = replyId;
     }
 }

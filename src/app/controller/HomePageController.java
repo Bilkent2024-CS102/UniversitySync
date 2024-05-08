@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import app.dao.UserDao;
-import app.model.User;
 import app.model.userContent.Reply;
 import app.model.userContent.post.ForumPost;
 import app.dao.ForumPostDao;
@@ -37,7 +36,7 @@ public class HomePageController
     public void messageUser(ActionEvent e)
     {
         ForumPost post = e.getSource().getForumPost();
-        User user = post.getOwner();
+        int user = post.getOwnerId();
         showMessageScreen(user);
     }
 
@@ -62,7 +61,7 @@ public class HomePageController
     {
         // The below line accessed the post and the comment content
         // through thew commentPane invoked.
-        ForumPost post = e.getSource().getForumPost();
+        int post = e.getSource().getForumPost();
         String commentContent = e.getSource().getCommentContent();
         Date createdAt = null;
         Date lastEdit = null;
@@ -74,7 +73,7 @@ public class HomePageController
     public void addFriendButton(ActionEvent e)
     {
         ForumPost post = e.getSource().getForumPost();
-        User user = post.getOwner();
+        int user = post.getOwnerId();
         UserDao.addFriendRequest(SessionManager.getCurrentUser(), user);
         // TODO: show success message.
     }
@@ -82,7 +81,7 @@ public class HomePageController
     public void deletePostButton(ActionEvent e)
     {
         ForumPost post = e.getSource().getForumPost();
-        if (post.getOwner().getUserId() == SessionManager.getCurrentUser().getUserId)
+        if (post.getOwnerId().getUserId() == SessionManager.getCurrentUser().getUserId)
         {
             ForumPostDao.delete(post);
         }
@@ -132,7 +131,7 @@ public class HomePageController
      * This method should display messaging screen for given user.
      * @param user
      */
-    public void showMessageScreen(User user)
+    public void showMessageScreen(int user)
     {
 
     }

@@ -12,8 +12,17 @@ public class Cafeteria extends Location{
     private double maxPrice;
     private ArrayList<MenuItem> items;
 
-    public Cafeteria (int id, ArrayList<Review> revs, String imagePath, String n, String desc, double rate, Campus c,
-                      ArrayList<MenuItem> items, double minPrice, double maxPrice){
+    public Cafeteria (int id,
+                      ArrayList<Review> revs,
+                      String imagePath,
+                      String n,
+                      String desc,
+                      double rate,
+                      Campus c,
+                      ArrayList<MenuItem> items,
+                      double minPrice,
+                      double maxPrice)
+    {
         super(id, revs, imagePath, n, desc, rate, c);
         setItems(items);
         setMaxPrice(maxPrice);

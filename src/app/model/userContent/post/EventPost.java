@@ -24,7 +24,7 @@ public class EventPost extends Post{
      * @param eventDate
      * @param importantInfo
      */
-    public EventPost(User own, String text, Date creation, Date lastEdit, String heading, String location, Date eventDate, String importantInfo) {
+    public EventPost(int own, String text, Date creation, Date lastEdit, String heading, String location, Date eventDate, String importantInfo) {
         super(own, text, creation, lastEdit, heading);
         setLocation(location);
         setEventDate(eventDate);
@@ -46,7 +46,7 @@ public class EventPost extends Post{
      * @param eventDate
      * @param importantInfo
      */
-    public EventPost(int id, User own, String text, Date creation, Date lastEdit, String heading, String location, Date eventDate, String importantInfo) {
+    public EventPost(int id, int own, String text, Date creation, Date lastEdit, String heading, String location, Date eventDate, String importantInfo) {
         super(own, text, creation, lastEdit, heading);
         setLocation(location);
         setEventDate(eventDate);

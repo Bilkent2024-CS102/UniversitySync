@@ -14,15 +14,15 @@ public class Review extends UserContentItem {
     /**
      * when adding a new review to database (i.e. posting a review) add review without id and then pull the auto assigned
      * id from database
-     * @param own
+     * @param ownerId
      * @param text
      * @param creation
      * @param lastEdit
      * @param r
      * @param rateGiven
      */
-    public Review(User own, String text, Date creation, Date lastEdit, Reviewable r, double rateGiven) {
-        super(own, text, creation, lastEdit);
+    public Review(int ownerId, String text, Date creation, Date lastEdit, Reviewable r, double rateGiven) {
+        super(ownerId, text, creation, lastEdit);
         setR(r);
         setRateGiven(rateGiven);
         int id = ReviewDao.addReview(this);
@@ -39,7 +39,7 @@ public class Review extends UserContentItem {
      * @param rateGiven
      * @param id
      */
-    public Review(int id, User own, String text, Date creation, Date lastEdit, Reviewable r, double rateGiven) {
+    public Review(int id, int own, String text, Date creation, Date lastEdit, Reviewable r, double rateGiven) {
         super(own, text, creation, lastEdit);
         setR(r);
         setRateGiven(rateGiven);

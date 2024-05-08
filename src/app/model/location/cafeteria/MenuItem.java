@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class MenuItem {
     private static int numberOfInstances;
-
+    private int cafeteriaId;
     private int menuItemId;
     private String name;
     private double price;
@@ -53,5 +53,13 @@ public class MenuItem {
     public void setImagePath(String imagePath)
     {
         this.imagePath = imagePath;
+    }
+    
+    public int getCafeteriaId() {
+        return cafeteriaId;
+    }
+
+    public void setCafeteriaId(int cafeteriaId) {
+        this.cafeteriaId = cafeteriaId;
     }
 }
