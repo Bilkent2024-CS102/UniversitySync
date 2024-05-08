@@ -3,6 +3,7 @@ package app.model.userContent.post;
 import java.util.ArrayList;
 import java.util.Date;
 
+import app.dao.EventPostDao;
 import app.model.User;
 
 public class EventPost extends Post{

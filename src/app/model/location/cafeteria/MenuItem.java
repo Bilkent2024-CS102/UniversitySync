@@ -10,6 +10,14 @@ public class MenuItem {
     private double price;
     private String imagePath;
 
+
+    public MenuItem(int cafeteriaId, int menuItemId, String name, double price, String imagePath) {
+        setMenuItemId(menuItemId);
+        setCafeteriaId(cafeteriaId);
+        setName(name);
+        setPrice(price);
+        setImagePath(imagePath);
+    }
     /*
     * Getters
     */
