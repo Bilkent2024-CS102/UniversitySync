@@ -18,6 +18,11 @@ public abstract class Post extends UserContentItem {
         attachments = new ArrayList<>();
     }
 
+    public Post(int ownerId, String text, String heading) {
+        super(ownerId, text);
+        setHeading(heading);
+    }
+
     public String getHeading() {
         return heading;
     }

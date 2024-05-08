@@ -83,7 +83,7 @@ public class HomePageController
         ForumPost post = e.getSource().getForumPost();
         if (post.getOwnerId().getUserId() == SessionManager.getCurrentUser().getUserId)
         {
-            ForumPostDao.delete(post);
+            ForumPostDao.delete(post.getUserContentItemId());
         }
         // TODO: show success message.
     }
