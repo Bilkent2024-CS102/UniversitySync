@@ -147,8 +147,8 @@ public class UserDao {
         try{
             String query = "INSERT INTO university_sync.student_friendship (first_student_id, second_student_id) VALUES (? ,?);";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            int firstId = u1.getUserId();
-            int secondId = u2.getUserId();
+            int firstId = u1;
+            int secondId = u2;
             if (firstId == secondId){
                 return false;
             }
@@ -168,8 +168,8 @@ public class UserDao {
         try{
             String query = "SELECT * FROM university_sync.student_friendship WHERE first_student_id = ? AND second_student_id = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            int firstId = u1.getUserId();
-            int secondId = u2.getUserId();
+            int firstId = u1;
+            int secondId = u2;
             if (firstId == secondId){
                 return false;
             }
@@ -196,8 +196,8 @@ public class UserDao {
         try {
             String query = "INSERT INTO university_sync.friend_request (sender_id, receiver_id) VALUES (?, ?)";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            int firstId = sender.getUserId();
-            int secondId = receiver.getUserId();
+            int firstId = sender;
+            int secondId = receiver;
             if (firstId == secondId){
                 return false;
             }
@@ -217,8 +217,8 @@ public class UserDao {
         try {
             String query = "DELETE FROM university_sync.friend_request WHERE sender_id = ? AND receiver_id = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            pst.setInt(1, sender.getUserId());
-            pst.setInt(2, receiver.getUserId());
+            pst.setInt(1, sender);
+            pst.setInt(2, receiver);
             pst.executeUpdate();
             if (isAccepted){
                 return addFriend(sender, receiver);
@@ -255,7 +255,7 @@ public class UserDao {
     }
 
     //TODO This should work but double-check
-    public static int getUserByEmail(String email){
+    public static User getUserByEmail(String email){
         try
         {
             String query = "SELECT * FROM student WHERE email = ?;";
@@ -263,7 +263,7 @@ public class UserDao {
             pst.setString(1, email);
             ResultSet resultSet = pst.executeQuery();
             resultSet.next();
-            int u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
+            User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
                                 resultSet.getString("email"), resultSet.getString("pass"));
             return u;
         }
