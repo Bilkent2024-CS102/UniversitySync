@@ -57,24 +57,23 @@ public class UserDao {
     /*
      * Retrieves user object from DB, matching 
      */
-    public static User getUserByID(int ID)
+    public static User getUserById(int ID)
     {
-        String query = "SELECT * FROM students WHERE student_id = ?;";
-        PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-        pst.setInt(1, ID);
-        ResultSet resultSet = pst.executeQuery();
+
         try
         {
-            while (resultSet.next())
-            {
-                User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
-                                resultSet.getString("email"), resultSet.getString("pass"));
-                return u;
-            }
+            String query = "SELECT * FROM student WHERE student_id = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, ID);
+            ResultSet resultSet = pst.executeQuery();
+            resultSet.next();
+            User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
+                    resultSet.getString("email"), resultSet.getString("pass"));
+            return u;
         }
         catch (SQLException sqle)
         {
-            sqle.printStackTrace();
+            System.out.println("No such user with id " + ID + " exists!");
             return null;
         }
     }
@@ -167,7 +166,7 @@ public class UserDao {
             return true;
 
         } catch (SQLException sqle) {
-            sqle.printStackTrace();
+            System.out.println("Unable to conclude friend request/no such friend request!");
             return false;
         }
     }
@@ -203,18 +202,15 @@ public class UserDao {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setString(1, email);
             ResultSet resultSet = pst.executeQuery();
+            resultSet.next();
             User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
                                 resultSet.getString("email"), resultSet.getString("pass"));
             return u;
         }
         catch (SQLException sqle)
         {
-            sqle.printStackTrace();
+            System.out.println("Such user does not exist!");
             return null;
         }
-    }
-
-    public static User getUserById(int ownerStudentId) {
-        return null;
     }
 }

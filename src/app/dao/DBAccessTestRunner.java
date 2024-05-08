@@ -4,6 +4,7 @@ import app.model.User;
 import app.model.location.cafeteria.Cafeteria;
 import app.model.userContent.Review;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -50,9 +51,15 @@ public class DBAccessTestRunner {
         //Review r = new Review(users.get(3), "this is a very good dormitory", new java.util.Date(), new java.util.Date(), dorms.get(2), 5);
         //ReviewDao.addReview(r);
 
-        Cafeteria c = CafeteriaDao.getCafeteriaById(1);
-
-        Review r = new Review(users.get(3), "nice cafeteria however somewhat expensive", new java.util.Date(), new java.util.Date(), c, 4);
+        //Cafeteria c = CafeteriaDao.getCafeteriaById(1);
+        //Review r = new Review(users.get(3), "nice cafeteria however somewhat expensive", new java.util.Date(), new java.util.Date(), c, 4);
+        try {
+            User u = UserDao.getUserById(567);
+            System.out.println(u.getUserId() + " " + u.getEmail() + " " + u.getPassword() + " " + u.getName());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         System.out.println("lalalaal");
     }
 }

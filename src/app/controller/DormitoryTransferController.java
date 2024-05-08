@@ -1,6 +1,9 @@
+package app.controller;
+
 import java.sql.Date;
 import java.time.LocalDate;
 
+import app.model.userContent.post.DormTransferPost;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
