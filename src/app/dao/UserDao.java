@@ -3,6 +3,7 @@ package app.dao;
 import java.sql.*;
 import java.util.ArrayList;
 import app.model.User;
+import app.model.FriendRequest;
 
 import javax.swing.plaf.nimbus.State;
 
@@ -28,6 +29,66 @@ public class UserDao {
         catch (SQLException sqle){
             sqle.printStackTrace();
             return -1;
+        }
+    }
+
+    public static ArrayList<FriendRequest> getFriendRequests(User u)
+    {
+        try
+        {
+            ArrayList<FriendRequest> friendRequests = new ArrayList<>();
+            String query = "SELECT * FROM friend_requests WHERE receiver_id = ?";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, u.getUserId());
+            ResultSet rs = pst.executeQuery();
+            while (rs.next())
+            {
+                int requestId = rs.getInt("request_id");
+                User sender = getUserById(rs.getInt("sender_id"));
+                User receiver = getUserById(rs.getInt("receiver_id"));
+                FriendRequest request = new FriendRequest(requestId, sender, receiver);
+                friendRequests.add(request);
+            }
+            return friendRequests;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    //TODO Check if this works properly, this got a bit experimental
+    public static ArrayList<User> getFriends(User u)
+    {
+        try
+        {
+            ArrayList<User> friends = new ArrayList<>();
+            int id = u.getUserId();
+            String query = "SELECT * FROM student_friendship WHERE first_student_id = ? OR second_student_id = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, id);
+            pst.setInt(2, id);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next())
+            {
+                int firstID = rs.getInt("first_student_id");
+                if (u.getUserId() == firstID)
+                {
+                    friends.add(getUserById(firstID));
+                }
+                else
+                {
+                    friends.add(getUserById(rs.getInt("second_student_id")));
+                }
+            }
+            return friends;
+        }
+
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return null;
         }
     }
 
