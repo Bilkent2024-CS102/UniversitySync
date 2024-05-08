@@ -185,4 +185,39 @@ public class User {
     {
         friends.remove(friend);
     }
+
+    public boolean removeIncomingFriendRequest(User other)
+    {
+        for (int i = 0; i < pendingIncomingRequests.size(); i++)
+        {
+            if (pendingIncomingRequests.get(i).getSender().equals(other))
+            {
+                pendingIncomingRequests.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean removeOutgoingFriendRequest(User other)
+    {
+        for (int i = 0; i < pendingRequests; i++)
+        {
+            if (pendingRequests.get(i).getReceiver().equals(other))
+            {
+                pendingRequests.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean equals(User other)
+    {
+        if (this.getUserId() == other.getUserId())
+        {
+            return true;
+        }
+        return false;
+    }
 }
