@@ -162,21 +162,21 @@
     -fx-background-color: #4BAB5A;
 }
 .acceptRequestButton:hover {
-    -fx-background-color: #0289C7;
+    -fx-background-color: green;
 
 }
 .acceptRequestButton:pressed {
-    -fx-background-color: #41C0FF;
+    -fx-background-color: white;
 }
 .denytRequestButton{
     -fx-background-color: #E63030;
 }
 .denytRequestButton:hover {
-    -fx-background-color: #0289C7;
+    -fx-background-color: orange;
 
 }
 .denytRequestButton:pressed {
-    -fx-background-color: #41C0FF;
+    -fx-background-color: white;
 }
 
 

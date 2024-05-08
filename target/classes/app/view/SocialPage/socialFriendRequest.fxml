@@ -24,7 +24,7 @@
             <VBox prefHeight="212.0" prefWidth="1222.0" spacing="6.0" BorderPane.alignment="CENTER">
                <children>
                   <fx:include source="Social_TOP_TAB.fxml" />
-                  <Pane maxHeight="92.0" prefHeight="92.0" prefWidth="1222.0" style="-fx-background-color: #20368f;">
+                  <Pane maxHeight="92.0" prefHeight="79.0" prefWidth="1222.0" style="-fx-background-color: #20368f;">
                      <children>
                         <Label layoutX="370.0" layoutY="19.0" prefHeight="51.0" prefWidth="337.0" text="Friend Requests" textFill="WHITE">
                            <font>
@@ -47,16 +47,16 @@
          <center>
             <Label alignment="CENTER" prefHeight="172.0" prefWidth="828.0" text="You have following friend requests" BorderPane.alignment="CENTER">
                <font>
-                  <Font name="Times New Roman Bold" size="37.0" />
+                  <Font name="Times New Roman Bold" size="34.0" />
                </font>
             </Label>
          </center>
          <bottom>
-            <ScrollPane prefHeight="509.0" prefWidth="1222.0" BorderPane.alignment="CENTER">
+            <ScrollPane prefHeight="532.0" prefWidth="1222.0" BorderPane.alignment="CENTER">
                <content>
-                  <VBox prefHeight="505.0" prefWidth="994.0">
+                  <VBox prefHeight="750.0" prefWidth="950.0" spacing="20.0">
                      <children>
-                        <Pane prefHeight="132.0" prefWidth="413.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">
+                        <Pane prefHeight="132.0" prefWidth="953.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">
                            <children>
                               <ImageView fitHeight="54.0" fitWidth="51.0" layoutX="29.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -72,15 +72,107 @@
                                  <font>
                                     <Font name="Helvetica" size="26.0" />
                                  </font>
-                                 <graphic>
-                                    <ImageView fitHeight="35.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/addition.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
                               </Button>
-                              <Button layoutX="809.0" layoutY="44.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="150.0" style="-fx-background-radius: 10;" styleClass="denytRequestButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
+                              <Button layoutX="742.0" layoutY="44.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="158.0" style="-fx-background-radius: 10;" styleClass="denytRequestButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
+                                 <font>
+                                    <Font name="Helvetica" size="26.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Pane>
+                        <Pane prefHeight="132.0" prefWidth="953.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">
+                           <children>
+                              <ImageView fitHeight="54.0" fitWidth="51.0" layoutX="29.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/icon-monochrome.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="90.0" layoutY="51.0" prefHeight="43.0" prefWidth="189.0" text="Atilla Akus">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="31.0" />
+                                 </font>
+                              </Label>
+                              <Button contentDisplay="RIGHT" layoutX="488.0" layoutY="44.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="182.0" style="-fx-background-radius: 10;" styleClass="acceptRequestButton" stylesheets="@../styles.css" text="Accept" textFill="WHITE">
+                                 <font>
+                                    <Font name="Helvetica" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="743.0" layoutY="44.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="157.0" style="-fx-background-radius: 10;" styleClass="denytRequestButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
+                                 <font>
+                                    <Font name="Helvetica" size="26.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="132.0" prefWidth="953.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">
+                           <children>
+                              <ImageView fitHeight="54.0" fitWidth="51.0" layoutX="29.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/icon-monochrome.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="90.0" layoutY="51.0" prefHeight="43.0" prefWidth="189.0" text="Atilla Akus">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="31.0" />
+                                 </font>
+                              </Label>
+                              <Button contentDisplay="RIGHT" layoutX="488.0" layoutY="44.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="182.0" style="-fx-background-radius: 10;" styleClass="acceptRequestButton" stylesheets="@../styles.css" text="Accept" textFill="WHITE">
+                                 <font>
+                                    <Font name="Helvetica" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="743.0" layoutY="44.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="157.0" style="-fx-background-radius: 10;" styleClass="denytRequestButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
+                                 <font>
+                                    <Font name="Helvetica" size="26.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="132.0" prefWidth="953.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">
+                           <children>
+                              <ImageView fitHeight="54.0" fitWidth="51.0" layoutX="29.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/icon-monochrome.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="90.0" layoutY="51.0" prefHeight="43.0" prefWidth="189.0" text="Atilla Akus">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="31.0" />
+                                 </font>
+                              </Label>
+                              <Button contentDisplay="RIGHT" layoutX="488.0" layoutY="44.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="182.0" style="-fx-background-radius: 10;" styleClass="acceptRequestButton" stylesheets="@../styles.css" text="Accept" textFill="WHITE">
+                                 <font>
+                                    <Font name="Helvetica" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="750.0" layoutY="44.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="150.0" style="-fx-background-radius: 10;" styleClass="denytRequestButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
+                                 <font>
+                                    <Font name="Helvetica" size="19.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="132.0" prefWidth="953.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">
+                           <children>
+                              <ImageView fitHeight="54.0" fitWidth="51.0" layoutX="29.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/icon-monochrome.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="90.0" layoutY="51.0" prefHeight="43.0" prefWidth="189.0" text="Atilla Akus">
+                                 <font>
+                                    <Font name="SansSerif Bold" size="31.0" />
+                                 </font>
+                              </Label>
+                              <Button contentDisplay="RIGHT" layoutX="488.0" layoutY="44.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="182.0" style="-fx-background-radius: 10;" styleClass="acceptRequestButton" stylesheets="@../styles.css" text="Accept" textFill="WHITE">
+                                 <font>
+                                    <Font name="Helvetica" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="750.0" layoutY="44.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="150.0" style="-fx-background-radius: 10;" styleClass="denytRequestButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
                                  <font>
                                     <Font name="Helvetica" size="19.0" />
                                  </font>
@@ -88,8 +180,14 @@
                            </children>
                         </Pane>
                      </children>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
                   </VBox>
                </content>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" />
+               </BorderPane.margin>
             </ScrollPane>
          </bottom>
       </BorderPane>

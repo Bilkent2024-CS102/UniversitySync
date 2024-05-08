@@ -11,6 +11,7 @@ module src.app.controller {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.desktop;
+    requires mysql.connector.j;
 
     opens app.controller to javafx.fxml;
     exports app.controller;
