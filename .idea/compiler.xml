@@ -31,6 +31,9 @@
       <file url="file://$PROJECT_DIR$/src/app/controller/RegistrationController.java" />
       <file url="file://$PROJECT_DIR$/src/app/controller/LoginController.java" />
       <file url="file://$PROJECT_DIR$/src/app/controller/DormitoryTransferController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/dao/EventPostDao.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/SocialFriendRequestsController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/SocialMyFriendsController.java" />
     </excludeFromCompile>
     <annotationProcessing>
       <profile name="Maven default annotation processors profile" enabled="true">
