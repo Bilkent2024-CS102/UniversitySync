@@ -54,12 +54,13 @@ public class ReviewDao {
 
     //TODO: this method will return whether the operation was successful
     public static boolean removeReview(int reviewId){
-        String query = "DELETE FROM university_sync.review WHERE review_id=" +
-                reviewId;
+        String query = "DELETE FROM university_sync.review WHERE review_id= ? ";
         try
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            pst.executeQuery();
+            pst.setInt(1, reviewId);
+            int affectedRow = pst.executeUpdate();
+            System.out.println(affectedRow);
             return true;
         }
         catch (SQLException sqle)
@@ -75,14 +76,14 @@ public class ReviewDao {
      * @param nexText is the new review text to be set.
      */
     public static boolean editReview(int reviewId, String nexText){
-        String query = "UPDATE university_sync.review SET main_text='" +
-                nexText +
-                "' WHERE review_id=" +
-                reviewId;
+        String query = "UPDATE university_sync.review SET main_text = ? WHERE review_id= ? ";
         try
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            pst.executeQuery();
+            pst.setString(1, nexText);
+            pst.setInt(2, reviewId);
+            int affectedRow = pst.executeUpdate();
+            System.out.println(affectedRow);
             return true;
         }
         catch (SQLException sqle)
