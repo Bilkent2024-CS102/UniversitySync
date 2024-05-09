@@ -1,6 +1,10 @@
 import java.sql.Date;
 import java.time.LocalDate;
 
+import app.controller.SessionManager;
+import app.dao.ReviewDao;
+import app.model.location.cafeteria.Cafeteria;
+import app.model.userContent.Review;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -28,9 +32,9 @@ public class CafeReviewController {
     public void deleteReview(ActionEvent e)
     {
         Review review = (Review) e.getSource();
-        if (review.getOwner().getUserId == SessionManager.getCurrentUser().getUserId())
+        if (review.getOwnerId() == SessionManager.getCurrentUser().getUserId())
         {
-            ReviewDao.removeReview(review);
+            ReviewDao.removeReview(review.getUserContentItemId());
         }
     }
 }

@@ -17,7 +17,8 @@ public class ForumPostDao {
             PreparedStatement st = DBConnectionManager.getConnection().prepareStatement(query);
             ResultSet rs = st.executeQuery();
             rs.next();
-            post = new ForumPost(rs.getInt("forum_post_id"), rs.getString("main_text"), rs.getString("heading"));
+            post = new ForumPost(rs.getInt("forum_post_id"), rs.getString("main_text"),
+                    rs.getDate("creation_date"), rs.getDate("last_edit_date"), rs.getString("heading"));
             return post;
         } catch (Exception sqle) {
             sqle.printStackTrace();
@@ -169,6 +170,8 @@ public class ForumPostDao {
             Statement st = DBConnectionManager.getConnection().createStatement();
             ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
             rs.next();
+            int id = rs.getInt(1);
+            return id;
         }
         catch (SQLException sqle)
         {

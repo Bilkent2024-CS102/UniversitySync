@@ -1,5 +1,6 @@
 package app.model.userContent.post;
 
+import app.dao.DormTransferPostDao;
 import app.model.User;
 import app.model.location.Room;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class DormTransferPost extends Post{
-    Room room;
+    int roomId;
 
     /**
      * the constructor that is used when dorm transfer post is just created. this constructor inserts the
@@ -18,12 +19,12 @@ public class DormTransferPost extends Post{
      * @param creation
      * @param lastEdit
      * @param heading
-     * @param room
+     * @param roomId
      */
-    public DormTransferPost(int own, String text, Date creation, Date lastEdit, String heading, Room room) {
+    public DormTransferPost(int own, String text, Date creation, Date lastEdit, String heading, int roomId) {
         super(own, text, creation, lastEdit, heading);
-        setRoom(room);
-        int id = DormTransferPostDao.addEvent(this);
+        setRoomId(roomId);
+        int id = DormTransferPostDao.addDormTransferPost(this);
         setID(id);
     }
 
@@ -35,27 +36,27 @@ public class DormTransferPost extends Post{
      * @param creation
      * @param lastEdit
      * @param heading
-     * @param room
+     * @param roomId
      */
-    public DormTransferPost(int id, int own, String text, Date creation, Date lastEdit, String heading, Room room) {
+    public DormTransferPost(int id, int own, String text, Date creation, Date lastEdit, String heading, int roomId) {
         super(own, text, creation, lastEdit, heading);
-        setRoom(room);
+        setRoomId(roomId);
         setID(id);
     }
 
     /*
      * Getters
      */
-    public Room getRoom()
+    public int getRoomId()
     {
-        return room;
+        return roomId;
     }
 
     /*
      * Setters
      */
-    public void setRoom(Room room)
+    public void setRoomId(int roomId)
     {
-        this.room = room;
+        this.roomId = roomId;
     }
 }
