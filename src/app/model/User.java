@@ -201,7 +201,7 @@ public class User {
 
     public boolean removeOutgoingFriendRequest(User other)
     {
-        for (int i = 0; i < pendingRequests; i++)
+        for (int i = 0; i < pendingRequests.size(); i++)
         {
             if (pendingRequests.get(i).getReceiver().equals(other))
             {

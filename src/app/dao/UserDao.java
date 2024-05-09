@@ -44,9 +44,9 @@ public class UserDao {
             while (rs.next())
             {
                 int requestId = rs.getInt("request_id");
-                User sender = getUserById(rs.getInt("sender_id"));
-                User receiver = getUserById(rs.getInt("receiver_id"));
-                FriendRequest request = new FriendRequest(requestId, sender, receiver);
+                int senderId = rs.getInt("sender_id");
+                int receiverId = rs.getInt("receiver_id");
+                FriendRequest request = new FriendRequest(requestId, senderId, receiverId);
                 friendRequests.add(request);
             }
             return friendRequests;
@@ -231,7 +231,6 @@ public class UserDao {
         }
     }
 
-    //TODO This might not work
     public static boolean authenticate(String email, String password){
         try
         {
@@ -253,8 +252,7 @@ public class UserDao {
             return false;
         }
     }
-
-    //TODO This should work but double-check
+    
     public static User getUserByEmail(String email){
         try
         {

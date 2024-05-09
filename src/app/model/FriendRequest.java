@@ -5,14 +5,14 @@ public class FriendRequest {
     private static int numberOfInstances;
 
     private int friendRequestId;
-    private User sender;
-    private User receiver;
+    private int senderId;
+    private int receiverId;
 
-    public FriendRequest(int friendRequestId, User sender, User receiver)
+    public FriendRequest(int friendRequestId, int senderId, int receiverId)
     {
         setFriendRequestId(friendRequestId);
-        setSender(sender);
-        setReceiver(receiver);
+        setSenderId(senderId);
+        setReceiver(receiverId);
     }
     
     public static int getNumberOfInstances() {
@@ -27,17 +27,17 @@ public class FriendRequest {
     public void setFriendRequestId(int friendRequestId) {
         this.friendRequestId = friendRequestId;
     }
-    public User getSender() {
-        return sender;
+    public int getSenderId() {
+        return senderId;
     }
-    public void setSender(User sender) {
-        this.sender = sender;
+    public void setSenderId(int senderId) {
+        this.senderId = senderId;
     }
-    public User getReceiver() {
-        return receiver;
+    public int getReceiverId() {
+        return receiverId;
     }
-    public void setReceiver(User receiver) {
-        this.receiver = receiver;
+    public void setReceiver(int receiverId) {
+        this.receiverId = receiverId;
     }
 
     
