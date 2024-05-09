@@ -28,7 +28,7 @@ public class ReviewDao {
             }
             String query = "INSERT INTO university_sync.review " +
                     "(owner_student_id, creation_date, last_edit_date, main_text, rating_given, review_to_" + type + "_id)" +
-                    "VALUES (?, ?, ?, ?, ?, ?)";
+                    "VALUES (?, ?, ?, ?, ?, ?);";
 
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, r.getOwnerId());
@@ -41,7 +41,7 @@ public class ReviewDao {
             pst.executeUpdate();
 
             Statement st = DBConnectionManager.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
+            ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID();");
             rs.next();
 
             int idOfNewReview = rs.getInt(1);
@@ -54,7 +54,7 @@ public class ReviewDao {
 
     //TODO: this method will return whether the operation was successful
     public static boolean removeReview(int reviewId){
-        String query = "DELETE FROM university_sync.review WHERE review_id= ? ";
+        String query = "DELETE FROM university_sync.review WHERE review_id= ?;";
         try
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
@@ -76,7 +76,7 @@ public class ReviewDao {
      * @param nexText is the new review text to be set.
      */
     public static boolean editReview(int reviewId, String nexText){
-        String query = "UPDATE university_sync.review SET main_text = ? WHERE review_id= ? ";
+        String query = "UPDATE university_sync.review SET main_text = ? WHERE review_id= ?;";
         try
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
@@ -102,7 +102,7 @@ public class ReviewDao {
         Location loc = (Location) r;
         int id = loc.getLocationId();
         String type = ((loc instanceof Cafeteria) ? "cafeteria" : "dormitory");
-        query = "SELECT * FROM university_sync.review " +
+        query = "SELECT * FROM university_sync.review;" +
                 "WHERE review_to_" + type + "_id=" + id;
 
         try
