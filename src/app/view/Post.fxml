@@ -11,8 +11,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="postVBoxID" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.PostController">
-<Pane prefHeight="592.0" prefWidth="978.0" style="-fx-background-color: #829CD0;">
+
+<Pane prefHeight="592.0" prefWidth="978.0" style="-fx-background-color: #829CD0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.PostController">
    <children>
       <TextArea fx:id="postTextAreaID" layoutX="14.0" layoutY="84.0" prefHeight="401.0" prefWidth="949.0" />
       <HBox layoutX="45.0" layoutY="505.0" prefHeight="70.0" prefWidth="895.0">
@@ -44,4 +44,4 @@
       <Insets left="120.0" right="120.0" top="60.0" />
    </VBox.margin>
 </Pane>
-</VBox>
+

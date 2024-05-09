@@ -66,18 +66,17 @@ CREATE TABLE IF NOT EXISTS university_sync.student(
     pass varchar(50),
     biography varchar(255),
     link_to_profile_picture varchar(100),
-    student_major_id int NOT NULL,
-    student_room_type_id int,
+    student_major_id int DEFAULT NULL,
+    student_room_type_id int DEFAULT NULL,
     CONSTRAINT pk_student PRIMARY KEY (student_id),
     CONSTRAINT fk_student_major_id FOREIGN KEY (student_major_id) REFERENCES major(major_id),
     CONSTRAINT fk_student_room_type_id FOREIGN KEY (student_room_type_id) REFERENCES room_type(room_type_id)
 );
 
 CREATE TABLE IF NOT EXISTS university_sync.friend_request(
-	friend_request_id int AUTO_INCREMENT,
     sender_id int,
     receiver_id int,
-    CONSTRAINT pk_friend_request PRIMARY KEY (friend_request_id),
+    CONSTRAINT pk_friend_request PRIMARY KEY (sender_id, receiver_id),
 	CONSTRAINT fk_sender_id FOREIGN KEY (sender_id) REFERENCES student(student_id),
 	CONSTRAINT fk_reciever_id FOREIGN KEY (receiver_id) REFERENCES student(student_id),
     CONSTRAINT chk_sender_receiver CHECK (sender_id <> receiver_id)
@@ -98,8 +97,8 @@ CREATE TABLE IF NOT EXISTS university_sync.student_friendship(
 CREATE TABLE IF NOT EXISTS university_sync.forum_post( -- extends post
 	forum_post_id int AUTO_INCREMENT,
     owner_student_id int,
-    creation_date date DEFAULT (CURRENT_DATE),
-    last_edit_date date DEFAULT (CURRENT_DATE),
+    creation_date datetime,
+    last_edit_date datetime,
     heading varchar(50),
     main_text varchar(255),
     like_count int DEFAULT 0,
@@ -125,8 +124,8 @@ CREATE TABLE IF NOT EXISTS university_sync.like_forum_post(
 CREATE TABLE IF NOT EXISTS university_sync.reply( -- extends student_content_item
 	reply_id int AUTO_INCREMENT,
     owner_student_id int,
-    creation_date date DEFAULT (CURRENT_DATE),
-    last_edit_date date DEFAULT (CURRENT_DATE),
+    creation_date datetime,
+    last_edit_date datetime,
     main_text varchar(255),
     replies_to_forum_post_id int,
     CONSTRAINT pk_reply_id PRIMARY KEY (reply_id),
@@ -139,8 +138,8 @@ CREATE TABLE IF NOT EXISTS university_sync.reply( -- extends student_content_ite
 CREATE TABLE IF NOT EXISTS university_sync.dorm_transfer_post( -- extends post
 	dorm_transfer_post_id int AUTO_INCREMENT,
     owner_student_id int,
-    creation_date date DEFAULT (CURRENT_DATE),
-    last_edit_date date DEFAULT (CURRENT_DATE),
+    creation_date datetime,
+    last_edit_date datetime,
     heading varchar(50),
     main_text varchar(255),
     posted_room_id int,
@@ -152,12 +151,12 @@ CREATE TABLE IF NOT EXISTS university_sync.dorm_transfer_post( -- extends post
 CREATE TABLE IF NOT EXISTS university_sync.event_post( -- extends post
 	event_post_id int AUTO_INCREMENT,
     owner_student_id int,
-    creation_date date DEFAULT (CURRENT_DATE),
-    last_edit_date date DEFAULT (CURRENT_DATE),
+    creation_date datetime,
+    last_edit_date datetime,
     heading varchar(50),
     main_text varchar(255),
     location varchar(50),
-    event_date date,
+    event_date datetime,
     CONSTRAINT pk_event_post_id PRIMARY KEY (event_post_id),
     CONSTRAINT fk_event_post_owner_student_id FOREIGN KEY (owner_student_id) REFERENCES student(student_id)
 );
@@ -174,8 +173,8 @@ CREATE TABLE IF NOT EXISTS university_sync.message( -- extends student_content_i
 	message_id int AUTO_INCREMENT,
     owner_student_id int,
     receiver_student_id int,
-    creation_date date DEFAULT (CURRENT_DATE),
-    last_edit_date date DEFAULT (CURRENT_DATE),
+    creation_date datetime,
+    last_edit_date datetime,
     main_text varchar(255),
     CONSTRAINT pk_message_id PRIMARY KEY (message_id),
     CONSTRAINT fk_message_owner_student_id FOREIGN KEY (owner_student_id) REFERENCES student(student_id),
@@ -186,8 +185,8 @@ CREATE TABLE IF NOT EXISTS university_sync.message( -- extends student_content_i
 CREATE TABLE IF NOT EXISTS university_sync.review(
 	review_id int AUTO_INCREMENT,
     owner_student_id int,
-    creation_date date DEFAULT (CURRENT_DATE),
-    last_edit_date date DEFAULT (CURRENT_DATE),
+    creation_date datetime,
+    last_edit_date datetime,
     main_text varchar(255),
     rating_given int,
     review_to_dormitory_id int,
