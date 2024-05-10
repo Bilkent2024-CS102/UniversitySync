@@ -5,7 +5,6 @@
       <file url="file://$PROJECT_DIR$/src/app/model/location/Location.java" />
       <file url="file://$PROJECT_DIR$/src/app/model/userContent/Message.java" />
       <file url="file://$PROJECT_DIR$/src/app/model/User.java" />
-      <file url="file://$PROJECT_DIR$/src/app/controller/HomePageController.java" />
       <file url="file://$PROJECT_DIR$/src/app/model/userContent/Reply.java" />
       <file url="file://$PROJECT_DIR$/src/app/dao/ReplyDao.java" />
       <file url="file://$PROJECT_DIR$/src/app/dao/ForumPostDao.java" />
@@ -34,6 +33,8 @@
       <file url="file://$PROJECT_DIR$/src/app/dao/EventPostDao.java" />
       <file url="file://$PROJECT_DIR$/src/app/controller/SocialFriendRequestsController.java" />
       <file url="file://$PROJECT_DIR$/src/app/controller/SocialMyFriendsController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/dao/DormTransferPostDao.java" />
+      <file url="file://$PROJECT_DIR$/src/app/dao/MessageDao.java" />
     </excludeFromCompile>
     <annotationProcessing>
       <profile name="Maven default annotation processors profile" enabled="true">

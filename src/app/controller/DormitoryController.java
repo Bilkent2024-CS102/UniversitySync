@@ -22,6 +22,7 @@ public class DormitoryController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
+
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
         Parent root = fxmlLoader.load();
@@ -48,16 +49,17 @@ public class DormitoryController {
         stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();
     }
+
     public void cancelFilter(ActionEvent event) throws IOException {
         stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
-    @FXML
-    private ChoiceBox dormChoiceBoxID = new ChoiceBox();
-
-    public void addDormNames() {
-        dormChoiceBoxID.getItems().addAll("61", "62", "63", "70", "71", "74");
-    }
+//    @FXML
+//    private ChoiceBox dormChoiceBoxID = new ChoiceBox();
+//
+//    public void addDormNames() {
+//        dormChoiceBoxID.getItems().addAll("61", "62", "63", "70", "71", "74");
+//    }
 
 }
