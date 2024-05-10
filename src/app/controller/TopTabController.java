@@ -63,10 +63,10 @@ public class TopTabController  {
         switchToFXML("src/app/view/Dormitory/dormitoryTransfer.fxml", event);
     }
     public void switchToForumPage(ActionEvent event) throws IOException {
-        switchToFXML("", event);
+        switchToFXML("src/app/view/ForumPage/Forum.fxml", event);
     }
     public void switchToLikedPage(ActionEvent event) throws IOException {
-        switchToFXML("", event);
+        switchToFXML("src/app/view/ProfilePage/profileLikedPost.fxml", event);
     }
     public void switchToContactUsPage(ActionEvent event) throws IOException {
         switchToFXML("", event);

@@ -40,7 +40,7 @@
          <Font size="34.0" />
       </font></Button>
    <Line endX="100.0" startX="100.0" startY="170.0" strokeWidth="10.0" />
-   <Button fx:id="forumID" mnemonicParsing="false" prefHeight="180.0" prefWidth="230.0" style="-fx-font-size: 34;" text="Forum">
+   <Button fx:id="forumID" mnemonicParsing="false" onAction="#switchToForumPage" prefHeight="180.0" prefWidth="230.0" style="-fx-font-size: 34;" text="Forum">
       <font>
          <Font size="34.0" />
       </font></Button>

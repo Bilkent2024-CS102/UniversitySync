@@ -178,7 +178,7 @@
 .denytRequestButton:pressed {
     -fx-background-color: white;
 }
-/********************************************* Any Black Button With UI ****************************************/
+/********************************************* Random Buttons ****************************************/
 .anyBlackButton {
      -fx-background-color: #000000;
 }
@@ -190,4 +190,15 @@
     -fx-background-color: #353935;
 }
 
+
+.greyButton  {
+     -fx-background-color: #808080;
+}
+.greyButton:hover {
+    -fx-background-color: #C0C0C0;
+
+}
+.greyButton:pressed {
+    -fx-background-color: #A9A9A9;
+}
 

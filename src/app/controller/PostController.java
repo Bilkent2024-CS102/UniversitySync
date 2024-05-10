@@ -35,13 +35,13 @@ public class PostController {
     private TextArea postTextAreaID;
 
 
-    public void setData(ForumPost post) {
-        User user = UserDao.getUserByID(post.getOwnerId());
-        postUsernameID = user.getUserId();
-        postTextAreaID = post.getMainText();
-        postTextAreaID.setEditable(false);
-     //    postUsernameID.setText(user.getUserId());
-     //    postTextAreaID.setText(post.getHeading());
+//   public void setData(Post post) {
+////        User user = UserDao.getUserByID(post.getOwnerId());
+//            postUsernameID = user.getUserId();
+        //postTextAreaID = post.getMainText();
+//        postTextAreaID.setEditable(false);
+//         postUsernameID.setText(user.getUserId());
+//         postTextAreaID.setText(post.getHeading());
  
      //     String text;
      //     if (ForumPostDao.isPostLiked(post, SessionManager.getCurrentUser())) {text = "Unlike";}
@@ -51,7 +51,7 @@ public class PostController {
      //     likeButtonID.setOnAction(event -> handleLikeButtonClick(post));
      //     commentButtonID = new Button("Comment");
      //     commentButtonID.setOnAction(event -> handleCommentButtonClick(post));
-     }
+   //  }
 
     // private void handleLikeButtonClick(Post post) {
     //     if (likeButtonID.getText().equals("Like"))
@@ -71,7 +71,15 @@ public class PostController {
 
     //     ArrayList<Reply> comments = ForumPostDao.getReplies(post);
     // }
+    public void setData(Post post) {
+        //Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
+        // userImageOnPostID.setImage(image);
+        postUsernameID.setText(post.getUsername());
+        postTextAreaID.setText(post.getPostText());
+    }
 }
+
+
 class Post {
     private String username;
     private String postText;
