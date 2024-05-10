@@ -1,1 +1,2 @@
+src/app/view/* linguist-vendored
 *.fxml linguist-detectable=false
