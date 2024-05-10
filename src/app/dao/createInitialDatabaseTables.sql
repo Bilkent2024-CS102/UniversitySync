@@ -15,13 +15,20 @@ CREATE TABLE IF NOT EXISTS university_sync.major(
     CONSTRAINT pk_major PRIMARY KEY (major_id)
 );
 
+CREATE TABLE IF NOT EXISTS university_sync.location(
+	location_id int AUTO_INCREMENT,
+    location_type varchar(50), -- currently cafeteria or dormitory
+    CONSTRAINT pk_location_id PRIMARY KEY (location_id)
+);
+
 CREATE TABLE IF NOT EXISTS university_sync.dormitory(
-	dormitory_id int AUTO_INCREMENT,
+    dormitory_location_id int AUTO_INCREMENT,
     dorm_name varchar(50),
     dorm_description varchar(255),
     link_to_dormitory_picture varchar(50),
     dormitory_in_campus_id int,
-    CONSTRAINT pk_dormitory_id PRIMARY KEY (dormitory_id),
+    CONSTRAINT pk_dormitory_location_id PRIMARY KEY (dormitory_location_id),
+    CONSTRAINT fk_dormitory_location_id FOREIGN KEY (dormitory_location_id) REFERENCES location(location_id),
     CONSTRAINT fk_dormitory_campus_id FOREIGN KEY (dormitory_in_campus_id) REFERENCES campus(campus_id)
 );
 
@@ -33,18 +40,19 @@ CREATE TABLE IF NOT EXISTS university_sync.room_type(
     has_private_bathroom bool,
     room_in_dormitory_id int,
     CONSTRAINT pk_room_type_id PRIMARY KEY (room_type_id),
-    CONSTRAINT fk_room_type_dormitory_id FOREIGN KEY (room_in_dormitory_id) REFERENCES dormitory(dormitory_id)
+    CONSTRAINT fk_room_type_dormitory_id FOREIGN KEY (room_in_dormitory_id) REFERENCES dormitory(dormitory_location_id)
 );
 
 CREATE TABLE IF NOT EXISTS university_sync.cafeteria(
-	cafeteria_id int AUTO_INCREMENT,
+    cafeteria_location_id int AUTO_INCREMENT,
     cafeteria_name varchar(50),
     cafeteria_description varchar(255),
     min_price float(20),
     max_price float(20),
     link_to_cafeteria_picture varchar(50),
     cafeteria_in_campus_id int,
-    CONSTRAINT pk_cafeteria_id PRIMARY KEY (cafeteria_id),
+    CONSTRAINT pk_cafeteria_location_id PRIMARY KEY (cafeteria_location_id),
+    CONSTRAINT fk_cafeteria_location_id FOREIGN KEY (cafeteria_location_id) REFERENCES location(location_id),
     CONSTRAINT fk_cafeteria_campus_id FOREIGN KEY (cafeteria_in_campus_id) REFERENCES campus(campus_id)
 );
 
@@ -55,10 +63,15 @@ CREATE TABLE IF NOT EXISTS university_sync.menu_item(
     link_to_menu_item_picture varchar(50),
     menu_item_in_cafeteria_id int,
     CONSTRAINT pk_menu_item_id PRIMARY KEY (menu_item_id),
-    CONSTRAINT fk_menu_item_cafeteria_id FOREIGN KEY (menu_item_in_cafeteria_id) REFERENCES cafeteria(cafeteria_id)
+    CONSTRAINT fk_menu_item_cafeteria_id FOREIGN KEY (menu_item_in_cafeteria_id) REFERENCES cafeteria(cafeteria_location_id)
 );
+/*
+ALTER TABLE university_sync.dormitory 
+ADD CONSTRAINT dormitory_unique_location CHECK (dormitory_id NOT IN (SELECT cafeteria_id FROM university_sync.cafeteria));
 
-
+ALTER TABLE university_sync.cafeteria 
+ADD CONSTRAINT cafeteria_unique_location CHECK (cafeteria_id NOT IN (SELECT dormitory_id FROM university_sync.dormitory));
+*/
 CREATE TABLE IF NOT EXISTS university_sync.student(
 	student_id int AUTO_INCREMENT,
     full_name varchar(50),
@@ -66,10 +79,9 @@ CREATE TABLE IF NOT EXISTS university_sync.student(
     pass varchar(50),
     biography varchar(255),
     link_to_profile_picture varchar(100),
-    student_major_id int DEFAULT NULL,
+    student_major varchar(50) DEFAULT NULL,
     student_room_type_id int DEFAULT NULL,
     CONSTRAINT pk_student PRIMARY KEY (student_id),
-    CONSTRAINT fk_student_major_id FOREIGN KEY (student_major_id) REFERENCES major(major_id),
     CONSTRAINT fk_student_room_type_id FOREIGN KEY (student_room_type_id) REFERENCES room_type(room_type_id)
 );
 
@@ -189,13 +201,10 @@ CREATE TABLE IF NOT EXISTS university_sync.review(
     last_edit_date datetime,
     main_text varchar(255),
     rating_given int,
-    review_to_dormitory_id int,
-    review_to_cafeteria_id int,
+    review_to_location_id int,
     CONSTRAINT pk_review_id PRIMARY KEY (review_id),
     CONSTRAINT fk_review_owner_student_id FOREIGN KEY (owner_student_id) REFERENCES student(student_id),
-    CONSTRAINT fk_review_to_dormitory_id FOREIGN KEY (review_to_dormitory_id) REFERENCES dormitory(dormitory_id),
-    CONSTRAINT fk_review_to_cafeteria_id FOREIGN KEY (review_to_cafeteria_id) REFERENCES cafeteria(cafeteria_id),
-    CONSTRAINT chk_review_to_single_location CHECK (review_to_cafeteria_id IS NULL XOR review_to_dormitory_id IS NULL),
+    CONSTRAINT fk_review_to_location_id FOREIGN KEY (review_to_location_id) REFERENCES location(location_id),
     CONSTRAINT chk_rating_range CHECK (rating_given BETWEEN 0 AND 5)
 );
 

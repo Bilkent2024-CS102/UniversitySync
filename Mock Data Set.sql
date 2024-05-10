@@ -10,11 +10,20 @@ INSERT INTO university_sync.major (major_code, major_full_name) VALUES
 ('ENG', 'Engineering'),
 ('BIO', 'Biology');
 
+INSERT INTO university_sync.location (location_type) VALUES
+('dormitory'),
+('dormitory'),
+('dormitory'),
+('cafeteria'),
+('cafeteria'),
+('cafeteria');
+
+
 -- Dormitory data
-INSERT INTO university_sync.dormitory (dorm_name, dorm_description, link_to_dormitory_picture, dormitory_in_campus_id) VALUES
-('Dorm A', 'Cozy dormitory with single and double rooms.', 'dorm_a.jpg', 1),
-('Dorm B', 'Modern dormitory with private bathrooms.', 'dorm_b.jpg', 2),
-('Dorm C', 'Traditional dormitory with bunk beds.', 'dorm_c.jpg', 3);
+INSERT INTO university_sync.dormitory (dormitory_location_id, dorm_name, dorm_description, link_to_dormitory_picture, dormitory_in_campus_id) VALUES
+(1, 'Dorm A', 'Cozy dormitory with single and double rooms.', 'dorm_a.jpg', 1),
+(2, 'Dorm B', 'Modern dormitory with private bathrooms.', 'dorm_b.jpg', 2),
+(3, 'Dorm C', 'Traditional dormitory with bunk beds.', 'dorm_c.jpg', 3);
 
 -- Room type data
 INSERT INTO university_sync.room_type (room_type_description, capacity, is_bunk, has_private_bathroom, room_in_dormitory_id) VALUES
@@ -23,25 +32,25 @@ INSERT INTO university_sync.room_type (room_type_description, capacity, is_bunk,
 ('Bunk Bed Room', 2, TRUE, FALSE, 3);
 
 -- Cafeteria data
-INSERT INTO university_sync.cafeteria (cafeteria_name, cafeteria_description, min_price, max_price, link_to_cafeteria_picture, cafeteria_in_campus_id) VALUES
-('Cafeteria 1', 'Offers a variety of cuisines.', 5.00, 15.00, 'cafeteria_1.jpg', 1),
-('Cafeteria 2', 'Known for its healthy options.', 6.00, 18.00, 'cafeteria_2.jpg', 2),
-('Cafeteria 3', 'Popular spot for students to socialize.', 4.00, 12.00, 'cafeteria_3.jpg', 3);
+INSERT INTO university_sync.cafeteria (cafeteria_location_id, cafeteria_name, cafeteria_description, min_price, max_price, link_to_cafeteria_picture, cafeteria_in_campus_id) VALUES
+(4, 'Cafeteria 1', 'Offers a variety of cuisines.', 5.00, 15.00, 'cafeteria_1.jpg', 1),
+(5, 'Cafeteria 2', 'Known for its healthy options.', 6.00, 18.00, 'cafeteria_2.jpg', 2),
+(6, 'Cafeteria 3', 'Popular spot for students to socialize.', 4.00, 12.00, 'cafeteria_3.jpg', 3);
 
 -- Menu item data
 INSERT INTO university_sync.menu_item (menu_item_name, price, link_to_menu_item_picture, menu_item_in_cafeteria_id) VALUES
-('Cheeseburger', 5.99, 'cheeseburger.jpg', 1),
-('Salad Bowl', 7.49, 'salad_bowl.jpg', 2),
-('Pizza Slice', 3.99, 'pizza_slice.jpg', 3);
+('Cheeseburger', 5.99, 'cheeseburger.jpg', 4),
+('Salad Bowl', 7.49, 'salad_bowl.jpg', 5),
+('Pizza Slice', 3.99, 'pizza_slice.jpg', 6);
 
 -- Student data
-INSERT INTO university_sync.student (full_name, email, pass, biography, link_to_profile_picture, student_major_id, student_room_type_id) VALUES
-('Alice Johnson', 'alice@example.com', 'password123', 'Computer Science major, loves programming.', 'alice.jpg', 1, 1),
-('Bob Smith', 'bob@example.com', 'password456', 'Engineering major, enjoys building things.', 'bob.jpg', 2, 2),
-('Charlie Brown', 'charlie@example.com', 'password789', 'Biology major, interested in environmental science.', 'charlie.jpg', 3, 3);
-('Emily White', 'emily@example.com', 'password123', 'Computer Science major, aspiring software engineer.', 'emily.jpg', 1, 1),
-('Michael Green', 'michael@example.com', 'password456', 'Engineering major, passionate about renewable energy.', 'michael.jpg', 2, 2),
-('Sophia Rodriguez', 'sophia@example.com', 'password789', 'Biology major, loves studying animal behavior.', 'sophia.jpg', 3, 3);
+INSERT INTO university_sync.student (full_name, email, pass, biography, link_to_profile_picture, student_major, student_room_type_id) VALUES
+('Alice Johnson', 'alice@example.com', 'password123', 'Computer Science major, loves programming.', 'alice.jpg', 'computer science', 1),
+('Bob Smith', 'bob@example.com', 'password456', 'Engineering major, enjoys building things.', 'bob.jpg', 'engineering', 2),
+('Charlie Brown', 'charlie@example.com', 'password789', 'Biology major, interested in environmental science.', 'charlie.jpg', 'biology', 3),
+('Emily White', 'emily@example.com', 'password123', 'Computer Science major, aspiring software engineer.', 'emily.jpg', 'computer science', 1),
+('Michael Green', 'michael@example.com', 'password456', 'Engineering major, passionate about renewable energy.', 'michael.jpg', 'engineering', 2),
+('Sophia Rodriguez', 'sophia@example.com', 'password789', 'Biology major, loves studying animal behavior.', 'sophia.jpg', 'biology', 3);
 
 -- Friend request data
 INSERT INTO university_sync.friend_request (sender_id, receiver_id) VALUES
@@ -107,7 +116,7 @@ INSERT INTO university_sync.message (owner_student_id, receiver_student_id, crea
 (3, 1, '2024-05-01', '2024-05-01', 'Hi Alice, can I join your study group?');
 
 -- Review data
-INSERT INTO university_sync.review (owner_student_id, creation_date, last_edit_date, main_text, rating_given, review_to_dormitory_id, review_to_cafeteria_id) VALUES
-(1, '2024-05-01', '2024-05-01', 'Great dormitory with friendly staff.', 4, 1, NULL),
-(2, '2024-05-02', '2024-05-02', 'The food here is delicious!', 5, NULL, 1),
-(3, '2024-05-03', '2024-05-03', 'Enjoyed the cafeteria atmosphere.', 4, NULL, 2);
+INSERT INTO university_sync.review (owner_student_id, creation_date, last_edit_date, main_text, rating_given, review_to_location_id) VALUES
+(1, '2024-05-01', '2024-05-01', 'Great dormitory with friendly staff.', 4, 1),
+(2, '2024-05-02', '2024-05-02', 'The food here is delicious!', 5, 4),
+(3, '2024-05-03', '2024-05-03', 'Enjoyed the cafeteria atmosphere.', 4, 5);
