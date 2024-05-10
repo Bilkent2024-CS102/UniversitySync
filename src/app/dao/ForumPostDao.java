@@ -81,6 +81,24 @@ public class ForumPostDao {
     }
 
     /**
+     * Delete a comment from the database.
+     * @param commentId The ID of the comment to delete.
+     * @return true if the deletion was successful, false otherwise.
+     */
+    public static boolean deleteComment(int commentId) {
+        try {
+            String query = "DELETE FROM university_sync.comment WHERE comment_id=?";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, commentId);
+            pst.executeUpdate();
+            return true;
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
      * return replies of the given ForumPost instance
      * from database.
      * @param post
