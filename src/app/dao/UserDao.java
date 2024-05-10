@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import app.model.User;
 import app.model.FriendRequest;
 
-import javax.swing.plaf.nimbus.State;
-
 /**
  * database access class for user and user related data.
  */
@@ -54,21 +52,18 @@ public class UserDao {
         }
     }
 
-    public static ArrayList<FriendRequest> getFriendRequests(User u)
+    public static ArrayList<FriendRequest> getFriendRequestsTo(int receiverId)
     {
         try
         {
             ArrayList<FriendRequest> friendRequests = new ArrayList<>();
-            String query = "SELECT * FROM friend_requests WHERE receiver_id = ?";
+            String query = "SELECT * FROM university_sync.friend_requests WHERE receiver_id = ?";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            pst.setInt(1, u.getUserId());
+            pst.setInt(1, receiverId);
             ResultSet rs = pst.executeQuery();
             while (rs.next())
             {
-                int requestId = rs.getInt("request_id");
-                int senderId = rs.getInt("sender_id");
-                int receiverId = rs.getInt("receiver_id");
-                FriendRequest request = new FriendRequest(requestId, senderId, receiverId);
+                FriendRequest request = new FriendRequest(rs.getInt("request_id"), rs.getInt("sender_id"), receiverId);
                 friendRequests.add(request);
             }
             return friendRequests;
@@ -81,21 +76,20 @@ public class UserDao {
     }
 
     //TODO Check if this works properly, this got a bit experimental
-    public static ArrayList<User> getFriends(User u)
+    public static ArrayList<User> getFriends(int userId)
     {
         try
         {
             ArrayList<User> friends = new ArrayList<>();
-            int id = u.getUserId();
             String query = "SELECT * FROM student_friendship WHERE first_student_id = ? OR second_student_id = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            pst.setInt(1, id);
-            pst.setInt(2, id);
+            pst.setInt(1, userId);
+            pst.setInt(2, userId);
             ResultSet rs = pst.executeQuery();
             while (rs.next())
             {
                 int firstID = rs.getInt("first_student_id");
-                if (u.getUserId() == firstID)
+                if (userId == firstID)
                 {
                     friends.add(getUserById(firstID));
                 }
@@ -235,27 +229,26 @@ public class UserDao {
         }
     }
 
-    public static boolean addFriendRequest(int sender, int receiver){
+    public static int addFriendRequest(FriendRequest fr){
 
-        if(isFriend(sender, receiver)){
-            return false;
-        }
         try {
             String query = "INSERT INTO university_sync.friend_request (sender_id, receiver_id) VALUES (?, ?)";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            int firstId = sender;
-            int secondId = receiver;
-            if (firstId == secondId){
-                return false;
-            }
+            int firstId = fr.getReceiverId();
+            int secondId = fr.getSenderId();
             pst.setInt(1, Math.min(firstId, secondId));
             pst.setInt(2, Math.max(firstId, secondId));
             pst.executeUpdate();
-            return true;
+
+            Statement st = DBConnectionManager.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
+            rs.next();
+            int idOfNewFriendRequest = rs.getInt(1);
+            return idOfNewFriendRequest;
 
         } catch (SQLException sqle) {
             sqle.printStackTrace();
-            return false;
+            return -1;
         }
     }
 
