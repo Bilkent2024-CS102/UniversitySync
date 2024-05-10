@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <!--<fx:include source="../Profile_TOP_TAB.fxml"/>-->
 
@@ -11,10 +15,34 @@
         <fx:include source="../TOP_TAB.fxml" />
     </top>
    <center>
-      <VBox prefHeight="785.0" prefWidth="1080.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="785.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <fx:include source="Profile_TOP_TAB.fxml" />
+         <Label alignment="CENTER" prefHeight="95.0" prefWidth="1425.0" text="Write Your Message to Administration">
+            <font>
+               <Font name="Times New Roman Bold" size="54.0" />
+            </font>
+            <VBox.margin>
+               <Insets top="10.0" />
+            </VBox.margin>
+         </Label>
+         <TextArea prefHeight="394.0" prefWidth="1031.0" promptText="wrire your message here" wrapText="true">
+            <VBox.margin>
+               <Insets left="100.0" right="100.0" top="30.0" />
+            </VBox.margin>
+            <font>
+               <Font size="32.0" />
+            </font>
+         </TextArea>
+         <Button mnemonicParsing="false" prefHeight="66.0" prefWidth="203.0" style="-fx-background-radius: 10;" styleClass="anyBlackButton" text="Submit" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="33.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="900.0" top="30.0" />
+            </VBox.margin>
+         </Button>
          <BorderPane.margin>
-            <Insets top="35.0" />
+            <Insets top="15.0" />
          </BorderPane.margin>
       </VBox>
    </center>

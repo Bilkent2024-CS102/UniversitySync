@@ -35,12 +35,42 @@ public class PostController {
     private TextArea postTextAreaID;
 
 
-    public void setData(Post post) {
-        //Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
-       // userImageOnPostID.setImage(image);
-        postUsernameID.setText(post.getUsername());
-        postTextAreaID.setText(post.getPostText());
-    }
+    public void setData(ForumPost post) {
+        User user = UserDao.getUserByID(post.getOwnerId());
+        postUsernameID = user.getUserId();
+        postTextAreaID = post.getMainText();
+        postTextAreaID.setEditable(false);
+     //    postUsernameID.setText(user.getUserId());
+     //    postTextAreaID.setText(post.getHeading());
+ 
+     //     String text;
+     //     if (ForumPostDao.isPostLiked(post, SessionManager.getCurrentUser())) {text = "Unlike";}
+     //     else {text = "Like";}
+ 
+     //     likeButtonID = new Button(text);
+     //     likeButtonID.setOnAction(event -> handleLikeButtonClick(post));
+     //     commentButtonID = new Button("Comment");
+     //     commentButtonID.setOnAction(event -> handleCommentButtonClick(post));
+     }
+
+    // private void handleLikeButtonClick(Post post) {
+    //     if (likeButtonID.getText().equals("Like"))
+    //     {
+    //         ForumPostDao.addLike(post);
+    //         likeButtonID.setText("Unlike");
+    //     }
+    //     else
+    //     {
+    //         ForumPostDao.removeLike(post);
+    //         likeButtonID.setText("Like");
+    //     }
+    // }
+
+    // private void handleCommentButtonClick(Post post) {
+    //     // switch UI to comment section of post
+
+    //     ArrayList<Reply> comments = ForumPostDao.getReplies(post);
+    // }
 }
 class Post {
     private String username;
