@@ -33,6 +33,24 @@ public class ForumPost extends Post{
     }
 
     /**
+     * the constructor that is used when forum post is just created. this constructor inserts the forum post to database and assigns
+     * its database id
+     * @param ownerId
+     * @param text
+     * @param creation
+     * @param lastEdit
+     * @param heading
+     */
+    public ForumPost(int id, int ownerId, String text, Date creation, Date lastEdit, String heading) {
+        super(id, ownerId, text, creation, lastEdit, heading);
+        tags = new ArrayList<>();
+        replies = new ArrayList<>();
+        likedBy = new ArrayList<>();
+        int id = ForumPostDao.addForumPost(this);
+        setID(id);
+    }
+
+    /**
      * this constructor is used when existing forum post is to be pulled from database
      * @param ownerId
      * @param text

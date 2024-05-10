@@ -7,7 +7,17 @@ import app.model.userContent.post.ForumPost;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * The ForumPostDao class provides methods for accessing and managing forum post data in the database.
+ */
 public class ForumPostDao {
+
+    /**
+     * Retrieves a forum post by its ID from the database.
+     *
+     * @param id The ID of the forum post to retrieve.
+     * @return The ForumPost object corresponding to the given ID, or null if no such post exists.
+     */
     public static ForumPost getPostById(int id)
     {
         ForumPost post = null;
@@ -26,8 +36,54 @@ public class ForumPostDao {
         }
     }
 
-    public static ArrayList<ForumPost> getPostsByRecency() {
-        return null;
+
+    /**
+     * @return all  {@code EventPost} instances by order of recency.
+     */
+    public static ArrayList<ForumPost> getForumPostsByRecency()
+    {
+        ArrayList<ForumPost> posts = new ArrayList<ForumPost>();
+        ForumPost post = null;
+        try
+        {
+            String query = "SELECT * FROM university_sync.forum_post ORDER BY creation_date DESC";
+            PreparedStatement st = DBConnectionManager.getConnection().prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            while(rs.next())
+            {
+                post = new ForumPost(
+                        rs.getInt("forum_post_id"),
+                        rs.getInt("owner_student_id"),
+                        rs.getString("main_text"),
+                        rs.getDate("creation_date"),
+                        rs.getDate("last_edit_date"),
+                        rs.getString("heading")
+                );
+                posts.add(post);
+            }
+            return posts;
+        } catch (Exception sqle) {
+            sqle.printStackTrace();
+            return null;
+        }
+    }
+
+    public static boolean isLikedByUser(int userId, int forumPostId)
+    {
+        boolean isLiked = false;
+        try{
+            String query = "SELECT * FROM university_sync.like_forum_post WHERE liked_by_student_id = ? AND liked_forum_post_id = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, userId);
+            pst.setInt(2, forumPostId);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()){
+                isLiked = true;
+            }
+        }catch (SQLException sqle){
+            sqle.printStackTrace();
+        }
+        return isLiked;
     }
 
     /**

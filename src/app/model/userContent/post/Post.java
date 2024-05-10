@@ -23,6 +23,17 @@ public abstract class Post extends UserContentItem {
         setHeading(heading);
     }
 
+    public Post(int id, int ownerId, String text, Date creation, Date lastEdit, String heading){
+        super(id, ownerId, text, creation, lastEdit);
+        setHeading(heading);
+        attachments = new ArrayList<>();
+    }
+
+    public Post(int id, int ownerId, String text, String heading) {
+        super(id, ownerId, text);
+        setHeading(heading);
+    }
+
     public String getHeading() {
         return heading;
     }

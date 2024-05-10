@@ -25,6 +25,20 @@ public abstract class UserContentItem {
         setLastEditDate();
     }
 
+    public UserContentItem(int id, int ownerId, String text, Date creation, Date lastEdit) {
+        setOwnerId(ownerId);
+        setMainText(text);
+        setCreationDate(creation);
+        setLastEditDate(lastEdit);
+    }
+
+    public UserContentItem(int id, int ownerId, String text) {
+        setOwnerId(ownerId);
+        setMainText(text);
+        setCreationDate();
+        setLastEditDate();
+    }
+
     private void setLastEditDate() {
         setCreationDate(new Date());
     }
