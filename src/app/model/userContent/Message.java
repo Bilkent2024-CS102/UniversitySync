@@ -3,8 +3,7 @@ package app.model.userContent;
 import app.model.User;
 
 public class Message extends UserContentItem {
-    
-    private String text;
+
     private int senderId;
     private int receiverId;
 
@@ -28,13 +27,5 @@ public class Message extends UserContentItem {
 
     public void setSenderId(int senderId) {
         this.senderId = senderId;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 }
