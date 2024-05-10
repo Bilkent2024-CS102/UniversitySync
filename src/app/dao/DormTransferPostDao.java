@@ -1,9 +1,6 @@
 package app.dao;
 
-import app.controller.SessionManager;
-import app.model.userContent.Reply;
 import app.model.userContent.post.DormTransferPost;
-import app.model.userContent.post.ForumPost;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -74,7 +71,7 @@ public class DormTransferPostDao {
      */
     public static boolean edit(int id, String editedText)
     {
-        String query = "UPDATE university_sync.forum_post SET main_text= ? WHERE forum_post_id= ?";
+        String query = "UPDATE university_sync.dorm_transfer_post SET main_text= ? WHERE dorm_transfer_post_id= ?";
         try
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
@@ -96,18 +93,22 @@ public class DormTransferPostDao {
      */
     public static int addDormTransferPost(DormTransferPost post)
     {
-        String query = "INSERT INTO university_sync.dorm_transfer_post (dorm_transfer_post_id, owner_student_id, creation_date, last_edit_date, heading, main_text, posted_room_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO university_sync.dorm_transfer_post (owner_student_id, creation_date, last_edit_date, heading, main_text, posted_room_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            pst.setInt(1, post.getUserContentItemId());
-            pst.setInt(2, post.getOwnerId());
-            pst.setDate(3, new Date(post.getCreationDate().getTime()));
-            pst.setDate(4, new Date(post.getLastEditDate().getTime()));
-            pst.setString(5, post.getHeading());
-            pst.setString(6, post.getMainText());
-            pst.setInt(7, post.getRoomId());
+            pst.setInt(1, post.getOwnerId());
+            pst.setDate(2, new Date(post.getCreationDate().getTime()));
+            pst.setDate(3, new Date(post.getLastEditDate().getTime()));
+            pst.setString(4, post.getHeading());
+            pst.setString(5, post.getMainText());
+            pst.setInt(6, post.getRoomId());
             pst.executeUpdate();
-            return post.getUserContentItemId();
+
+            Statement st = DBConnectionManager.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID();");
+            rs.next();
+            int idOfNewPost = rs.getInt(1);
+            return idOfNewPost;
         } catch (Exception sqle) {
             sqle.printStackTrace();
             return -1;

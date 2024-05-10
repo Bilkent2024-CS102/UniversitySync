@@ -100,9 +100,9 @@ public class ReviewDao {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next())
             {
-                int u = resultSet.getInt("owner_student_id");
                 Review review = new Review(
-                        u,
+                        resultSet.getInt("review_id"),
+                        resultSet.getInt("owner_student_id"),
                         resultSet.getString("main_text"),
                         new Date(resultSet.getDate("creation_date").getTime()),
                         new Date(resultSet.getDate("last_edit_date").getTime()),

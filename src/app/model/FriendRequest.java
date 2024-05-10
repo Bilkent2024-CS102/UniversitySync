@@ -1,5 +1,7 @@
 package app.model;
 
+import app.dao.UserDao;
+
 public class FriendRequest {
     
     private static int numberOfInstances;
@@ -8,6 +10,25 @@ public class FriendRequest {
     private int senderId;
     private int receiverId;
 
+    /**
+     * this constructor adds newly created friend request to the database and assigns the auto generated id
+     * @param senderId
+     * @param receiverId
+     */
+    public FriendRequest(int senderId, int receiverId)
+    {
+        setSenderId(senderId);
+        setReceiver(receiverId);
+        int id = UserDao.addFriendRequest(this);
+        setFriendRequestId(id);
+    }
+
+    /**
+     * this constructor is for retrieving the existing friend request from the database
+     * @param friendRequestId
+     * @param senderId
+     * @param receiverId
+     */
     public FriendRequest(int friendRequestId, int senderId, int receiverId)
     {
         setFriendRequestId(friendRequestId);
