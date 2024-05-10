@@ -11,14 +11,14 @@ public abstract class UserContentItem {
     private Date lastEditDate;
     private Date creationDate;
 
-    public UserContentItem(int ownerId, String text, Date creation, Date lastEdit){
+    public UserContentItem(int ownerId, String text, Date creation, Date lastEdit) {
         setOwnerId(ownerId);
         setMainText(text);
         setCreationDate(creation);
         setLastEditDate(lastEdit);
     }
 
-    public UserContentItem(int ownerId, String text){
+    public UserContentItem(int ownerId, String text) {
         setOwnerId(ownerId);
         setMainText(text);
         setCreationDate();
@@ -34,56 +34,55 @@ public abstract class UserContentItem {
     }
 
     /*
-    * Getters
-    * TODO add validation
-    */
-    public static int getNumberOfInstances()
-    {
+     * Getters
+     * TODO add validation
+     */
+    public static int getNumberOfInstances() {
         return numberOfInstances;
     }
-    public Date getCreationDate()
-    {
+
+    public Date getCreationDate() {
         return creationDate;
     }
-    public int getOwnerId() // Atilla check this getter
-    {
+
+    public int getOwnerId() {
         return ownerId;
     }
-    public int getUserContentItemId()
-    {
+
+    public int getUserContentItemId() {
         return userContentItemId;
     }
-    public String getMainText()
-    {
+
+    public String getMainText() {
         return mainText;
     }
-    public Date getLastEditDate()
-    {
+
+    public Date getLastEditDate() {
         return lastEditDate;
     }
 
     /*
-    * Setters
-    * TODO add validation
-    */
-    public void setCreationDate(Date creationDate)
-    {
+     * Setters
+     * TODO add validation
+     */
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
-    public void setLastEditDate(Date lastEditDate)
-    {
+
+    public void setLastEditDate(Date lastEditDate) {
         this.lastEditDate = lastEditDate;
     }
-    public void setOwnerId(int ownerId)
-    {
+
+    public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
     }
+
     public void setID(int id) //TODO MIGHT BE REMOVED - not useful (?)
-    { 
+    {
         this.userContentItemId = id;
     }
-    public void setMainText(String mainText)
-    {
+
+    public void setMainText(String mainText) {
         this.mainText = mainText;
     }
 }
