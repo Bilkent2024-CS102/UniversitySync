@@ -45,7 +45,7 @@ public abstract class UserContentItem {
     {
         return creationDate;
     }
-    public int getOwnerId()
+    public int getOwnerId() // Atilla check this getter
     {
         return ownerId;
     }

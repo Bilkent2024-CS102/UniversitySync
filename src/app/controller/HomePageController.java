@@ -71,6 +71,8 @@ public class HomePageController implements Initializable
         post2.setPostText("hello i am atilla and");
         ls.add(post2);
         return ls;
+
+        // return ForumPostDao.getPostsByRecency();
     }
 // ******************************************************************* TEST ***************************************
 

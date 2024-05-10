@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -19,6 +20,22 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DormitoryController {
+    // private Label dormNameLabel;
+    // private Label dormRatingLabel;
+    // private Label dormCampusLabel;
+    // private Label dormRoomTypeLabel; // Need to decide if we are implementing this
+
+    // public void setData(Dormitory dorm)
+    // {
+    //     String dormNameLabelText = dorm.getName();
+    //     dormNameLabel.setText(dormNameLabelText);
+    //     String dormRatingLabelText = "Rated " + dorm.getRating() + "/5";
+    //     dormRatingLabel.setText(dormRatingLabelText);
+    //     dormCampusLabel.setText(dorm.getCampus());
+    //     // Need to implement dormRoomTypeLabel if we decide to include it
+    // }
+    
+    
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;

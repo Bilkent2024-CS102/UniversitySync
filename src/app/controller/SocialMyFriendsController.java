@@ -19,7 +19,7 @@ public class SocialMyFriendsController {
     public void displayFriendRequests(ActionEvent e)
     {
         User currentUser = SessionManager.getCurrentUser();
-        ArrayList<FriendRequest> friendRequests = UserDao.getFriendRequests(currentUser);
+        ArrayList<FriendRequest> friendRequests = UserDao.getFriendRequests(currentUser.getUserId());
 
         // Need to make UI elements for each friend request
     }

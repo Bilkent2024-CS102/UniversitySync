@@ -6,6 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -15,6 +17,25 @@ import java.io.IOException;
 
 
 public class CafeteriaController{
+    // private Label cafeNameLabel;
+    // private Label ratingLabel;
+    // private Label priceRangeLabel;
+
+    // public void setData(Cafeteria cafe)
+    // {
+    //     cafeNameLabel.setText(cafe.getName());
+    //     cafeNameLabel.onMouseClickedProperty(openCafe(cafe));
+    //     String ratingLabelText = "Rated " + cafe.getRating() + "/5";
+    //     ratingLabel.setText(ratingLabelText);
+    //     String priceRangeLabelText = "Price range: TL" + cafe.getMinPrice + "-TL" + cafe.getMaxPrice;
+    //     priceRangeLabel.setText(priceRangeLabelText);
+    // }
+
+    // private void openCafe(Cafe cafe)
+    // {
+    //     // UI method to open page for this particular cafe
+    // }
+    
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
