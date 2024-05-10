@@ -1,10 +1,7 @@
 package app.dao; // TODO: be sure to correct this!
 
 import app.model.User;
-import app.model.location.cafeteria.Cafeteria;
-import app.model.userContent.Review;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 

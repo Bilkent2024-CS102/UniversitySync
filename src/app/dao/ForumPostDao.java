@@ -27,8 +27,13 @@ public class ForumPostDao {
             PreparedStatement st = DBConnectionManager.getConnection().prepareStatement(query);
             ResultSet rs = st.executeQuery();
             rs.next();
-            post = new ForumPost(rs.getInt("forum_post_id"), rs.getString("main_text"),
-                    rs.getDate("creation_date"), rs.getDate("last_edit_date"), rs.getString("heading"));
+            post = new ForumPost(
+                    rs.getInt("forum_post_id"),
+                    rs.getString("main_text"),
+                    rs.getDate("creation_date"),
+                    rs.getDate("last_edit_date"),
+                    rs.getString("heading")
+            );
             return post;
         } catch (Exception sqle) {
             sqle.printStackTrace();
@@ -68,6 +73,13 @@ public class ForumPostDao {
         }
     }
 
+    /**
+     * Checks if a forum post is liked by a specific user.
+     *
+     * @param userId      The ID of the user.
+     * @param forumPostId The ID of the forum post.
+     * @return True if the user has liked the post, false otherwise.
+     */
     public static boolean isLikedByUser(int userId, int forumPostId)
     {
         boolean isLiked = false;
@@ -87,9 +99,10 @@ public class ForumPostDao {
     }
 
     /**
-     * Add like to the post in DB.
-     * @param post
-     * @return whether the operation successfull or not.
+     * Adds a like to a forum post in the database.
+     *
+     * @param post The forum post to add a like to.
+     * @return True if the operation was successful, false otherwise.
      */
     public static boolean addLike(ForumPost post)
     {
@@ -107,10 +120,10 @@ public class ForumPostDao {
     }
 
     /**
-     * Add a reply object for given post.
+     * Adds a comment (reply) to a forum post in the database.
      *
-     * @param comment
-     * @return the id of the new reply added to DB.
+     * @param comment The reply to be added.
+     * @return The ID of the newly added comment, or -1 if an error occurred.
      */
     public static int addComment(Reply comment)
     {
@@ -155,10 +168,10 @@ public class ForumPostDao {
     }
 
     /**
-     * return replies of the given ForumPost instance
-     * from database.
-     * @param post
-     * @return
+     * Retrieves replies to a forum post from the database.
+     *
+     * @param post The forum post to retrieve replies for.
+     * @return An ArrayList containing the replies to the specified post.
      */
     public static ArrayList<Reply> getReplies(ForumPost post)
     {
@@ -187,11 +200,13 @@ public class ForumPostDao {
             sqle.printStackTrace();
             return null;
         }
-
-
-
     }
 
+    /**
+     * Deletes a forum post from the database.
+     *
+     * @param postId The ID of the post to delete.
+     */
     public static void delete(int postId)
     {
         try
@@ -207,6 +222,13 @@ public class ForumPostDao {
         }
     }
 
+    /**
+     * Edits a forum post in the database.
+     *
+     * @param postId     The ID of the post to edit.
+     * @param editedText The edited text to replace the original post content.
+     * @return True if the edit was successful, false otherwise.
+     */
     public static boolean edit(int postId, String editedText)
     {
         String query = "UPDATE university_sync.forum_post SET main_text='" + editedText + "' WHERE forum_post_id=" + postId;
@@ -222,12 +244,17 @@ public class ForumPostDao {
         }
     }
 
+    /**
+     * Adds a forum post to the database.
+     *
+     * @param forumPost The forum post to add.
+     * @return The ID of the newly added post, or -1 if an error occurred.
+     */
     public static int addForumPost(ForumPost forumPost)
     {
         String query = "INSERT INTO university_sync.forum_post " +
                 "(forum_post_id, owner_student_id, creation_date, last_edit_date, heading, main_text, like_count) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
-
         try
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
@@ -252,6 +279,5 @@ public class ForumPostDao {
             sqle.printStackTrace();
             return -1;
         }
-
     }
 }

@@ -1,8 +1,6 @@
 package app.dao;
 
-import app.model.userContent.post.DormTransferPost;
 import app.model.userContent.post.EventPost;
-import org.w3c.dom.events.Event;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

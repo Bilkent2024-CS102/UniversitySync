@@ -1,15 +1,23 @@
 package app.dao;
 
-import java.sql.*;
-import java.util.ArrayList;
-
-import app.model.User;
 import app.model.location.Dormitory;
 import app.model.location.Room;
-import app.model.userContent.Review;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+/**
+ * The DormitoryDao class provides methods for accessing and managing dormitory data in the database.
+ */
 public class DormitoryDao {
 
+    /**
+     * Retrieves all dormitories from the database.
+     *
+     * @return An ArrayList containing all Dormitory instances.
+     */
     public static ArrayList<Dormitory> getAllDormitories(){
         String query = "SELECT * FROM dormitory";
         ArrayList<Dormitory> dormitories = new ArrayList<>();
@@ -32,6 +40,12 @@ public class DormitoryDao {
         }
     }
 
+    /**
+     * Retrieves a dormitory by its ID from the database.
+     *
+     * @param id The ID of the dormitory to retrieve.
+     * @return The Dormitory object corresponding to the given ID, or null if no such dormitory exists.
+     */
     public static Dormitory getDormitoryById(int id){
         String query = "SELECT * FROM dormitory WHERE dormitory_id = ?";
         try{
@@ -54,6 +68,12 @@ public class DormitoryDao {
         }
     }
 
+    /**
+     * Retrieves room types in a dormitory from the database.
+     *
+     * @param dormId The ID of the dormitory.
+     * @return An ArrayList containing all Room instances in the specified dormitory.
+     */
     public static ArrayList<Room> getRoomTypesIn(int dormId){
         ArrayList<Room> rooms = new ArrayList<>();
         String query = "SELECT * FROM room_type WHERE room_in_dormitory_id = ?";

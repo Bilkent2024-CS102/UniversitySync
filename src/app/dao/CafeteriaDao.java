@@ -8,7 +8,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * The CafeteriaDao class provides methods for accessing and managing cafeteria data in the database.
+ */
 public class CafeteriaDao {
+
+    /**
+     * Retrieves all cafeterias from the database.
+     *
+     * @return An ArrayList containing all Cafeteria instances.
+     */
     public static ArrayList<Cafeteria> getAllCafeterias(){
         String query = "SELECT * FROM Cafeteria";
         ArrayList<Cafeteria> cafeterias = new ArrayList<>();
@@ -32,6 +41,12 @@ public class CafeteriaDao {
         }
     }
 
+    /**
+     * Retrieves a cafeteria by its ID from the database.
+     *
+     * @param id The ID of the cafeteria to retrieve.
+     * @return The Cafeteria object corresponding to the given ID, or null if no such cafeteria exists.
+     */
     public static Cafeteria getCafeteriaById(int id){
         String query = "SELECT * FROM cafeteria WHERE cafeteria_id = ?";
         try{
@@ -53,6 +68,12 @@ public class CafeteriaDao {
         }
     }
 
+    /**
+     * Retrieves menu items in a cafeteria from the database.
+     *
+     * @param cafeteriaId The ID of the cafeteria.
+     * @return An ArrayList containing all MenuItem instances in the specified cafeteria.
+     */
     public static ArrayList<MenuItem> getMenuItemsIn(int cafeteriaId){
         String query = "SELECT * FROM university_sync.menu_items WHERE cafeteria_id = ?";
         ArrayList<MenuItem> menuItems = new ArrayList<>();

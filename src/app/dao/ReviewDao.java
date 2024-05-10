@@ -1,19 +1,25 @@
 package app.dao;
 
-import java.sql.*;
+import app.model.userContent.Review;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
-import app.model.*;
-import app.model.location.Location;
-import app.model.userContent.Review;
-import app.model.location.Dormitory;
-import app.model.location.cafeteria.Cafeteria;
 
-
+/**
+ * The ReviewDao class provides methods for interacting with reviews in the database.
+ */
 public class ReviewDao {
 
-    //this method returns the database id of the newly inserted review
-    //does that according to type of the Reviewable instance of the Review
+    /**
+     * Adds a review to the database.
+     *
+     * @param r The review to be added.
+     * @return The ID of the newly added review, or 0 if an error occurred.
+     */
     public static int addReview(Review r){
         try {
             String query = "INSERT INTO university_sync.review " +
@@ -38,11 +44,16 @@ public class ReviewDao {
             return idOfNewReview;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
-            return 0;
+            return -1;
         }
     }
 
-    //TODO: this method will return whether the operation was successful
+    /**
+     * Removes a review from the database.
+     *
+     * @param reviewId The ID of the review to be removed.
+     * @return True if the removal was successful, false otherwise.
+     */
     public static boolean removeReview(int reviewId){
         String query = "DELETE FROM university_sync.review WHERE review_id= ?;";
         try

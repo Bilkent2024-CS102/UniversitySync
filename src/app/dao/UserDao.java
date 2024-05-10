@@ -6,10 +6,16 @@ import app.model.User;
 import app.model.FriendRequest;
 
 /**
- * database access class for user and user related data.
+ * The UserDao class provides methods for accessing user-related data in the database.
  */
 public class UserDao {
 
+    /**
+     * Adds a user to the database.
+     *
+     * @param u The user to be added.
+     * @return The ID of the newly added user, or -1 if an error occurred.
+     */
     public static int addUser(User u){
         try{
             String query = "INSERT INTO university_sync.student (full_name, email, pass) VALUES (?, ? ,?);";
@@ -30,6 +36,12 @@ public class UserDao {
         }
     }
 
+    /**
+     * Updates user information in the database.
+     *
+     * @param u The user with updated information.
+     * @return True if the update was successful, false otherwise.
+     */
     public static boolean updateUser(User u){
         try{
             String query = "UPDATE university_sync.student SET full_name = ?, email = ?, pass = ?, " +
@@ -52,6 +64,12 @@ public class UserDao {
         }
     }
 
+    /**
+     * Retrieves friend requests to a given user.
+     *
+     * @param receiverId The ID of the user who received the friend requests.
+     * @return An ArrayList containing the friend requests received by the user.
+     */
     public static ArrayList<FriendRequest> getFriendRequestsTo(int receiverId)
     {
         try
@@ -75,7 +93,12 @@ public class UserDao {
         }
     }
 
-    //TODO Check if this works properly, this got a bit experimental
+    /**
+     * Retrieves friends of a given user.
+     *
+     * @param userId The ID of the user whose friends are to be retrieved.
+     * @return An ArrayList containing the friends of the user.
+     */
     public static ArrayList<User> getFriends(int userId)
     {
         try
@@ -108,6 +131,11 @@ public class UserDao {
         }
     }
 
+    /**
+     * Retrieves all users from the database.
+     *
+     * @return An ArrayList containing all users in the database.
+     */
     public static ArrayList<User> getUsers()
     {
         String query = "SELECT * FROM student";
@@ -131,8 +159,11 @@ public class UserDao {
         }
     }
 
-    /*
-     * Retrieves user object from DB, matching 
+    /**
+     * Retrieves a user by their ID from the database.
+     *
+     * @param ID The ID of the user to retrieve.
+     * @return The User object corresponding to the given ID, or null if no such user exists.
      */
     public static User getUserById(int ID)
     {
@@ -154,6 +185,13 @@ public class UserDao {
         }
     }
 
+    /**
+     * Adds a friendship between two users in the database.
+     *
+     * @param u1 The ID of the first user.
+     * @param u2 The ID of the second user.
+     * @return True if the friendship was added successfully, false otherwise.
+     */
     public static boolean addFriend(int u1, int u2){
 
         if(isFriend(u1, u2)){
@@ -180,6 +218,13 @@ public class UserDao {
         }
     }
 
+    /**
+     * Checks if two users are friends.
+     *
+     * @param u1 The ID of the first user.
+     * @param u2 The ID of the second user.
+     * @return True if the users are friends, false otherwise.
+     */
     public static boolean isFriend(int u1, int u2){
         try{
             String query = "SELECT * FROM university_sync.student_friendship WHERE first_student_id = ? AND second_student_id = ?;";
@@ -204,6 +249,13 @@ public class UserDao {
         }
     }
 
+    /**
+     * Removes a friendship between two users from the database.
+     *
+     * @param u1 The ID of the first user.
+     * @param u2 The ID of the second user.
+     * @return True if the friendship was removed successfully, false otherwise.
+     */
     public static boolean removeFriend(int u1, int u2){
 
         if(!isFriend(u1, u2)){
@@ -229,6 +281,12 @@ public class UserDao {
         }
     }
 
+    /**
+     * Adds a friend request to the database.
+     *
+     * @param fr The friend request to be added.
+     * @return The ID of the newly added friend request, or -1 if an error occurred.
+     */
     public static int addFriendRequest(FriendRequest fr){
 
         try {
@@ -252,6 +310,14 @@ public class UserDao {
         }
     }
 
+    /**
+     * Concludes a friend request by either accepting or rejecting it.
+     *
+     * @param sender    The ID of the sender of the friend request.
+     * @param receiver  The ID of the receiver of the friend request.
+     * @param isAccepted True if the friend request is accepted, false otherwise.
+     * @return True if the friend request was concluded successfully, false otherwise.
+     */
     public static boolean concludeFriendRequest(int sender, int receiver, boolean isAccepted){
 
         try {
@@ -271,6 +337,13 @@ public class UserDao {
         }
     }
 
+    /**
+     * Authenticates a user by checking their email and password against the database records.
+     *
+     * @param email    The email of the user.
+     * @param password The password of the user.
+     * @return True if the user is authenticated, false otherwise.
+     */
     public static boolean authenticate(String email, String password){
         try
         {
@@ -292,7 +365,13 @@ public class UserDao {
             return false;
         }
     }
-    
+
+    /**
+     * Retrieves a user by their email from the database.
+     *
+     * @param email The email of the user to retrieve.
+     * @return The User object corresponding to the given email, or null if no such user exists.
+     */
     public static User getUserByEmail(String email){
         try
         {

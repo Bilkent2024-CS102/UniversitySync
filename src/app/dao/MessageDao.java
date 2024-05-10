@@ -1,13 +1,24 @@
 package app.dao;
 
-import app.model.User;
 import app.model.userContent.Message;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * The MessageDao class provides methods for interacting with messages in the database.
+ */
 public class MessageDao {
 
+    /**
+     * Adds a message to the database.
+     *
+     * @param message The message to be added.
+     * @return The ID of the newly added message, or -1 if an error occurred.
+     */
     public static int addMessage(Message message)
     {
         int sender = message.getSenderId();
@@ -39,6 +50,13 @@ public class MessageDao {
         }
     }
 
+    /**
+     * Retrieves messages exchanged between two users.
+     *
+     * @param receiverID The ID of the message receiver.
+     * @param senderID   The ID of the message sender.
+     * @return An ArrayList containing the messages exchanged between the specified users.
+     */
     public static ArrayList<Message> getMessagesBetween(int receiverID, int senderID)
     {
         try
