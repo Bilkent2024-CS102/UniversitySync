@@ -1,1 +1,9 @@
-/target/
+target/*
+
+# Ignoring compiled files
+*.class
+*.jar
+
+# Ignoring compiler files
+.idea/
+.vscode/
