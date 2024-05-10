@@ -1,3 +1,5 @@
+package app.controller;
+
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -24,7 +26,7 @@ public class CafeReviewController {
         Cafeteria cafe = (Cafeteria) e.getSource();
         Date date = Date.valueOf(LocalDate.now());
         
-        Review review = new Review(SessionManager.getCurrentUser(), reviewText, date, date, cafe, rating);
+        Review review = new Review(SessionManager.getCurrentUser().getUserId(), reviewText, date, date, cafe, rating);
         
         ReviewDao.addReview(review);
     }

@@ -49,7 +49,7 @@ public class LoginController {
 
         if (userDao.authenticate(email, password)) // need method to validate email and password
         {
-            int currentUser = UserDao.getUserByEmail(email);
+            User currentUser = UserDao.getUserByEmail(email);
             sessionManager.loginUser(currentUser);
             switchToFXML("src/app/view/Homepage.fxml", e);
         }

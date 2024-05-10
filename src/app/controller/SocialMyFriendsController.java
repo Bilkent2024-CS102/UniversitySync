@@ -1,5 +1,8 @@
 package app.controller;
 
+import app.dao.UserDao;
+import app.model.FriendRequest;
+import app.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +26,7 @@ public class SocialMyFriendsController {
 
     public void unfriend(ActionEvent e)
     {
-        User other = e.getSource();
-        UserDao.removeFriend(SessionManager.getCurrentUser(), other);
+        User other = (User) e.getSource();
+        UserDao.removeFriend(SessionManager.getCurrentUser().getUserId(), other.getUserId());
     }
 }

@@ -20,7 +20,8 @@ public class User {
     private String email;
     private String password;
     private String profilePicturePath; //What is Image class?
-    //TODO Add enum Major here (how?)
+    private String major;
+    private String biography;
 
     private ArrayList<User> friends;
     private ArrayList<ForumPost> liked;
@@ -115,6 +116,12 @@ public class User {
     {
         return postsOwned;
     }
+    public String getMajor(){
+        return major;
+    }
+    public String getBiography(){
+        return biography;
+    }
 
     /*
     * Setters
@@ -168,6 +175,12 @@ public class User {
     {
         this.postsOwned = postsOwned;
     }
+    public void setMajor(String major){
+        this.major = major;
+    }
+    public void setBiography(String biography){
+        this.biography = biography;
+    }
 
     public void addFriend(User friend)
     {
@@ -190,7 +203,7 @@ public class User {
     {
         for (int i = 0; i < pendingIncomingRequests.size(); i++)
         {
-            if (pendingIncomingRequests.get(i).getSender().equals(other))
+            if (pendingIncomingRequests.get(i).getSenderId() == other.getUserId())
             {
                 pendingIncomingRequests.remove(i);
                 return true;
@@ -203,7 +216,7 @@ public class User {
     {
         for (int i = 0; i < pendingRequests.size(); i++)
         {
-            if (pendingRequests.get(i).getReceiver().equals(other))
+            if (pendingRequests.get(i).getReceiverId() == other.getUserId())
             {
                 pendingRequests.remove(i);
                 return true;

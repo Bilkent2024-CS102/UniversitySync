@@ -32,6 +32,28 @@ public class UserDao {
         }
     }
 
+    public static boolean updateUser(User u){
+        try{
+            String query = "UPDATE university_sync.student SET full_name = ?, email = ?, pass = ?, " +
+                    "biography = ?, link_to_profile_picture = ?, student_major = ?, student_room_type_id = ?)" +
+                    "WHERE student_id = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setString(1, u.getName());
+            pst.setString(2, u.getEmail());
+            pst.setString(3, u.getPassword());
+            pst.setString(4, u.getBiography());
+            pst.setString(5, u.getProfilePicturePath());
+            pst.setString(6, u.getMajor());
+            pst.setInt(7, u.getRoom().getRoomId());
+            pst.executeUpdate();
+            return true;
+        }
+        catch (SQLException sqle){
+            sqle.printStackTrace();
+            return false;
+        }
+    }
+
     public static ArrayList<FriendRequest> getFriendRequests(User u)
     {
         try
@@ -183,6 +205,31 @@ public class UserDao {
             return isFriend;
 
         }catch (SQLException sqle){
+            sqle.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean removeFriend(int u1, int u2){
+
+        if(!isFriend(u1, u2)){
+            System.out.println("they are not friends");
+            return false;
+        }
+        try{
+            String query = "DELETE FROM university_sync.student_friendship WHERE (first_student_id = ? AND second_student_id = ?)" +
+                    " OR (first_student_id = ? AND second_student_id = ?);";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+
+            pst.setInt(1, u1);
+            pst.setInt(2, u2);
+            pst.setInt(3, u2);
+            pst.setInt(4, u1);
+            pst.executeUpdate();
+
+            return true;
+        }
+        catch (SQLException sqle){
             sqle.printStackTrace();
             return false;
         }
