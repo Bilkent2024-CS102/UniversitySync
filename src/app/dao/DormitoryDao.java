@@ -42,7 +42,7 @@ public class DormitoryDao {
             resultSet.next();
             dorm = new Dormitory(resultSet.getInt("dormitory_id"), null, resultSet.getString("link_to_dormitory_picture"),
                         resultSet.getString("dorm_name"), resultSet.getString("dorm_description"), 0, null, null);
-            dorm.setReviews(ReviewDao.getReviewsOf(dorm));
+            dorm.setReviews(ReviewDao.getReviewsOf(id));
             dorm.setRooms(DormitoryDao.getRoomTypesIn(id));
             resultSet.close();
             pst.close();

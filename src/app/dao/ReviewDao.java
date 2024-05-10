@@ -16,18 +16,8 @@ public class ReviewDao {
     //does that according to type of the Reviewable instance of the Review
     public static int addReview(Review r){
         try {
-            String type = "";
-            int id = 0;
-            if (r.getR() instanceof Dormitory){
-                type = "dormitory";
-                id = ((Dormitory)r.getR()).getLocationId();
-            }
-            else if (r.getR() instanceof Cafeteria){
-                type = "cafeteria";
-                id = ((Cafeteria)r.getR()).getLocationId();
-            }
             String query = "INSERT INTO university_sync.review " +
-                    "(owner_student_id, creation_date, last_edit_date, main_text, rating_given, review_to_" + type + "_id)" +
+                    "(owner_student_id, creation_date, last_edit_date, main_text, rating_given, review_to_location_id)" +
                     "VALUES (?, ?, ?, ?, ?, ?);";
 
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
@@ -36,7 +26,7 @@ public class ReviewDao {
             pst.setDate(3, new java.sql.Date(r.getLastEditDate().getTime()));
             pst.setString(4, r.getMainText());
             pst.setDouble(5, r.getRateGiven());
-            pst.setInt(6, id);
+            pst.setInt(6, r.getReviewableId());
 
             pst.executeUpdate();
 
@@ -75,13 +65,15 @@ public class ReviewDao {
      * @param reviewId is the id of the review to be edited.
      * @param nexText is the new review text to be set.
      */
-    public static boolean editReview(int reviewId, String nexText){
-        String query = "UPDATE university_sync.review SET main_text = ? WHERE review_id= ?;";
+    public static boolean editReview(int reviewId, String nexText, double newRating){
+        String query = "UPDATE university_sync.review SET main_text = ?, rating_given = ?, last_edit_date = ? WHERE review_id= ?;";
         try
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setString(1, nexText);
-            pst.setInt(2, reviewId);
+            pst.setFloat(2, (float) newRating);
+            pst.setTimestamp(3, new java.sql.Timestamp(new Date().getTime()));
+            pst.setInt(4, reviewId);
             int affectedRow = pst.executeUpdate();
             System.out.println(affectedRow);
             return true;
@@ -93,21 +85,18 @@ public class ReviewDao {
     }
 
     /**
-     * @param r
+     * @param reviewableId
      * @return the arraylist of reviews associated with the given reviewable object r.
      */
-    public static ArrayList<Review> getReviewsOf(Reviewable r){
+    public static ArrayList<Review> getReviewsOf(int reviewableId){
         ArrayList<Review> result = new ArrayList<Review>();
         String query = "";
-        Location loc = (Location) r;
-        int id = loc.getLocationId();
-        String type = ((loc instanceof Cafeteria) ? "cafeteria" : "dormitory");
-        query = "SELECT * FROM university_sync.review;" +
-                "WHERE review_to_" + type + "_id=" + id;
 
+        query = "SELECT * FROM university_sync.review WHERE review_to_location_id= ?";
         try
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, reviewableId);
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next())
             {
@@ -117,7 +106,7 @@ public class ReviewDao {
                         resultSet.getString("main_text"),
                         new Date(resultSet.getDate("creation_date").getTime()),
                         new Date(resultSet.getDate("last_edit_date").getTime()),
-                        loc,
+                        reviewableId,
                         resultSet.getDouble("rating_given")
                 );
 

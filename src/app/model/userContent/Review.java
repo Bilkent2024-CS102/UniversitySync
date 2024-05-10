@@ -1,13 +1,11 @@
 package app.model.userContent;
 
 import app.dao.ReviewDao;
-import app.model.Reviewable;
-import app.model.User;
 
 import java.util.Date;
 
 public class Review extends UserContentItem {
-    private Reviewable r;
+    private int reviewableId;
     private double rateGiven;
     private int reviewId;
 
@@ -18,12 +16,12 @@ public class Review extends UserContentItem {
      * @param text
      * @param creation
      * @param lastEdit
-     * @param r
+     * @param rId
      * @param rateGiven
      */
-    public Review(int ownerId, String text, Date creation, Date lastEdit, Reviewable r, double rateGiven) {
+    public Review(int ownerId, String text, Date creation, Date lastEdit, int rId, double rateGiven) {
         super(ownerId, text, creation, lastEdit);
-        setR(r);
+        setReviewableId(rId);
         setRateGiven(rateGiven);
         int id = ReviewDao.addReview(this);
         setID(id);
@@ -35,22 +33,22 @@ public class Review extends UserContentItem {
      * @param text
      * @param creation
      * @param lastEdit
-     * @param r
+     * @param rId
      * @param rateGiven
      * @param id
      */
-    public Review(int id, int own, String text, Date creation, Date lastEdit, Reviewable r, double rateGiven) {
+    public Review(int id, int own, String text, Date creation, Date lastEdit, int rId, double rateGiven) {
         super(own, text, creation, lastEdit);
-        setR(r);
+        setReviewableId(rId);
         setRateGiven(rateGiven);
         setID(id);
     }
 
-    public Reviewable getR() {
-        return r;
+    public int getReviewableId() {
+        return reviewableId;
     }
-    public void setR(Reviewable r) {
-        this.r = r;
+    public void setReviewableId(int rId) {
+        this.reviewableId = rId;
     }
     public double getRateGiven() {
         return rateGiven;
