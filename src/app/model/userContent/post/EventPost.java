@@ -16,42 +16,40 @@ public class EventPost extends Post{
     /**
      * the constructor that is used when event post is just created. this constructor inserts the event post to database and assigns
      * its database id
-     * @param own
+     *
+     * @param ownerId
      * @param text
      * @param creation
      * @param lastEdit
      * @param heading
      * @param location
      * @param eventDate
-     * @param importantInfo
      */
-    public EventPost(int own, String text, Date creation, Date lastEdit, String heading, String location, Date eventDate, String importantInfo) {
-        super(own, text, creation, lastEdit, heading);
+    public EventPost(int ownerId, String text, Date creation, Date lastEdit, String heading, String location, Date eventDate) {
+        super(ownerId, text, creation, lastEdit, heading);
         setLocation(location);
         setEventDate(eventDate);
-        setImportantInfo(importantInfo);
-        followers = new ArrayList<>();
+        followers = new ArrayList<User>();
         int id = EventPostDao.addEvent(this);
         setID(id);
     }
 
     /**
      * this constructor is used when existing event post is to be pulled from database
+     *
      * @param id
-     * @param own
+     * @param ownerId
      * @param text
      * @param creation
      * @param lastEdit
      * @param heading
      * @param location
      * @param eventDate
-     * @param importantInfo
      */
-    public EventPost(int id, int own, String text, Date creation, Date lastEdit, String heading, String location, Date eventDate, String importantInfo) {
-        super(own, text, creation, lastEdit, heading);
+    public EventPost(int id, int ownerId, String text, Date creation, Date lastEdit, String heading, String location, Date eventDate) {
+        super(ownerId, text, creation, lastEdit, heading);
         setLocation(location);
         setEventDate(eventDate);
-        setImportantInfo(importantInfo);
         followers = new ArrayList<>();
         setID(id);
     }
