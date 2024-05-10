@@ -14,15 +14,15 @@ public class DormTransferPost extends Post{
      * the constructor that is used when dorm transfer post is just created. this constructor inserts the
      * dorm transfer post to database and assigns
      * its database id
-     * @param own
+     * @param ownerId
      * @param text
      * @param creation
      * @param lastEdit
      * @param heading
      * @param roomId
      */
-    public DormTransferPost(int own, String text, Date creation, Date lastEdit, String heading, int roomId) {
-        super(own, text, creation, lastEdit, heading);
+    public DormTransferPost(int ownerId, String text, Date creation, Date lastEdit, String heading, int roomId) {
+        super(ownerId, text, creation, lastEdit, heading);
         setRoomId(roomId);
         int id = DormTransferPostDao.addDormTransferPost(this);
         setID(id);
@@ -31,15 +31,15 @@ public class DormTransferPost extends Post{
     /**
      * the constructor that is used when event post is just created. this constructor inserts the event post to database and assigns
      * its database id
-     * @param own
+     * @param ownerId
      * @param text
      * @param creation
      * @param lastEdit
      * @param heading
      * @param roomId
      */
-    public DormTransferPost(int id, int own, String text, Date creation, Date lastEdit, String heading, int roomId) {
-        super(own, text, creation, lastEdit, heading);
+    public DormTransferPost(int id, int ownerId, String text, Date creation, Date lastEdit, String heading, int roomId) {
+        super(ownerId, text, creation, lastEdit, heading);
         setRoomId(roomId);
         setID(id);
     }

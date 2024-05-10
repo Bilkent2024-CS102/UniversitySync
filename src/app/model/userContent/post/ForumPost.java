@@ -17,14 +17,14 @@ public class ForumPost extends Post{
     /**
      * the constructor that is used when forum post is just created. this constructor inserts the forum post to database and assigns
      * its database id
-     * @param own
+     * @param ownerId
      * @param text
      * @param creation
      * @param lastEdit
      * @param heading
      */
-    public ForumPost(int own, String text, Date creation, Date lastEdit, String heading) {
-        super(own, text, creation, lastEdit, heading);
+    public ForumPost(int ownerId, String text, Date creation, Date lastEdit, String heading) {
+        super(ownerId, text, creation, lastEdit, heading);
         tags = new ArrayList<>();
         replies = new ArrayList<>();
         likedBy = new ArrayList<>();
@@ -34,14 +34,14 @@ public class ForumPost extends Post{
 
     /**
      * this constructor is used when existing forum post is to be pulled from database
-     * @param own
+     * @param ownerId
      * @param text
      * @param creation
      * @param lastEdit
      * @param heading
      */
-    public ForumPost(int id, int own, String text, Date creation, Date lastEdit, String heading, ArrayList<Tag> tags, ArrayList<Reply> replies, ArrayList<User> likedBy) {
-        super(own, text, creation, lastEdit, heading);
+    public ForumPost(int id, int ownerId, String text, Date creation, Date lastEdit, String heading, ArrayList<Tag> tags, ArrayList<Reply> replies, ArrayList<User> likedBy) {
+        super(ownerId, text, creation, lastEdit, heading);
         setTags(tags);
         setReplies(replies);
         setLikedBy(likedBy);
