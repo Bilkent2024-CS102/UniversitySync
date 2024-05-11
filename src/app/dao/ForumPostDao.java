@@ -203,6 +203,7 @@ public class ForumPostDao {
     }
 
     /**
+     * @TESTED
      * Deletes a forum post from the database.
      *
      * @param postId The ID of the post to delete.
@@ -214,6 +215,7 @@ public class ForumPostDao {
             String query = "DELETE FROM university_sync.forum_post WHERE forum_post_id=" + postId;
             PreparedStatement ps = DBConnectionManager.getConnection().prepareStatement(query);
             ResultSet rs = ps.getResultSet();
+            ps.executeUpdate();
         }
         catch (SQLException sqle)
         {
@@ -223,6 +225,7 @@ public class ForumPostDao {
     }
 
     /**
+     * @TESTED
      * Edits a forum post in the database.
      *
      * @param postId     The ID of the post to edit.
@@ -235,7 +238,7 @@ public class ForumPostDao {
         try
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            pst.executeQuery();
+            pst.executeUpdate();
             return true;
         }
         catch (SQLException sqle)
@@ -245,6 +248,7 @@ public class ForumPostDao {
     }
 
     /**
+     * @TESTED
      * Adds a forum post to the database.
      *
      * @param forumPost The forum post to add.

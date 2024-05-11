@@ -4,7 +4,6 @@ import app.model.User;
 
 public class Message extends UserContentItem {
 
-    private int senderId;
     private int receiverId;
 
     public Message(int senderId, int receiverId, String text)
@@ -22,10 +21,10 @@ public class Message extends UserContentItem {
     }
 
     public int getSenderId() {
-        return senderId;
+        return this.getOwnerId();
     }
 
     public void setSenderId(int senderId) {
-        this.senderId = senderId;
+        this.setOwnerId(senderId);
     }
 }

@@ -39,13 +39,9 @@ public abstract class UserContentItem {
         setLastEditDate();
     }
 
-    private void setLastEditDate() {
-        setCreationDate(new Date());
-    }
+    private void setLastEditDate() {setLastEditDate(new Date());}
 
-    private void setCreationDate() {
-        setLastEditDate(new Date());
-    }
+    private void setCreationDate() {setCreationDate(new Date());}
 
     /*
      * Getters

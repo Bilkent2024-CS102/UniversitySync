@@ -15,6 +15,7 @@ import java.util.Date;
 public class ReviewDao {
 
     /**
+     * @TESTED
      * Adds a review to the database.
      *
      * @param r The review to be added.
@@ -49,6 +50,7 @@ public class ReviewDao {
     }
 
     /**
+     * @TESTED
      * Removes a review from the database.
      *
      * @param reviewId The ID of the review to be removed.
@@ -60,8 +62,7 @@ public class ReviewDao {
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, reviewId);
-            int affectedRow = pst.executeUpdate();
-            System.out.println(affectedRow);
+            pst.executeUpdate();
             return true;
         }
         catch (SQLException sqle)
@@ -71,6 +72,7 @@ public class ReviewDao {
     }
 
     /**
+     * @TESTED
      * access to old review will be via id of currentReview
      * return whether the operation is successful
      * @param reviewId is the id of the review to be edited.
@@ -85,8 +87,7 @@ public class ReviewDao {
             pst.setFloat(2, (float) newRating);
             pst.setTimestamp(3, new java.sql.Timestamp(new Date().getTime()));
             pst.setInt(4, reviewId);
-            int affectedRow = pst.executeUpdate();
-            System.out.println(affectedRow);
+            pst.executeUpdate();
             return true;
         }
         catch (SQLException sqle)
@@ -96,6 +97,7 @@ public class ReviewDao {
     }
 
     /**
+     * @TESTED
      * @param reviewableId
      * @return the arraylist of reviews associated with the given reviewable object r.
      */
