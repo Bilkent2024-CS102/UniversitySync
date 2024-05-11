@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class MessageDao {
 
     /**
+     * @TESTED
      * Adds a message to the database.
      *
      * @param message The message to be added.
@@ -51,6 +52,7 @@ public class MessageDao {
     }
 
     /**
+     * @TESTED
      * Retrieves messages exchanged between two users.
      *
      * @param receiverID The ID of the message receiver.
