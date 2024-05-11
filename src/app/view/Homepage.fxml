@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -37,11 +38,17 @@
             </Label>
             <ScrollPane prefHeight="765.0" prefWidth="1222.0">
                <content>
-                  <VBox fx:id="postVBoxID">
+                  <VBox fx:id="postVBoxID" spacing="40.0">
 <!--                      <BorderPane fx:id="borderTextBox_ID" prefHeight="600.0" prefWidth="1222.0" BorderPane.alignment="CENTER">-->
-<!--                     <fx:include source="Post.fxml"/>-->
+                     <fx:include source="Post.fxml" />
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>   <!--you can remove it later-->
                   </VBox>
                </content>
+               <padding>
+                  <Insets left="130.0" />
+               </padding>
             </ScrollPane>
          </children>
       </VBox>

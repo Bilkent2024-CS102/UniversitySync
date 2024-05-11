@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.DormitoryController">
    <top>
@@ -20,9 +21,9 @@
    <center>
       <VBox prefHeight="603.0" prefWidth="1700.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="124.0" prefWidth="1700.0" style="-fx-background-color: #67B2B7;">
+            <Pane prefHeight="125.0" prefWidth="1700.0" style="-fx-background-color: #67B2B7;">
                <VBox.margin>
-                  <Insets top="15.0" />
+                  <Insets />
                </VBox.margin>
                <children>
                   <Label layoutX="66.0" layoutY="35.0" text="Open Dormitory Postings">
@@ -43,116 +44,408 @@
             </Pane>
             <ScrollPane prefHeight="685.0" prefWidth="1700.0">
                <content>
-                  <VBox fx:id="dormitoryPostingVBOX_ID" prefWidth="1680.0" spacing="50.0">
+                  <VBox fx:id="dormitoryPostingVBOX_ID" prefWidth="1594.0" spacing="50.0">
                      <children>
-                        <Pane prefHeight="553.0" prefWidth="1280.0">
+
+                        <Pane prefHeight="637.0" prefWidth="1326.0" style="-fx-background-color: #829CD0;">
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets top="35.0" />
                            </VBox.margin>
                            <children>
-                              <ImageView fitHeight="644.0" fitWidth="715.0" layoutX="47.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                              <Pane layoutY="18.0" prefHeight="82.0" prefWidth="1335.0" style="-fx-background-color: lightgrey;" translateY="-25.0">
+                                 <children>
+                                    <Label layoutX="24.0" layoutY="46.0" text="\@Username387823" translateY="-25.0">
+                                       <font>
+                                          <Font name="PT Sans Bold" size="37.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <ImageView fitHeight="359.0" fitWidth="559.0" layoutX="727.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" translateY="-55.0">
                                  <image>
                                     <Image url="@../icons/61orm_IMG_4929.jpeg" />
                                  </image>
                               </ImageView>
-                              <VBox layoutX="812.0" layoutY="64.0" prefHeight="433.0" prefWidth="423.0">
-                                 <children>
-                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Main Campus">
-                                       <font>
-                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Dorm 81">
-                                       <font>
-                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Double Room">
-                                       <font>
-                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
+                              <Label alignment="CENTER" layoutX="18.0" layoutY="145.0" prefHeight="42.0" prefWidth="669.0" style="-fx-text-fill: black;" text="Transfer Posting" translateY="-55.0">
+                                 <font>
+                                    <Font name="Apple SD Gothic Neo ExtraBold" size="40.0" />
+                                 </font>
+                              </Label>
+                              <Text fill="WHITE" layoutX="35.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room is well cleaned and has a fridge and 2 bunk beds. Roommate should be a hygenic and desciplined guy who doesn't smoke inside the room. Also roommate should ensure that he doesn't bring his friends inside the room when I am somewhere else. Thank You for reading this post." translateY="-55.0" wrappingWidth="667.4204711914062">
+                                 <font>
+                                    <Font name="PT Sans Bold" size="29.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="74.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" text="Message" textFill="WHITE" translateY="-55.0">
+                                 <font>
+                                    <Font name="Arial Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="403.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" text="Transfer" textFill="WHITE" translateY="-55.0">
+                                 <font>
+                                    <Font name="Arial Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="735.0" layoutY="570.0" prefHeight="53.0" prefWidth="159.0" style="-fx-underline: true;" text="Campus:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1181.0" layoutY="570.0" prefHeight="53.0" prefWidth="133.0" style="-fx-underline: true;" text="Dorm:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="735.0" layoutY="650.0" prefHeight="50.0" prefWidth="109.0" style="-fx-underline: true;" text="Type:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1002.0" layoutY="570.0" prefHeight="53.0" prefWidth="114.0" style="-fx-underline: true;" text="Floor:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="889.0" layoutY="580.0" text="Main" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1123.0" layoutY="580.0" text="3" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="847.0" layoutY="656.0" prefHeight="41.0" prefWidth="517.0" text="Double (Bunk Bed), 2 Roommates" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1301.0" layoutY="580.0" text="61" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </Pane>
-                        <Pane prefHeight="553.0" prefWidth="1288.0">
+                        <Pane prefHeight="637.0" prefWidth="1326.0" style="-fx-background-color: #829CD0;">
                            <children>
-                              <ImageView fitHeight="644.0" fitWidth="715.0" layoutX="47.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                              <Pane layoutY="18.0" prefHeight="82.0" prefWidth="1335.0" style="-fx-background-color: lightgrey;" translateY="-25.0">
+                                 <children>
+                                    <Label layoutX="24.0" layoutY="46.0" text="\@Username387823" translateY="-25.0">
+                                       <font>
+                                          <Font name="PT Sans Bold" size="37.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <ImageView fitHeight="359.0" fitWidth="559.0" layoutX="727.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" translateY="-55.0">
                                  <image>
                                     <Image url="@../icons/61orm_IMG_4929.jpeg" />
                                  </image>
                               </ImageView>
-                              <VBox layoutX="812.0" layoutY="64.0" prefHeight="433.0" prefWidth="423.0">
-                                 <children>
-                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Main Campus">
-                                       <font>
-                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Dorm 81">
-                                       <font>
-                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Double Room">
-                                       <font>
-                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
+                              <Label alignment="CENTER" layoutX="18.0" layoutY="145.0" prefHeight="42.0" prefWidth="669.0" style="-fx-text-fill: black;" text="Transfer Posting" translateY="-55.0">
+                                 <font>
+                                    <Font name="Apple SD Gothic Neo ExtraBold" size="40.0" />
+                                 </font>
+                              </Label>
+                              <Text fill="WHITE" layoutX="35.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room is well cleaned and has a fridge and 2 bunk beds. Roommate should be a hygenic and desciplined guy who doesn't smoke inside the room. Also roommate should ensure that he doesn't bring his friends inside the room when I am somewhere else. Thank You for reading this post." translateY="-55.0" wrappingWidth="667.4204711914062">
+                                 <font>
+                                    <Font name="PT Sans Bold" size="29.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="74.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" text="Message" textFill="WHITE" translateY="-55.0">
+                                 <font>
+                                    <Font name="Arial Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="403.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" text="Transfer" textFill="WHITE" translateY="-55.0">
+                                 <font>
+                                    <Font name="Arial Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="735.0" layoutY="570.0" prefHeight="53.0" prefWidth="159.0" style="-fx-underline: true;" text="Campus:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1181.0" layoutY="570.0" prefHeight="53.0" prefWidth="133.0" style="-fx-underline: true;" text="Dorm:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="735.0" layoutY="650.0" prefHeight="50.0" prefWidth="109.0" style="-fx-underline: true;" text="Type:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1002.0" layoutY="570.0" prefHeight="53.0" prefWidth="114.0" style="-fx-underline: true;" text="Floor:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="889.0" layoutY="580.0" text="Main" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1123.0" layoutY="580.0" text="3" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="847.0" layoutY="656.0" prefHeight="41.0" prefWidth="517.0" text="Double (Bunk Bed), 2 Roommates" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1301.0" layoutY="580.0" text="61" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </Pane>
-                        <Pane prefHeight="553.0" prefWidth="1288.0">
+                        <Pane prefHeight="637.0" prefWidth="1326.0" style="-fx-background-color: #829CD0;">
                            <children>
-                              <ImageView fitHeight="644.0" fitWidth="715.0" layoutX="47.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                              <Pane layoutY="18.0" prefHeight="82.0" prefWidth="1335.0" style="-fx-background-color: lightgrey;" translateY="-25.0">
+                                 <children>
+                                    <Label layoutX="24.0" layoutY="46.0" text="\@Username387823" translateY="-25.0">
+                                       <font>
+                                          <Font name="PT Sans Bold" size="37.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <ImageView fitHeight="359.0" fitWidth="559.0" layoutX="727.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" translateY="-55.0">
                                  <image>
                                     <Image url="@../icons/61orm_IMG_4929.jpeg" />
                                  </image>
                               </ImageView>
-                              <VBox layoutX="812.0" layoutY="64.0" prefHeight="433.0" prefWidth="423.0">
+                              <Label alignment="CENTER" layoutX="18.0" layoutY="145.0" prefHeight="42.0" prefWidth="669.0" style="-fx-text-fill: black;" text="Transfer Posting" translateY="-55.0">
+                                 <font>
+                                    <Font name="Apple SD Gothic Neo ExtraBold" size="40.0" />
+                                 </font>
+                              </Label>
+                              <Text fill="WHITE" layoutX="35.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room is well cleaned and has a fridge and 2 bunk beds. Roommate should be a hygenic and desciplined guy who doesn't smoke inside the room. Also roommate should ensure that he doesn't bring his friends inside the room when I am somewhere else. Thank You for reading this post." translateY="-55.0" wrappingWidth="667.4204711914062">
+                                 <font>
+                                    <Font name="PT Sans Bold" size="29.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="74.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" text="Message" textFill="WHITE" translateY="-55.0">
+                                 <font>
+                                    <Font name="Arial Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="403.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" text="Transfer" textFill="WHITE" translateY="-55.0">
+                                 <font>
+                                    <Font name="Arial Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="735.0" layoutY="570.0" prefHeight="53.0" prefWidth="159.0" style="-fx-underline: true;" text="Campus:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1181.0" layoutY="570.0" prefHeight="53.0" prefWidth="133.0" style="-fx-underline: true;" text="Dorm:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="735.0" layoutY="650.0" prefHeight="50.0" prefWidth="109.0" style="-fx-underline: true;" text="Type:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1002.0" layoutY="570.0" prefHeight="53.0" prefWidth="114.0" style="-fx-underline: true;" text="Floor:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="889.0" layoutY="580.0" text="Main" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1123.0" layoutY="580.0" text="3" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="847.0" layoutY="656.0" prefHeight="41.0" prefWidth="517.0" text="Double (Bunk Bed), 2 Roommates" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1301.0" layoutY="580.0" text="61" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="637.0" prefWidth="1326.0" style="-fx-background-color: #829CD0;">
+                           <children>
+                              <Pane layoutY="18.0" prefHeight="82.0" prefWidth="1335.0" style="-fx-background-color: lightgrey;" translateY="-25.0">
                                  <children>
-                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Main Campus">
+                                    <Label layoutX="24.0" layoutY="46.0" text="\@Username387823" translateY="-25.0">
                                        <font>
-                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Dorm 81">
-                                       <font>
-                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label alignment="CENTER" prefHeight="132.0" prefWidth="457.0" text="Double Room">
-                                       <font>
-                                          <Font name="Apple SD Gothic Neo ExtraBold" size="36.0" />
+                                          <Font name="PT Sans Bold" size="37.0" />
                                        </font>
                                     </Label>
                                  </children>
-                              </VBox>
+                              </Pane>
+                              <ImageView fitHeight="359.0" fitWidth="559.0" layoutX="727.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" translateY="-55.0">
+                                 <image>
+                                    <Image url="@../icons/61orm_IMG_4929.jpeg" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER" layoutX="18.0" layoutY="145.0" prefHeight="42.0" prefWidth="669.0" style="-fx-text-fill: black;" text="Transfer Posting" translateY="-55.0">
+                                 <font>
+                                    <Font name="Apple SD Gothic Neo ExtraBold" size="40.0" />
+                                 </font>
+                              </Label>
+                              <Text fill="WHITE" layoutX="35.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room is well cleaned and has a fridge and 2 bunk beds. Roommate should be a hygenic and desciplined guy who doesn't smoke inside the room. Also roommate should ensure that he doesn't bring his friends inside the room when I am somewhere else. Thank You for reading this post." translateY="-55.0" wrappingWidth="667.4204711914062">
+                                 <font>
+                                    <Font name="PT Sans Bold" size="29.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="74.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" text="Message" textFill="WHITE" translateY="-55.0">
+                                 <font>
+                                    <Font name="Arial Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="403.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" text="Transfer" textFill="WHITE" translateY="-55.0">
+                                 <font>
+                                    <Font name="Arial Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="735.0" layoutY="570.0" prefHeight="53.0" prefWidth="159.0" style="-fx-underline: true;" text="Campus:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1181.0" layoutY="570.0" prefHeight="53.0" prefWidth="133.0" style="-fx-underline: true;" text="Dorm:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="735.0" layoutY="650.0" prefHeight="50.0" prefWidth="109.0" style="-fx-underline: true;" text="Type:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1002.0" layoutY="570.0" prefHeight="53.0" prefWidth="114.0" style="-fx-underline: true;" text="Floor:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="889.0" layoutY="580.0" text="Main" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1123.0" layoutY="580.0" text="3" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="847.0" layoutY="656.0" prefHeight="41.0" prefWidth="517.0" text="Double (Bunk Bed), 2 Roommates" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1301.0" layoutY="580.0" text="61" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </Pane>
+                        <Pane prefHeight="637.0" prefWidth="1326.0" style="-fx-background-color: #829CD0;">
+                           <children>
+                              <Pane layoutY="18.0" prefHeight="82.0" prefWidth="1335.0" style="-fx-background-color: lightgrey;" translateY="-25.0">
+                                 <children>
+                                    <Label layoutX="24.0" layoutY="46.0" text="\@Username387823" translateY="-25.0">
+                                       <font>
+                                          <Font name="PT Sans Bold" size="37.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <ImageView fitHeight="359.0" fitWidth="559.0" layoutX="727.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" translateY="-55.0">
+                                 <image>
+                                    <Image url="@../icons/61orm_IMG_4929.jpeg" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER" layoutX="18.0" layoutY="145.0" prefHeight="42.0" prefWidth="669.0" style="-fx-text-fill: black;" text="Transfer Posting" translateY="-55.0">
+                                 <font>
+                                    <Font name="Apple SD Gothic Neo ExtraBold" size="40.0" />
+                                 </font>
+                              </Label>
+                              <Text fill="WHITE" layoutX="35.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room is well cleaned and has a fridge and 2 bunk beds. Roommate should be a hygenic and desciplined guy who doesn't smoke inside the room. Also roommate should ensure that he doesn't bring his friends inside the room when I am somewhere else. Thank You for reading this post." translateY="-55.0" wrappingWidth="667.4204711914062">
+                                 <font>
+                                    <Font name="PT Sans Bold" size="29.0" />
+                                 </font>
+                              </Text>
+                              <Button layoutX="74.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" text="Message" textFill="WHITE" translateY="-55.0">
+                                 <font>
+                                    <Font name="Arial Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="403.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" text="Transfer" textFill="WHITE" translateY="-55.0">
+                                 <font>
+                                    <Font name="Arial Bold" size="26.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="735.0" layoutY="570.0" prefHeight="53.0" prefWidth="159.0" style="-fx-underline: true;" text="Campus:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1181.0" layoutY="570.0" prefHeight="53.0" prefWidth="133.0" style="-fx-underline: true;" text="Dorm:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="735.0" layoutY="650.0" prefHeight="50.0" prefWidth="109.0" style="-fx-underline: true;" text="Type:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1002.0" layoutY="570.0" prefHeight="53.0" prefWidth="114.0" style="-fx-underline: true;" text="Floor:" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="PT Serif Bold" size="33.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="889.0" layoutY="580.0" text="Main" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1123.0" layoutY="580.0" text="3" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="847.0" layoutY="656.0" prefHeight="41.0" prefWidth="517.0" text="Double (Bunk Bed), 2 Roommates" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="1301.0" layoutY="580.0" text="61" textFill="WHITE" translateX="-20.0" translateY="-95.0">
+                                 <font>
+                                    <Font name="Times New Roman Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+
+
+
                      </children>
                      <padding>
-                        <Insets left="200.0" right="200.0" />
+                        <Insets left="160.0" right="100.0" />
                      </padding>
                   </VBox>
                </content></ScrollPane>
