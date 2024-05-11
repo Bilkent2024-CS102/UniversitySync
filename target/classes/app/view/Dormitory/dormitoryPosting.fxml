@@ -76,12 +76,12 @@
                                     <Font name="PT Sans Bold" size="29.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="74.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" text="Message" textFill="WHITE" translateY="-55.0">
+                              <Button layoutX="74.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" text="Message" textFill="WHITE" translateY="-55.0">
                                  <font>
                                     <Font name="Arial Bold" size="26.0" />
                                  </font>
                               </Button>
-                              <Button layoutX="403.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" text="Transfer" textFill="WHITE" translateY="-55.0">
+                              <Button layoutX="403.0" layoutY="574.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="187.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" text="Transfer" textFill="WHITE" translateY="-55.0">
                                  <font>
                                     <Font name="Arial Bold" size="26.0" />
                                  </font>

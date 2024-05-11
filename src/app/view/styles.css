@@ -90,10 +90,10 @@
 }
 
 /*After you press any Cafe: >>*/
-#clickHereReviewText_ID  {
+.clickHereReview {
     -fx-text-fill: #4267B2;
 }
-#clickHereReviewText_ID:hover {
+.clickHereReview:hover {
     -fx-text-fill: yellow;
 }
 
