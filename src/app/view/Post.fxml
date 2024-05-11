@@ -64,22 +64,30 @@
             <Insets left="20.0" />
          </padding>
       </HBox>
-      <Label fx:id="postUsernameID" layoutX="116.0" layoutY="30.0" prefHeight="36.0" prefWidth="370.0" text="zaeem_sheikh383">
+      <Label fx:id="postUsernameID" layoutX="119.0" layoutY="24.0" prefHeight="36.0" prefWidth="370.0" text="zaeem_sheikh383">
          <font>
             <Font name="SansSerif Bold Italic" size="30.0" />
          </font>
       </Label>
          <ImageView fx:id="userImageOnPostID" fitHeight="61.0" fitWidth="71.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-         <ImageView fitHeight="54.0" fitWidth="46.0" layoutX="891.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@icons/1722494.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="54.0" fitWidth="56.0" layoutX="815.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@icons/65482-200.png" />
-            </image>
-         </ImageView>
+      <Button layoutX="798.0" layoutY="13.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="53.0" style="-fx-background-color: #829CD0;">
+         <graphic>
+               <ImageView fitHeight="49.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@icons/65482-200.png" />
+                  </image>
+               </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="895.0" layoutY="17.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="53.0" style="-fx-background-color: #829CD0;">
+         <graphic>
+               <ImageView fitHeight="43.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@icons/1722494.png" />
+                  </image>
+               </ImageView>
+         </graphic>
+      </Button>
    </children>
 
 </Pane>
