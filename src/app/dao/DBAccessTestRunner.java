@@ -51,8 +51,7 @@ public class DBAccessTestRunner {
         //Cafeteria c = CafeteriaDao.getCafeteriaById(1);
         //Review r = new Review(users.get(3), "nice cafeteria however somewhat expensive", new java.util.Date(), new java.util.Date(), c, 4);
         try {
-            User u = UserDao.getUserById(567);
-            System.out.println(u.getUserId() + " " + u.getEmail() + " " + u.getPassword() + " " + u.getName());
+            UserDao.addRequestToAdmin(3, "admin pls add tinder feature");
         }
         catch (Exception e){
             e.printStackTrace();

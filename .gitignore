@@ -5,5 +5,5 @@ target/*
 *.jar
 
 # Ignoring compiler files
-.idea/
-.vscode/
+.idea/*
+.vscode/*

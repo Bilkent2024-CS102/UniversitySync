@@ -36,6 +36,15 @@ public class ForumController {
         filterStage.setScene(new Scene(root));
         filterStage.showAndWait();
     }
+    public void displayMakePostPopup(ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(new File("src/app/view/ForumPage/MakePostPopup.fxml").toURI().toURL());
+        Parent root = fxmlLoader.load();
+        Stage filterStage = new Stage();
+        filterStage.initModality(Modality.APPLICATION_MODAL);
+        filterStage.initStyle(StageStyle.UTILITY);
+        filterStage.setScene(new Scene(root));
+        filterStage.showAndWait();
+    }
     public void addForumFilter(ActionEvent event) throws IOException {
         stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();

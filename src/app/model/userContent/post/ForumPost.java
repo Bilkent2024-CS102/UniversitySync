@@ -46,8 +46,8 @@ public class ForumPost extends Post{
         tags = new ArrayList<>();
         replies = new ArrayList<>();
         likedBy = new ArrayList<>();
-        int id = ForumPostDao.addForumPost(this);
-        setID(id);
+//        int id = ForumPostDao.addForumPost(this);
+//        setID(id);
     }
 
     /**
