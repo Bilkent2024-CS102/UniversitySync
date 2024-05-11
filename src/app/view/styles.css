@@ -1,6 +1,19 @@
 
 
 /*****************************************************  TOP TAB  **************************************************/
+#topHBoxID Button:pressed {
+    /* Pressed state */
+    -fx-background-color: #6D87B8; /* Slightly darker than default color */
+}
+#topHBoxID Button:hover {
+    /* Hover state */
+    -fx-background-color: #A3B9E4; /* Lighter version of default color */
+}
+
+#topHBoxID MenuButton:pressed {
+    /* Pressed state */
+    -fx-background-color: #6D87B8;
+}
 #topHBoxID Button, MenuButton {
     -fx-background-color: #829CD0; /* Default color */
     -fx-text-fill: black; /* Text color */
@@ -8,26 +21,10 @@
     -fx-padding: 5px 10px;
     -fx-margin: 5px;
 }
-
-#topHBoxID Button:hover {
-    /* Hover state */
-    -fx-background-color: #A3B9E4; /* Lighter version of default color */
-}
 #topHBoxID MenuButton:hover {
     /* Hover state */
     -fx-background-color: #A3B9E4; /* Lighter version of default color */
 }
-
-#topHBoxID Button:pressed {
-    /* Pressed state */
-    -fx-background-color: #6D87B8; /* Slightly darker than default color */
-}
-#topHBoxID MenuButton:pressed {
-    /* Pressed state */
-    -fx-background-color: #6D87B8; /* Slightly darker than default color */
-}
-
-
 
 /*****************************************************  RIGHT EVENT TAB  **************************************************/
 /*#Event_VBox_ID ToggleButton {
@@ -189,16 +186,35 @@
 .anyBlackButton:pressed {
     -fx-background-color: #353935;
 }
-
-
+/*Grey Buttons*/
 .greyButton  {
      -fx-background-color: #808080;
 }
 .greyButton:hover {
     -fx-background-color: #C0C0C0;
-
 }
 .greyButton:pressed {
     -fx-background-color: #A9A9A9;
 }
 
+/*Blue Button*/
+
+.anyBlueButton {
+    /* Pressed state */
+    -fx-background-color: #859BC6; /* Slightly darker than default color */
+}
+.anyBlueButton:hover {
+    /* Hover state */
+    -fx-background-color:  #A3B9E4;/* Lighter version of default color */
+}
+.anyBlueButton:pressed {
+    /* Pressed state */
+    -fx-background-color: #B0E4FF; /* Slightly darker than default color */
+}
+/*
+.redTriangleButton {
+    -fx-background-color: #ee414f;
+}
+.redTriangleButton:hover {
+    -fx-background-color: #ff0015;
+}*/

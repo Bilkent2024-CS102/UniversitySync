@@ -58,7 +58,7 @@
                   <Font name="PT Serif Bold" size="32.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="dormChoiceBoxID" layoutX="350.0" layoutY="250.0" onMouseClicked="#addDormNames" prefHeight="43.0" prefWidth="226.0" />
+            <ChoiceBox fx:id="dormChoiceBoxID" layoutX="350.0" layoutY="250.0" prefHeight="43.0" prefWidth="226.0" />
             <ChoiceBox layoutX="350.0" layoutY="360.0" prefHeight="43.0" prefWidth="226.0" />
          </children>
       </Pane>
