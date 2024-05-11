@@ -66,7 +66,8 @@ public class PostController {
 
 
     public void switchToPostReply(ActionEvent event) throws IOException {
-        switchToFXML("src/app/view/SocialPage/.fxml", event);
+        //TODO: after pressing reply under post, this opens the reply page associated with that particular post
+        //TODO: UI > PostReply.fxml
     }
 
 //   public void setData(Post post) {
