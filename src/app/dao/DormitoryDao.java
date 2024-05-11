@@ -14,19 +14,20 @@ import java.util.ArrayList;
 public class DormitoryDao {
 
     /**
+     * @TESTED
      * Retrieves all dormitories from the database.
      *
      * @return An ArrayList containing all Dormitory instances.
      */
     public static ArrayList<Dormitory> getAllDormitories(){
-        String query = "SELECT * FROM dormitory";
+        String query = "SELECT * FROM university_sync.dormitory";
         ArrayList<Dormitory> dormitories = new ArrayList<>();
 
         try{
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
-                Dormitory dorm = new Dormitory(resultSet.getInt("dormitory_id"), null, resultSet.getString("link_to_dormitory_picture"),
+                Dormitory dorm = new Dormitory(resultSet.getInt("dormitory_location_id"), null, resultSet.getString("link_to_dormitory_picture"),
                         resultSet.getString("dorm_name"), resultSet.getString("dorm_description"), 0, null, null);
                 dormitories.add(dorm);
             }
@@ -41,20 +42,21 @@ public class DormitoryDao {
     }
 
     /**
+     * @TESTED
      * Retrieves a dormitory by its ID from the database.
      *
      * @param id The ID of the dormitory to retrieve.
      * @return The Dormitory object corresponding to the given ID, or null if no such dormitory exists.
      */
     public static Dormitory getDormitoryById(int id){
-        String query = "SELECT * FROM dormitory WHERE dormitory_id = ?";
+        String query = "SELECT * FROM university_sync.dormitory WHERE dormitory_location_id = ?";
         try{
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, id);
             ResultSet resultSet = pst.executeQuery();
             Dormitory dorm;
             resultSet.next();
-            dorm = new Dormitory(resultSet.getInt("dormitory_id"), null, resultSet.getString("link_to_dormitory_picture"),
+            dorm = new Dormitory(resultSet.getInt("dormitory_location_id"), null, resultSet.getString("link_to_dormitory_picture"),
                         resultSet.getString("dorm_name"), resultSet.getString("dorm_description"), 0, null, null);
             dorm.setReviews(ReviewDao.getReviewsOf(id));
             dorm.setRooms(DormitoryDao.getRoomTypesIn(id));
@@ -69,6 +71,7 @@ public class DormitoryDao {
     }
 
     /**
+     * @TESTED
      * Retrieves room types in a dormitory from the database.
      *
      * @param dormId The ID of the dormitory.
@@ -76,7 +79,7 @@ public class DormitoryDao {
      */
     public static ArrayList<Room> getRoomTypesIn(int dormId){
         ArrayList<Room> rooms = new ArrayList<>();
-        String query = "SELECT * FROM room_type WHERE room_in_dormitory_id = ?";
+        String query = "SELECT * FROM university_sync.room_type WHERE room_in_dormitory_id = ?";
         try{
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, dormId);

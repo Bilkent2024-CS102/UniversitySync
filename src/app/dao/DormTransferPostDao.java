@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class DormTransferPostDao {
 
     /**
+     * @TESTED
      * Takes integer id and makes a 'SELECT' query.
      * @param id
      * @return the DormTransferPost instance by given id from database.
@@ -39,6 +40,7 @@ public class DormTransferPostDao {
     }
 
     /**
+     * @TESTED
      * Deletes from the dorm_transfer_post table if possible.
      * The post to be deleted is indicated by the given integer id.
      * @param id
@@ -63,6 +65,7 @@ public class DormTransferPostDao {
     }
 
     /**
+     * @TESTED
      * Edit the main text of the dorm_transfer_post identified
      * by the given integer id. New main_text will be {@code editedText}
      * @param id
@@ -77,7 +80,7 @@ public class DormTransferPostDao {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setString(1, editedText);
             pst.setInt(2, id);
-            pst.executeQuery();
+            pst.executeUpdate();
             return true;
         }
         catch (SQLException sqle)
@@ -87,13 +90,14 @@ public class DormTransferPostDao {
     }
 
     /**
+     * @TESTED
      * Adds the given DormTransferPost object to database.
      * @param post
      * @return whether the adding operation was successful or not.
      */
     public static int addDormTransferPost(DormTransferPost post)
     {
-        String query = "INSERT INTO university_sync.dorm_transfer_post (owner_student_id, creation_date, last_edit_date, heading, main_text, posted_room_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO university_sync.dorm_transfer_post (owner_student_id, creation_date, last_edit_date, heading, main_text, posted_room_id) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, post.getOwnerId());
@@ -116,6 +120,7 @@ public class DormTransferPostDao {
     }
 
     /**
+     * @TESTED
      * Selects the {@code DormTransferPost} instances of the given room type,
      * which is indicated by integer id. 
      * @param roomTypeId

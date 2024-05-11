@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class EventPostDao
 {
     /**
+     * @TESTED
      * @return all  {@code EventPost} instances by order of recency.
      */
     public static ArrayList<EventPost> getAllEventPosts()
@@ -44,6 +45,7 @@ public class EventPostDao
     }
 
     /**
+     * @TESTED
      * Add the given  {@code EventPost} instance to the database table.
      * @param post the {@code EventPost} instance.
      * @return the id of the added  {@code EventPost} instance.
@@ -95,6 +97,7 @@ public class EventPostDao
     }
 
     /**
+     * @TESTED
      * Add a {@code User} instance as follower of an {@code EventPost}.
      * @param eventId id of the {@code EventPost}
      * @param userId id of the {@code} User
@@ -117,6 +120,7 @@ public class EventPostDao
     }
 
     /**
+     * @TESTED
      * Removes the {@code User} instance follower
      * from the {@code EventPost} instance.
      * @param eventId id of the {@code EventPost}
