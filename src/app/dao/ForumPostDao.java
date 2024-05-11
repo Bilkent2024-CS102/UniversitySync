@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class ForumPostDao {
 
     /**
+     * @TESTED
      * Retrieves a forum post by its ID from the database.
      *
      * @param id The ID of the forum post to retrieve.
@@ -23,7 +24,7 @@ public class ForumPostDao {
         ForumPost post = null;
         try
         {
-            String query = "SELECT FROM university_sync.forum_post WHERE forum_post_id=" + id;
+            String query = "SELECT * FROM university_sync.forum_post WHERE forum_post_id=" + id;
             PreparedStatement st = DBConnectionManager.getConnection().prepareStatement(query);
             ResultSet rs = st.executeQuery();
             rs.next();
@@ -43,6 +44,7 @@ public class ForumPostDao {
 
 
     /**
+     * @TESTED
      * @return all  {@code EventPost} instances by order of recency.
      */
     public static ArrayList<ForumPost> getForumPostsByRecency()
@@ -74,6 +76,7 @@ public class ForumPostDao {
     }
 
     /**
+     * @TESTED
      * Checks if a forum post is liked by a specific user.
      *
      * @param userId      The ID of the user.
@@ -99,6 +102,7 @@ public class ForumPostDao {
     }
 
     /**
+     * TODO: getUserContentItem id doesnt return ForumPost's id.
      * Adds a like to a forum post in the database.
      *
      * @param post The forum post to add a like to.
@@ -120,6 +124,7 @@ public class ForumPostDao {
     }
 
     /**
+     * TODO To be tested
      * Adds a comment (reply) to a forum post in the database.
      *
      * @param comment The reply to be added.
@@ -130,7 +135,7 @@ public class ForumPostDao {
         int postId = comment.getPostId();
         ForumPost post = ForumPostDao.getPostById(postId);
         try {
-            String query = "INSERT INTO university_sync.comment (owner_student_id, creation_date, last_edit_date, main_text, replies_to_forum_post_id) VALUES (?,?,?,?,?)";
+            String query = "INSERT INTO university_sync.reply (owner_student_id, creation_date, last_edit_date, main_text, replies_to_forum_post_id) VALUES (?,?,?,?,?)";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, comment.getOwnerId());
             pst.setDate(2, new Date(comment.getCreationDate().getTime()));
@@ -150,6 +155,7 @@ public class ForumPostDao {
     }
 
     /**
+     * TODO: To be tested.
      * Delete a comment from the database.
      * @param commentId The ID of the comment to delete.
      * @return true if the deletion was successful, false otherwise.
@@ -168,6 +174,7 @@ public class ForumPostDao {
     }
 
     /**
+     * TODO: To be tested.
      * Retrieves replies to a forum post from the database.
      *
      * @param post The forum post to retrieve replies for.
