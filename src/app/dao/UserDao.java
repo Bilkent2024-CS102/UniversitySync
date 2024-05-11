@@ -2,6 +2,8 @@ package app.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
+
 import app.model.User;
 import app.model.FriendRequest;
 
@@ -408,6 +410,29 @@ public class UserDao {
         {
             System.out.println("Such user does not exist!");
             return null;
+        }
+    }
+
+    /**
+     * adds a request to admin according to the field in the profile page
+     * @param userId id of the user that submitted the request
+     * @param text the text of the suggestion
+     * @return whether the operation is successful
+     */
+    public static boolean addRequestToAdmin(int userId, String text){
+        try{
+            String query = "INSERT INTO university_sync.request_to_admin (created_by_student_id, request_text, request_date)" +
+                    " VALUES (? ,?, ?);";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, userId);
+            pst.setString(2, text);
+            pst.setTimestamp(3, new java.sql.Timestamp(new Date().getTime()));
+            pst.executeUpdate();
+            return true;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            return false;
         }
     }
 }
