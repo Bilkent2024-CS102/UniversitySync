@@ -44,17 +44,14 @@ public class HomePageController implements Initializable
             for(int i = 0; i < posts.size(); i++) {
 
                 fxmlLoader = new FXMLLoader(new File("src/app/view/Post.fxml").toURI().toURL());
-                //fxmlLoader.setLocation(getClass().getResource());
-
-                Pane postPane = null;  //the pane that contains posts in the post fxml
-                postPane = fxmlLoader.load();
+                Pane postPane = fxmlLoader.load();  //the pane that contains posts in the post fxml
 
                 PostController postController = fxmlLoader.getController();
                 postController.setData(posts.get(i));
 
-                //npw adding post to the vbox
-                postVBoxID.getChildren().add(postPane);
+                postVBoxID.getChildren().add(postPane);  //now adding post to the vbox
             }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

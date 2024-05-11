@@ -17,10 +17,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
-
 
 public class PostController {
     private Stage stage;
@@ -29,22 +27,16 @@ public class PostController {
 
     @FXML
     private ImageView userImageOnPostID;
-
     @FXML
     private Label postUsernameID;
-
     @FXML
     private Button addFriendButtonID;
-
     @FXML
     private Button commentButtonID;
-
     @FXML
     private Button likeButtonID;
-
     @FXML
     private Button messageButtonID;
-
     @FXML
     private TextArea postTextAreaID;
 
@@ -107,7 +99,7 @@ public class PostController {
     //     ArrayList<Reply> comments = ForumPostDao.getReplies(post);
     // }
     public void setData(Post post) {
-        //Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
+        // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
         // userImageOnPostID.setImage(image);
         postUsernameID.setText(post.getUsername());
         postTextAreaID.setText(post.getPostText());

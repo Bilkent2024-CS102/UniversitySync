@@ -50,7 +50,10 @@ public class DormitoryController {
         stage.show();
     }
 
-
+    public void switchToDormDetails(ActionEvent event) throws IOException {
+        //suppose user clicks dorm 76, it will take it to dorm 76 detail page
+        switchToFXML("src/app/view/Dormitory/dormitoryDetails.fxml", event);
+    }
     //*********************************( FOR DORM FILTER *************************************
 
     public void displayFilterPopup(ActionEvent event) throws IOException {

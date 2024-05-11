@@ -50,7 +50,7 @@ public class CafeteriaController{
         stage.show();
     }
     public void switchToCafe1(ActionEvent event) throws IOException {
-        switchToFXML("src/app/view/CafeteriaPage/Cafe1.fxml", event);
+        switchToFXML("src/app/view/CafeteriaPage/CafeDetail.fxml", event);
     }
     ////// For filter button
     public void displayAddFilterPopup (ActionEvent event) throws IOException {

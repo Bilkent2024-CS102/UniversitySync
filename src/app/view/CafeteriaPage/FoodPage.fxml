@@ -16,7 +16,7 @@
    <right>
    </right>
    <center>
-      <VBox prefHeight="603.0" prefWidth="1700.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="cafeVBoxID" prefHeight="603.0" prefWidth="1700.0" styleClass="cafeAndDormVBox" BorderPane.alignment="CENTER">
          <children>
             <Pane prefHeight="149.0" prefWidth="1700.0" style="-fx-background-color: #67B2B7;">
                <VBox.margin>
@@ -34,9 +34,9 @@
                      </font></Button>
                </children>
             </Pane>
-            <HBox fx:id="cafeteriaName_HBox_ID" onMouseDragEntered="#switchToCafe1" prefHeight="110.0" prefWidth="1700.0" spacing="200.0">
+            <HBox onMouseDragEntered="#switchToCafe1" prefHeight="110.0" prefWidth="1700.0" spacing="200.0">
                <children>
-                  <Button fx:id="cafeName_Button_ID" mnemonicParsing="false" onAction="#switchToCafe1" prefHeight="110.0" prefWidth="452.0" style="-fx-underline: true;" text="Cafe 1">
+                  <Button mnemonicParsing="false" onAction="#switchToCafe1" prefHeight="110.0" prefWidth="452.0" style="-fx-underline: true;" text="Cafe 1">
                      <font>
                         <Font name="SansSerif Regular" size="42.0" />
                      </font>
