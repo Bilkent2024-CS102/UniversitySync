@@ -11,6 +11,7 @@ import app.model.FriendRequest;
 public class UserDao {
 
     /**
+     * @TESTED
      * Adds a user to the database.
      *
      * @param u The user to be added.
@@ -37,6 +38,7 @@ public class UserDao {
     }
 
     /**
+     * @TESTED
      * Updates user information in the database.
      *
      * @param u The user with updated information.
@@ -45,7 +47,7 @@ public class UserDao {
     public static boolean updateUser(User u){
         try{
             String query = "UPDATE university_sync.student SET full_name = ?, email = ?, pass = ?, " +
-                    "biography = ?, link_to_profile_picture = ?, student_major = ?, student_room_type_id = ?)" +
+                    "biography = ?, link_to_profile_picture = ?, student_major = ?, student_room_type_id = ? " +
                     "WHERE student_id = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setString(1, u.getName());
@@ -54,7 +56,14 @@ public class UserDao {
             pst.setString(4, u.getBiography());
             pst.setString(5, u.getProfilePicturePath());
             pst.setString(6, u.getMajor());
-            pst.setInt(7, u.getRoom().getRoomId());
+            if (u.getRoom() == null)
+            {
+                pst.setNull(7 , Types.INTEGER);
+            }
+            else{
+                pst.setInt(7, u.getRoom().getRoomId());
+            }
+            pst.setInt(8, u.getUserId());
             pst.executeUpdate();
             return true;
         }
@@ -65,6 +74,7 @@ public class UserDao {
     }
 
     /**
+     * @TESTED
      * Retrieves friend requests to a given user.
      *
      * @param receiverId The ID of the user who received the friend requests.
@@ -75,13 +85,13 @@ public class UserDao {
         try
         {
             ArrayList<FriendRequest> friendRequests = new ArrayList<>();
-            String query = "SELECT * FROM university_sync.friend_requests WHERE receiver_id = ?";
+            String query = "SELECT * FROM university_sync.friend_request WHERE receiver_id = ?";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, receiverId);
             ResultSet rs = pst.executeQuery();
             while (rs.next())
             {
-                FriendRequest request = new FriendRequest(rs.getInt("request_id"), rs.getInt("sender_id"), receiverId);
+                FriendRequest request = new FriendRequest(rs.getInt("sender_id"), receiverId);
                 friendRequests.add(request);
             }
             return friendRequests;
@@ -94,6 +104,7 @@ public class UserDao {
     }
 
     /**
+     * @TESTED
      * Retrieves friends of a given user.
      *
      * @param userId The ID of the user whose friends are to be retrieved.
@@ -104,7 +115,7 @@ public class UserDao {
         try
         {
             ArrayList<User> friends = new ArrayList<>();
-            String query = "SELECT * FROM student_friendship WHERE first_student_id = ? OR second_student_id = ?;";
+            String query = "SELECT * FROM university_sync.student_friendship WHERE first_student_id = ? OR second_student_id = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, userId);
             pst.setInt(2, userId);
@@ -114,11 +125,11 @@ public class UserDao {
                 int firstID = rs.getInt("first_student_id");
                 if (userId == firstID)
                 {
-                    friends.add(getUserById(firstID));
+                    friends.add(getUserById(rs.getInt("second_student_id")));
                 }
                 else
                 {
-                    friends.add(getUserById(rs.getInt("second_student_id")));
+                    friends.add(getUserById(firstID));
                 }
             }
             return friends;
@@ -132,13 +143,14 @@ public class UserDao {
     }
 
     /**
+     *  @TESTED
      * Retrieves all users from the database.
      *
      * @return An ArrayList containing all users in the database.
      */
     public static ArrayList<User> getUsers()
     {
-        String query = "SELECT * FROM student";
+        String query = "SELECT * FROM university_sync.student";
         ArrayList<User> students = new ArrayList<>();
 
         try{
@@ -160,6 +172,7 @@ public class UserDao {
     }
 
     /**
+     * @TESTED
      * Retrieves a user by their ID from the database.
      *
      * @param ID The ID of the user to retrieve.
@@ -169,7 +182,7 @@ public class UserDao {
     {
         try
         {
-            String query = "SELECT * FROM student WHERE student_id = ?;";
+            String query = "SELECT * FROM university_sync.student WHERE student_id = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, ID);
             ResultSet resultSet = pst.executeQuery();
@@ -186,6 +199,7 @@ public class UserDao {
     }
 
     /**
+     * @TESTED
      * Adds a friendship between two users in the database.
      *
      * @param u1 The ID of the first user.
@@ -219,6 +233,7 @@ public class UserDao {
     }
 
     /**
+     * @TESTED
      * Checks if two users are friends.
      *
      * @param u1 The ID of the first user.
@@ -250,6 +265,7 @@ public class UserDao {
     }
 
     /**
+     * @TESTED
      * Removes a friendship between two users from the database.
      *
      * @param u1 The ID of the first user.
@@ -282,12 +298,13 @@ public class UserDao {
     }
 
     /**
+     * @TESTED
      * Adds a friend request to the database.
      *
      * @param fr The friend request to be added.
      * @return The ID of the newly added friend request, or -1 if an error occurred.
      */
-    public static int addFriendRequest(FriendRequest fr){
+    public static boolean addFriendRequest(FriendRequest fr){
 
         try {
             String query = "INSERT INTO university_sync.friend_request (sender_id, receiver_id) VALUES (?, ?)";
@@ -302,15 +319,16 @@ public class UserDao {
             ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
             rs.next();
             int idOfNewFriendRequest = rs.getInt(1);
-            return idOfNewFriendRequest;
+            return true;
 
         } catch (SQLException sqle) {
             sqle.printStackTrace();
-            return -1;
+            return false;
         }
     }
 
     /**
+     * @TESTED
      * Concludes a friend request by either accepting or rejecting it.
      *
      * @param sender    The ID of the sender of the friend request.
@@ -338,6 +356,7 @@ public class UserDao {
     }
 
     /**
+     * @TESTED
      * Authenticates a user by checking their email and password against the database records.
      *
      * @param email    The email of the user.
@@ -347,7 +366,7 @@ public class UserDao {
     public static boolean authenticate(String email, String password){
         try
         {
-            String query = "SELECT (email, pass) FROM student WHERE email = ? AND pass = ?;";
+            String query = "SELECT email, pass FROM university_sync.student WHERE email = ? AND pass = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setString(1, email);
             pst.setString(2, password);
@@ -367,6 +386,7 @@ public class UserDao {
     }
 
     /**
+     * @TESTED
      * Retrieves a user by their email from the database.
      *
      * @param email The email of the user to retrieve.
@@ -375,7 +395,7 @@ public class UserDao {
     public static User getUserByEmail(String email){
         try
         {
-            String query = "SELECT * FROM student WHERE email = ?;";
+            String query = "SELECT * FROM university_sync.student WHERE email = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setString(1, email);
             ResultSet resultSet = pst.executeQuery();
