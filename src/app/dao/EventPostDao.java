@@ -141,4 +141,33 @@ public class EventPostDao
             return false;
         }
     }
+
+    /**
+     * @NOT TESTED
+     * Checks if {@code User} instance is
+     * following the {@code EventPost} instance
+     * @param eventId id of the {@code EventPost}
+     * @param userId id of the {@code User}
+     * @return Boolean - true if user is following, false if not
+     */
+    public static boolean doesUserFollow(int eventId, int userId)
+    {
+        try
+        {
+            String query = "SELECT followed_by_student_id university_sync.follow_event_post WHERE event_post_id = ? AND followed_by_student_id = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, eventId);
+            pst.setInt(2, userId);
+
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+
+            return rs.getInt("followed_by_student_id") == userId;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
