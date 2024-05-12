@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
-<!--        onMouseDragEntered="#switchToCafeDetail"-->
+
 
 <HBox prefHeight="110.0" prefWidth="1700.0" spacing="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CafeteriaNameController">
         <Button fx:id="food_cafeteriaName_ID" mnemonicParsing="false" onAction="#switchToCafeDetail" prefHeight="110.0" prefWidth="452.0" style="-fx-underline: true;" text="Cafe 1">

@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -17,9 +19,15 @@ import javafx.stage.StageStyle;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class DormitoryController {
+public class DormitoryController implements Initializable {
+    private Stage stage;
+    private Scene scene;
+    private FXMLLoader fxmlLoader;
+
     // private Label dormNameLabel;
     // private Label dormRatingLabel;
     // private Label dormCampusLabel;
@@ -34,26 +42,49 @@ public class DormitoryController {
     //     dormCampusLabel.setText(dorm.getCampus());
     //     // Need to implement dormRoomTypeLabel if we decide to include it
     // }
-    
-    
-    private Stage stage;
-    private Scene scene;
-    private FXMLLoader fxmlLoader;
 
-    private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
-        Parent root = fxmlLoader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
+//*******************************************************************************************************************
+    @FXML
+    private VBox dormVBoxID = new VBox();
+    private List<DormMock> dormMock;
+
+    public void initialize(URL location, ResourceBundle resources) {
+        dormMock = new ArrayList<>(data());
+
+        try {
+            for( int i = 0; i < dormMock.size(); i++) {
+                fxmlLoader = new FXMLLoader(new File("src/app/view/Dormitory/DormNameHBox.fxml").toURI().toURL());
+                HBox hbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
+                DormitoryNameController eventController = fxmlLoader.getController();
+                //now setting data (username, text ...) for each post
+                eventController.setData(dormMock.get(i));
+//              eventController.setRightEventTabController(this);
+                dormVBoxID.getChildren().add(hbox);  //now adding post (pane) to the vbox
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void switchToDormDetails(ActionEvent event) throws IOException {
-        //suppose user clicks dorm 76, it will take it to dorm 76 detail page
-        switchToFXML("src/app/view/Dormitory/dormitoryDetails.fxml", event);
+    private List<DormMock> data() {
+        List<DormMock> ls = new ArrayList<>();
+
+        DormMock dorm1 = new DormMock();
+        dorm1.setDormName("76");
+        dorm1.setDormRating("Rating 2.2/4");
+        dorm1.setDormCampus("Center");
+        ls.add(dorm1);
+
+        DormMock dorm2 = new DormMock();
+        dorm2.setDormName("55");
+        dorm2.setDormRating("Rating 3.2/4");
+        dorm2.setDormCampus("East");
+        ls.add(dorm2);
+        return ls;
+        // return ForumPostDao.getPostsByRecency();
     }
+
+
     //*********************************( FOR DORM FILTER *************************************
 
     public void displayFilterPopup(ActionEvent event) throws IOException {

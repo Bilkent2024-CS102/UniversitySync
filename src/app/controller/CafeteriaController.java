@@ -43,6 +43,8 @@ public class CafeteriaController implements Initializable {
     private Scene scene;
     private FXMLLoader fxmlLoader;
 
+
+    //****************************************************************************************************8
     @FXML
     private VBox cafeVBoxID = new VBox();
     private List<CafeMock> cafeMock;
@@ -66,26 +68,6 @@ public class CafeteriaController implements Initializable {
     }
 
 
-
-
-//****************************************************************************************************8
-    ////// For filter button
-    public void displayAddFilterPopup (ActionEvent event) throws IOException {
-//        switchToFXML("Add_New_Event.fxml", event);
-
-        // Load the FXML file for the filter screen
-        fxmlLoader = new FXMLLoader(new File("src/app/view/CafeteriaPage/AddFilter_popup.fxml").toURI().toURL());
-        Parent root = fxmlLoader.load();
-
-        // Create a new stage for the filter screen
-        Stage filterStage = new Stage();
-        filterStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
-        filterStage.initStyle(StageStyle.UTILITY);
-        filterStage.setScene(new Scene(root));
-
-        // Show the filter screen
-        filterStage.showAndWait(); // This will block interaction with the main window
-    }
     private List<CafeMock> data() {
         List<CafeMock> ls = new ArrayList<>();
         CafeMock cafe1 = new CafeMock();
@@ -105,6 +87,24 @@ public class CafeteriaController implements Initializable {
 
 
 //**********************************************************************************************
+
+    ////// For filter button
+    public void displayAddFilterPopup (ActionEvent event) throws IOException {
+//        switchToFXML("Add_New_Event.fxml", event);
+
+        // Load the FXML file for the filter screen
+        fxmlLoader = new FXMLLoader(new File("src/app/view/CafeteriaPage/AddFilter_popup.fxml").toURI().toURL());
+        Parent root = fxmlLoader.load();
+
+        // Create a new stage for the filter screen
+        Stage filterStage = new Stage();
+        filterStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
+        filterStage.initStyle(StageStyle.UTILITY);
+        filterStage.setScene(new Scene(root));
+
+        // Show the filter screen
+        filterStage.showAndWait(); // This will block interaction with the main window
+    }
 
     //after user puts filter, use this code: (right now both addFilter and close are same)
     public void applyFilter(ActionEvent event) throws IOException {

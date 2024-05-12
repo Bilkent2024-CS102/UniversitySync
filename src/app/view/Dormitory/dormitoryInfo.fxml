@@ -38,28 +38,8 @@
             <ScrollPane prefHeight="614.0" prefWidth="1700.0">
                <content>
                   <VBox fx:id="dormVBoxID" alignment="TOP_CENTER" prefHeight="130.0" prefWidth="1701.0" spacing="40.0">
-                     <HBox prefHeight="110.0" prefWidth="1684.0" spacing="200.0">
-                        <children>
-                           <Button mnemonicParsing="false" onAction="#switchToDormDetails" prefHeight="110.0" prefWidth="433.0" style="-fx-underline: true;" text="Dorm 70">
-                              <font>
-                                 <Font name="SansSerif Regular" size="42.0" />
-                              </font>
-                           </Button>
-                           <Label prefHeight="110.0" prefWidth="329.0" text="Rated 4.8/5">
-                              <font>
-                                 <Font name="SansSerif Regular" size="42.0" />
-                              </font>
-                           </Label>
-                           <Label prefHeight="110.0" prefWidth="473.0" text="Main Campus">
-                              <font>
-                                 <Font name="SansSerif Regular" size="42.0" />
-                              </font>
-                           </Label>
-                        </children>
-                        <VBox.margin>
-                           <Insets top="20.0" />
-                        </VBox.margin>
-                     </HBox>
+                    <!--here our dorm names will display-->
+
                   </VBox>
                </content>
             </ScrollPane>

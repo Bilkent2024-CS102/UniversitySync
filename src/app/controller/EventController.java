@@ -31,7 +31,7 @@ public class EventController {
         if (eventFollowButton_ID.getText().equalsIgnoreCase("Follow")) {
             eventFollowButton_ID.setText("Unfollow");
             // EventPostDao.addUser(SessionManager.getCurrentUser());
-            eventTexArea_ID.setText(eventTexArea_ID.getText() + "\n You are now following.");
+            eventTexArea_ID.setText( eventTexArea_ID.getText() + "\n You are now following.");
         }
         else {
             eventFollowButton_ID.setText("Follow");
@@ -41,7 +41,10 @@ public class EventController {
     }
 }
 
+
+
 class EventMock {
+
     private String eventText;
 
     public String getEventText() {

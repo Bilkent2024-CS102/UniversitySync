@@ -53,8 +53,8 @@ public class TopTabController  {
         switchToFXML("src/app/view/ProfilePage/profileMyPost.fxml", event);
     }
     public void switchToCafeteriaPage(ActionEvent event) throws IOException {
-        /*switchToFXML("CafeteriaPage/FoodPage.fxml", event);*/
-        switchToFXML("src/app/view/CafeteriaPage/FoodPage.fxml", event);
+        /*switchToFXML("CafeteriaPage/CafeInfo.fxml", event);*/
+        switchToFXML("src/app/view/CafeteriaPage/CafeInfo.fxml", event);
     }
     public void switchToDormitoryPosting(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/Dormitory/dormitoryPosting.fxml", event);
