@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.File;
 import java.io.IOException;
 

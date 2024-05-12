@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SocialMyFriendsController">
    <top>
       <fx:include source="../TOP_TAB.fxml" />
    </top>
@@ -47,159 +47,38 @@
          <center>
             <ScrollPane prefHeight="615.0" prefWidth="1189.0" BorderPane.alignment="CENTER">
                <content>
-                  <VBox prefHeight="962.0" prefWidth="888.0" spacing="30.0">
-                     <children>
-                        <Pane prefHeight="132.0" prefWidth="413.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">
-                           <children>
-                              <ImageView fitHeight="47.0" fitWidth="48.0" layoutX="17.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/icon-monochrome.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="74.0" layoutY="24.0" prefHeight="32.0" prefWidth="177.0" text="Atilla Akus">
-                                 <font>
-                                    <Font name="SansSerif Bold" size="28.0" />
-                                 </font>
-                              </Label>
-                              <Button layoutX="395.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="messageButton" stylesheets="@../styles.css" text="Message" textFill="WHITE">
-                                 <font>
-                                    <Font name="Helvetica" size="13.0" />
-                                 </font>
-                              </Button>
-                              <Button layoutX="572.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
-                                 <font>
-                                    <Font name="Helvetica" size="13.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </Pane>
-                        <Pane prefHeight="132.0" prefWidth="413.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">
-                           <children>
-                              <ImageView fitHeight="47.0" fitWidth="48.0" layoutX="17.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/icon-monochrome.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="74.0" layoutY="24.0" prefHeight="32.0" prefWidth="177.0" text="Atilla Akus">
-                                 <font>
-                                    <Font name="SansSerif Bold" size="28.0" />
-                                 </font>
-                              </Label>
-                              <Button layoutX="395.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="messageButton" stylesheets="@../styles.css" text="Message" textFill="WHITE">
-                                 <font>
-                                    <Font name="Helvetica" size="13.0" />
-                                 </font>
-                              </Button>
-                              <Button layoutX="572.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
-                                 <font>
-                                    <Font name="Helvetica" size="13.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="132.0" prefWidth="413.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">
-                           <children>
-                              <ImageView fitHeight="47.0" fitWidth="48.0" layoutX="17.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/icon-monochrome.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="74.0" layoutY="24.0" prefHeight="32.0" prefWidth="177.0" text="Atilla Akus">
-                                 <font>
-                                    <Font name="SansSerif Bold" size="28.0" />
-                                 </font>
-                              </Label>
-                              <Button layoutX="395.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="messageButton" stylesheets="@../styles.css" text="Message" textFill="WHITE">
-                                 <font>
-                                    <Font name="Helvetica" size="13.0" />
-                                 </font>
-                              </Button>
-                              <Button layoutX="572.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
-                                 <font>
-                                    <Font name="Helvetica" size="13.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="132.0" prefWidth="413.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">
-                           <children>
-                              <ImageView fitHeight="47.0" fitWidth="48.0" layoutX="17.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/icon-monochrome.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="74.0" layoutY="24.0" prefHeight="32.0" prefWidth="177.0" text="Atilla Akus">
-                                 <font>
-                                    <Font name="SansSerif Bold" size="28.0" />
-                                 </font>
-                              </Label>
-                              <Button layoutX="395.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="messageButton" stylesheets="@../styles.css" text="Message" textFill="WHITE">
-                                 <font>
-                                    <Font name="Helvetica" size="13.0" />
-                                 </font>
-                              </Button>
-                              <Button layoutX="572.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
-                                 <font>
-                                    <Font name="Helvetica" size="13.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="132.0" prefWidth="413.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">
-                           <children>
-                              <ImageView fitHeight="47.0" fitWidth="48.0" layoutX="17.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/icon-monochrome.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="74.0" layoutY="24.0" prefHeight="32.0" prefWidth="177.0" text="Atilla Akus">
-                                 <font>
-                                    <Font name="SansSerif Bold" size="28.0" />
-                                 </font>
-                              </Label>
-                              <Button layoutX="395.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="messageButton" stylesheets="@../styles.css" text="Message" textFill="WHITE">
-                                 <font>
-                                    <Font name="Helvetica" size="13.0" />
-                                 </font>
-                              </Button>
-                              <Button layoutX="572.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
-                                 <font>
-                                    <Font name="Helvetica" size="13.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="132.0" prefWidth="413.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">
-                           <children>
-                              <ImageView fitHeight="47.0" fitWidth="48.0" layoutX="17.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/icon-monochrome.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="74.0" layoutY="24.0" prefHeight="32.0" prefWidth="177.0" text="Atilla Akus">
-                                 <font>
-                                    <Font name="SansSerif Bold" size="28.0" />
-                                 </font>
-                              </Label>
-                              <Button layoutX="395.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="messageButton" stylesheets="@../styles.css" text="Message" textFill="WHITE">
-                                 <font>
-                                    <Font name="Helvetica" size="13.0" />
-                                 </font>
-                              </Button>
-                              <Button layoutX="572.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
-                                 <font>
-                                    <Font name="Helvetica" size="13.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </Pane>
-                     </children>
-                     <padding>
-                        <Insets left="140.0" />
-                     </padding>
+                  <VBox fx:id="myFriendsVBox_ID" prefHeight="962.0" prefWidth="914.0" spacing="30.0">
+<!--                              here we are putting our friend List-->
+<!--                        <Pane fx:id="myFriendsPane_ID" prefHeight="132.0" prefWidth="413.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;">-->
+<!--                           <children>-->
+<!--                              <ImageView fitHeight="47.0" fitWidth="48.0" layoutX="17.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">-->
+<!--                                 <image>-->
+<!--                                    <Image url="@../icons/icon-monochrome.png" />-->
+<!--                                 </image>-->
+<!--                              </ImageView>-->
+<!--                              <Label layoutX="74.0" layoutY="24.0" prefHeight="32.0" prefWidth="177.0" text="Atilla Akus">-->
+<!--                                 <font>-->
+<!--                                    <Font name="SansSerif Bold" size="28.0" />-->
+<!--                                 </font>-->
+<!--                              </Label>-->
+<!--                              <Button layoutX="395.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="messageButton" stylesheets="@../styles.css" text="Message" textFill="WHITE">-->
+<!--                                 <font>-->
+<!--                                    <Font name="Helvetica" size="13.0" />-->
+<!--                                 </font>-->
+<!--                              </Button>-->
+<!--                              <Button layoutX="572.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">-->
+<!--                                 <font>-->
+<!--                                    <Font name="Helvetica" size="13.0" />-->
+<!--                                 </font>-->
+<!--                              </Button>-->
+<!--                           </children>-->
+<!--                           <VBox.margin>-->
+<!--                              <Insets top="20.0" />-->
+<!--                           </VBox.margin>-->
+<!--                        </Pane>-->
+<!--                     <padding>-->
+<!--                        <Insets left="140.0" top="40.0" />-->
+<!--                     </padding>-->
                   </VBox>
                </content>
             </ScrollPane>

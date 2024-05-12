@@ -37,13 +37,13 @@ public class RightEventTabController implements Initializable {
         eventMock = new ArrayList<>(data());
 
         try {
-            for(int i = 0; i < eventMock.size(); i++) {
+            for( int i = 0; i < eventMock.size(); i++) {
                 fxmlLoader = new FXMLLoader(new File("src/app/view/Event_Tab/Events.fxml").toURI().toURL());
                 VBox vbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
                 EventController eventController = fxmlLoader.getController();
                 //now setting data (username, text ...) for each post
                 eventController.setData(eventMock.get(i));
-//                eventController.setRightEventTabController(this);
+//              eventController.setRightEventTabController(this);
                 Event_VBox_ID.getChildren().add(vbox);  //now adding post (pane) to the vbox
             }
         } catch (IOException e) {

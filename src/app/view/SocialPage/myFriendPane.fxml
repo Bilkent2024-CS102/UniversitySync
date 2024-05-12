@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="myFriendsPane_ID" prefHeight="132.0" prefWidth="711.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.myFriendsController">
+    <children>
+        <ImageView fx:id="friendProfileImageID" fitHeight="47.0" fitWidth="48.0" layoutX="17.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../icons/icon-monochrome.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="friendUsernameID" layoutX="74.0" layoutY="24.0" prefHeight="32.0" prefWidth="177.0" text="Atilla Akus">
+            <font>
+                <Font name="SansSerif Bold" size="28.0" />
+            </font>
+        </Label>
+        <Button layoutX="395.0" layoutY="70.0" mnemonicParsing="false" onAction="#messageFriendButton" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="messageButton" stylesheets="@../styles.css" text="Message" textFill="WHITE">
+            <font>
+                <Font name="Helvetica" size="13.0" />
+            </font>
+        </Button>
+        <Button layoutX="572.0" layoutY="70.0" mnemonicParsing="false" onAction="#unFriendButton" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
+            <font>
+                <Font name="Helvetica" size="13.0" />
+            </font>
+        </Button>
+    </children>
+</Pane>

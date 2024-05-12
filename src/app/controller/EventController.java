@@ -19,7 +19,7 @@ public class EventController {
     public void setData(EventMock event) {
         // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
         // userImageOnPostID.setImage(image);
-        eventTexArea_ID.setText(event.getEventText());
+        eventTexArea_ID.setText( event.getEventText());
     }
 
     public void followEvent(ActionEvent event) throws IOException {
@@ -28,11 +28,10 @@ public class EventController {
         //EventMock eventAssociatedWithFollowButton = (EventMock) eventFollowButton_ID.getUserData();
        // eventFollowButton_ID = (ToggleButton) event.getSource();
 
-
         if (eventFollowButton_ID.getText().equalsIgnoreCase("Follow")) {
             eventFollowButton_ID.setText("Unfollow");
             // EventPostDao.addUser(SessionManager.getCurrentUser());
-            eventTexArea_ID.setText(eventTexArea_ID.getText() + "\n You are now follo");
+            eventTexArea_ID.setText(eventTexArea_ID.getText() + "\n You are now following.");
         }
         else {
             eventFollowButton_ID.setText("Follow");
