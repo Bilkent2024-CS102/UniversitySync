@@ -46,8 +46,6 @@ public class ForumPost extends Post{
         tags = new ArrayList<>();
         replies = new ArrayList<>();
         likedBy = new ArrayList<>();
-//        int id = ForumPostDao.addForumPost(this);
-//        setID(id);
     }
 
     /**
@@ -59,11 +57,10 @@ public class ForumPost extends Post{
      * @param heading
      */
     public ForumPost(int id, int ownerId, String text, Date creation, Date lastEdit, String heading, ArrayList<Tag> tags, ArrayList<Reply> replies, ArrayList<User> likedBy) {
-        super(ownerId, text, creation, lastEdit, heading);
+        super(id, ownerId, text, creation, lastEdit, heading);
         setTags(tags);
         setReplies(replies);
         setLikedBy(likedBy);
-        setID(id);
     }
 
     /*

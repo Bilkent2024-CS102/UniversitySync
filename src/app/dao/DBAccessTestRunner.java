@@ -1,6 +1,7 @@
 package app.dao; // TODO: be sure to correct this!
 
 import app.model.User;
+import app.model.userContent.Reply;
 
 import java.util.ArrayList;
 
@@ -51,7 +52,10 @@ public class DBAccessTestRunner {
         //Cafeteria c = CafeteriaDao.getCafeteriaById(1);
         //Review r = new Review(users.get(3), "nice cafeteria however somewhat expensive", new java.util.Date(), new java.util.Date(), c, 4);
         try {
-            UserDao.addRequestToAdmin(3, "admin pls add tinder feature");
+            ArrayList<Reply> r = ForumPostDao.getReplies(-5);
+            for (Reply reply: r){
+                System.out.println(reply.getUserContentItemId() + " " + reply.getMainText() + " " + reply.getPostId() + " " + reply.getCreationDate());
+            }
         }
         catch (Exception e){
             e.printStackTrace();

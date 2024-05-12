@@ -102,19 +102,20 @@ public class ForumPostDao {
     }
 
     /**
-     * TODO: getUserContentItem id doesnt return ForumPost's id.
+     * @TESTED
      * Adds a like to a forum post in the database.
      *
-     * @param post The forum post to add a like to.
+     * @param forumPostId The id of the forum post to add a like to.
+     * @param userId id of the user that liked the post
      * @return True if the operation was successful, false otherwise.
      */
-    public static boolean addLike(ForumPost post)
+    public static boolean addLike(int forumPostId, int userId)
     {
         try {
             String query = "INSERT INTO university_sync.like_forum_post (liked_by_student_id, liked_forum_post_id) VALUES (?,?)";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            pst.setInt(1, SessionManager.getCurrentUser().getUserId());
-            pst.setInt(2, post.getUserContentItemId());
+            pst.setInt(1, userId);
+            pst.setInt(2, forumPostId);
             pst.executeUpdate();
             return true;
         } catch (Exception sqle) {
@@ -124,7 +125,32 @@ public class ForumPostDao {
     }
 
     /**
-     * TODO To be tested
+     * @TESTED
+     * Deletes a forum post from the database.
+     *
+     * @param forumPostId The ID of the post to remove like from.
+     * @param userId id of the user that unlikes the post
+     */
+    public static void removeLike(int forumPostId, int userId)
+    {
+        try
+        {
+            String query = "DELETE FROM university_sync.like_forum_post WHERE liked_forum_post_id= ? AND liked_by_student_id= ?;";
+            PreparedStatement ps = DBConnectionManager.getConnection().prepareStatement(query);
+            ps.setInt(1, forumPostId);
+            ps.setInt(2, userId);
+            ResultSet rs = ps.getResultSet();
+            ps.executeUpdate();
+        }
+        catch (SQLException sqle)
+        {
+            sqle.printStackTrace();
+            return;
+        }
+    }
+
+    /**
+     * @TESTED
      * Adds a comment (reply) to a forum post in the database.
      *
      * @param comment The reply to be added.
@@ -141,7 +167,7 @@ public class ForumPostDao {
             pst.setDate(2, new Date(comment.getCreationDate().getTime()));
             pst.setDate(3, new Date(comment.getLastEditDate().getTime()));
             pst.setString(4, comment.getMainText());
-            pst.setInt(5, comment.getUserContentItemId());
+            pst.setInt(5, comment.getPostId());
             pst.executeUpdate();
             Statement st = DBConnectionManager.getConnection().createStatement();
             ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
@@ -155,14 +181,14 @@ public class ForumPostDao {
     }
 
     /**
-     * TODO: To be tested.
+     * @TESTED
      * Delete a comment from the database.
      * @param commentId The ID of the comment to delete.
      * @return true if the deletion was successful, false otherwise.
      */
     public static boolean deleteComment(int commentId) {
         try {
-            String query = "DELETE FROM university_sync.comment WHERE comment_id=?";
+            String query = "DELETE FROM university_sync.reply WHERE reply_id=?";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, commentId);
             pst.executeUpdate();
@@ -174,30 +200,32 @@ public class ForumPostDao {
     }
 
     /**
-     * TODO: To be tested.
+     * @TESTED
      * Retrieves replies to a forum post from the database.
      *
-     * @param post The forum post to retrieve replies for.
+     * @param forumPostId The id of the forum post to retrieve replies for.
      * @return An ArrayList containing the replies to the specified post.
      */
-    public static ArrayList<Reply> getReplies(ForumPost post)
+    public static ArrayList<Reply> getReplies(int forumPostId)
     {
         ArrayList<Reply> result = new ArrayList<Reply>();
         try
         {
-            String query = "SELECT FROM university_sync.reply WHERE replies_to_forum_post_id=" + post.getUserContentItemId();
+            String query = "SELECT * FROM university_sync.reply WHERE replies_to_forum_post_id= ?";
             PreparedStatement st = DBConnectionManager.getConnection().prepareStatement(query);
+            st.setInt(1, forumPostId);
             ResultSet rs = st.executeQuery();
             while (rs.next())
             {
                 Reply r = new Reply(
+                        rs.getInt("reply_id"),
                         rs.getInt("owner_student_id"),
                         rs.getString("main_text"),
                         rs.getDate("creation_date"),
                         rs.getDate("last_edit_date"),
                         rs.getInt("replies_to_forum_post_id")
                 );
-                r.setReplyId(rs.getInt("reply_id"));
+                //r.setReplyId(rs.getInt("reply_id"));
                 result.add(r);
             }
             return result;

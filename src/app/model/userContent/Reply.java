@@ -21,7 +21,7 @@ public class Reply extends UserContentItem{
         super(ownerId, commentContent, creation, lastEdit);
         setPostId(postId);
         int id = ForumPostDao.addComment(this);
-        setReplyId(id);
+        setID(id);
     }
 
     public Reply(int ownerId, String commentContent, int toPost)
@@ -45,10 +45,9 @@ public class Reply extends UserContentItem{
      * @param toPost
      * @param id
      */
-    public Reply(int own, String commentContent, Date creation, Date lastEdit, int toPost, int id) {
-        super(own, commentContent, creation, lastEdit);
+    public Reply(int id, int own, String commentContent, Date creation, Date lastEdit, int toPost) {
+        super(id, own, commentContent, creation, lastEdit);
         setPostId(toPost);
-        setReplyId(id);
     }
 
     /*

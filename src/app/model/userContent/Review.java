@@ -38,10 +38,9 @@ public class Review extends UserContentItem {
      * @param id
      */
     public Review(int id, int own, String text, Date creation, Date lastEdit, int rId, double rateGiven) {
-        super(own, text, creation, lastEdit);
+        super(id, own, text, creation, lastEdit);
         setReviewableId(rId);
         setRateGiven(rateGiven);
-        setID(id);
     }
 
     public int getReviewableId() {

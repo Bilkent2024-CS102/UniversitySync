@@ -30,6 +30,7 @@ public abstract class UserContentItem {
         setMainText(text);
         setCreationDate(creation);
         setLastEditDate(lastEdit);
+        setID(id);
     }
 
     public UserContentItem(int id, int ownerId, String text) {
@@ -37,6 +38,7 @@ public abstract class UserContentItem {
         setMainText(text);
         setCreationDate();
         setLastEditDate();
+        setID(id);
     }
 
     private void setLastEditDate() {setLastEditDate(new Date());}
