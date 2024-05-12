@@ -80,7 +80,7 @@ public class PostController {
      //     commentButtonID.setOnAction(event -> handleCommentButtonClick(post));
    //  }
 
-    // private void handleLikeButtonClick(Post post) {
+     private void handleLikeButton(PostMock post) {
     //     if (likeButtonID.getText().equals("Like"))
     //     {
     //         ForumPostDao.addLike(post);
@@ -91,23 +91,39 @@ public class PostController {
     //         ForumPostDao.removeLike(post);
     //         likeButtonID.setText("Like");
     //     }
-    // }
+    }
 
-    // private void handleCommentButtonClick(Post post) {
+    private void handleCommentButtonPost(PostMock post) {
     //     // switch UI to comment section of post
 
     //     ArrayList<Reply> comments = ForumPostDao.getReplies(post);
-    // }
-    public void setData(Post post) {
+    }
+    private void handleMessageButton(PostMock post) {
+        //     // switch UI to comment section of post
+
+        //     ArrayList<Reply> comments = ForumPostDao.getReplies(post);
+    }
+    private void handleAddFriendButton(PostMock post) {
+        //     // switch UI to comment section of post
+
+        //     ArrayList<Reply> comments = ForumPostDao.getReplies(post);
+    }
+
+    /**
+     *
+     * @param post : sets the data (username, text, noOfLikes) for the passed post parameter
+     */
+    public void setData(PostMock post) {
         // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
         // userImageOnPostID.setImage(image);
         postUsernameID.setText(post.getUsername());
         postTextAreaID.setText(post.getPostText());
     }
+
 }
 
 
-class Post {
+class PostMock {
     private String username;
     private String postText;
     private String profileImageSrc;

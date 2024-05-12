@@ -34,10 +34,10 @@
     -fx-background-color: #B0E4FF;
 }*/
 /*Targeting specific button in place of all buttons like above*/
-#followEventButtonID {
+#eventVBoxID ToggleButton {
     -fx-background-color: #87CEEB;
 }
-#followEventButtonID:hover {
+#eventVBoxID ToggleButton:hover {
     -fx-background-color: #B0E4FF;
 }
 #AddEvent_Display_ButtonID {

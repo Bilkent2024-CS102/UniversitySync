@@ -35,35 +35,34 @@ public class HomePageController implements Initializable
     // ******************************************************************* TEST ***************************************
     @FXML
     private VBox postVBoxID = new VBox();
-    private List<Post> posts;
+    private List<PostMock> posts;
 
     public void initialize(URL location, ResourceBundle resources) {
-        posts = new ArrayList<>(data());   //each time test controller class is called, we make a new arraylist and display the data
+        posts = new ArrayList<>(data());
 
         try {
             for(int i = 0; i < posts.size(); i++) {
-
                 fxmlLoader = new FXMLLoader(new File("src/app/view/Post.fxml").toURI().toURL());
-                Pane postPane = fxmlLoader.load();  //the pane that contains posts in the post fxml
-
+                Pane postPane = fxmlLoader.load();              //the pane that contains posts in the post fxml
                 PostController postController = fxmlLoader.getController();
+                //now setting data (username, text ...) for each post
                 postController.setData(posts.get(i));
-
-                postVBoxID.getChildren().add(postPane);  //now adding post to the vbox
+                postVBoxID.getChildren().add(postPane);  //now adding post (pane) to the vbox
             }
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    private List<Post> data() {
-        List<Post> ls = new ArrayList<>();
-        Post post = new Post();
+
+    // Creating a list of mock data for now (deleting later)
+    private List<PostMock> data() {
+        List<PostMock> ls = new ArrayList<>();
+        PostMock post = new PostMock();
         post.setUsername("Musa");
         post.setPostText("hello i am musa and");
         ls.add(post);
 
-        Post post2 = new Post();
+        PostMock post2 = new PostMock();
         post2.setUsername("Atilla");
         post2.setPostText("hello i am atilla and");
         ls.add(post2);

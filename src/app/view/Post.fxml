@@ -81,7 +81,7 @@
       </Button>
       <Button layoutX="895.0" layoutY="17.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="53.0" style="-fx-background-color: #829CD0;">
          <graphic>
-               <ImageView fitHeight="43.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="43.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@icons/1722494.png" />
                   </image>

@@ -48,7 +48,7 @@
          <center>
             <BorderPane fx:id="borderTextBox_ID" prefHeight="600.0" prefWidth="1222.0" BorderPane.alignment="CENTER">
                <left>
-                  <ScrollPane prefHeight="568.0" prefWidth="309.0" BorderPane.alignment="CENTER">
+                  <ScrollPane prefHeight="582.0" prefWidth="345.0" BorderPane.alignment="CENTER">
                      <content>
                         <VBox fx:id="messageLeftDisplayVBox_ID" prefWidth="307.0" spacing="5.0" style="-fx-background-color: black; -fx-background-radius: 10;">
                            <children>
@@ -75,126 +75,6 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                               </HBox>
-                              <HBox prefHeight="74.0" prefWidth="307.0" style="-fx-background-radius: 10;">
-                                 <children>
-                                    <ImageView fitHeight="45.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/icon-monochrome.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="7.0" top="17.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <Label prefHeight="31.0" prefWidth="200.0" text="\@ardaErdogan1" textFill="WHITE">
-                                       <font>
-                                          <Font name="SansSerif Bold" size="19.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="30.0" top="20.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="74.0" prefWidth="307.0" style="-fx-background-radius: 10;">
-                                 <children>
-                                    <ImageView fitHeight="45.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/icon-monochrome.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="7.0" top="17.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <Label prefHeight="31.0" prefWidth="200.0" text="\@berkay8818" textFill="WHITE">
-                                       <font>
-                                          <Font name="SansSerif Bold" size="19.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="30.0" top="20.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="74.0" prefWidth="307.0" style="-fx-background-radius: 10;">
-                                 <children>
-                                    <ImageView fitHeight="45.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/icon-monochrome.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="7.0" top="17.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <Label prefHeight="31.0" prefWidth="200.0" text="\@musaQuer39" textFill="WHITE">
-                                       <font>
-                                          <Font name="SansSerif Bold" size="19.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="30.0" top="20.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="74.0" prefWidth="307.0" style="-fx-background-radius: 10;">
-                                 <children>
-                                    <ImageView fitHeight="45.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/icon-monochrome.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="7.0" top="17.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <Label prefHeight="31.0" prefWidth="200.0" text="\@burak" textFill="WHITE">
-                                       <font>
-                                          <Font name="SansSerif Bold" size="19.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="30.0" top="20.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="74.0" prefWidth="307.0" style="-fx-background-radius: 10;">
-                                 <children>
-                                    <ImageView fitHeight="45.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/icon-monochrome.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="7.0" top="17.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <Label prefHeight="31.0" prefWidth="200.0" text="\@engin44" textFill="WHITE">
-                                       <font>
-                                          <Font name="SansSerif Bold" size="19.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="30.0" top="20.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="74.0" prefWidth="307.0" style="-fx-background-radius: 10;">
-                                 <children>
-                                    <ImageView fitHeight="45.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/icon-monochrome.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="7.0" top="17.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <Label prefHeight="31.0" prefWidth="200.0" text="\@m4mm_bro" textFill="WHITE">
-                                       <font>
-                                          <Font name="SansSerif Bold" size="19.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="30.0" top="20.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
                            </children>
                            <padding>
                               <Insets left="3.0" />
@@ -209,6 +89,9 @@
                <center>
                   <!--Here we will put the fxml of each text message box-->
                   <!--<fx:include source="messageBox.fxml" />-->
+               </center>
+               <center>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
          </center>
