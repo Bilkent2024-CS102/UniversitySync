@@ -8,8 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -36,9 +38,6 @@ public class DormitoryNameController {
 
     }
 
-
-
-
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
         Parent root = fxmlLoader.load();
@@ -55,11 +54,13 @@ public class DormitoryNameController {
     }
 }
 
-
 class DormMock {
     private String dormName;
     private String dormRating;
     private String dormCampus;
+    private String dormDescription;
+    private ImageView dormImage;
+    private String dormRatedField;
 
     public String getDormName() {
         return dormName;
@@ -84,4 +85,30 @@ class DormMock {
     public void setDormCampus(String dormCampus) {
         this.dormCampus = dormCampus;
     }
+
+    public String getDormRatedField() {
+        return dormRatedField;
+    }
+
+    public ImageView getDormImage() {
+        return dormImage;
+    }
+
+    public String getDormDescription() {
+        return dormDescription;
+    }
+
+    public void setDormDescription(String dormDescription) {
+        this.dormDescription = dormDescription;
+    }
+
+    public void setDormRatedField(String dormRatedField) {
+        this.dormRatedField = dormRatedField;
+    }
+
+    public void setDormImage(ImageView dormImage) {
+        this.dormImage = dormImage;
+    }
+
+
 }

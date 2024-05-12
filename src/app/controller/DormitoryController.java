@@ -73,38 +73,28 @@ public class DormitoryController implements Initializable {
         dorm1.setDormName("76");
         dorm1.setDormRating("Rating 2.2/4");
         dorm1.setDormCampus("Center");
+        dorm1.setDormRatedField(dorm1.getDormRating());
+        dorm1.setDormDescription("This dorm is located near the big ground where beautiful view of the city is visible. This dorm also has one of the best cafeterias in bilkent ie Bilka. Best Dorm");
         ls.add(dorm1);
 
         DormMock dorm2 = new DormMock();
         dorm2.setDormName("55");
         dorm2.setDormRating("Rating 3.2/4");
         dorm2.setDormCampus("East");
+        dorm2.setDormDescription("This dorm is located near the ee building where biggest building is visible. Aliens visit there");
+        dorm2.setDormRatedField(dorm2.getDormRating());
         ls.add(dorm2);
         return ls;
         // return ForumPostDao.getPostsByRecency();
     }
 
+    public List<DormMock> getData() {
+        return data();
+    }
 
     //*********************************( FOR DORM FILTER *************************************
 
-    public void displayFilterPopup(ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(new File("src/app/view/Dormitory/dormFilterPopup.fxml").toURI().toURL());
-        Parent root = fxmlLoader.load();
-        Stage filterStage = new Stage();
-        filterStage.initModality(Modality.APPLICATION_MODAL);
-        filterStage.initStyle(StageStyle.UTILITY);
-        filterStage.setScene(new Scene(root));
-        filterStage.showAndWait();
-    }
-    public void addFilter(ActionEvent event) throws IOException {
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.close();
-    }
 
-    public void cancelFilter(ActionEvent event) throws IOException {
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.close();
-    }
 
 //    @FXML
 //    private ChoiceBox dormChoiceBoxID = new ChoiceBox();

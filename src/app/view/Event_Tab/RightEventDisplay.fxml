@@ -51,32 +51,9 @@
       <ScrollPane prefHeight="553.0" prefWidth="463.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
          <content>
             <VBox fx:id="Event_VBox_ID" alignment="CENTER" prefWidth="476.0">
+
 <!--                  here we put our posts-->
                      <fx:include source="Events.fxml" />
-
-<!--                  <VBox alignment="CENTER" prefHeight="382.0" prefWidth="476.0">-->
-<!--                     <children>-->
-<!--                        <TextArea prefHeight="267.0" prefWidth="476.0" text="&#10;An event is coming up on 3rd Jan 2025 in the B&#10;Building&#10;Time: 5:00 PM&#10;Location: B Binasi&#10;&#10;">-->
-<!--                           <font>-->
-<!--                              <Font size="20.0" />-->
-<!--                           </font>-->
-<!--                           <VBox.margin>-->
-<!--                              <Insets left="20.0" right="20.0" top="30.0" />-->
-<!--                           </VBox.margin>-->
-<!--                        </TextArea>-->
-<!--                        <ToggleButton fx:id="followEventButtonID" mnemonicParsing="false" onAction="#followEvent" prefHeight="65.0" prefWidth="369.0" style="-fx-text-fill: white;" text="Follow" textFill="WHITE">-->
-<!--                           <font>-->
-<!--                              <Font name="Helvetica Neue Bold" size="27.0" />-->
-<!--                           </font>-->
-<!--                           <effect>-->
-<!--                              <Lighting diffuseConstant="2.0" specularConstant="0.67" specularExponent="17.69" surfaceScale="10.0"> </Lighting>-->
-<!--                           </effect>-->
-<!--                           <VBox.margin>-->
-<!--                              <Insets top="4.0" />-->
-<!--                           </VBox.margin>-->
-<!--                        </ToggleButton>-->
-<!--                     </children>-->
-<!--                  </VBox>-->
 
             </VBox>
          </content>
