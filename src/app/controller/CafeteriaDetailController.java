@@ -33,24 +33,38 @@ public class CafeteriaDetailController {
     @FXML
     private TextField cafePriceRange_ID;
 
-    public void setData(CafeMock event) {
+    private CafeMock cafeAssociatedWithThis;
 
-        cafeName_ID.setText( event.getCafeName());
+    public void setData(CafeMock cafe) {
+
+        cafeAssociatedWithThis = cafe;
+
+        cafeName_ID.setText( cafe.getCafeName());
         //cafeImage_ID.setImage(event.getCafeImage().getImage());
-        cafeDescription_ID.setText(event.getCafeDescription());
-        cafeMenuTextArea_ID.setText( event.getCafeMenu());
-        cafeRateTextField_ID.setText( event.getCafeRating());
-        cafePriceRange_ID.setText( event.getCafePriceRange());
+        cafeDescription_ID.setText(cafe.getCafeDescription());
+        cafeMenuTextArea_ID.setText( cafe.getCafeMenu());
+        cafeRateTextField_ID.setText( cafe.getCafeRating());
+        cafePriceRange_ID.setText( cafe.getCafePriceRange());
     }
 
-    public void switchToReviewPage(MouseEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(new File("src/app/view/ReviewPage.fxml").toURI().toURL());
+    public void switchToFXML(String fxmlFileName, MouseEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
         Parent root = fxmlLoader.load();
+
+        ReviewPageController detailController = fxmlLoader.getController();
+        // setting/sending the data of that particular cafe button to cafe details page
+
+        ///////UNCOMMENT kARLO Neechai
+        //detailController.setData( cafeAssociatedWithThis);
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
+    }
+
+    public void switchToReviewPage(MouseEvent event) throws IOException {
+        switchToFXML("src/app/view/ReviewPage.fxml", event);
     }
 }

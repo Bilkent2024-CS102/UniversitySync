@@ -14,13 +14,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class CafeteriaNameController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
-
-//********************************************************************************************
     @FXML
     private Button food_cafeteriaName_ID;
     @FXML
@@ -72,6 +71,7 @@ class CafeMock {
     private String cafeDescription;
     private String cafeMenu;
     private ImageView cafeImage;
+    private List<ReviewMock> cafeReviewList;
 
     public String getCafeName() {
         return cafeName;
@@ -117,5 +117,13 @@ class CafeMock {
 
     public void setCafeDescription(String cafeDescription) {
         this.cafeDescription = cafeDescription;
+    }
+
+    public List<ReviewMock> getCafeReviewList() {
+        return cafeReviewList;
+    }
+
+    public void setCafeReviewList(List<ReviewMock> cafeReviewList) {
+        this.cafeReviewList = cafeReviewList;
     }
 }

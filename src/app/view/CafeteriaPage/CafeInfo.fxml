@@ -62,17 +62,17 @@
             </Label>
             <HBox layoutX="583.0" layoutY="36.0" prefHeight="81.0" prefWidth="879.0" spacing="40.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="235.0" style="-fx-background-radius: 12;" styleClass="greyButton" text="Normal">
+                  <Button mnemonicParsing="false" onAction="#orderCafeByNormal" prefHeight="96.0" prefWidth="235.0" style="-fx-background-radius: 12;" styleClass="greyButton" text="Default">
                      <font>
                         <Font name="Helvetica" size="32.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="81.0" prefWidth="279.0" style="-fx-background-radius: 12;" styleClass="greyButton" text="Order By Rating">
+                  <Button mnemonicParsing="false" onAction="#orderCafeByRating" prefHeight="81.0" prefWidth="279.0" style="-fx-background-radius: 12;" styleClass="greyButton" text="Order By Rating">
                      <font>
                         <Font name="Helvetica" size="32.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="81.0" prefWidth="276.0" style="-fx-background-radius: 12;" styleClass="greyButton" text="Order By Prices">
+                  <Button mnemonicParsing="false" onAction="#orderCafePrice" prefHeight="81.0" prefWidth="276.0" style="-fx-background-radius: 12;" styleClass="greyButton" text="Order By Prices">
                      <font>
                         <Font name="Helvetica" size="32.0" />
                      </font>

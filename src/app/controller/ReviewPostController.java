@@ -1,11 +1,9 @@
 package app.controller;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
@@ -31,14 +29,14 @@ public class ReviewPostController {
         //user should be able to delete its own reviews only
     }
 
-    public void setData(ReviewMock event) {
+    public void setData(ReviewMock review) {
         // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
         // userImageOnPostID.setImage(image);
 
         //reviewPostImage_ID  ... s
-        reviewPost_TopInfo_ID.setText( event.getReviewTopInfo());
-        reviewPost_TopRating_ID.setText( event.getReviewRating());
-        reviewPost_textArea_ID.setText( event.getReviewText());
+        reviewPost_TopInfo_ID.setText( review.getReviewTopInfo());
+        reviewPost_TopRating_ID.setText( review.getReviewRating());
+        reviewPost_textArea_ID.setText( review.getReviewText());
 
     }
 }
@@ -49,6 +47,7 @@ class ReviewMock {
     private String reviewRating;
     private String reviewText;
     //private Image >>>>
+
 
     public String getReviewTopInfo() {
         return reviewTopInfo;

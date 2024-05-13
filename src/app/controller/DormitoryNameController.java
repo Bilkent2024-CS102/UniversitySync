@@ -10,18 +10,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 
 public class DormitoryNameController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
-
-
     @FXML
     private Button DormName_ID;
     @FXML
@@ -29,7 +27,6 @@ public class DormitoryNameController {
     @FXML
     private Label dormCampus_ID;
 
-    // ************  Particular Dorm Associated with this page  ****************
     private DormMock dormAssociatedWithThis;
 
     public void setData(DormMock dorm) {
@@ -69,6 +66,7 @@ class DormMock {
     private String dormCampus;
     private String dormDescription;
     private ImageView dormImage;
+    private List <ReviewMock> dormReviewList;
 
 
     public String getDormName() {
@@ -112,4 +110,11 @@ class DormMock {
         this.dormImage = dormImage;
     }
 
+    public List<ReviewMock> getDormReviewList() {
+        return dormReviewList;
+    }
+
+    public void setDormReviewList(List<ReviewMock> dormReviewList) {
+        this.dormReviewList = dormReviewList;
+    }
 }

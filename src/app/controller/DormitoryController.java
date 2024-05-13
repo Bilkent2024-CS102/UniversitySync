@@ -57,10 +57,11 @@ public class DormitoryController implements Initializable {
                 HBox hbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
                 DormitoryNameController eventController = fxmlLoader.getController();
                 //now setting data (username, text ...) for each post
-                eventController.setData(dormMock.get(i));
+                eventController.setData( dormMock.get(i));
 //              eventController.setRightEventTabController(this);
-                dormVBoxID.getChildren().add(hbox);  //now adding post (pane) to the vbox
+                dormVBoxID.getChildren().add( hbox);  //now adding post (pane) to the vbox
             }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -73,19 +74,52 @@ public class DormitoryController implements Initializable {
         dorm1.setDormName("76");
         dorm1.setDormRating("Rating 2.2/4");
         dorm1.setDormCampus("Center");
-//        dorm1.setDormRating(dorm1.getDormRating());
         dorm1.setDormDescription("This dorm is located near the big ground where beautiful view of the city is visible. This dorm also has one of the best cafeterias in bilkent ie Bilka. Best Dorm");
+
+        //mock review posts for dorm 76
+        List<ReviewMock> dorm1Reviews = new ArrayList<ReviewMock>();
+        ReviewMock m1 = new ReviewMock();
+        m1.setReviewTopInfo("Reviewed by Saqib on 7-11-99");
+        m1.setReviewRating("Rated 3.1/44");
+        m1.setReviewText("This 76 dorm is one of the best dorms in the campus ");
+        dorm1Reviews.add( m1 );
+        ReviewMock m2 = new ReviewMock();
+        m2.setReviewTopInfo("Reviewed by Sana on 3-1-19");
+        m2.setReviewRating("Rated 3.9/44");
+        m2.setReviewText("This 76 dorm is extremely big and modern ");
+        dorm1Reviews.add( m1 );
+        dorm1Reviews.add(m2);
+        dorm1.setDormReviewList(dorm1Reviews);
+
         ls.add(dorm1);
+
+
 
         DormMock dorm2 = new DormMock();
         dorm2.setDormName("55");
         dorm2.setDormRating("Rating 3.2/4");
         dorm2.setDormCampus("East");
         dorm2.setDormDescription("This dorm is located near the ee building where biggest building is visible. Aliens visit there");
-//        dorm2.setDormRatedField(dorm2.getDormRating());
+
+        //mock review posts for dorm 55
+        List<ReviewMock> dorm2Reviews = new ArrayList<ReviewMock>();
+        ReviewMock n1 = new ReviewMock();
+        n1.setReviewTopInfo("Reviewed by Mutaib on 5-5-2020");
+        n1.setReviewRating("Rated 4/4");
+        n1.setReviewText("I dont like 55 dorm as is one of the smallest dorms in the campus ");
+        dorm2Reviews.add( n1 );
+        ReviewMock n2 = new ReviewMock();
+        n2.setReviewTopInfo("Reviewed by Sana on 3-1-19");
+        n2.setReviewRating("Rated 3.9/44");
+        n2.setReviewText("This 76 dorm is extremely big and modern ");
+
+        dorm2Reviews.add( n1 );
+        dorm2Reviews.add(n2);
+        dorm2.setDormReviewList(dorm2Reviews);
         ls.add(dorm2);
+
         return ls;
-        // return ForumPostDao.getPostsByRecency();
+
     }
 
 
