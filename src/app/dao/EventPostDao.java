@@ -77,15 +77,22 @@ public class EventPostDao
     }
 
     /**
-     * MAYBE TODO.
+     * @TESTED
      * @param eventPostId is the id of the event post to be deleted.
      * @return Whether the deletion was successful or not.
      */
     public static boolean deleteEvent(int eventPostId)
     {
         try {
-            String query = "DELETE FROM university_sync.event_post WHERE event_post_id=?";
+
+            //first remove all followers otherwise it causes sql exception
+            String query = "DELETE FROM university_sync.follow_event_post WHERE followed_event_post_id=?";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, eventPostId);
+            pst.executeUpdate();
+
+            query = "DELETE FROM university_sync.event_post WHERE event_post_id=?";
+            pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, eventPostId);
             pst.executeUpdate();
             return true;
