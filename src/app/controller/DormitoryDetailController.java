@@ -3,12 +3,10 @@ package app.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -16,34 +14,30 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class CafeteriaDetailController {
+public class DormitoryDetailController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
     @FXML
-    private Label cafeName_ID;
+    private Label dormName_ID;
     @FXML
-    private ImageView cafeImage_ID;
+    private ImageView dormImage_ID;
     @FXML
-    private TextArea cafeDescription_ID;
+    private TextArea dormDescription_ID;
     @FXML
-    private TextArea cafeMenuTextArea_ID;
+    private TextField dormRateTextField_ID;
     @FXML
-    private TextField cafeRateTextField_ID;
-    @FXML
-    private TextField cafePriceRange_ID;
+    private Label dormCampus_ID;
 
-    public void setData(CafeMock event) {
 
-        cafeName_ID.setText( event.getCafeName());
-        //cafeImage_ID.setImage(event.getCafeImage().getImage());
-        cafeDescription_ID.setText(event.getCafeDescription());
-        cafeMenuTextArea_ID.setText( event.getCafeMenu());
-        cafeRateTextField_ID.setText( event.getCafeRating());
-        cafePriceRange_ID.setText( event.getCafePriceRange());
+    public void setData(DormMock dorm) {
+
+        dormName_ID.setText( dorm.getDormName());
+        //dormImage_ID.setImage( dorm.getDormImage().getImage());
+        dormDescription_ID.setText( dorm.getDormDescription());
+        dormRateTextField_ID.setText( dorm.getDormRating());
+        dormCampus_ID.setText( dorm.getDormCampus());
     }
 
     public void switchToReviews( ActionEvent event) throws IOException {
@@ -56,4 +50,5 @@ public class CafeteriaDetailController {
         stage.setFullScreen(true);
         stage.show();
     }
+
 }

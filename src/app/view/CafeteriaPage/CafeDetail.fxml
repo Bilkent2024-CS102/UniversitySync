@@ -46,7 +46,7 @@
                               <Insets right="15.0" />
                            </HBox.margin>
                         </ImageView>
-                        <TextArea fx:id="cafeDescription_ID" prefHeight="632.0" prefWidth="831.0" text="Bilka is a cafeteria located under the 76th&#10;dormitory that sells snacks and meals such&#10;as chicken cutlets and more.&#10;In addition, students can find products that&#10;they may need for their dormitories such as&#10;hygiene products.">
+                        <TextArea fx:id="cafeDescription_ID" prefHeight="632.0" prefWidth="831.0" text="Bilka is a cafeteria located under the 76th&#10;dormitory that sells snacks and meals such&#10;as chicken cutlets and more.&#10;In addition, students can find products that&#10;they may need for their dormitories such as&#10;hygiene products." wrapText="true">
                            <font>
                               <Font size="40.0" />
                            </font>

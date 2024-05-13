@@ -28,16 +28,17 @@ public class CafeteriaNameController {
     @FXML
     private Label foodPage_CafePriceRange_ID;
 
+    // ************  Particular Cafe Associated with this page  ****************
     private CafeMock cafeAssociatedWithThis;
 
     public void setData(CafeMock cafe) {
-        // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
-        // userImageOnPostID.setImage(image);
-        cafeAssociatedWithThis = cafe;
+
+        cafeAssociatedWithThis = cafe;        //connection bw different pages
 
         food_cafeteriaName_ID.setText( cafe.getCafeName());
         foodPage_CafeRating_ID.setText( cafe.getCafeRating());
         foodPage_CafePriceRange_ID.setText( cafe.getCafePriceRange());
+
 
     }
 

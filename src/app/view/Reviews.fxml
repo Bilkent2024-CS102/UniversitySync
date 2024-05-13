@@ -56,7 +56,7 @@
                         <Image url="@icons/mg-2688_1_orig.jpg" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" prefHeight="82.0" prefWidth="381.0" text="Dorm 76" textFill="WHITE">
+                  <Label fx:id="reviewDormName_ID" alignment="CENTER" prefHeight="82.0" prefWidth="381.0" text="Dorm 76" textFill="WHITE">
                      <font>
                         <Font name="PT Sans Bold" size="44.0" />
                      </font>
@@ -71,7 +71,7 @@
                   </Label>
                   <HBox prefHeight="67.0" prefWidth="392.0" spacing="15.0">
                      <children>
-                        <Label prefHeight="67.0" prefWidth="390.0" text="233 Reviews" textFill="YELLOW">
+                        <Label fx:id="reviewDormReview_ID" prefHeight="67.0" prefWidth="390.0" text="233 Reviews" textFill="YELLOW">
                            <font>
                               <Font name="PT Sans Bold" size="36.0" />
                            </font>
@@ -83,7 +83,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="67.0" prefWidth="392.0" spacing="15.0">
                      <children>
-                        <Label prefHeight="107.0" prefWidth="204.0" text="Rated 4.8/5" textFill="YELLOW">
+                        <Label fx:id="reviewDormRated_ID" prefHeight="107.0" prefWidth="204.0" text="Rated 4.8/5" textFill="YELLOW">
                            <font>
                               <Font name="PT Sans Bold" size="36.0" />
                            </font>
@@ -96,7 +96,7 @@
          <right>
             <ScrollPane prefHeight="532.0" prefWidth="1308.0" BorderPane.alignment="CENTER">
                <content>
-                  <VBox alignment="TOP_CENTER" prefWidth="1286.0" spacing="40.0">
+                  <VBox fx:id="reviewVBoxID" alignment="TOP_CENTER" prefWidth="1286.0" spacing="40.0">
                      <children>
                         <VBox prefHeight="415.0" prefWidth="1266.0">
                            <children>
@@ -112,7 +112,7 @@
                                           <Font name="SansSerif Bold" size="28.0" />
                                        </font>
                                     </TextField>
-                                    <Button layoutX="1038.0" layoutY="306.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="190.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" text="Button" textFill="WHITE">
+                                    <Button fx:id="postReviewButton_ID" layoutX="981.0" layoutY="306.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="247.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" text="Post Review" textFill="WHITE">
                                        <font>
                                           <Font name="Helvetica Bold" size="31.0" />
                                        </font>
@@ -122,98 +122,6 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                               </Pane>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="355.0" prefWidth="1266.0" style="-fx-background-color: #67B2B7; -fx-background-radius: 30;">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="1266.0" spacing="20.0" style="-fx-background-color: #4B8990;">
-                                 <children>
-                                    <ImageView fitHeight="68.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@icons/icon-monochrome.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label prefHeight="92.0" prefWidth="667.0" text="Review by Berkay on 04.04.2024">
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                       <font>
-                                          <Font name="PT Sans Bold" size="33.0" />
-                                       </font>
-                                    </Label>
-                                    <Label prefHeight="68.0" prefWidth="370.0" text="Rated 3.3/4">
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                       <font>
-                                          <Font name="PT Sans Bold" size="33.0" />
-                                       </font>
-                                    </Label>
-                                    <Button mnemonicParsing="false" style="-fx-background-color: #4B8990;">
-                                       <graphic>
-                                          <ImageView fitHeight="53.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@icons/1722494.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                              <TextArea prefHeight="246.0" prefWidth="1226.0" text="klaskg" wrapText="true">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" top="15.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font size="28.0" />
-                                 </font>
-                              </TextArea>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="355.0" prefWidth="1266.0" style="-fx-background-color: #67B2B7; -fx-background-radius: 30;">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="1266.0" spacing="20.0" style="-fx-background-color: #4B8990;">
-                                 <children>
-                                    <ImageView fitHeight="68.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@icons/icon-monochrome.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label prefHeight="92.0" prefWidth="667.0" text="Review by Berkay on 04.04.2024">
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                       <font>
-                                          <Font name="PT Sans Bold" size="33.0" />
-                                       </font>
-                                    </Label>
-                                    <Label prefHeight="68.0" prefWidth="370.0" text="Rated 3.3/4">
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                       <font>
-                                          <Font name="PT Sans Bold" size="33.0" />
-                                       </font>
-                                    </Label>
-                                    <Button mnemonicParsing="false" style="-fx-background-color: #4B8990;">
-                                       <graphic>
-                                          <ImageView fitHeight="53.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@icons/1722494.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                              <TextArea prefHeight="246.0" prefWidth="1226.0" text="klaskg" wrapText="true">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" top="15.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font size="28.0" />
-                                 </font>
-                              </TextArea>
                            </children>
                         </VBox>
                         <VBox prefHeight="355.0" prefWidth="1266.0" style="-fx-background-color: #67B2B7; -fx-background-radius: 30;">

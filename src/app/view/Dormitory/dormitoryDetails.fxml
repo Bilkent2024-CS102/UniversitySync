@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.DormitoryDetailController">
    <top>
       <fx:include source="../TOP_TAB.fxml" />
    </top>
@@ -28,9 +28,14 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
                <children>
-                  <Label layoutX="664.0" layoutY="7.0" prefHeight="112.0" prefWidth="332.0" text="Dorm 70" textFill="#42008d">
+                  <Label fx:id="dormName_ID" layoutX="664.0" layoutY="7.0" prefHeight="112.0" prefWidth="332.0" text="Dorm 70" textFill="#42008d">
                      <font>
                         <Font name="Times New Roman Bold" size="78.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dormCampus_ID" layoutX="1287.0" layoutY="2.0" prefHeight="104.0" prefWidth="409.0" text="Center Campus">
+                     <font>
+                        <Font name="Helvetica Bold" size="49.0" />
                      </font>
                   </Label>
                </children>
@@ -41,7 +46,7 @@
                      <children>
                         <HBox prefHeight="492.0" prefWidth="1679.0" spacing="40.0">
                            <children>
-                              <ImageView fitHeight="458.0" fitWidth="624.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="dormImage_ID" fitHeight="458.0" fitWidth="624.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/mg-2688_1_orig.jpg" />
                                  </image>
@@ -49,7 +54,7 @@
                                     <Insets bottom="15.0" left="15.0" top="15.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <TextArea prefHeight="492.0" prefWidth="1012.0" text="Dorm Info and details&#10;" wrapText="true">
+                              <TextArea fx:id="dormDescription_ID" prefHeight="492.0" prefWidth="1012.0" text="Dorm Info and details&#10;" wrapText="true">
                                  <padding>
                                     <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                                  </padding>
@@ -78,7 +83,7 @@
                                           <Font size="41.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="100.0" prefWidth="606.0" text="4.7 / 5 (120 reviews)">
+                                    <TextField fx:id="dormRateTextField_ID" prefHeight="100.0" prefWidth="606.0" text="4.7 / 5 (120 reviews)">
                                        <font>
                                           <Font size="39.0" />
                                        </font>

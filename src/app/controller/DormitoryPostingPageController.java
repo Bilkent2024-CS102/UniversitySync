@@ -23,7 +23,6 @@ import java.util.ResourceBundle;
 //import com.mysql.cj.Session;
 import javafx.stage.StageStyle;
 
-
 public class DormitoryPostingPageController implements Initializable{
     private Stage stage;
     private FXMLLoader fxmlLoader;

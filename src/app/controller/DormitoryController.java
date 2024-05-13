@@ -73,7 +73,7 @@ public class DormitoryController implements Initializable {
         dorm1.setDormName("76");
         dorm1.setDormRating("Rating 2.2/4");
         dorm1.setDormCampus("Center");
-        dorm1.setDormRatedField(dorm1.getDormRating());
+//        dorm1.setDormRating(dorm1.getDormRating());
         dorm1.setDormDescription("This dorm is located near the big ground where beautiful view of the city is visible. This dorm also has one of the best cafeterias in bilkent ie Bilka. Best Dorm");
         ls.add(dorm1);
 
@@ -82,20 +82,15 @@ public class DormitoryController implements Initializable {
         dorm2.setDormRating("Rating 3.2/4");
         dorm2.setDormCampus("East");
         dorm2.setDormDescription("This dorm is located near the ee building where biggest building is visible. Aliens visit there");
-        dorm2.setDormRatedField(dorm2.getDormRating());
+//        dorm2.setDormRatedField(dorm2.getDormRating());
         ls.add(dorm2);
         return ls;
         // return ForumPostDao.getPostsByRecency();
     }
 
-    public List<DormMock> getData() {
-        return data();
-    }
+
 
     //*********************************( FOR DORM FILTER *************************************
-
-
-
 //    @FXML
 //    private ChoiceBox dormChoiceBoxID = new ChoiceBox();
 //

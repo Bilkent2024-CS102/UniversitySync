@@ -29,18 +29,27 @@ public class DormitoryNameController {
     @FXML
     private Label dormCampus_ID;
 
-    public void setData(DormMock event) {
-        // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
-        // userImageOnPostID.setImage(image);
-        DormName_ID.setText( event.getDormName());
-        DormRating_ID.setText( event.getDormRating());
-        dormCampus_ID.setText( event.getDormCampus());
+    // ************  Particular Dorm Associated with this page  ****************
+    private DormMock dormAssociatedWithThis;
+
+    public void setData(DormMock dorm) {
+
+        dormAssociatedWithThis = dorm;          //connection bw different pages
+
+        DormName_ID.setText( dorm.getDormName());
+        DormRating_ID.setText( dorm.getDormRating());
+        dormCampus_ID.setText( dorm.getDormCampus());
 
     }
 
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
         Parent root = fxmlLoader.load();
+
+        DormitoryDetailController detailController = fxmlLoader.getController();
+        // setting/sending the data of that particular cafe button to cafe details page
+        detailController.setData(dormAssociatedWithThis);
+
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -60,7 +69,7 @@ class DormMock {
     private String dormCampus;
     private String dormDescription;
     private ImageView dormImage;
-    private String dormRatedField;
+
 
     public String getDormName() {
         return dormName;
@@ -72,6 +81,14 @@ class DormMock {
 
     public String getDormRating() {
         return dormRating;
+    }
+
+    public ImageView getDormImage() {
+        return dormImage;
+    }
+
+    public String getDormDescription() {
+        return dormDescription;
     }
 
     public void setDormName(String dormName) {
@@ -86,29 +103,13 @@ class DormMock {
         this.dormCampus = dormCampus;
     }
 
-    public String getDormRatedField() {
-        return dormRatedField;
-    }
-
-    public ImageView getDormImage() {
-        return dormImage;
-    }
-
-    public String getDormDescription() {
-        return dormDescription;
-    }
-
     public void setDormDescription(String dormDescription) {
         this.dormDescription = dormDescription;
     }
 
-    public void setDormRatedField(String dormRatedField) {
-        this.dormRatedField = dormRatedField;
-    }
 
     public void setDormImage(ImageView dormImage) {
         this.dormImage = dormImage;
     }
-
 
 }
