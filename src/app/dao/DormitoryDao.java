@@ -20,7 +20,7 @@ public class DormitoryDao {
      * @return An ArrayList containing all Dormitory instances.
      */
     public static ArrayList<Dormitory> getAllDormitories(){
-        String query = "SELECT * FROM university_sync.dormitory";
+        String query = "SELECT * FROM university_sync.dormitory ORDER BY dormitory_location_id";
         ArrayList<Dormitory> dormitories = new ArrayList<>();
 
         try{
@@ -29,6 +29,41 @@ public class DormitoryDao {
             while (resultSet.next()) {
                 Dormitory dorm = new Dormitory(resultSet.getInt("dormitory_location_id"), null, resultSet.getString("link_to_dormitory_picture"),
                         resultSet.getString("dorm_name"), resultSet.getString("dorm_description"), 0, null, null);
+                dorm.setReviews(ReviewDao.getReviewsOf(dorm.getLocationId()));
+                dorm.setRooms(DormitoryDao.getRoomTypesIn(dorm.getLocationId()));
+                dormitories.add(dorm);
+            }
+            resultSet.close();
+            pst.close();
+            return dormitories;
+        }
+        catch (SQLException sqle){
+            sqle.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * @TESTED
+     * Retrieves all dormitories from the database sorted by their average rating descending
+     *
+     * @return An ArrayList containing all Dormitory instances.
+     */
+    public static ArrayList<Dormitory> getAllDormitoriesByRating(){
+        String query = "SELECT d.* " +
+                "FROM university_sync.dormitory d " +
+                "ORDER BY (SELECT AVG(rating_given) AS avg_rating FROM university_sync.review WHERE review_to_location_id = d.dormitory_location_id) DESC;";
+        ArrayList<Dormitory> dormitories = new ArrayList<>();
+
+        try{
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                Dormitory dorm = new Dormitory(resultSet.getInt("dormitory_location_id"), null,
+                        resultSet.getString("link_to_dormitory_picture"),
+                        resultSet.getString("dorm_name"), resultSet.getString("dorm_description"), 0, null, null);
+                dorm.setReviews(ReviewDao.getReviewsOf(dorm.getLocationId()));
+                dorm.setRooms(DormitoryDao.getRoomTypesIn(dorm.getLocationId()));
                 dormitories.add(dorm);
             }
             resultSet.close();

@@ -24,12 +24,14 @@ public class ForumPostDao {
         ForumPost post = null;
         try
         {
-            String query = "SELECT * FROM university_sync.forum_post WHERE forum_post_id=" + id;
+            String query = "SELECT * FROM university_sync.forum_post WHERE forum_post_id= ?";
             PreparedStatement st = DBConnectionManager.getConnection().prepareStatement(query);
+            st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             rs.next();
             post = new ForumPost(
                     rs.getInt("forum_post_id"),
+                    rs.getInt("owner_student_id"),
                     rs.getString("main_text"),
                     rs.getDate("creation_date"),
                     rs.getDate("last_edit_date"),
@@ -332,13 +334,13 @@ public class ForumPostDao {
         try
         {
             ArrayList<ForumPost> likedPosts = new ArrayList<>();
-            String query = "SELECT liked_forum_post FROM university_sync.like_forum_post WHERE liked_by_student_id = ?;";
+            String query = "SELECT liked_forum_post_id FROM university_sync.like_forum_post WHERE liked_by_student_id = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, userId);
             ResultSet rs = pst.executeQuery();
             while (rs.next())
             {
-                likedPosts.add(getPostById(rs.getInt("liked_forum_post")));
+                likedPosts.add(getPostById(rs.getInt("liked_forum_post_id")));
             }
             return likedPosts;
         }

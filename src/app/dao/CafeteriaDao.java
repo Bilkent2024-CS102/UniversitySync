@@ -1,5 +1,6 @@
 package app.dao;
 
+import app.model.location.Dormitory;
 import app.model.location.cafeteria.Cafeteria;
 import app.model.location.cafeteria.MenuItem;
 
@@ -31,6 +32,74 @@ public class CafeteriaDao {
                         resultSet.getString("cafeteria_name"), resultSet.getString("cafeteria_description"), 0, null, null,
                         resultSet.getFloat("min_price"), resultSet.getFloat("max_price"));
                 cafeterias.add(cafeteria);
+            }
+            resultSet.close();
+            pst.close();
+            return cafeterias;
+        }
+        catch (SQLException sqle){
+            sqle.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * @TESTED
+     * Retrieves all cafeterias from the database sorted by their average rating descending
+     *
+     * @return An ArrayList containing all Dormitory instances.
+     */
+    public static ArrayList<Cafeteria> getAllCafeteriasByRating(){
+        String query = "SELECT c.* " +
+                "FROM university_sync.cafeteria c " +
+                "ORDER BY (SELECT AVG(rating_given) AS avg_rating FROM university_sync.review WHERE review_to_location_id = c.cafeteria_location_id) DESC;";
+        ArrayList<Cafeteria> cafeterias = new ArrayList<>();
+
+        try{
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                Cafeteria cafe = new Cafeteria(resultSet.getInt("cafeteria_location_id"), null,
+                        resultSet.getString("link_to_cafeteria_picture"),
+                        resultSet.getString("cafeteria_name"), resultSet.getString("cafeteria_description"), 0, null, null,
+                        resultSet.getDouble("min_price"), resultSet.getDouble("max_price"));
+                cafe.setReviews(ReviewDao.getReviewsOf(cafe.getLocationId()));
+                cafe.setItems(CafeteriaDao.getMenuItemsIn(cafe.getLocationId()));
+                cafeterias.add(cafe);
+            }
+            resultSet.close();
+            pst.close();
+            return cafeterias;
+        }
+        catch (SQLException sqle){
+            sqle.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * @TESTED
+     * Retrieves all cafeterias from the database sorted by their average rating descending
+     *
+     * @return An ArrayList containing all Dormitory instances.
+     */
+    public static ArrayList<Cafeteria> getAllCafeteriasByPrice(){
+        String query = "SELECT c.* " +
+                "FROM university_sync.cafeteria c " +
+                "ORDER BY (SELECT (min_price+max_price)/2) ASC;";
+        ArrayList<Cafeteria> cafeterias = new ArrayList<>();
+
+        try{
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                Cafeteria cafe = new Cafeteria(resultSet.getInt("cafeteria_location_id"), null,
+                        resultSet.getString("link_to_cafeteria_picture"),
+                        resultSet.getString("cafeteria_name"), resultSet.getString("cafeteria_description"), 0, null, null,
+                        resultSet.getDouble("min_price"), resultSet.getDouble("max_price"));
+                cafe.setReviews(ReviewDao.getReviewsOf(cafe.getLocationId()));
+                cafe.setItems(CafeteriaDao.getMenuItemsIn(cafe.getLocationId()));
+                cafeterias.add(cafe);
             }
             resultSet.close();
             pst.close();
