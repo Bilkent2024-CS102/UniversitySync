@@ -319,4 +319,33 @@ public class ForumPostDao {
             return -1;
         }
     }
+
+    /**
+     * @NOT TESTED
+     * Returns the posts that were liked by user
+     * 
+     * @param userId ID of the user whose liked posts to get
+     * @return ArrayList of all liked ForumPosts by user with ID userId
+     */
+    public static ArrayList<ForumPost> getLikedPosts(int userId)
+    {
+        try
+        {
+            ArrayList<ForumPost> likedPosts = new ArrayList<>();
+            String query = "SELECT liked_forum_post FROM university_sync.like_forum_post WHERE liked_by_student_id = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, userId);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next())
+            {
+                likedPosts.add(getPostById(rs.getInt("liked_forum_post")));
+            }
+            return likedPosts;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
