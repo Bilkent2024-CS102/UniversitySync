@@ -122,7 +122,7 @@
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </HBox>
-                              <Label alignment="CENTER" prefHeight="130.0" prefWidth="937.0" style="-fx-underline: true;" styleClass="clickHereReview" text="Click here to see more detailed reviews">
+                              <Label fx:id="switchToReviewPage_ID" alignment="CENTER" onMouseClicked="#switchToReviewPage" prefHeight="130.0" prefWidth="937.0" style="-fx-underline: true;" styleClass="clickHereReview" text="Click here to see more detailed reviews">
                                  <font>
                                     <Font name="SansSerif Bold Italic" size="43.0" />
                                  </font>

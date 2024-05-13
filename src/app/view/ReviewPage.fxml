@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ReviewPageController" >
    <top>
       <fx:include source="TOP_TAB.fxml" />
    </top>
@@ -96,7 +96,9 @@
          <right>
             <ScrollPane prefHeight="532.0" prefWidth="1308.0" BorderPane.alignment="CENTER">
                <content>
-                  <VBox fx:id="reviewVBoxID" alignment="TOP_CENTER" prefWidth="1286.0" spacing="40.0">
+                  <VBox fx:id="reviewVBox_ID" alignment="TOP_CENTER" prefWidth="1286.0" spacing="40.0">
+
+
                      <children>
                         <VBox prefHeight="415.0" prefWidth="1266.0">
                            <children>
@@ -124,52 +126,9 @@
                               </Pane>
                            </children>
                         </VBox>
-                        <VBox prefHeight="355.0" prefWidth="1266.0" style="-fx-background-color: #67B2B7; -fx-background-radius: 30;">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="1266.0" spacing="20.0" style="-fx-background-color: #4B8990;">
-                                 <children>
-                                    <ImageView fitHeight="68.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@icons/icon-monochrome.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label prefHeight="92.0" prefWidth="667.0" text="Review by Berkay on 04.04.2024">
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                       <font>
-                                          <Font name="PT Sans Bold" size="33.0" />
-                                       </font>
-                                    </Label>
-                                    <Label prefHeight="68.0" prefWidth="370.0" text="Rated 3.3/4">
-                                       <padding>
-                                          <Insets left="10.0" />
-                                       </padding>
-                                       <font>
-                                          <Font name="PT Sans Bold" size="33.0" />
-                                       </font>
-                                    </Label>
-                                    <Button mnemonicParsing="false" style="-fx-background-color: #4B8990;">
-                                       <graphic>
-                                          <ImageView fitHeight="53.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@icons/1722494.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                              <TextArea prefHeight="246.0" prefWidth="1226.0" text="klaskg" wrapText="true">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" top="15.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font size="28.0" />
-                                 </font>
-                              </TextArea>
-                           </children>
-                        </VBox>
+
+                       <!-- Don't Remove above VBox as it is the make revew post not any mock data-->
+
                      </children>
                      <padding>
                         <Insets left="20.0" top="15.0" />

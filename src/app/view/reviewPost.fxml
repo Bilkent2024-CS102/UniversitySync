@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="355.0" prefWidth="1266.0" style="-fx-background-color: #67B2B7; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ReviewPostController">
+    <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="1266.0" spacing="20.0" style="-fx-background-color: #4B8990;">
+            <children>
+                <ImageView fx:id="reviewPostImage_ID" fitHeight="68.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@icons/icon-monochrome.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="reviewPost_TopInfo_ID" prefHeight="92.0" prefWidth="667.0" text="Review by Berkay on 04.04.2024">
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <font>
+                        <Font name="PT Sans Bold" size="33.0" />
+                    </font>
+                </Label>
+                <Label fx:id="reviewPost_TopRating_ID" prefHeight="68.0" prefWidth="370.0" text="Rated 3.3/4">
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <font>
+                        <Font name="PT Sans Bold" size="33.0" />
+                    </font>
+                </Label>
+                <Button fx:id="reviewPost_deleteButton_ID" mnemonicParsing="false" style="-fx-background-color: #4B8990;">
+                    <graphic>
+                        <ImageView fitHeight="53.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@icons/1722494.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </HBox>
+        <TextArea fx:id="reviewPost_textArea_ID" prefHeight="246.0" prefWidth="1226.0" text="klaskg" wrapText="true">
+            <VBox.margin>
+                <Insets left="20.0" right="20.0" top="15.0" />
+            </VBox.margin>
+            <font>
+                <Font size="28.0" />
+            </font>
+        </TextArea>
+    </children>
+</VBox>

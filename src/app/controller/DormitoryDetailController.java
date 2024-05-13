@@ -41,7 +41,7 @@ public class DormitoryDetailController {
     }
 
     public void switchToReviews( ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(new File("src/app/view/Reviews.fxml").toURI().toURL());
+        fxmlLoader = new FXMLLoader(new File("src/app/view/ReviewPage.fxml").toURI().toURL());
         Parent root = fxmlLoader.load();
         //FOR Buttons
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

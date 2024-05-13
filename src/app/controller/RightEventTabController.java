@@ -28,8 +28,6 @@ public class RightEventTabController implements Initializable {
 
 //*************************************************************************************
     @FXML
-    private ToggleButton eventFollowButton_ID;
-    @FXML
     private VBox Event_VBox_ID = new VBox();    //right Event VBox where we put our events
     private List<EventMock> eventMock;
 

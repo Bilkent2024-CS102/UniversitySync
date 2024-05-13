@@ -3,21 +3,18 @@ package app.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class CafeteriaDetailController {
     private Stage stage;
@@ -46,10 +43,10 @@ public class CafeteriaDetailController {
         cafePriceRange_ID.setText( event.getCafePriceRange());
     }
 
-    public void switchToReviews( ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(new File("src/app/view/Reviews.fxml").toURI().toURL());
+    public void switchToReviewPage(MouseEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(new File("src/app/view/ReviewPage.fxml").toURI().toURL());
         Parent root = fxmlLoader.load();
-        //FOR Buttons
+
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

@@ -36,6 +36,8 @@ public class EventController {
         eventTexArea_ID.setText( event.getEventText());
     }
 }
+
+//MOCK CLASS
 class EventMock {
     private String eventText;
     public String getEventText() {
