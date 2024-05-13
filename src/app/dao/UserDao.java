@@ -435,4 +435,35 @@ public class UserDao {
             return false;
         }
     }
+
+    /**
+     * TESTED
+     *
+     * Checks if a friend request exists between users
+     * @param senderId id of the sender
+     * @param receiverId id of the receiver
+     * @return true boolean if it exists, false if not
+     */
+    public static boolean doesFriendRequestExist(int senderId, int receiverId)
+    {
+        try
+        {
+            String query = "SELECT * FROM university_sync.friend_request WHERE sender_id = ? AND receiver_id = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, senderId);
+            pst.setInt(2, receiverId);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next())
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
