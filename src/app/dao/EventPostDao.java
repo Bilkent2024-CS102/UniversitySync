@@ -57,12 +57,12 @@ public class EventPostDao
                     "heading, main_text, location, event_date) VALUES (?, ? ,?, ?, ?, ?, ?);";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, post.getOwnerId());
-            pst.setDate(2, new java.sql.Date(post.getCreationDate().getTime()));
-            pst.setDate(3, new java.sql.Date(post.getLastEditDate().getTime()));
+            pst.setTimestamp(2, new java.sql.Timestamp(post.getCreationDate().getTime()));
+            pst.setTimestamp(3, new java.sql.Timestamp(post.getLastEditDate().getTime()));
             pst.setString(4, post.getHeading());
             pst.setString(5, post.getMainText());
             pst.setString(6, post.getLocation());
-            pst.setDate(7, new java.sql.Date(post.getEventDate().getTime()));
+            pst.setTimestamp(7, new java.sql.Timestamp(post.getEventDate().getTime()));
             pst.executeUpdate();
             Statement st = DBConnectionManager.getConnection().createStatement();
             ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
@@ -78,12 +78,22 @@ public class EventPostDao
 
     /**
      * MAYBE TODO.
-     * @param post is the post to be deleted.
+     * @param eventPostId is the id of the event post to be deleted.
      * @return Whether the deletion was successful or not.
      */
-    public static boolean deleteEvent(EventPost post)
+    public static boolean deleteEvent(int eventPostId)
     {
-        return false;
+        try {
+            String query = "DELETE FROM university_sync.event_post WHERE event_post_id=?";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, eventPostId);
+            pst.executeUpdate();
+            return true;
+
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            return false;
+        }
     }
 
     /**
@@ -143,7 +153,7 @@ public class EventPostDao
     }
 
     /**
-     * @NOT TESTED
+     * @TESTED
      * Checks if {@code User} instance is
      * following the {@code EventPost} instance
      * @param eventId id of the {@code EventPost}
@@ -154,15 +164,18 @@ public class EventPostDao
     {
         try
         {
-            String query = "SELECT followed_by_student_id university_sync.follow_event_post WHERE event_post_id = ? AND followed_by_student_id = ?;";
+            String query = "SELECT followed_by_student_id FROM university_sync.follow_event_post WHERE followed_event_post_id = ? AND followed_by_student_id = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, eventId);
             pst.setInt(2, userId);
 
             ResultSet rs = pst.executeQuery();
-            rs.next();
 
-            return rs.getInt("followed_by_student_id") == userId;
+            boolean isFollowing = false;
+            while (rs.next()){
+                isFollowing = true;
+            }
+            return isFollowing;
         }
         catch (SQLException e)
         {
