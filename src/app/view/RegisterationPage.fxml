@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.RegistrationController">
+    <children>
+        <Label alignment="CENTER" prefHeight="64.0" prefWidth="500.0" text="Register Your Account">
+            <font>
+                <Font name="Helvetica Bold" size="30.0" />
+            </font>
+            <VBox.margin>
+                <Insets top="30.0" />
+            </VBox.margin>
+        </Label>
+        <Label alignment="CENTER" prefHeight="36.0" prefWidth="500.0" text="Please Fill All The Information" translateY="-15.0">
+            <font>
+                <Font name="SansSerif Regular" size="18.0" />
+            </font>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+        </Label>
+        <TextField fx:id="fullNameID" prefHeight="35.0" prefWidth="420.0" promptText="Full Name" translateY="-14.0">
+            <font>
+                <Font size="16.0" />
+            </font>
+            <VBox.margin>
+                <Insets left="40.0" right="40.0" />
+            </VBox.margin>
+        </TextField>
+        <TextField fx:id="usernameID" prefHeight="35.0" prefWidth="386.0" promptText="Username" translateY="-14.0">
+            <font>
+                <Font size="16.0" />
+            </font>
+            <VBox.margin>
+                <Insets left="40.0" right="40.0" />
+            </VBox.margin>
+        </TextField>
+      <TextField fx:id="universityEmailID" prefHeight="35.0" prefWidth="386.0" promptText="University Email" translateY="-14.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="40.0" right="40.0" />
+         </VBox.margin>
+      </TextField>
+      <HBox alignment="CENTER" prefHeight="37.0" prefWidth="500.0" translateY="-14.0">
+         <children>
+            <Label prefHeight="23.0" prefWidth="190.0" text="Choose Major:">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="majorChoiceBoxID" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="37.0" prefWidth="500.0" translateY="-14.0">
+         <children>
+            <Label prefHeight="23.0" prefWidth="190.0" text="Choose Dorm:">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="dormChoiceBoxID" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <TextField fx:id="passwordID" prefHeight="35.0" prefWidth="386.0" promptText="Password" translateY="-14.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="40.0" right="40.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField fx:id="confirmPasswordID" prefHeight="35.0" prefWidth="386.0" promptText="Confirm Pasword" translateY="-14.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="40.0" right="40.0" />
+         </VBox.margin>
+      </TextField>
+        <Button mnemonicParsing="false" onAction="#registerButton" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #68c151;" text="Register" textFill="WHITE" translateY="-10.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="5.0" />
+            </VBox.margin>
+        </Button>
+      <Hyperlink onAction="#takeToLoginPage" text="Already Registered" translateY="-20.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Hyperlink>
+    </children>
+</VBox>
