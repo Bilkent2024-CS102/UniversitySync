@@ -2,10 +2,7 @@ package app.dao;
 
 import app.model.userContent.Message;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -31,8 +28,8 @@ public class MessageDao {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, sender);
             pst.setInt(2, receiver);
-            pst.setDate(3, new java.sql.Date(message.getCreationDate().getTime()));
-            pst.setDate(4, new java.sql.Date(message.getLastEditDate().getTime()));
+            pst.setDate(3, new Date(message.getCreationDate().getTime()));
+            pst.setDate(4, new Date(message.getLastEditDate().getTime()));
             pst.setString(5, text);
 
             pst.executeUpdate();
@@ -48,6 +45,37 @@ public class MessageDao {
         {
             e.printStackTrace();
             return -1;
+        }
+    }
+
+    public static ArrayList<Integer> getUserIdsMessagedWith(int userId){
+        try
+        {
+            ArrayList<Integer> ids = new ArrayList<>();
+            String query = "SELECT receiver_student_id FROM university_sync.message WHERE owner_student_id = ?";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, userId);
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next())
+            {
+                ids.add(resultSet.getInt(1));
+            }
+
+            query = "SELECT owner_student_id FROM university_sync.message WHERE receiver_student_id = ?";
+            pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, userId);
+            resultSet = pst.executeQuery();
+            while (resultSet.next())
+            {
+                ids.add(resultSet.getInt(1));
+            }
+
+            return ids;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -74,7 +102,8 @@ public class MessageDao {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next())
             {
-                Message m = new Message(resultSet.getInt("owner_student_id"), resultSet.getInt("receiver_student_id"), resultSet.getString("main_text"));
+                Message m = new Message(resultSet.getInt("message_id"), resultSet.getInt("owner_student_id"),
+                        resultSet.getInt("receiver_student_id"), resultSet.getString("main_text"));
                 messages.add(m);
             }
 
