@@ -325,7 +325,7 @@ public class ForumPostDao {
     /**
      * @NOT TESTED
      * Returns the posts that were liked by user
-     * 
+     *
      * @param userId ID of the user whose liked posts to get
      * @return ArrayList of all liked ForumPosts by user with ID userId
      */
@@ -347,6 +347,42 @@ public class ForumPostDao {
         catch (SQLException e)
         {
             e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Returns forum posts made by the user
+     *
+     * @param userId id of the user whose posts are to be pulled
+     * @return ArrayList of forum posts made by user
+     */
+    public static ArrayList<ForumPost> getForumPostsOfUser(int userId)
+    {
+        ArrayList<ForumPost> posts = new ArrayList<ForumPost>();
+        try
+        {
+            String query = "SELECT * FROM university_sync.forum_post WHERE owner_student_id = ?";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, userId);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next())
+            {
+                ForumPost post = new ForumPost(
+                        rs.getInt("forum_post_id"),
+                        rs.getInt("owner_student_id"),
+                        rs.getString("main_text"),
+                        rs.getDate("creation_date"),
+                        rs.getDate("last_edit_date"),
+                        rs.getString("heading")
+                );
+                posts.add(post);
+            }
+            return posts;
+        }
+        catch (Exception sqle)
+        {
+            sqle.printStackTrace();
             return null;
         }
     }
