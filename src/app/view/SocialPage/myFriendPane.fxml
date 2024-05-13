@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="myFriendsPane_ID" prefHeight="132.0" prefWidth="711.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.myFriendsController">
+<Pane fx:id="myFriendsPane_ID" prefHeight="132.0" prefWidth="711.0" style="-fx-background-color: lightgrey; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SocialMyFriendsController">
     <children>
         <ImageView fx:id="friendProfileImageID" fitHeight="47.0" fitWidth="48.0" layoutX="17.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
             <image>

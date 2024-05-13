@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SocialMyFriendsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SocialMyFriendsPageController">
    <top>
       <fx:include source="../TOP_TAB.fxml" />
    </top>
@@ -86,7 +86,7 @@
          <bottom>
             <HBox prefHeight="122.0" prefWidth="1222.0" spacing="300.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="92.0" prefWidth="246.0" style="-fx-background-radius: 30;" styleClass="addFriendsButton" text="Add New Friends" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#addNewFriendsButton" prefHeight="92.0" prefWidth="246.0" style="-fx-background-radius: 30;" styleClass="addFriendsButton" text="Add New Friends" textFill="WHITE">
                      <font>
                         <Font name="SansSerif Bold" size="25.0" />
                      </font>
@@ -104,7 +104,7 @@
                               <Image url="@../icons/search.png" />
                            </image>
                         </ImageView>
-                        <TextField layoutX="75.0" layoutY="12.0" prefHeight="49.0" prefWidth="406.0" promptText="Search Friend">
+                        <TextField layoutX="75.0" layoutY="12.0" onAction="#searchFriendTextField" prefHeight="49.0" prefWidth="406.0" promptText="Search Friend">
                            <font>
                               <Font size="20.0" />
                            </font>

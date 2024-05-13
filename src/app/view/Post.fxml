@@ -70,18 +70,24 @@
          </font>
       </Label>
          <ImageView fx:id="userImageOnPostID" fitHeight="61.0" fitWidth="71.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="798.0" layoutY="13.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="53.0" style="-fx-background-color: #829CD0;">
+      <Button contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="697.0" layoutY="19.0" mnemonicParsing="false" onAction="#editPost" prefHeight="45.0" prefWidth="121.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Edit">
+         <font>
+            <Font size="19.0" />
+         </font>
          <graphic>
-               <ImageView fitHeight="49.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="35.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@icons/65482-200.png" />
                   </image>
                </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="895.0" layoutY="17.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="53.0" style="-fx-background-color: #829CD0;">
+      <Button contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="841.0" layoutY="19.0" mnemonicParsing="false" onAction="#deletePost" prefHeight="45.0" prefWidth="121.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Delete">
+         <font>
+            <Font size="19.0" />
+         </font>
          <graphic>
-               <ImageView fitHeight="43.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@icons/1722494.png" />
                   </image>

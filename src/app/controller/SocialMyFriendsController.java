@@ -1,87 +1,61 @@
 package app.controller;
-//import app.dao.UserDao;
-//import app.model.FriendRequest;
-//import app.model.User;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import java.io.File;
+//import javafx.fxml.FXMLLoader;
+//import javafx.scene.Parent;
+//import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+//import javafx.stage.Modality;
+//import javafx.stage.Stage;
+//import javafx.stage.StageStyle;
+//import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
 
-public class SocialMyFriendsController implements Initializable {
-    private Stage stage;
-    private FXMLLoader fxmlLoader;
+public class SocialMyFriendsController {
 
-    //*****************************************************************************************************************
-    private List<FriendsMock> friendsMocks;
+//*******************************************************************************************************************
     @FXML
-    private VBox myFriendsVBox_ID = new VBox();    //right Event VBox where we put our events
+    private ImageView friendProfileImageID;
+    @FXML
+    private Label friendUsernameID;
 
-    public void initialize(URL location, ResourceBundle resources) {
-        friendsMocks = new ArrayList<>(data());
-
-        try {
-            for(int i = 0; i < friendsMocks.size(); i++) {
-                fxmlLoader = new FXMLLoader(new File("src/app/view/SocialPage/myFriendPane.fxml").toURI().toURL());
-                Pane friendPane = fxmlLoader.load();
-                myFriendsController eventController = fxmlLoader.getController();
-                eventController.setData(friendsMocks.get(i));
-                myFriendsVBox_ID.getChildren().add(friendPane);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public void setData(FriendsMock friend) {
+        // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
+        // userImageOnPostID.setImage(image);
+        friendUsernameID.setText(friend.getFriendUsername());
     }
 
-    private List<FriendsMock> data() {
-        List<FriendsMock> tss = new ArrayList<>();
+//*******************************************************************************************************************
 
-        FriendsMock friend1 = new FriendsMock();
-        friend1.setFriendUsername("Atilla Akus");
-        tss.add(friend1);
-        FriendsMock friend2 = new FriendsMock();
-        friend2.setFriendUsername("Musa Quershi");
-        tss.add(friend2);
-        FriendsMock friend3 = new FriendsMock();
-        friend3.setFriendUsername("Zaeem Sheikh");
-        tss.add(friend3);
-        FriendsMock friend4 = new FriendsMock();
-        friend4.setFriendUsername("Saqib Sheikh");
-        tss.add(friend4);
-
-        return tss;
-        // return ForumPostDao.getPostsByRecency();
-    }
-
-//**********************************************************************************************************************
-
-    public void displayFriendRequests(ActionEvent e)
-    {
-//        User currentUser = SessionManager.getCurrentUser();
-//        ArrayList<FriendRequest> friendRequests = UserDao.getFriendRequests(currentUser.getUserId());
-
-        // Need to make UI elements for each friend request
-    }
-
-    public void unfriend(ActionEvent e)
-    {
-//        User other = (User) e.getSource();
-//        UserDao.removeFriend(SessionManager.getCurrentUser().getUserId(), other.getUserId());
-    }
-
-    public void addNewFriendsButton (ActionEvent event) {
+    public void messageFriendButton (ActionEvent event) throws IOException {
+       // 2 Steps:
+                // Takes you to the all messages social page
+                // and opens the message pane of this particular user
 
     }
-    public void searchFriendTextField () {
+    public void unFriendButton (ActionEvent event) throws IOException {
 
     }
+}
 
+class FriendsMock {
+    private String friendUsername;
+    private String profileImageSrc;
+
+    public String getFriendUsername() {
+        return friendUsername;
+    }
+
+    public void setFriendUsername(String friendUsername) {
+        this.friendUsername = friendUsername;
+    }
+
+   /* public String getProfileImageSrc() {    // this is similar in other controllers as well
+        return profileImageSrc;
+    }
+    public void setProfileImageSrc() {    // this is similar in other controllers as well
+       this.profileImageSrc = ....;
+    }*/
 }

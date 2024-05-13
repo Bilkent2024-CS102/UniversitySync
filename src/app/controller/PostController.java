@@ -120,6 +120,11 @@ public class PostController {
         postTextAreaID.setText(post.getPostText());
     }
 
+    public void editPost(ActionEvent event) {
+    }
+
+    public void deletePost(ActionEvent event) {
+    }
 }
 
 
