@@ -1,7 +1,6 @@
 package app.controller;
 
-import java.awt.event.ActionEvent;
-
+import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
@@ -95,4 +94,12 @@ public class RegistrationController {
         User u = UserDao.getUserByEmail(email);
         return u != null;
     }
+
+    public void registerButton(ActionEvent event) {
+    }
+
+    public void takeToLoginPage(ActionEvent event) {
+        //use fxml loader to take back to login page
+    }
+
 }
