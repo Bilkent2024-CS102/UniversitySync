@@ -27,6 +27,9 @@ public class EventController {
             // EventPostDao.removeUser(SessionManager.getCurrentUser());
         }
     }
+
+    //this method is used to set Info/data in other controllers for the components of this fxml file
+
     public void setData(EventMock event) {
         // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
         // userImageOnPostID.setImage(image);

@@ -23,10 +23,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class CafeteriaController implements Initializable {
-    // private Label cafeNameLabel;
-    // private Label ratingLabel;
-    // private Label priceRangeLabel;
-    // public void setData(Cafeteria cafe)
+
     // {
     //     cafeNameLabel.setText(cafe.getName());
     //     cafeNameLabel.onMouseClickedProperty(openCafe(cafe));
@@ -68,16 +65,21 @@ public class CafeteriaController implements Initializable {
     }
 
 
+
     private List<CafeMock> data() {
         List<CafeMock> ls = new ArrayList<>();
         CafeMock cafe1 = new CafeMock();
         cafe1.setCafeName("Marmara");
+        cafe1.setCafeDescription("This is the best cafeteraia in the world");
+        cafe1.setCafeMenu(" Chicken Fiesta  100$-140$ \n Mac Cheese 50$-100$");
         cafe1.setCafeRating("Rating 3/4");
         cafe1.setCafePriceRange("100$-200$");
         ls.add(cafe1);
 
         CafeMock cafe2 = new CafeMock();
         cafe2.setCafeName("Bilka");
+        cafe2.setCafeDescription("Bilka is the most famous cafe in Bilkent University and has one of the best location and is situated near dorm 76");
+        cafe2.setCafeMenu(" Tavuk Doner  100$-140$ \n Kebab and Pilav 50$-100$");
         cafe2.setCafeRating("Rating 3.9/4");
         cafe2.setCafePriceRange("50$-150");
         ls.add(cafe2);

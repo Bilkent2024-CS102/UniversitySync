@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.CafeteriaDetailController">
    <top>
       <fx:include source="../TOP_TAB.fxml" />
    </top>
@@ -29,7 +29,7 @@
                         <Insets bottom="18.0" top="30.0" />
                      </VBox.margin>
                      <children>
-                        <Label alignment="CENTER" layoutX="-3.0" layoutY="-5.0" prefHeight="157.0" prefWidth="1668.0" text="Cafe 1">
+                        <Label fx:id="cafeName_ID" alignment="CENTER" layoutX="-3.0" layoutY="-5.0" prefHeight="157.0" prefWidth="1668.0" text="Cafe 1">
                            <font>
                               <Font name="Times New Roman" size="79.0" />
                            </font>
@@ -38,7 +38,7 @@
                   </Pane>
                   <HBox prefHeight="459.0" prefWidth="1700.0">
                      <children>
-                        <ImageView fitHeight="651.0" fitWidth="844.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="cafeImage_ID" fitHeight="651.0" fitWidth="844.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/mg-2688_1_orig.jpg" />
                            </image>
@@ -46,7 +46,7 @@
                               <Insets right="15.0" />
                            </HBox.margin>
                         </ImageView>
-                        <TextArea prefHeight="632.0" prefWidth="831.0" text="Bilka is a cafeteria located under the 76th&#10;dormitory that sells snacks and meals such&#10;as chicken cutlets and more.&#10;In addition, students can find products that&#10;they may need for their dormitories such as&#10;hygiene products.">
+                        <TextArea fx:id="cafeDescription_ID" prefHeight="632.0" prefWidth="831.0" text="Bilka is a cafeteria located under the 76th&#10;dormitory that sells snacks and meals such&#10;as chicken cutlets and more.&#10;In addition, students can find products that&#10;they may need for their dormitories such as&#10;hygiene products.">
                            <font>
                               <Font size="40.0" />
                            </font>
@@ -78,7 +78,7 @@
                   </HBox>
                   <HBox prefHeight="472.0" prefWidth="1700.0">
                      <children>
-                        <TextArea prefHeight="472.0" prefWidth="844.0" text="Chicken Cutlets - $350&#10;Cheese Toast - $50&#10;Water - $10&#10;">
+                        <TextArea fx:id="cafeMenuTextArea_ID" prefHeight="472.0" prefWidth="844.0" text="Chicken Cutlets - $350&#10;Cheese Toast - $50&#10;Water - $10&#10;">
                            <font>
                               <Font size="40.0" />
                            </font>
@@ -95,7 +95,7 @@
                                           <Font size="41.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="100.0" prefWidth="606.0" text="4.7 / 5 (120 reviews)">
+                                    <TextField fx:id="cafeRateTextField_ID" prefHeight="100.0" prefWidth="606.0" text="4.7 / 5 (120 reviews)">
                                        <font>
                                           <Font size="39.0" />
                                        </font>
@@ -112,7 +112,7 @@
                                           <Font size="41.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="100.0" prefWidth="610.0" text="\$100 - $200">
+                                    <TextField fx:id="cafePriceRange_ID" prefHeight="100.0" prefWidth="610.0" text="\$100 - $200">
                                        <font>
                                           <Font size="39.0" />
                                        </font>

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -54,16 +55,30 @@
    <center>
       <Pane prefHeight="108.0" prefWidth="1700.0" style="-fx-background-color: #67B2B7;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="38.0" layoutY="25.0" text="Cafeterias">
+            <Label layoutX="68.0" layoutY="30.0" prefHeight="97.0" prefWidth="434.0" text="Cafeterias">
                <font>
                   <Font size="78.0" />
                </font>
             </Label>
-            <Button layoutX="773.0" layoutY="41.0" mnemonicParsing="false" onAction="#displayAddFilterPopup" prefHeight="74.0" prefWidth="239.0" text="Filter">
-               <font>
-                  <Font name="System Italic" size="28.0" />
-               </font>
-            </Button>
+            <HBox layoutX="583.0" layoutY="36.0" prefHeight="81.0" prefWidth="879.0" spacing="40.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="235.0" style="-fx-background-radius: 12;" styleClass="greyButton" text="Normal">
+                     <font>
+                        <Font name="Helvetica" size="32.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="81.0" prefWidth="279.0" style="-fx-background-radius: 12;" styleClass="greyButton" text="Order By Rating">
+                     <font>
+                        <Font name="Helvetica" size="32.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="81.0" prefWidth="276.0" style="-fx-background-radius: 12;" styleClass="greyButton" text="Order By Prices">
+                     <font>
+                        <Font name="Helvetica" size="32.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </Pane>
    </center>

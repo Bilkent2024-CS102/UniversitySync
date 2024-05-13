@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -26,38 +28,49 @@ public class CafeteriaNameController {
     @FXML
     private Label foodPage_CafePriceRange_ID;
 
-    public void setData(CafeMock event) {
+    private CafeMock cafeAssociatedWithThis;
+
+    public void setData(CafeMock cafe) {
         // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
         // userImageOnPostID.setImage(image);
-        food_cafeteriaName_ID.setText( event.getCafeName());
-        foodPage_CafeRating_ID.setText( event.getCafeRating());
-        foodPage_CafePriceRange_ID.setText( event.getCafePriceRange());
+        cafeAssociatedWithThis = cafe;
+
+        food_cafeteriaName_ID.setText( cafe.getCafeName());
+        foodPage_CafeRating_ID.setText( cafe.getCafeRating());
+        foodPage_CafePriceRange_ID.setText( cafe.getCafePriceRange());
 
     }
 
+    private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
+        Parent root = fxmlLoader.load();
 
+        CafeteriaDetailController detailController = fxmlLoader.getController();
+        // setting/sending the data of that particular cafe button to cafe details page
+        detailController.setData(cafeAssociatedWithThis);
+
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);     //it should be after stage.setScene
+        stage.show();
+    }
 
 
     public void switchToCafeDetail(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/CafeteriaPage/CafeDetail.fxml", event);
     }
 
-    private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
-        Parent root = fxmlLoader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
-    }
 }
 
 class CafeMock {
+
     private String cafeName;
     private String cafeRating;
     private String cafePriceRange;
-
+    private String cafeDescription;
+    private String cafeMenu;
+    private ImageView cafeImage;
 
     public String getCafeName() {
         return cafeName;
@@ -70,6 +83,20 @@ class CafeMock {
     public String getCafeRating() {
         return cafeRating;
     }
+    public ImageView getCafeImage() {
+        return cafeImage;
+    }
+
+    public void setCafeImage(ImageView cafeImage) {
+        this.cafeImage = cafeImage;
+    }
+
+    public String getCafeMenu() {
+        return cafeMenu;
+    }
+    public String getCafeDescription() {
+        return cafeDescription;
+    }
 
     public void setCafeName(String cafeName) {
         this.cafeName = cafeName;
@@ -81,5 +108,13 @@ class CafeMock {
 
     public void setCafePriceRange(String cafePriceRange) {
         this.cafePriceRange = cafePriceRange;
+    }
+
+    public void setCafeMenu(String cafeMenu) {
+        this.cafeMenu = cafeMenu;
+    }
+
+    public void setCafeDescription(String cafeDescription) {
+        this.cafeDescription = cafeDescription;
     }
 }
