@@ -1,6 +1,5 @@
 package app.controller;
 
-import app.dao.CafeteriaDao;
 import app.dao.DBConnectionManager;
 import app.dao.ForumPostDao;
 import app.model.userContent.post.ForumPost;
@@ -12,7 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -34,7 +32,7 @@ public class ForumController implements Initializable {
     private ArrayList<ForumPost> posts;
 
     @FXML
-    private Button filterButton;
+    private Button switchPostsButton;
     @FXML
     private Button makePostButton;
     
@@ -71,9 +69,9 @@ public class ForumController implements Initializable {
         stage.show();
     }
     public void switchPosts(ActionEvent event) throws IOException {
-        if (filterButton.getText().equals("All posts"))
+        if (switchPostsButton.getText().equals("All posts"))
         {
-            filterButton.setText("Friends' posts");
+            switchPostsButton.setText("Friends' posts");
             posts = ForumPostDao.getForumPostsByRecency();
             forumVBoxID.getChildren().clear();
             try {
@@ -91,7 +89,7 @@ public class ForumController implements Initializable {
         }
         else
         {
-            filterButton.setText("All posts");
+            switchPostsButton.setText("All posts");
             posts = ForumPostDao.getForumPostsOfFriends(SessionManager.getCurrentUser().getUserId());
             forumVBoxID.getChildren().clear();
             try {
