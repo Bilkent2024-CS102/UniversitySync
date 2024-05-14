@@ -76,7 +76,7 @@ public class TopTabController  {
         switchToFXML("", event);
     }
     public void logout(ActionEvent event) throws IOException {
-        switchToFXML("", event);
+        switchToFXML("src/app/view/ProfilePage/LoginPage.fxml", event);
         // SessionManager.logoutUser();
     }
 

@@ -24,6 +24,7 @@ public class profileDisplayController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(SessionManager.getCurrentUser().getUserId());
         nameLabel.setText(SessionManager.getCurrentUser().getName());
 //        usernamenameLabel.setText(SessionManager.getCurrentUser().getUsername());
         majorLabel.setText(SessionManager.getCurrentUser().getMajor());

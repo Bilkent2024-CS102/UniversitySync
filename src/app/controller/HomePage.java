@@ -1,4 +1,5 @@
 package app.controller;
+import app.dao.DBConnectionManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +12,7 @@ import java.net.URL;
 public class HomePage extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(new File("src/app/view/Homepage.fxml").toURI().toURL());
+        FXMLLoader fxmlLoader = new FXMLLoader(new File("src/app/view/LoginPage.fxml").toURI().toURL());
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -19,7 +20,11 @@ public class HomePage extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        String url = "jdbc:mysql://localhost:3306/university_sync";
+        String username = "root";
+        String password = "ben123**AA"; // TODO: type your own mysql server password here!
+        DBConnectionManager.initializeConnection(url, username, password);
         launch();
     }
 }

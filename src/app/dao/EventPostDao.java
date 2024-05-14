@@ -168,7 +168,7 @@ public class EventPostDao
             pst.setInt(1, ID);
             ResultSet rs = pst.executeQuery();
             rs.next();
-            EventPost u = new EventPost(rs.getInt("owner_student_id"), rs.getString("main_text"),
+            EventPost u = new EventPost(rs.getInt("event_post_id"), rs.getInt("owner_student_id"), rs.getString("main_text"),
                     rs.getDate("creation_date"), rs.getDate("last_edit_date"), rs.getString("heading"),
                     rs.getString("location"), rs.getDate("event_date"));
             return u;

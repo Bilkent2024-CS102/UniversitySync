@@ -29,7 +29,7 @@ public class EventController {
         eventTexArea_ID.setText(event.getMainText());
         eventTexArea_ID.setEditable(false);
 
-        boolean isFollowed = EventPostDao.doesUserFollow(SessionManager.getCurrentUser().getUserId(), event.getUserContentItemId());
+        boolean isFollowed = EventPostDao.doesUserFollow(event.getUserContentItemId(), SessionManager.getCurrentUser().getUserId());
         if (isFollowed)
         {
             eventFollowButton_ID.setText("Unfollow");

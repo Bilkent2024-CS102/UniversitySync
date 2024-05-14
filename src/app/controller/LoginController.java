@@ -27,7 +27,6 @@ public class LoginController {
     @FXML
     private TextField passwordField;
 
-    private SessionManager sessionManager = new SessionManager();
 
     private Stage stage;
     private Scene scene;
@@ -52,7 +51,8 @@ public class LoginController {
         if (userDao.authenticate(email, password)) // need method to validate email and password
         {
             User currentUser = UserDao.getUserByEmail(email);
-            sessionManager.loginUser(currentUser);
+            SessionManager.setCurrentUser(currentUser);
+            System.out.println(SessionManager.getCurrentUser().getUserId());
             switchToFXML("src/app/view/Homepage.fxml", e);
         }
         else
