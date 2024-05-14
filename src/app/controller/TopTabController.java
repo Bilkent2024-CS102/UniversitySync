@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -25,6 +26,9 @@ public class TopTabController  {
         private Stage stage;
         private Scene scene;
         private FXMLLoader fxmlLoader;
+
+//        @FXML
+//        private MenuButton profileID = new MenuButton(SessionManager.getCurrentUser().getName());
 
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
