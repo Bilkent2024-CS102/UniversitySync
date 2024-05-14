@@ -32,7 +32,7 @@ public class SocialTopTabController {
 //       social_allMessagesID
     }
     public void switchToEvents(ActionEvent event) throws IOException {
-        switchToFXML("src/app/view/SocialPage/socialEvents.fxml", event);
+        switchToFXML("src/app/view/SocialPage/socialEventsPage.fxml", event);
 //        social_allMessagesID
     }
     public void switchToFriendRequests(ActionEvent event) throws IOException {

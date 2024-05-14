@@ -1,8 +1,8 @@
 package app.controller;
 
-import app.dao.ForumPostDao;
-import app.dao.UserDao;
-import app.model.userContent.post.ForumPost;
+//import app.dao.ForumPostDao;
+//import app.dao.UserDao;
+//import app.model.userContent.post.ForumPost;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

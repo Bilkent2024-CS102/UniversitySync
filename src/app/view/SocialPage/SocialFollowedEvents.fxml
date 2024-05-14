@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="472.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SocialEventController">
+    <center>
+        <Pane prefHeight="395.0" prefWidth="632.0" style="-fx-background-color: #829CD0;" BorderPane.alignment="CENTER">
+            <children>
+                <TextArea fx:id="eventTextArea_ID" editable="false" layoutX="40.0" layoutY="31.0" prefHeight="329.0" prefWidth="557.0" text="An event is coming up on 3rd Jan &#10;2025 in the B&#10;Building&#10;Time: 5:00 PM&#10;Location: B Binasi&#10;&#10;" wrapText="true">
+                    <font>
+                        <Font size="27.0" />
+                    </font>
+                </TextArea>
+            </children>
+        </Pane>
+    </center>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
+         <children>
+              <Label fx:id="eventTitle_ID" prefHeight="99.0" prefWidth="595.0" text="Innovation - 250">
+                  <font>
+                      <Font name="Times New Roman Bold" size="40.0" />
+                  </font>
+              </Label>
+            <Button mnemonicParsing="false" onAction="#unfollowAndRemoveEvent" prefHeight="100.0" prefWidth="321.0" style="-fx-background-radius: 10;" styleClass="addFriendsButton" stylesheets="@../styles.css" text="Unfollow" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Bold" size="19.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="30.0" top="30.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="15.0" right="30.0" />
+         </padding>
+      </HBox>
+   </top>
+</BorderPane>

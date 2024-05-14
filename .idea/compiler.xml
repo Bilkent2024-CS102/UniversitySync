@@ -37,6 +37,11 @@
       <file url="file://$PROJECT_DIR$/src/app/dao/CampusDao.java" />
       <file url="file://$PROJECT_DIR$/src/app/controller/RegistrationController.java" />
       <file url="file://$PROJECT_DIR$/src/app/controller/LoginController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/SocialMessageBoxController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/SocialMessageOneUserController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/SocialAllMessagesController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/ProfileMyPostsController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/ProfileLikedPostsController.java" />
     </excludeFromCompile>
     <annotationProcessing>
       <profile name="Maven default annotation processors profile" enabled="true">

@@ -40,10 +40,19 @@ public class EventController {
 //MOCK CLASS
 class EventMock {
     private String eventText;
+    private String eventTitle;
     public String getEventText() {
         return eventText;
     }
     public void setEventText(String eventText) {
         this.eventText = eventText;
+    }
+
+    public String getEventTitle() {
+        return eventTitle;
+    }
+
+    public void setEventTitle(String eventTitle) {
+        this.eventTitle = eventTitle;
     }
 }
