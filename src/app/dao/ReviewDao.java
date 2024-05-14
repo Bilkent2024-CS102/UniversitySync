@@ -135,4 +135,33 @@ public class ReviewDao {
 
         return result;
     }
+
+    /**
+     * @TESTED
+     * used to ensure unique review
+     * @param userId
+     * @param reviewableId
+     * @return whether a review exists by that particular user to that particular location
+     */
+    public static boolean doesReviewExist(int userId, int reviewableId){
+        try
+        {
+            String query = "SELECT * FROM university_sync.review WHERE owner_student_id = ? AND review_to_location_id = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, userId);
+            pst.setInt(2, reviewableId);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next())
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
