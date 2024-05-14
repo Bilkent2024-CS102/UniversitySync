@@ -38,11 +38,7 @@ public class ForumController implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            DBConnectionManager.initializeConnection("jdbc:mysql://127.0.0.1:3306/?user=root", "root", "LkJhGfDs@10");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
 
         posts = ForumPostDao.getForumPostsByRecency();
         try {

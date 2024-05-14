@@ -1,5 +1,7 @@
 package app.model.location;
 
+import app.dao.DormitoryDao;
+
 public class Room {
     private static int numberOfInstances;
     private int dormitoryID;
@@ -73,5 +75,13 @@ public class Room {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String toString(){
+        String retString = this.getCapacity() + " capacity, ";
+        retString += (this.isBunked() ? "bunked, " : "flat bed, ");
+        retString += (this.isPrivateBathroom() ? "with private bathroom, " : "");
+        retString += "in the dormitory" + DormitoryDao.getDormitoryById(this.getDormId()).getName();
+        return retString;
     }
 }

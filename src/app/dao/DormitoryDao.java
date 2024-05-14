@@ -167,4 +167,34 @@ public class DormitoryDao {
             return null;
         }
     }
+
+    /**
+     * @TESTED
+     * Retrieves all room types from the database.
+     *
+     * @return An ArrayList containing all Room instances.
+     */
+    public static ArrayList<Room> getAllRoomTypes(){
+        ArrayList<Room> rooms = new ArrayList<>();
+        String query = "SELECT * FROM university_sync.room_type";
+        try{
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                Room roomType = new Room(resultSet.getInt("room_type_id"),
+                        resultSet.getInt("capacity"), resultSet.getBoolean("is_bunk"),
+                        resultSet.getBoolean("has_private_bathroom"),
+                        resultSet.getString("room_type_description"),
+                        resultSet.getInt("room_in_dormitory_id"));
+                rooms.add(roomType);
+            }
+            resultSet.close();
+            pst.close();
+            return rooms;
+        }
+        catch (SQLException sqle){
+            sqle.printStackTrace();
+            return null;
+        }
+    }
 }

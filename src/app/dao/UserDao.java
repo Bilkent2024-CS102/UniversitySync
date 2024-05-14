@@ -21,11 +21,17 @@ public class UserDao {
      */
     public static int addUser(User u){
         try{
-            String query = "INSERT INTO university_sync.student (full_name, email, pass) VALUES (?, ? ,?);";
+            String query = "INSERT INTO university_sync.student (full_name, email, pass, student_major, student_room_type_id) VALUES (?, ? ,?, ?, ?);";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setString(1, u.getName());
             pst.setString(2, u.getEmail());
             pst.setString(3, u.getPassword());
+            pst.setString(4, u.getMajor());
+            if (u.getRoomId() == 0) {
+                pst.setNull(5, Types.INTEGER);
+            } else {
+                pst.setInt(5, u.getRoomId());
+            }
             pst.executeUpdate();
             Statement st = DBConnectionManager.getConnection().createStatement();
             ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
@@ -470,6 +476,30 @@ public class UserDao {
         {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    /**
+     * @return all the majors as arraylist
+     */
+    public static ArrayList<String> getMajors()
+    {
+        try
+        {
+            ArrayList<String> majors = new ArrayList<>();
+            String query = "SELECT * FROM university_sync.major";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()){
+                majors.add(rs.getString("major_full_name"));
+            }
+            return majors;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return null;
         }
     }
 }

@@ -27,4 +27,8 @@ public class Dormitory extends Location{
     {
         this.rooms = rooms;
     }
+
+    public String toString(){
+        return this.getName();
+    }
 }

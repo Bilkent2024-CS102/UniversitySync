@@ -66,8 +66,7 @@ public class LoginController {
     }
 
 
-    public void switchToRegistrationPage(ActionEvent event) {
-
-
+    public void switchToRegistrationPage(ActionEvent event) throws IOException {
+        switchToFXML("src/app/view/RegisterationPage.fxml", event);
     }
 }

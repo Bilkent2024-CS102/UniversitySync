@@ -28,15 +28,7 @@
                 <Insets />
             </VBox.margin>
         </Label>
-        <TextField fx:id="fullNameID" prefHeight="35.0" prefWidth="420.0" promptText="Full Name" translateY="-14.0">
-            <font>
-                <Font size="16.0" />
-            </font>
-            <VBox.margin>
-                <Insets left="40.0" right="40.0" />
-            </VBox.margin>
-        </TextField>
-        <TextField fx:id="usernameID" prefHeight="35.0" prefWidth="386.0" promptText="Username" translateY="-14.0">
+        <TextField fx:id="fullnameID" prefHeight="35.0" prefWidth="420.0" promptText="Full Name" translateY="-14.0">
             <font>
                 <Font size="16.0" />
             </font>
@@ -88,7 +80,7 @@
             <Insets left="40.0" right="40.0" />
          </VBox.margin>
       </TextField>
-        <Button mnemonicParsing="false" onAction="#registerButton" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #68c151;" text="Register" textFill="WHITE" translateY="-10.0">
+        <Button mnemonicParsing="false" onAction="#registerUser" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #68c151;" text="Register" textFill="WHITE" translateY="-10.0">
             <font>
                 <Font size="18.0" />
             </font>
