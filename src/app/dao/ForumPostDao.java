@@ -1,6 +1,7 @@
 package app.dao;
 
 import app.controller.SessionManager;
+import app.model.User;
 import app.model.userContent.Reply;
 import app.model.userContent.post.ForumPost;
 
@@ -396,6 +397,44 @@ public class ForumPostDao {
                         rs.getString("heading")
                 );
                 posts.add(post);
+            }
+            return posts;
+        }
+        catch (Exception sqle)
+        {
+            sqle.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Returns forum posts made by the user's friends
+     *
+     * @param userId id of the user whose friends' posts are to be pulled
+     * @return ArrayList of forum posts made by user's friends
+     */
+    public static ArrayList<ForumPost> getForumPostsOfFriends(int userId)
+    {
+        ArrayList<ForumPost> posts = new ArrayList<ForumPost>();
+        try
+        {
+            ArrayList<User> friends = UserDao.getFriends(userId);
+            String query = "SELECT * FROM university_sync.forum_post WHERE owner_student_id = ?";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            for (User friend: friends) {
+                pst.setInt(1, friend.getUserId());
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    ForumPost post = new ForumPost(
+                            rs.getInt("forum_post_id"),
+                            rs.getInt("owner_student_id"),
+                            rs.getString("main_text"),
+                            rs.getTimestamp("creation_date"),
+                            rs.getTimestamp("last_edit_date"),
+                            rs.getString("heading")
+                    );
+                    posts.add(post);
+                }
             }
             return posts;
         }
