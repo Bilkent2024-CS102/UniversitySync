@@ -6,19 +6,33 @@
 
 <!--<fx:include source="../Profile_TOP_TAB.fxml"/>-->
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.ScrollPane?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ProfileLikedPostsController">
     <top>
         <fx:include source="../TOP_TAB.fxml" />
     </top>
-   <center>
-      <VBox prefHeight="785.0" prefWidth="1080.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
-         <fx:include source="Profile_TOP_TAB.fxml" />
-         <BorderPane.margin>
-            <Insets top="35.0" />
-         </BorderPane.margin>
-      </VBox>
-   </center>
-   <left>
-       <fx:include source="profile_LEFT_DISPLAY.fxml" />
-   </left>
+    <center>
+        <VBox prefHeight="820.0" prefWidth="1198.0" BorderPane.alignment="CENTER">
+            <fx:include source="Profile_TOP_TAB.fxml" />
+            <children>
+                <ScrollPane prefHeight="765.0" prefWidth="1222.0">
+                    <content>
+                        <VBox fx:id="postVBoxID" spacing="40.0">
+                            <!--                      <BorderPane fx:id="borderTextBox_ID" prefHeight="600.0" prefWidth="1222.0" BorderPane.alignment="CENTER">-->
+                            <fx:include source="../Post.fxml" />  <!--you can remove it later-->
+                            <padding>
+                                <Insets top="20.0" />
+                            </padding>
+                        </VBox>
+                    </content>
+                    <padding>
+                        <Insets left="130.0" />
+                    </padding>
+                </ScrollPane>
+            </children>
+        </VBox>
+    </center>
+    <left>
+        <fx:include source="profile_LEFT_DISPLAY.fxml" />
+    </left>
 </BorderPane>
