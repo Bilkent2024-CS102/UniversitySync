@@ -1,5 +1,7 @@
 package app.controller;
+import app.dao.ReviewDao;
 import app.dao.UserDao;
+import app.model.location.Location;
 import app.model.userContent.Review;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,18 +29,31 @@ public class ReviewPostController {
     @FXML
     private TextArea reviewPost_textArea_ID;
 
+    @FXML
+    private Button deleteReviewButton;
+
+    private Review thisReview;
+    private Location thisLocation;
+
     public void deleteMyReview(ActionEvent event) throws IOException {
-        //user should be able to delete its own reviews only
+        ReviewDao.removeReview(thisReview.getReviewableId());
+//        ReviewPageController.refresh(thisLocation);
     }
 
-    public void setData(Review review) {
+    public void setData(Review review, Location location) {
         // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
         // userImageOnPostID.setImage(image);
 
         //reviewPostImage_ID  ... s
+        thisReview = review;
+        thisLocation = location;
         reviewPost_TopInfo_ID.setText( "Review by " + UserDao.getUserById(review.getOwnerId()).getName() + " on " + review.getCreationDate());
         reviewPost_TopRating_ID.setText( "" + review.getRateGiven());
         reviewPost_textArea_ID.setText( review.getMainText());
         reviewPost_textArea_ID.setEditable(false);
+        if (review.getOwnerId() != SessionManager.getCurrentUser().getUserId())
+        {
+            deleteReviewButton.setDisable(true);
+        }
     }
 }

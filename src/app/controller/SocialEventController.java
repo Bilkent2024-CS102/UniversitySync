@@ -54,8 +54,7 @@ public class SocialEventController {
     @FXML
     public void unfollowAndRemoveEvent(ActionEvent event) throws IOException
     {
-        User u = SessionManager.getCurrentUser();
-        EventPostDao.removeFollower(thisEvent.getUserContentItemId(), u.getUserId());
+        EventPostDao.removeFollower(thisEvent.getUserContentItemId(), SessionManager.getCurrentUser().getUserId());
         refresh(event);
     }
 

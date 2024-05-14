@@ -56,7 +56,7 @@
                         <Image url="@icons/mg-2688_1_orig.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="reviewDormName_ID" alignment="CENTER" prefHeight="82.0" prefWidth="381.0" text="Dorm 76" textFill="WHITE">
+                  <Label fx:id="locationNameLabel" alignment="CENTER" prefHeight="82.0" prefWidth="381.0" text="Dorm 76" textFill="WHITE">
                      <font>
                         <Font name="PT Sans Bold" size="44.0" />
                      </font>
@@ -64,14 +64,14 @@
                         <Insets top="25.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="71.0" prefWidth="381.0" text="Dormitory" textFill="YELLOW">
+                  <Label fx:id="locationTypeLabel" alignment="CENTER" prefHeight="71.0" prefWidth="381.0" text="Dormitory" textFill="YELLOW">
                      <font>
                         <Font name="PT Sans Bold" size="36.0" />
                      </font>
                   </Label>
                   <HBox prefHeight="67.0" prefWidth="392.0" spacing="15.0">
                      <children>
-                        <Label fx:id="reviewDormReview_ID" prefHeight="67.0" prefWidth="390.0" text="233 Reviews" textFill="YELLOW">
+                        <Label fx:id="reviewCountLabel" prefHeight="67.0" prefWidth="390.0" text="233 Reviews" textFill="YELLOW">
                            <font>
                               <Font name="PT Sans Bold" size="36.0" />
                            </font>
@@ -83,7 +83,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="67.0" prefWidth="392.0" spacing="15.0">
                      <children>
-                        <Label fx:id="reviewDormRated_ID" prefHeight="107.0" prefWidth="204.0" text="Rated 4.8/5" textFill="YELLOW">
+                        <Label fx:id="ratingLabel" prefHeight="107.0" prefWidth="204.0" text="Rated 4.8/5" textFill="YELLOW">
                            <font>
                               <Font name="PT Sans Bold" size="36.0" />
                            </font>
@@ -114,7 +114,7 @@
                                           <Font name="SansSerif Bold" size="28.0" />
                                        </font>
                                     </TextField>
-                                    <Button fx:id="postReviewButton_ID" onAction="#addReview" layoutX="981.0" layoutY="306.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="247.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" text="Post Review" textFill="WHITE">
+                                    <Button fx:id="postReviewButton" onAction="#addReview" layoutX="981.0" layoutY="306.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="247.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" text="Post Review" textFill="WHITE">
                                        <font>
                                           <Font name="Helvetica Bold" size="31.0" />
                                        </font>

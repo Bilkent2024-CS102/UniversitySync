@@ -35,7 +35,7 @@
                         <Font name="PT Sans Bold" size="33.0" />
                     </font>
                 </Label>
-                <Button fx:id="reviewPost_deleteButton_ID" mnemonicParsing="false" style="-fx-background-color: #4B8990;">
+                <Button fx:id="deleteReviewButton" mnemonicParsing="false" onAction="#deleteMyReview" style="-fx-background-color: #4B8990;">
                     <graphic>
                         <ImageView fitHeight="53.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                             <image>

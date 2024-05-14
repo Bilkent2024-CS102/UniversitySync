@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class DormitoryDetailController {
     private Stage stage;
@@ -40,7 +41,8 @@ public class DormitoryDetailController {
         dormName_ID.setText( dorm.getName());
         //dormImage_ID.setImage( dorm.getDormImage().getImage());
         dormDescription_ID.setText( dorm.getDescription());
-        dormRateTextField_ID.setText("" + dorm.getRating());
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        dormRateTextField_ID.setText("" + decimalFormat.format(dorm.getRating()));
         dormCampus_ID.setText(dorm.getCampus().getName());
     }
 

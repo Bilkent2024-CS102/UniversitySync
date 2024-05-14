@@ -4,7 +4,15 @@ import app.dao.UserDao;
 import app.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
 
 public class profileEditController {
     @FXML
@@ -20,7 +28,11 @@ public class profileEditController {
     @FXML
     private TextArea descriptionTextField;
 
-    public void updateUser(ActionEvent event) {
+    private Stage stage;
+    private Scene scene;
+    private FXMLLoader fxmlLoader;
+
+    public void updateUser(ActionEvent event) throws IOException {
         String firstName = firstNameTextField.getText();
         String lastName = lastNameTextField.getText();
         String oldPass = oldPassTextField.getText();
@@ -62,6 +74,7 @@ public class profileEditController {
 
         if(valid){
             UserDao.updateUser(current);
+            refresh(event);
             firstNameTextField.clear();
             lastNameTextField.clear();
             oldPassTextField.clear();
@@ -73,5 +86,26 @@ public class profileEditController {
             alert.setHeaderText("Profile updated");
             alert.showAndWait();
         }
+    }
+
+    private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
+        Parent root = fxmlLoader.load();
+
+        if (event.getSource() instanceof Node) {                                    //FOR Buttons
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        }
+        else if (event.getSource() instanceof MenuItem menuItem)  {                 //FOR MenuButtons
+            stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+        }
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);     //it should be after stage.setScene
+        stage.show();
+    }
+
+    public void refresh(ActionEvent event) throws IOException {
+//        switchToFXML("src/app/view/ProfilePage/profile_LEFT_DISPLAY.fxml", event);
+        switchToFXML("src/app/view/ProfilePage/profileMyPost.fxml", event);
     }
 }

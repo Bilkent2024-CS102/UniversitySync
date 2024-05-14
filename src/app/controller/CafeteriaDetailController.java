@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class CafeteriaDetailController {
     private Stage stage;
@@ -42,7 +43,8 @@ public class CafeteriaDetailController {
         //cafeImage_ID.setImage(cafe.getCafeImage().getImage());
         cafeDescription_ID.setText(cafe.getDescription());
         cafeMenuTextArea_ID.setText( cafe.getMenu());
-        String text = (cafe.getRating() < 0) ? ("No Reviews") : ("" + cafe.getRating());
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        String text = (cafe.getRating() < 0) ? ("No Reviews") : ("" + decimalFormat.format(cafe.getRating()));
         cafeRateTextField_ID.setText(text);
         cafePriceRange_ID.setText( cafe.getMinPrice() + "-" + cafe.getMaxPrice() + " TL");
 

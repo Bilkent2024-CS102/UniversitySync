@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import app.model.location.cafeteria.Cafeteria;
@@ -33,11 +34,11 @@ public class CafeteriaNameController {
     private Cafeteria thisCafe;
 
     public void setData(Cafeteria cafe) {
-
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
         thisCafe = cafe;        //connection bw different pages
 
         food_cafeteriaName_ID.setText( cafe.getName());
-        String text = (cafe.getRating() < 0) ? ("No Reviews") : ("" + cafe.getRating());
+        String text = (cafe.getRating() < 0) ? ("No Reviews") : ("" + decimalFormat.format(cafe.getRating()));
         foodPage_CafeRating_ID.setText(text);
         foodPage_CafePriceRange_ID.setText( cafe.getMinPrice() + "-" + cafe.getMaxPrice() + " TL");
 

@@ -12,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import java.text.DecimalFormat;
 import java.util.List;
 
 import java.awt.*;
@@ -41,7 +43,8 @@ public class DormitoryNameController {
         thisDorm = dorm;          //connection bw different pages
 
         DormName_ID.setText( dorm.getName());
-        String text = (dorm.getRating() < 0) ? ("No Reviews") : ("" + dorm.getRating());
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        String text = (dorm.getRating() < 0) ? ("No Reviews") : ("" + decimalFormat.format(dorm.getRating()));
         DormRating_ID.setText(text);
         dormCampus_ID.setText("" + dorm.getCampus().getName());
 

@@ -1,20 +1,20 @@
 package app.controller;
 
 import app.dao.ReviewDao;
+import app.model.location.Dormitory;
 import app.model.location.Location;
 import app.model.userContent.Review;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,26 +34,58 @@ public class ReviewPageController {
     private TextArea reviewText;
     @FXML
     private TextField reviewRating;
+    @FXML
+    private Button postReviewButton;
 
-    //USE THIS : private ...... dormOrCafeAssociatedWithThis;
+    @FXML
+    private Label locationNameLabel;
+    @FXML
+    private Label locationTypeLabel;
+    @FXML
+    private Label reviewCountLabel;
+    @FXML
+    private Label ratingLabel;
+
+
     private Location location;
-    ////// ^^^^^^ HERE REPLACE Location with parent class of both dorm and cafe DATABASE
 
 
     public void setData(Location loc) {
-        //  this.dormAssociatedWithThis = dormAssociatedWithThis;
         this.location = loc;
-//        reviewVBox_ID.getChildren().clear();
+        reviewVBox_ID.getChildren().clear();
+        reviewVBox_ID.getChildren().add(reviewRating);
+        reviewVBox_ID.getChildren().add(reviewText);
+        reviewVBox_ID.getChildren().add(postReviewButton);
+        locationNameLabel.setText(loc.getName());
+        if (loc instanceof Dormitory)
+        {
+            locationTypeLabel.setText("Dormitory");
+        }
+        else
+        {
+            locationTypeLabel.setText("Cafeteria");
+        }
 
         reviews = ReviewDao.getReviewsOf(loc.getLocationId());
 
+        reviewCountLabel.setText(reviews.size() + " Reviews");
+        if (loc.getRating() < 0)
+        {
+            ratingLabel.setText("No reviews");
+        }
+        else
+        {
+            DecimalFormat decimalFormat = new DecimalFormat("0.00");
+            ratingLabel.setText("" + decimalFormat.format(loc.getRating()));
+        }
+
         try {
-            for(int i = 0; i < reviews.size(); i++) {
+            for(int i = reviews.size() - 1; i >= 0; i--) {
                 fxmlLoader = new FXMLLoader(new File("src/app/view/reviewPost.fxml").toURI().toURL());
                 VBox vbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
                 ReviewPostController eventController = fxmlLoader.getController();
                 //now setting data (username, text ...) for each post
-                eventController.setData(reviews.get(i));
+                eventController.setData(reviews.get(i), location);
                 reviewVBox_ID.getChildren().add(vbox);  //now adding post (pane) to the vbox
             }
         } catch (IOException e) {
@@ -78,4 +110,9 @@ public class ReviewPageController {
             alert.showAndWait();
         }
     }
+
+//    public static void refresh(Location loc)
+//    {
+//        setData(loc);
+//    }
 }

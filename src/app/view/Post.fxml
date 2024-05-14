@@ -70,7 +70,7 @@
          </font>
       </Label>
       <ImageView fx:id="userImageOnPostID" fitHeight="61.0" fitWidth="71.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <Button contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="697.0" layoutY="19.0" mnemonicParsing="false" onAction="#editPost" prefHeight="45.0" prefWidth="121.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Edit">
+      <Button fx:id="editButton" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="697.0" layoutY="19.0" mnemonicParsing="false" onAction="#editPost" prefHeight="45.0" prefWidth="121.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Edit">
          <font>
             <Font size="19.0" />
          </font>

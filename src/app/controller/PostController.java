@@ -52,6 +52,8 @@ public class PostController {
     private Button commentSendButtonID;
     @FXML
     private Button deleteButton;
+    @FXML
+    private Button editButton;
 
     // The below will be labels. They are strings just for now.
     private String heading;
@@ -127,6 +129,7 @@ public class PostController {
         else
         {
             deleteButton.setDisable(true);
+            editButton.setDisable(true);
         }
 
     }
@@ -246,7 +249,20 @@ public class PostController {
     }
 
     public void editPost(ActionEvent event){
-
+        if (editButton.getText().equals("Edit"))
+        {
+            postTextAreaID.setEditable(true);
+            editButton.setText("Unedit");
+        }
+        else
+        {
+            String newPostText = postTextAreaID.getText();
+            thisPost.setMainText(newPostText);
+//            ForumPostDao.updatePost(thisPost.getUserContentItemId());
+            ForumPostDao.edit(thisPost.getUserContentItemId(), newPostText);
+            postTextAreaID.setEditable(false);
+            editButton.setText("Edit");
+        }
     }
 
 //

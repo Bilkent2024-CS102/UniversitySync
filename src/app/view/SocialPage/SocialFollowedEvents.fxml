@@ -29,7 +29,7 @@
                       <Font name="Times New Roman Bold" size="40.0" />
                   </font>
               </Label>
-            <Button mnemonicParsing="false" onAction="#unfollowAndRemoveEvent" prefHeight="100.0" prefWidth="321.0" style="-fx-background-radius: 10;" styleClass="addFriendsButton" stylesheets="@../styles.css" text="Unfollow" textFill="WHITE">
+            <Button fx:id="unfollowButton" mnemonicParsing="false" onAction="#unfollowAndRemoveEvent" prefHeight="100.0" prefWidth="321.0" style="-fx-background-radius: 10;" styleClass="addFriendsButton" stylesheets="@../styles.css" text="Unfollow" textFill="WHITE">
                <font>
                   <Font name="Helvetica Neue Bold" size="19.0" />
                </font>
