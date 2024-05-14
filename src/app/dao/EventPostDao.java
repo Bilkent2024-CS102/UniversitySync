@@ -1,12 +1,12 @@
 package app.dao;
 
+import app.model.FriendRequest;
+import app.model.User;
 import app.model.userContent.post.EventPost;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EventPostDao
 {
@@ -159,6 +159,27 @@ public class EventPostDao
         }
     }
 
+    public static EventPost getEventPostById(int ID)
+    {
+        try
+        {
+            String query = "SELECT * FROM university_sync.event_post WHERE event_post_id = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, ID);
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+            EventPost u = new EventPost(rs.getInt("owner_student_id"), rs.getString("main_text"),
+                    rs.getDate("creation_date"), rs.getDate("last_edit_date"), rs.getString("heading"),
+                    rs.getString("location"), rs.getDate("event_date"));
+            return u;
+        }
+        catch (SQLException sqle)
+        {
+            sqle.printStackTrace();
+            return null;
+        }
+    }
+
     /**
      * @TESTED
      * Checks if {@code User} instance is
@@ -188,6 +209,36 @@ public class EventPostDao
         {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    /**
+     * @NOT TESTED
+     *
+     * Returns event posts a specific user is following
+     * @param userId id of the user
+     * @return ArrayList of EventPost objects (that the user is following)
+     */
+    public static ArrayList<EventPost> getEventsOfUser(int userId)
+    {
+        try
+        {
+            ArrayList<EventPost> events = new ArrayList<>();
+            String query = "SELECT followed_event_post_id FROM university_sync.follow_event_post WHERE followed_by_student_id = ?;";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next())
+            {
+                EventPost event = getEventPostById(rs.getInt("followed_event_post_id"));
+                events.add(event);
+            }
+            return events;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return null;
         }
     }
 }
