@@ -29,7 +29,8 @@ public class DormitoryDao {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
                 Dormitory dorm = new Dormitory(resultSet.getInt("dormitory_location_id"), null, resultSet.getString("link_to_dormitory_picture"),
-                        resultSet.getString("dorm_name"), resultSet.getString("dorm_description"), 0, CampusDao.getCampusById(resultSet.getInt("dormitory_in_campus_id")), null);
+                        resultSet.getString("dorm_name"), resultSet.getString("dorm_description"),
+                        0, CampusDao.getCampusById(resultSet.getInt("dormitory_in_campus_id")), null);
                 dorm.setReviews(ReviewDao.getReviewsOf(dorm.getLocationId()));
                 dorm.setRooms(DormitoryDao.getRoomTypesIn(dorm.getLocationId()));
                 dormitories.add(dorm);
@@ -128,6 +129,33 @@ public class DormitoryDao {
             resultSet.close();
             pst.close();
             return rooms;
+        }
+        catch (SQLException sqle){
+            sqle.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * @TESTED
+     * Retrieves a room by its ID from the database.
+     *
+     * @param id The ID of the room to retrieve.
+     * @return The Room object corresponding to the given ID, or null if no such room exists.
+     */
+    public static Room getRoomTypeById(int id){
+        String query = "SELECT * FROM university_sync.room_type WHERE room_type_id = ?";
+        try{
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, id);
+            ResultSet resultSet = pst.executeQuery();
+            Room room;
+            resultSet.next();
+            room = new Room(resultSet.getInt("room_type_id"), resultSet.getInt("capacity"), resultSet.getBoolean("is_bunk"),
+                    resultSet.getBoolean("has_private_bathroom"), resultSet.getString("room_type_description"), resultSet.getInt("room_in_dormitory_id"));
+            resultSet.close();
+            pst.close();
+            return room;
         }
         catch (SQLException sqle){
             sqle.printStackTrace();

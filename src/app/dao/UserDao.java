@@ -58,12 +58,12 @@ public class UserDao {
             pst.setString(4, u.getBiography());
             pst.setString(5, u.getProfilePicturePath());
             pst.setString(6, u.getMajor());
-            if (u.getRoom() == null)
+            if (u.getRoomId() == 0)
             {
                 pst.setNull(7 , Types.INTEGER);
             }
             else{
-                pst.setInt(7, u.getRoom().getRoomId());
+                pst.setInt(7, u.getRoomId());
             }
             pst.setInt(8, u.getUserId());
             pst.executeUpdate();
@@ -160,7 +160,8 @@ public class UserDao {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
                 User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
-                        resultSet.getString("email"), resultSet.getString("pass"), resultSet.getString("student_major"), resultSet.getString("biography"));
+                        resultSet.getString("email"), resultSet.getString("pass"),
+                        resultSet.getString("student_major"), resultSet.getString("biography"), resultSet.getInt("student_room_type_id"));
                 students.add(u);
             }
             resultSet.close();
@@ -190,7 +191,8 @@ public class UserDao {
             ResultSet resultSet = pst.executeQuery();
             resultSet.next();
             User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
-                    resultSet.getString("email"), resultSet.getString("pass"), resultSet.getString("student_major"), resultSet.getString("biography"));
+                    resultSet.getString("email"), resultSet.getString("pass"),
+                    resultSet.getString("student_major"), resultSet.getString("biography"), resultSet.getInt("student_room_type_id"));
             return u;
         }
         catch (SQLException sqle)
@@ -406,7 +408,8 @@ public class UserDao {
             ResultSet resultSet = pst.executeQuery();
             resultSet.next();
             User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
-                    resultSet.getString("email"), resultSet.getString("pass"), resultSet.getString("student_major"), resultSet.getString("biography"));
+                    resultSet.getString("email"), resultSet.getString("pass"),
+                    resultSet.getString("student_major"), resultSet.getString("biography"), resultSet.getInt("student_room_type_id"));
             return u;
         }
         catch (SQLException sqle)

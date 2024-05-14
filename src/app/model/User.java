@@ -1,6 +1,5 @@
 package app.model;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 import app.model.location.Room;
@@ -16,7 +15,7 @@ public class User {
     private int userId;
 
     private String name;
-    private Room room;
+    private int roomId;
     private String email;
     private String password;
     private String profilePicturePath; //What is Image class?
@@ -37,15 +36,17 @@ public class User {
      * @param email
      * @param password
      */
-    public User(String name, String email, String password, String major, String biography)
+    public User(String name, String email, String password, String major, String biography, int roomId)
     {
         setName(name);
         setEmail(email);
         setPassword(password);
-        int id = UserDao.addUser(this);
-        setId(id);
         setMajor(major);
         setBiography(biography);
+        setRoomId(roomId);
+        int id = UserDao.addUser(this);
+        setId(id);
+
     }
 
     /**
@@ -55,7 +56,7 @@ public class User {
      * @param email
      * @param password
      */
-    public User(int id, String name, String email, String password, String major, String biography)
+    public User(int id, String name, String email, String password, String major, String biography, int roomId)
     {
         setName(name);
         setEmail(email);
@@ -63,6 +64,7 @@ public class User {
         setId(id);
         setMajor(major);
         setBiography(biography);
+        setRoomId(roomId);
     }
 
 
@@ -80,9 +82,9 @@ public class User {
     {
         return name;
     }
-    public Room getRoom()
+    public int getRoomId()
     {
-        return room;
+        return roomId;
     }
     public String getEmail()
     {
@@ -139,9 +141,9 @@ public class User {
     {
         this.name = name;
     }
-    public void setRoom(Room room)
+    public void setRoomId(int roomId)
     {
-        this.room = room;
+        this.roomId = roomId;
     }
     public void setEmail(String email)
     {

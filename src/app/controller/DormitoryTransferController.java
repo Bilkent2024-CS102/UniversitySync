@@ -5,14 +5,10 @@ import java.time.LocalDate;
 
 import app.dao.UserDao;
 import app.model.User;
-import app.model.location.Room;
 import app.model.userContent.post.DormTransferPost;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-
-import app.dao.DormTransferPostDao;
-import app.dao.DormitoryDao;
 
 public class DormitoryTransferController {
     
@@ -26,7 +22,7 @@ public class DormitoryTransferController {
         String postDetails = dormDescription.getText();
         String postHeading = heading.getText();
         Date date = Date.valueOf(LocalDate.now());
-        DormTransferPost post = new DormTransferPost(SessionManager.getCurrentUser().getUserId(), postDetails, date, date, postHeading, SessionManager.getCurrentUser().getRoom().getRoomId());
+        DormTransferPost post = new DormTransferPost(SessionManager.getCurrentUser().getUserId(), postDetails, date, date, postHeading, SessionManager.getCurrentUser().getRoomId());
     }
 
     public void openPost(ActionEvent e)
@@ -45,12 +41,12 @@ public class DormitoryTransferController {
     public void transferDorm(ActionEvent e)
     {
         User whoPosted = UserDao.getUserById(((DormTransferPost)e.getSource()).getOwnerId());
-        Room room1 = whoPosted.getRoom();
+        int room1Id = whoPosted.getRoomId();
         User current = SessionManager.getCurrentUser();
-        Room room2 = current.getRoom();
+        int room2Id = current.getRoomId();
 
-        whoPosted.setRoom(room2);
-        current.setRoom(room1);
+        whoPosted.setRoomId(room2Id);
+        current.setRoomId(room1Id);
         UserDao.updateUser(whoPosted);
         UserDao.updateUser(current);
     }

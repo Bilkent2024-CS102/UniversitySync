@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.dao.DormitoryDao;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -27,9 +28,9 @@ public class profileDisplayController implements Initializable {
 //        usernamenameLabel.setText(SessionManager.getCurrentUser().getUsername());
         majorLabel.setText(SessionManager.getCurrentUser().getMajor());
         emailLabel.setText(SessionManager.getCurrentUser().getEmail());
-        if (SessionManager.getCurrentUser().getRoom() != null)
+        if (SessionManager.getCurrentUser().getRoomId() != 0)
         {
-            dormLabel.setText(SessionManager.getCurrentUser().getRoom().getDescription());
+            dormLabel.setText(DormitoryDao.getRoomTypeById(SessionManager.getCurrentUser().getRoomId()).getDescription());
         }
         else
         {

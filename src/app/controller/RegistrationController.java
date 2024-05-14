@@ -61,7 +61,7 @@ public class RegistrationController {
         String repeatPassword = confirmPasswordField.getText();
         if (isPasswordValid(password, repeatPassword) && validateInputs(name, email, password, repeatPassword))
         {
-            User newUser = new User(name, email, password, major, bio);
+            User newUser = new User(name, email, password, major, bio, 0); //initially 0 as roomId indicating no room
 
             switchToFXML(null, e); // need to replace null with login page's fxml path
         }
