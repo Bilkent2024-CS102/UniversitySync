@@ -37,13 +37,15 @@ public class User {
      * @param email
      * @param password
      */
-    public User(String name, String email, String password)
+    public User(String name, String email, String password, String major, String biography)
     {
         setName(name);
         setEmail(email);
         setPassword(password);
         int id = UserDao.addUser(this);
         setId(id);
+        setMajor(major);
+        setBiography(biography);
     }
 
     /**
@@ -53,12 +55,14 @@ public class User {
      * @param email
      * @param password
      */
-    public User(int id, String name, String email, String password)
+    public User(int id, String name, String email, String password, String major, String biography)
     {
         setName(name);
         setEmail(email);
         setPassword(password);
         setId(id);
+        setMajor(major);
+        setBiography(biography);
     }
 
 

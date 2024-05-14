@@ -160,7 +160,7 @@ public class UserDao {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
                 User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
-                        resultSet.getString("email"), resultSet.getString("pass"));
+                        resultSet.getString("email"), resultSet.getString("pass"), resultSet.getString("student_major"), resultSet.getString("biography"));
                 students.add(u);
             }
             resultSet.close();
@@ -190,7 +190,7 @@ public class UserDao {
             ResultSet resultSet = pst.executeQuery();
             resultSet.next();
             User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
-                    resultSet.getString("email"), resultSet.getString("pass"));
+                    resultSet.getString("email"), resultSet.getString("pass"), resultSet.getString("student_major"), resultSet.getString("biography"));
             return u;
         }
         catch (SQLException sqle)
@@ -406,7 +406,7 @@ public class UserDao {
             ResultSet resultSet = pst.executeQuery();
             resultSet.next();
             User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
-                    resultSet.getString("email"), resultSet.getString("pass"));
+                    resultSet.getString("email"), resultSet.getString("pass"), resultSet.getString("student_major"), resultSet.getString("biography"));
             return u;
         }
         catch (SQLException sqle)

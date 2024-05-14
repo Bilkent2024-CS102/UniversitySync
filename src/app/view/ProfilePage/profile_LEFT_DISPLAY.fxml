@@ -6,39 +6,39 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="820.0" prefWidth="469.0" style="-fx-background-color: #67B2B7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="820.0" prefWidth="469.0" style="-fx-background-color: #67B2B7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.profileDisplayController">
    <children>
       <ImageView fitHeight="271.0" fitWidth="380.0" layoutX="88.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icons/user_8742495.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="60.0" layoutY="390.0" prefHeight="45.0" prefWidth="330.0" text="Name LastName">
+      <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="60.0" layoutY="390.0" prefHeight="45.0" prefWidth="330.0" text="Name LastName">
          <font>
             <Font name="SansSerif Bold" size="34.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="460.0" prefHeight="45.0" prefWidth="329.0" text="Username">
+      <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="460.0" prefHeight="45.0" prefWidth="329.0" text="Username">
          <font>
             <Font name="SansSerif Bold" size="34.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="530.0" prefHeight="45.0" prefWidth="329.0" text="Department">
+      <Label fx:id="majorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="530.0" prefHeight="45.0" prefWidth="329.0" text="Major">
          <font>
             <Font name="SansSerif Bold" size="34.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="63.0" layoutY="600.0" prefHeight="45.0" prefWidth="329.0" text="Bilkent Mail">
+      <Label fx:id="emailLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="63.0" layoutY="600.0" prefHeight="45.0" prefWidth="329.0" text="Bilkent Mail">
          <font>
             <Font name="SansSerif Bold" size="34.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="63.0" layoutY="670.0" prefHeight="45.0" prefWidth="329.0" text="Dormitory">
+      <Label fx:id="dormLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="63.0" layoutY="670.0" prefHeight="45.0" prefWidth="329.0" text="Dormitory">
          <font>
             <Font name="SansSerif Bold" size="34.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="740.0" prefHeight="45.0" prefWidth="329.0" text="View Biography">
+      <Label fx:id="descriptionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="740.0" prefHeight="45.0" prefWidth="329.0" text="Biography">
          <font>
             <Font name="SansSerif Bold" size="34.0" />
          </font>

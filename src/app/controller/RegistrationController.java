@@ -27,6 +27,10 @@ public class RegistrationController {
     private TextField passwordField;
     @FXML
     private TextField confirmPasswordField;
+    @FXML
+    private TextField majorField;
+    @FXML
+    private TextField bioField;
 
     private Stage stage;
     private Scene scene;
@@ -52,10 +56,12 @@ public class RegistrationController {
         String name = nameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
+        String major = majorField.getText();
+        String bio = bioField.getText();
         String repeatPassword = confirmPasswordField.getText();
         if (isPasswordValid(password, repeatPassword) && validateInputs(name, email, password, repeatPassword))
         {
-            User newUser = new User(name, email, password);
+            User newUser = new User(name, email, password, major, bio);
 
             switchToFXML(null, e); // need to replace null with login page's fxml path
         }
