@@ -43,7 +43,7 @@
                         <Insets bottom="26.0" top="26.0" />
                      </HBox.margin>
                   </HBox>
-                  <Button contentDisplay="RIGHT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#displayMakePostPopup" prefHeight="16.0" prefWidth="274.0" style="-fx-background-radius: 10;" styleClass="greyButton" stylesheets="@../styles.css" text="Make a post" textFill="WHITE">
+                  <Button fx:id="makePostButton" contentDisplay="RIGHT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#displayMakePostPopup" prefHeight="16.0" prefWidth="274.0" style="-fx-background-radius: 10;" styleClass="greyButton" stylesheets="@../styles.css" text="Make a post" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="33.0" />
                      </font>
@@ -55,7 +55,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="RIGHT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#displayFilterPopup" prefHeight="69.0" prefWidth="205.0" style="-fx-background-radius: 10;" styleClass="greyButton" stylesheets="@../styles.css" text="Filter" textFill="WHITE">
+                  <Button fx:id="switchPostsButton" contentDisplay="RIGHT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#switchPosts" prefHeight="69.0" prefWidth="205.0" style="-fx-background-radius: 10;" styleClass="greyButton" stylesheets="@../styles.css" text="Friend's Posts" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="34.0" />
                      </font>

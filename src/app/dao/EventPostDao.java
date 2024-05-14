@@ -226,6 +226,7 @@ public class EventPostDao
             ArrayList<EventPost> events = new ArrayList<>();
             String query = "SELECT followed_event_post_id FROM university_sync.follow_event_post WHERE followed_by_student_id = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1,userId);
             ResultSet rs = pst.executeQuery();
 
             while (rs.next())
