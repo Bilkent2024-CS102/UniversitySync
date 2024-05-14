@@ -311,10 +311,13 @@ public class UserDao {
         try {
             String query = "INSERT INTO university_sync.friend_request (sender_id, receiver_id) VALUES (?, ?)";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            int firstId = fr.getReceiverId();
-            int secondId = fr.getSenderId();
-            pst.setInt(1, Math.min(firstId, secondId));
-            pst.setInt(2, Math.max(firstId, secondId));
+            int firstId = fr.getSenderId();
+            int secondId = fr.getReceiverId();
+            if (isFriend(firstId, secondId) || friendRequestExist(firstId, secondId) || firstId == secondId){
+                return false;
+            }
+            pst.setInt(1, firstId);
+            pst.setInt(2, secondId);
             pst.executeUpdate();
 
             Statement st = DBConnectionManager.getConnection().createStatement();

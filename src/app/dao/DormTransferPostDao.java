@@ -27,8 +27,8 @@ public class DormTransferPostDao {
                     rs.getInt("dorm_transfer_post_id"),
                     rs.getInt("owner_student_id"),
                     rs.getString("main_text"),
-                    rs.getDate("creation_date"),
-                    rs.getDate("last_edit_date"),
+                    rs.getTimestamp("creation_date"),
+                    rs.getTimestamp("last_edit_date"),
                     rs.getString("heading"),
                     rs.getInt("posted_room_id")
             );
@@ -101,8 +101,8 @@ public class DormTransferPostDao {
         try {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, post.getOwnerId());
-            pst.setDate(2, new Date(post.getCreationDate().getTime()));
-            pst.setDate(3, new Date(post.getLastEditDate().getTime()));
+            pst.setTimestamp(2, new Timestamp(post.getCreationDate().getTime()));
+            pst.setTimestamp(3, new Timestamp(post.getLastEditDate().getTime()));
             pst.setString(4, post.getHeading());
             pst.setString(5, post.getMainText());
             pst.setInt(6, post.getRoomId());
@@ -143,8 +143,8 @@ public class DormTransferPostDao {
                         rs.getInt("dorm_transfer_post_id"),
                         rs.getInt("owner_student_id"),
                         rs.getString("main_text"),
-                        rs.getDate("creation_date"),
-                        rs.getDate("last_edit_date"),
+                        rs.getTimestamp("creation_date"),
+                        rs.getTimestamp("last_edit_date"),
                         rs.getString("heading"),
                         rs.getInt("posted_room_id")
                 );

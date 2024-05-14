@@ -29,8 +29,8 @@ public class EventPostDao
                         rs.getInt("event_post_id"),
                         rs.getInt("owner_student_id"),
                         rs.getString("main_text"),
-                        rs.getDate("creation_date"),
-                        rs.getDate("last_edit_date"),
+                        rs.getTimestamp("creation_date"),
+                        rs.getTimestamp("last_edit_date"),
                         rs.getString("heading"),
                         rs.getString("location"),
                         rs.getDate("event_date")

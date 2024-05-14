@@ -33,8 +33,8 @@ public class ForumPostDao {
                     rs.getInt("forum_post_id"),
                     rs.getInt("owner_student_id"),
                     rs.getString("main_text"),
-                    rs.getDate("creation_date"),
-                    rs.getDate("last_edit_date"),
+                    rs.getTimestamp("creation_date"),
+                    rs.getTimestamp("last_edit_date"),
                     rs.getString("heading")
             );
             return post;
@@ -64,8 +64,8 @@ public class ForumPostDao {
                         rs.getInt("forum_post_id"),
                         rs.getInt("owner_student_id"),
                         rs.getString("main_text"),
-                        rs.getDate("creation_date"),
-                        rs.getDate("last_edit_date"),
+                        rs.getTimestamp("creation_date"),
+                        rs.getTimestamp("last_edit_date"),
                         rs.getString("heading")
                 );
                 posts.add(post);
@@ -166,8 +166,8 @@ public class ForumPostDao {
             String query = "INSERT INTO university_sync.reply (owner_student_id, creation_date, last_edit_date, main_text, replies_to_forum_post_id) VALUES (?,?,?,?,?)";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, comment.getOwnerId());
-            pst.setDate(2, new Date(comment.getCreationDate().getTime()));
-            pst.setDate(3, new Date(comment.getLastEditDate().getTime()));
+            pst.setTimestamp(2, new Timestamp(comment.getCreationDate().getTime()));
+            pst.setTimestamp(3, new Timestamp(comment.getLastEditDate().getTime()));
             pst.setString(4, comment.getMainText());
             pst.setInt(5, comment.getPostId());
             pst.executeUpdate();
@@ -223,8 +223,8 @@ public class ForumPostDao {
                         rs.getInt("reply_id"),
                         rs.getInt("owner_student_id"),
                         rs.getString("main_text"),
-                        rs.getDate("creation_date"),
-                        rs.getDate("last_edit_date"),
+                        rs.getTimestamp("creation_date"),
+                        rs.getTimestamp("last_edit_date"),
                         rs.getInt("replies_to_forum_post_id")
                 );
                 //r.setReplyId(rs.getInt("reply_id"));
@@ -249,16 +249,19 @@ public class ForumPostDao {
     {
         try
         {
+            //delete all likes of the post
             String query = "DELETE FROM university_sync.like_forum_post WHERE liked_forum_post_id=?";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, postId);
             pst.executeUpdate();
 
+            //delete all replies of the post
             query = "DELETE FROM university_sync.reply WHERE replies_to_forum_post_id=?";
             pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, postId);
             pst.executeUpdate();
 
+            //delete all tags (?) of the forum post
             query = "DELETE FROM university_sync.tag_forum_post WHERE tagged_forum_post_id=?";
             pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, postId);
@@ -317,8 +320,8 @@ public class ForumPostDao {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, forumPost.getUserContentItemId());
             pst.setInt(2, forumPost.getOwnerId());
-            pst.setDate(3, new java.sql.Date(forumPost.getCreationDate().getTime()));
-            pst.setDate(4, new java.sql.Date(forumPost.getLastEditDate().getTime()));
+            pst.setTimestamp(3, new java.sql.Timestamp(forumPost.getCreationDate().getTime()));
+            pst.setTimestamp(4, new java.sql.Timestamp(forumPost.getLastEditDate().getTime()));
             pst.setString(5, forumPost.getHeading());
             pst.setString(6, forumPost.getMainText());
             pst.setInt(7,  forumPost.getLikeCount());
@@ -388,8 +391,8 @@ public class ForumPostDao {
                         rs.getInt("forum_post_id"),
                         rs.getInt("owner_student_id"),
                         rs.getString("main_text"),
-                        rs.getDate("creation_date"),
-                        rs.getDate("last_edit_date"),
+                        rs.getTimestamp("creation_date"),
+                        rs.getTimestamp("last_edit_date"),
                         rs.getString("heading")
                 );
                 posts.add(post);

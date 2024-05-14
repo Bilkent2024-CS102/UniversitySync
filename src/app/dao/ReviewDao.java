@@ -2,10 +2,7 @@ package app.dao;
 
 import app.model.userContent.Review;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -29,8 +26,8 @@ public class ReviewDao {
 
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, r.getOwnerId());
-            pst.setDate(2, new java.sql.Date(r.getCreationDate().getTime()));
-            pst.setDate(3, new java.sql.Date(r.getLastEditDate().getTime()));
+            pst.setTimestamp(2, new java.sql.Timestamp(r.getCreationDate().getTime()));
+            pst.setTimestamp(3, new java.sql.Timestamp(r.getLastEditDate().getTime()));
             pst.setString(4, r.getMainText());
             pst.setDouble(5, r.getRateGiven());
             pst.setInt(6, r.getReviewableId());
@@ -117,8 +114,8 @@ public class ReviewDao {
                         resultSet.getInt("review_id"),
                         resultSet.getInt("owner_student_id"),
                         resultSet.getString("main_text"),
-                        new Date(resultSet.getDate("creation_date").getTime()),
-                        new Date(resultSet.getDate("last_edit_date").getTime()),
+                        new Timestamp(resultSet.getTimestamp("creation_date").getTime()),
+                        new Timestamp(resultSet.getTimestamp("last_edit_date").getTime()),
                         reviewableId,
                         resultSet.getDouble("rating_given")
                 );

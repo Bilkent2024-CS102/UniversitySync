@@ -28,8 +28,8 @@ public class MessageDao {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, sender);
             pst.setInt(2, receiver);
-            pst.setDate(3, new Date(message.getCreationDate().getTime()));
-            pst.setDate(4, new Date(message.getLastEditDate().getTime()));
+            pst.setTimestamp(3, new Timestamp(message.getCreationDate().getTime()));
+            pst.setTimestamp(4, new Timestamp(message.getLastEditDate().getTime()));
             pst.setString(5, text);
 
             pst.executeUpdate();
