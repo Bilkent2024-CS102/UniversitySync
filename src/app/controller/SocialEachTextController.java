@@ -1,17 +1,18 @@
 package app.controller;
 
+import app.model.userContent.Message;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class SocialEachTextController {
-    //Right now don't think we need it
+    private Message thisMessage;
+
     @FXML
     private Label eachText_ID;
 
-    public void setData(String text) {
-
-        eachText_ID.setText( text);
-
+    public void setData(Message message) {
+        thisMessage = message;
+        eachText_ID.setText(message.getMainText());
     }
 
 }

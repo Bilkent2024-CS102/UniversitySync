@@ -2,6 +2,14 @@ package app.dao;
 
 import app.model.userContent.Message;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -48,32 +56,65 @@ public class MessageDao {
         }
     }
 
-    public static ArrayList<Integer> getUserIdsMessagedWith(int userId){
-        try
-        {
+//    public static ArrayList<Integer> getUserIdsMessagedWith(int userId){
+//        try
+//        {
+//            ArrayList<Integer> ids = new ArrayList<>();
+//            String query = "SELECT DISTINCT receiver_student_id FROM university_sync.message WHERE owner_student_id = ?";
+//            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+//            pst.setInt(1, userId);
+//            ResultSet resultSet = pst.executeQuery();
+//            while (resultSet.next())
+//            {
+//                ids.add(resultSet.getInt(1));
+//            }
+//
+//            query = "SELECT DISTINCT owner_student_id FROM university_sync.message WHERE receiver_student_id = ?";
+//            pst = DBConnectionManager.getConnection().prepareStatement(query);
+//            pst.setInt(1, userId);
+//            resultSet = pst.executeQuery();
+//            while (resultSet.next())
+//            {
+//                ids.add(resultSet.getInt(1));
+//            }
+//
+//            return ids;
+//        }
+//        catch (SQLException e)
+//        {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
+
+    public static ArrayList<Integer> getUserIdsMessagedWith(int userId) {
+        try {
             ArrayList<Integer> ids = new ArrayList<>();
+            Set<Integer> uniqueIds = new HashSet<>(); // Using a set to ensure uniqueness
+
+            // Query for receiver_student_id where owner_student_id is the given userId
             String query = "SELECT receiver_student_id FROM university_sync.message WHERE owner_student_id = ?";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, userId);
             ResultSet resultSet = pst.executeQuery();
-            while (resultSet.next())
-            {
-                ids.add(resultSet.getInt(1));
+            while (resultSet.next()) {
+                uniqueIds.add(resultSet.getInt(1)); // Add receiver IDs to the set
             }
 
+            // Query for owner_student_id where receiver_student_id is the given userId
             query = "SELECT owner_student_id FROM university_sync.message WHERE receiver_student_id = ?";
             pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, userId);
             resultSet = pst.executeQuery();
-            while (resultSet.next())
-            {
-                ids.add(resultSet.getInt(1));
+            while (resultSet.next()) {
+                uniqueIds.add(resultSet.getInt(1)); // Add owner IDs to the set
             }
 
+            // Convert the set to ArrayList
+            ids.addAll(uniqueIds);
+
             return ids;
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }

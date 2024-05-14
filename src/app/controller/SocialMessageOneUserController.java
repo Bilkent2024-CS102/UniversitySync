@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 //import javafx.fxml.FXMLLoader;
@@ -21,23 +22,22 @@ import java.io.IOException;
 
 public class SocialMessageOneUserController {
     private FXMLLoader fxmlLoader;
+    private SocialAllMessagesController largeController;
 
     @FXML
     private ImageView friendToMessageImage_ID;
     @FXML
-    private Label friendToMessageName_ID;
-    @FXML
-    private BorderPane borderTextBox_ID;    //place where we display message box
-    private MessageFriendsMock associatedFriend;
+    private Label friendToMessageName_ID;//place where we display message box
+    private User associatedFriend;
 
 
 
-    public void setData( MessageFriendsMock friend) {
-
+    public void setData( User friend, SocialAllMessagesController largeController) {
+        this.largeController = largeController;
         associatedFriend = friend;
         // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
         // userImageOnPostID.setImage(image);
-        friendToMessageName_ID.setText( friend.getMessages bla bla );
+        friendToMessageName_ID.setText(friend.getName());
     }
 
     public void displayTextScreen(MouseEvent event) throws IOException {
@@ -47,29 +47,29 @@ public class SocialMessageOneUserController {
         SocialMessageBoxController eventController = fxmlLoader.getController();
         eventController.setData(associatedFriend);
 
-        borderTextBox_ID.setCenter(newScene);
+        largeController.getBorderTextBox_ID().setCenter(newScene);
     }
-
 
 }
-class MessageFriendsMock {
-    private String friendUsername;
-    private String profileImageSrc;
-    private message etc;
 
-    public String getFriendUsername() {
-        return friendUsername;
-    }
-
-    public void setFriendUsername(String friendUsername) {
-        this.friendUsername = friendUsername;
-    }
-
-    public String getProfileImageSrc() {
-        return profileImageSrc;
-    }
-
-    public void setProfileImageSrc(String profileImageSrc) {
-        this.profileImageSrc = profileImageSrc;
-    }
-}
+//class User {
+//    private String friendUsername;
+//    private String profileImageSrc;
+//    private message etc;
+//
+//    public String getFriendUsername() {
+//        return friendUsername;
+//    }
+//
+//    public void setFriendUsername(String friendUsername) {
+//        this.friendUsername = friendUsername;
+//    }
+//
+//    public String getProfileImageSrc() {
+//        return profileImageSrc;
+//    }
+//
+//    public void setProfileImageSrc(String profileImageSrc) {
+//        this.profileImageSrc = profileImageSrc;
+//    }
+//}

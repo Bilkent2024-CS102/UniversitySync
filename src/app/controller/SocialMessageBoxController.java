@@ -1,18 +1,18 @@
 package app.controller;
 
+import app.dao.MessageDao;
+import app.model.User;
+import app.model.userContent.Message;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class SocialMessageBoxController {
     private FXMLLoader fxmlLoader;
@@ -21,30 +21,47 @@ public class SocialMessageBoxController {
     @FXML
     private TextField typeMessageTextfield_ID;
 
-    private List< String > textList;
+    private List<Message> textList;
+
+    private User associatedFriend;
 
 
     //when you type your new message and press enter this method acts
-    public void sendText(ActionEvent event) {
+    public void sendText(ActionEvent event) throws IOException {
         String text = typeMessageTextfield_ID.getText();
+
+        Message message = new Message(
+                SessionManager.getCurrentUser().getUserId(),
+                associatedFriend.getUserId(),
+                text
+        );
 
         fxmlLoader = new FXMLLoader(new File("src/app/view/SocialPage/eachMessageText.fxml").toURI().toURL());
         HBox friendHBox = fxmlLoader.load();
 
         SocialEachTextController eventController = fxmlLoader.getController();
-        eventController.setData( text ) );
+        eventController.setData(message);
 
-        if( i send message ) {
+        if(message.getSenderId() == SessionManager.getCurrentUser().getUserId()) {
             friendHBox.setTranslateX(200);
         }
+        else {
+            friendHBox.setTranslateX(30);
+        }
+
         //adds each message to the vBox
         MessageBoxVBox_ID.getChildren().add(friendHBox);
 
     }
 
-    public void setData(MessageFriendsMock associatedFriend) {
+    public void setData(User associatedFriend) {
 
-        textList = associatedFriend.getTextList ....
+        this.associatedFriend = associatedFriend;
+
+        textList = MessageDao.getMessagesBetween(
+                SessionManager.getCurrentUser().getUserId(),
+                associatedFriend.getUserId()
+        );
 
         try {
             for(int i = 0; i < textList.size(); i++) {
@@ -54,7 +71,7 @@ public class SocialMessageBoxController {
                 SocialEachTextController eventController = fxmlLoader.getController();
                 eventController.setData(  textList.get(i) );
 
-                if( i send message ) {
+                if(textList.get(i).getSenderId() == SessionManager.getCurrentUser().getUserId()) {
                     friendHBox.setTranslateX(200);
                 }
                 else {
