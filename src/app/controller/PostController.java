@@ -121,6 +121,7 @@ public class PostController {
     }
 
     public void editPost(ActionEvent event) {
+
     }
 
     public void deletePost(ActionEvent event) {

@@ -20,13 +20,13 @@ public class DormitoryNameController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
+
     @FXML
     private Button DormName_ID;
     @FXML
     private Label DormRating_ID;
     @FXML
     private Label dormCampus_ID;
-
     private DormMock dormAssociatedWithThis;
 
     public void setData(DormMock dorm) {

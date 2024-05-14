@@ -1,118 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="669.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="669.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SocialMessageBoxController">
    <children>
       <ScrollPane prefHeight="592.0" prefWidth="860.0">
          <content>
-            <VBox prefHeight="912.0" prefWidth="838.0" spacing="30.0" style="-fx-background-color: #D3D3D3;">
-               <children>
-                  <Label alignment="CENTER" lineSpacing="5.0" maxWidth="371.0" opacity="0.89" prefHeight="21.0" prefWidth="359.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="Hello I am Arda" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" lineSpacing="5.0" maxWidth="370.0" opacity="0.89" prefHeight="21.0" prefWidth="417.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="hello" textAlignment="CENTER" translateX="400.0" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" lineSpacing="5.0" maxWidth="370.0" opacity="0.89" style="-fx-background-color: white; -fx-background-radius: 40;" text="How are you?" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" lineSpacing="5.0" maxWidth="370.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" translateX="400.0" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" lineSpacing="5.0" maxWidth="370.0" opacity="0.89" style="-fx-background-color: white; -fx-background-radius: 40;" text="Fine" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" lineSpacing="5.0" maxWidth="370.0" opacity="0.89" style="-fx-background-color: white; -fx-background-radius: 40;" text="where are you" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" translateX="400.0" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" translateX="400.0" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" translateX="400.0" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="ok" textAlignment="CENTER" translateX="400.0" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" lineSpacing="5.0" opacity="0.89" prefWidth="370.0" style="-fx-background-color: white; -fx-background-radius: 40;" text="I am fine, what about you and how is everything going" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="Helvetica" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
+            <VBox fx:id="MessageBoxVBox_ID" prefHeight="912.0" prefWidth="838.0" spacing="30.0" style="-fx-background-color: #D3D3D3;">
+
+              <!-- here it puts our each message text-->
+
             </VBox>
          </content>
       </ScrollPane>
-      <HBox prefHeight="58.0" prefWidth="797.0" spacing="40.0">
+      <HBox prefHeight="58.0" prefWidth="797.0" spacing="40.0" style="-fx-background-color: skyblue;">
          <children>
-            <TextField prefHeight="49.0" prefWidth="548.0" promptText="type message here">
+            <TextField fx:id="typeMessageTextfield_ID" onAction="#sendText" prefHeight="48.0" prefWidth="700.0" promptText="type message here" style="-fx-background-radius: 20;">
                <font>
                   <Font size="16.0" />
                </font>
-            </TextField>
-            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="109.0" style="-fx-background-radius: 15;" styleClass="anyBlueButton" stylesheets="@../styles.css" text="Submit">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>
-            </Button>
+            </TextField>
          </children>
          <VBox.margin>
             <Insets top="20.0" />

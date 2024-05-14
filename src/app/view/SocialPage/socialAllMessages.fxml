@@ -50,31 +50,11 @@
                <left>
                   <ScrollPane prefHeight="582.0" prefWidth="345.0" BorderPane.alignment="CENTER">
                      <content>
-                        <VBox fx:id="messageLeftDisplayVBox_ID" prefWidth="307.0" spacing="5.0" style="-fx-background-color: black; -fx-background-radius: 10;">
+                        <VBox fx:id="messageLeftDisplayVBox_ID" prefWidth="307.0" spacing="30.0" style="-fx-background-color: black; -fx-background-radius: 10;">
                            <children>
-                              <HBox onMouseClicked="#displayTextScreen" prefHeight="74.0" prefWidth="307.0" style="-fx-background-radius: 10;">
-                                 <children>
-                                    <ImageView fitHeight="45.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icons/icon-monochrome.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="7.0" top="17.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <Label prefHeight="31.0" prefWidth="200.0" text="\@attillaAkus373" textFill="WHITE">
-                                       <font>
-                                          <Font name="SansSerif Bold" size="19.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="30.0" top="20.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="10.0" />
-                                 </VBox.margin>
-                              </HBox>
+
+<!--                              here we are displaying the friends who we are currently messaging-->
+
                            </children>
                            <padding>
                               <Insets left="3.0" />
