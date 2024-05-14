@@ -38,11 +38,7 @@ public class RightEventTabController implements Initializable {
     private List<EventPost> eventMock;
 
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            DBConnectionManager.initializeConnection("jdbc:mysql://127.0.0.1:3306/?user=root", "root", "LkJhGfDs@10");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
 
         SessionManager.setCurrentUser(UserDao.getUserById(1));
 

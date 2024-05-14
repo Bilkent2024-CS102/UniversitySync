@@ -133,7 +133,9 @@ public class MessageDao {
         try
         {
             ArrayList<Message> messages = new ArrayList<>();
-            String query = "SELECT * FROM university_sync.message WHERE (owner_student_id = ? AND receiver_student_id = ?) OR (owner_student_id = ? AND receiver_student_id = ?);";
+            String query = "SELECT * FROM university_sync.message WHERE (owner_student_id = ? AND receiver_student_id = ?) " +
+                    "OR (owner_student_id = ? AND receiver_student_id = ?)" +
+                    "ORDER BY creation_date ASC;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, senderID);
             pst.setInt(2, receiverID);
