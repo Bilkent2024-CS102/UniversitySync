@@ -17,13 +17,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SocialMyFriendsPageController implements Initializable {
-    private Stage stage;
-    private FXMLLoader fxmlLoader;
 
-    //*****************************************************************************************************************
-    private List<FriendsMock> friendsMocks;
+    private FXMLLoader fxmlLoader;
     @FXML
     private VBox myFriendsVBox_ID = new VBox();    //right Event VBox where we put our events
+    private List<FriendsMock> friendsMocks;
 
     public void initialize(URL location, ResourceBundle resources) {
         friendsMocks = new ArrayList<>(data());

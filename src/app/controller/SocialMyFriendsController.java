@@ -22,8 +22,8 @@ public class SocialMyFriendsController {
     private Label friendUsernameID;
 
     public void setData(FriendsMock friend) {
-        // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
-        // userImageOnPostID.setImage(image);
+//      Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
+//      friendProfileImageID.setImage(image);
         friendUsernameID.setText(friend.getFriendUsername());
     }
 
