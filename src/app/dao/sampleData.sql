@@ -115,6 +115,52 @@ INSERT INTO university_sync.message (owner_student_id, receiver_student_id, crea
 (2, 1, '2024-05-01', '2024-05-01', 'Sure, Alice. When and where?'),
 (3, 1, '2024-05-01', '2024-05-01', 'Hi Alice, can I join your study group?');
 
+INSERT INTO university_sync.message (owner_student_id, receiver_student_id, creation_date, last_edit_date, main_text) 
+VALUES 
+(1, 2, "2024-05-01", "2024-05-01", "Hey Bob, do you want to study together?"),
+(2, 1, "2024-05-01", "2024-05-01", "Sure, Alice. When and where?"),
+(3, 1, "2024-05-01", "2024-05-01", "Hi Alice, can I join your study group?"),
+(1, 3, "2024-05-01", "2024-05-01", "Of course, Charlie. We meet at the library at 3 pm."),
+(3, 2, "2024-05-02", "2024-05-02", "Bob, do you have any project ideas in mind?"),
+(2, 3, "2024-05-02", "2024-05-02", "Yes, Charlie. Let's discuss it over lunch tomorrow."),
+(2, 1, "2024-05-02", "2024-05-02", "Alice, have you seen the new engineering lab?"),
+(1, 2, "2024-05-02", "2024-05-02", "No, Bob. Is it impressive?"),
+(2, 1, "2024-05-02", "2024-05-02", "Absolutely! You should check it out sometime."),
+(1, 3, "2024-05-03", "2024-05-03", "Charlie, are you going to the biology field trip next week?"),
+(3, 1, "2024-05-03", "2024-05-03", "Yes, Alice. It sounds fascinating!"),
+(3, 2, "2024-05-03", "2024-05-03", "Bob, can you share your notes from last lecture?"),
+(2, 3, "2024-05-03", "2024-05-03", "Sure, Charlie. I'll send them over."),
+(1, 2, "2024-05-04", "2024-05-04", "Bob, do you want to grab lunch together today?"),
+(2, 1, "2024-05-04", "2024-05-04", "I'm swamped with assignments, Alice. Maybe another time."),
+(3, 1, "2024-05-04", "2024-05-04", "Alice, can you help me with this coding problem?"),
+(1, 3, "2024-05-04", "2024-05-04", "Sure thing, Charlie. I'll be glad to assist."),
+(1, 2, "2024-05-05", "2024-05-05", "Bob, the study group is meeting tomorrow. Are you joining?"),
+(2, 1, "2024-05-05", "2024-05-05", "I'll try to make it, Alice."),
+(3, 1, "2024-05-05", "2024-05-05", "Alice, do you know where I can find research materials for my project?"),
+(1, 3, "2024-05-05", "2024-05-05", "Check out the university library, Charlie. They have extensive resources."),
+(1, 2, "2024-05-06", "2024-05-06", "Bob, I heard there's a coding competition next month. Are you participating?"),
+(2, 1, "2024-05-06", "2024-05-06", "Yes, Alice. It's a great opportunity to test our skills."),
+(3, 1, "2024-05-06", "2024-05-06", "Alice, can you proofread my essay for the biology class?"),
+(1, 3, "2024-05-06", "2024-05-06", "Sure, Charlie. Send it over and I'll take a look."),
+(1, 2, "2024-05-07", "2024-05-07", "Bob, have you decided on your project idea for the engineering expo?"),
+(2, 1, "2024-05-07", "2024-05-07", "I'm still brainstorming, Alice. It's a tough decision."),
+(3, 1, "2024-05-07", "2024-05-07", "Alice, what do you think about studying abroad next semester?"),
+(1, 3, "2024-05-07", "2024-05-07", "It sounds like an amazing opportunity, Charlie. Let's discuss it further."),
+(1, 2, "2024-05-08", "2024-05-08", "Bob, are you free this weekend? We could go hiking."),
+(2, 1, "2024-05-08", "2024-05-08", "Sounds good, Alice. I could use a break from studying."),
+(3, 1, "2024-05-08", "2024-05-08", "Alice, do you have any recommendations for summer internships?"),
+(1, 3, "2024-05-08", "2024-05-08", "Yes, Charlie. Let me send you some options I found."),
+(1, 2, "2024-05-09", "2024-05-09", "Bob, did you hear about the campus cleanup event next week?"),
+(2, 1, "2024-05-09", "2024-05-09", "Yes, Alice. I signed up already. Are you going?"),
+(3, 1, "2024-05-09", "2024-05-09", "Alice, can I borrow your biology textbook for a few days?"),
+(1, 3, "2024-05-09", "2024-05-09", "Of course, Charlie. I'll bring it to you tomorrow."),
+(1, 2, "2024-05-10", "2024-05-10", "Bob, are you attending the engineering expo today?"),
+(2, 1, "2024-05-10", "2024-05-10", "Yes, Alice. I'm looking forward to it."),
+(3, 1, "2024-05-10", "2024-05-10", "Alice, have you decided on your elective courses for next semester?"),
+(1, 3, "2024-05-10", "2024-05-10", "Not yet, Charlie. I'm still considering my options."),
+(1, 2, "2024-05-11", "2024-05-11", "Bob, are you interested in joining the basketball club with me?");
+
+
 -- Review data
 INSERT INTO university_sync.review (owner_student_id, creation_date, last_edit_date, main_text, rating_given, review_to_location_id) VALUES
 (1, '2024-05-01', '2024-05-01', 'Great dormitory with friendly staff.', 4, 1),
