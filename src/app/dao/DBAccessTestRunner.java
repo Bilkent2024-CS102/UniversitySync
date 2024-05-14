@@ -6,6 +6,13 @@ import app.model.location.cafeteria.Cafeteria;
 import app.model.userContent.Reply;
 import app.model.userContent.post.ForumPost;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
 
@@ -56,14 +63,23 @@ public class DBAccessTestRunner {
         //Cafeteria c = CafeteriaDao.getCafeteriaById(1);
         //Review r = new Review(users.get(3), "nice cafeteria however somewhat expensive", new java.util.Date(), new java.util.Date(), c, 4);
         try {
-            ArrayList<Cafeteria> cafes = CafeteriaDao.getAllCafeteriasByPrice();
-            for (Cafeteria c: cafes){
-                System.out.println(c.getLocationId() + " " + c.getDescription() + " " + c.getMinPrice() + " " + c.getMaxPrice());
-            }
+            setProfileImage(users.get(3));
         }
         catch (Exception e){
             e.printStackTrace();
         }
         System.out.println("lalalaal");
+    }
+
+    public static void setProfileImage(User u) throws IOException {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.addChoosableFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "png", "tif"));
+        chooser.showSaveDialog(null);
+        File file = chooser.getSelectedFile();
+        String newPath = "src/app/images/profilePictures/profilePicture" + u.getUserId() + ".jpg";
+        Files.copy(Paths.get(file.getAbsolutePath()), Paths.get(newPath), StandardCopyOption.REPLACE_EXISTING);
+        u.setProfilePicturePath(newPath);
+        UserDao.updateUser(u);
     }
 }

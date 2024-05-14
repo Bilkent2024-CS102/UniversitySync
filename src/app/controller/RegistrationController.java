@@ -1,7 +1,12 @@
 package app.controller;
 
+import app.dao.DormitoryDao;
+import app.model.location.Dormitory;
+import app.model.location.Room;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 
@@ -13,29 +18,41 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import app.dao.UserDao;
 import app.model.User;
 
-public class RegistrationController {
+public class RegistrationController implements Initializable {
 
     @FXML
-    private TextField nameField;
+    private TextField fullnameID;
     @FXML
-    private TextField emailField;
+    private TextField universityEmailID;
     @FXML
-    private TextField passwordField;
+    private ChoiceBox<String> majorChoiceBoxID;
     @FXML
-    private TextField confirmPasswordField;
+    private ChoiceBox<Room> dormChoiceBoxID;
     @FXML
-    private TextField majorField;
+    private TextField passwordID;
     @FXML
-    private TextField bioField;
+    private TextField confirmPasswordID;
 
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
     UserDao userDao = new UserDao();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ArrayList<String> majors = UserDao.getMajors();
+        majorChoiceBoxID.getItems().addAll(majors);
+
+        ArrayList<Room> roomTypes = DormitoryDao.getAllRoomTypes();
+        dormChoiceBoxID.getItems().addAll(roomTypes);
+    }
 
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
@@ -43,7 +60,7 @@ public class RegistrationController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setFullScreen(true);
+        stage.setFullScreen(false);
         stage.show();
     }
 
@@ -53,17 +70,23 @@ public class RegistrationController {
     }
 
     public void registerUser(ActionEvent e) throws IOException {
-        String name = nameField.getText();
-        String email = emailField.getText();
-        String password = passwordField.getText();
-        String major = majorField.getText();
-        String bio = bioField.getText();
-        String repeatPassword = confirmPasswordField.getText();
+        String name = fullnameID.getText();
+        String email = universityEmailID.getText();
+        String major = majorChoiceBoxID.getSelectionModel().getSelectedItem();
+        int roomType;
+        if (dormChoiceBoxID.getSelectionModel().getSelectedItem() == null){
+            roomType = 0;
+        }
+        else{
+            roomType = dormChoiceBoxID.getSelectionModel().getSelectedItem().getRoomId();
+        }
+        String password = passwordID.getText();
+        String repeatPassword = confirmPasswordID.getText();
         if (isPasswordValid(password, repeatPassword) && validateInputs(name, email, password, repeatPassword))
         {
-            User newUser = new User(name, email, password, major, bio, 0); //initially 0 as roomId indicating no room
+            User newUser = new User(name, email, password, major, "", roomType); //initially 0 as roomId indicating no room
 
-            switchToFXML(null, e); // need to replace null with login page's fxml path
+            switchToFXML("src/app/view/LoginPage.fxml", e); // need to replace null with login page's fxml path
         }
         else
         {
@@ -79,19 +102,15 @@ public class RegistrationController {
         if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             return false;
         }
-
         if (!email.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}")) {
             return false;
         }
-
-        if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")) {
+        /*if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")) {
             return false;
-        }
-
+        }*/
         if (!password.equals(confirmPassword)) {
             return false;
         }
-
         return !emailExists(email);
     }
 
@@ -107,5 +126,6 @@ public class RegistrationController {
     public void takeToLoginPage(ActionEvent event) {
         //use fxml loader to take back to login page
     }
+
 
 }
