@@ -249,8 +249,24 @@ public class ForumPostDao {
     {
         try
         {
-            String query = "DELETE FROM university_sync.forum_post WHERE forum_post_id=" + postId;
+            String query = "DELETE FROM university_sync.like_forum_post WHERE liked_forum_post_id=?";
+            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, postId);
+            pst.executeUpdate();
+
+            query = "DELETE FROM university_sync.reply WHERE replies_to_forum_post_id=?";
+            pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, postId);
+            pst.executeUpdate();
+
+            query = "DELETE FROM university_sync.tag_forum_post WHERE tagged_forum_post_id=?";
+            pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setInt(1, postId);
+            pst.executeUpdate();
+
+            query = "DELETE FROM university_sync.forum_post WHERE forum_post_id = ?;";
             PreparedStatement ps = DBConnectionManager.getConnection().prepareStatement(query);
+            ps.setInt(1, postId);
             ResultSet rs = ps.getResultSet();
             ps.executeUpdate();
         }

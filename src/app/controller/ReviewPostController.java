@@ -1,4 +1,6 @@
 package app.controller;
+import app.dao.UserDao;
+import app.model.userContent.Review;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -29,48 +31,14 @@ public class ReviewPostController {
         //user should be able to delete its own reviews only
     }
 
-    public void setData(ReviewMock review) {
+    public void setData(Review review) {
         // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
         // userImageOnPostID.setImage(image);
 
         //reviewPostImage_ID  ... s
-        reviewPost_TopInfo_ID.setText( review.getReviewTopInfo());
-        reviewPost_TopRating_ID.setText( review.getReviewRating());
-        reviewPost_textArea_ID.setText( review.getReviewText());
-
+        reviewPost_TopInfo_ID.setText( "Review by " + UserDao.getUserById(review.getOwnerId()).getName() + " on " + review.getCreationDate());
+        reviewPost_TopRating_ID.setText( "" + review.getRateGiven());
+        reviewPost_textArea_ID.setText( review.getMainText());
+        reviewPost_textArea_ID.setEditable(false);
     }
-}
-
-//MOCK CLASS
-class ReviewMock {
-    private String reviewTopInfo;
-    private String reviewRating;
-    private String reviewText;
-    //private Image >>>>
-
-
-    public String getReviewTopInfo() {
-        return reviewTopInfo;
-    }
-
-    public void setReviewTopInfo(String reviewTopInfo) {
-        this.reviewTopInfo = reviewTopInfo;
-    }
-
-    public String getReviewRating() {
-        return reviewRating;
-    }
-
-    public void setReviewRating(String reviewRating) {
-        this.reviewRating = reviewRating;
-    }
-
-    public String getReviewText() {
-        return reviewText;
-    }
-
-    public void setReviewText(String reviewText) {
-        this.reviewText = reviewText;
-    }
-    //private (For image)
 }

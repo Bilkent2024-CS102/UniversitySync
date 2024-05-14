@@ -3,6 +3,8 @@ package app.controller;
 //import app.dao.ForumPostDao;
 //import app.dao.UserDao;
 //import app.model.userContent.post.ForumPost;
+import app.dao.ForumPostDao;
+import app.model.userContent.post.ForumPost;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,10 +32,10 @@ public class ProfileMyPostsController implements Initializable
     // ******************************************************************* TEST ***************************************
     @FXML
     private VBox postVBoxID = new VBox();
-    private List<PostMock> posts;
+    private List<ForumPost> posts;
 
     public void initialize(URL location, ResourceBundle resources) {
-        posts = new ArrayList<>(data());
+        posts = ForumPostDao.getForumPostsOfUser(SessionManager.getCurrentUser().getUserId());
 
         try {
             for(int i = 0; i < posts.size(); i++) {
@@ -47,23 +49,6 @@ public class ProfileMyPostsController implements Initializable
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    // Creating a list of mock data for now (deleting later)
-    private List<PostMock> data() {
-        ArrayList<ForumPost> actualPosts = ForumPostDao.getForumPostsOfUser(SessionManager.getCurrentUser().getUserId());
-        List<PostMock> ls = new ArrayList<>();
-
-        for (ForumPost fp: actualPosts){
-            PostMock post = new PostMock();
-            post.setUsername(UserDao.getUserById(fp.getOwnerId()).getName());
-            post.setPostText(fp.getMainText());
-            ls.add(post);
-        }
-
-        return ls;
-
-        // return ForumPostDao.getPostsByRecency();
     }
 // ******************************************************************* TEST ***************************************
 

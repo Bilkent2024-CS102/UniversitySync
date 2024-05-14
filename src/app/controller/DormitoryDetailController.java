@@ -1,6 +1,6 @@
 package app.controller;
 
-import javafx.event.ActionEvent;
+import app.model.location.Dormitory;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -20,6 +20,8 @@ public class DormitoryDetailController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
+    private Dormitory dorm;
+
     @FXML
     private Label dormName_ID;
     @FXML
@@ -31,17 +33,15 @@ public class DormitoryDetailController {
     @FXML
     private Label dormCampus_ID;
 
-    private DormMock dormAssociatedWithThis;
 
-    public void setData(DormMock dorm) {
+    public void setData(Dormitory dorm) {
 
-        dormAssociatedWithThis = dorm;
-
-        dormName_ID.setText( dorm.getDormName());
+        this.dorm = dorm;
+        dormName_ID.setText( dorm.getName());
         //dormImage_ID.setImage( dorm.getDormImage().getImage());
-        dormDescription_ID.setText( dorm.getDormDescription());
-        dormRateTextField_ID.setText( dorm.getDormRating());
-        dormCampus_ID.setText( dorm.getDormCampus());
+        dormDescription_ID.setText( dorm.getDescription());
+        dormRateTextField_ID.setText("" + dorm.getRating());
+        dormCampus_ID.setText(dorm.getCampus().getName());
     }
 
     public void switchToFXML(String fxmlFileName, MouseEvent event) throws IOException {
@@ -50,7 +50,7 @@ public class DormitoryDetailController {
 
         ReviewPageController detailController = fxmlLoader.getController();
         // setting/sending the data of that particular cafe button to cafe details page
-        detailController.setData( dormAssociatedWithThis);
+        detailController.setData(dorm);
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

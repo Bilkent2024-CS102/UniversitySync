@@ -2,6 +2,7 @@ package app.model.location.cafeteria;
 
 import java.util.ArrayList;
 
+import app.dao.CafeteriaDao;
 import app.model.Campus;
 import app.model.location.Location;
 import app.model.location.Room;
@@ -27,6 +28,16 @@ public class Cafeteria extends Location{
         setItems(items);
         setMaxPrice(maxPrice);
         setMinPrice(minPrice);
+    }
+
+    public String getMenu()
+    {
+        String menu = "";
+        for (MenuItem item : CafeteriaDao.getMenuItemsIn(getLocationId()))
+        {
+            menu = menu + item.getName() + " - " + item.getPrice() + " TL\n";
+        }
+        return menu;
     }
     
     public double getMinPrice() {

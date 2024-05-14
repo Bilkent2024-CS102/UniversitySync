@@ -19,7 +19,7 @@ public class SocialMessageBoxController {
     @FXML
     private VBox MessageBoxVBox_ID;
     @FXML
-    private TextField typeMessageTextfield_ID
+    private TextField typeMessageTextfield_ID;
 
     private List< String > textList;
 

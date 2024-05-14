@@ -1,5 +1,7 @@
 package app.controller;
 
+import app.dao.CafeteriaDao;
+import app.model.location.cafeteria.Cafeteria;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -40,22 +40,32 @@ public class CafeteriaController implements Initializable {
     private Scene scene;
     private FXMLLoader fxmlLoader;
 
+
     //****************************************************************************************************8
     @FXML
     private VBox cafeVBoxID = new VBox();
-    private List<CafeMock> cafeMock;
+
+    private List<Cafeteria> cafeterias= CafeteriaDao.getAllCafeterias();
+
+    @FXML
+    private Button normalButton;
+    @FXML
+    private Button orderByRatingButton;
+    @FXML
+    private Button orderByPriceButton;
 
 
     public void initialize(URL location, ResourceBundle resources) {
-        cafeMock = new ArrayList<>(data());
+
+//        cafeVBoxID = new VBox();
 
         try {
-            for( int i = 0; i < cafeMock.size(); i++) {
+            for(int i = 0; i < cafeterias.size(); i++) {
                 fxmlLoader = new FXMLLoader(new File("src/app/view/CafeteriaPage/CafeNameHBox.fxml").toURI().toURL());
                 HBox hbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
                 CafeteriaNameController eventController = fxmlLoader.getController();
                 //now setting data (username, text ...) for each post
-                eventController.setData(cafeMock.get(i));
+                eventController.setData(cafeterias.get(i));
 //              eventController.setRightEventTabController(this);
                 cafeVBoxID.getChildren().add(hbox);  //now adding post (pane) to the vbox
             }
@@ -64,6 +74,115 @@ public class CafeteriaController implements Initializable {
         }
     }
 
+    private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
+        Parent root = fxmlLoader.load();
+
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);     //it should be after stage.setScene
+        stage.show();
+    }
+//
+//    public void normalClicked(ActionEvent event) {
+//        cafeterias = CafeteriaDao.getAllCafeterias();
+////        cafeVBoxID = new VBox();
+//        try {
+//            for(int i = 0; i < cafeterias.size(); i++) {
+//                fxmlLoader = new FXMLLoader(new File("src/app/view/CafeteriaPage/CafeNameHBox.fxml").toURI().toURL());
+//                HBox hbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
+//                CafeteriaNameController eventController = fxmlLoader.getController();
+//                //now setting data (username, text ...) for each post
+//                eventController.setData(cafeterias.get(i));
+////              eventController.setRightEventTabController(this);
+//                cafeVBoxID.getChildren().add(hbox);  //now adding post (pane) to the vbox
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    public void orderByRatingClicked(ActionEvent event) throws IOException {
+//        cafeterias = CafeteriaDao.getAllCafeteriasByRating(); // need method
+//        switchToFXML("src/app/view/CafeteriaPage/CafeInfo.fxml", event);
+//    }
+//
+//    public void orderByPriceClicked(ActionEvent event) {
+//        cafeterias = CafeteriaDao.getAllCafeteriasByPrice(); // need method
+//        cafeVBoxID = new VBox();
+//        try {
+//            for(int i = 0; i < cafeterias.size(); i++) {
+//                fxmlLoader = new FXMLLoader(new File("src/app/view/CafeteriaPage/CafeNameHBox.fxml").toURI().toURL());
+//                HBox hbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
+//                CafeteriaNameController eventController = fxmlLoader.getController();
+//                //now setting data (username, text ...) for each post
+//                eventController.setData(cafeterias.get(i));
+////              eventController.setRightEventTabController(this);
+//                cafeVBoxID.getChildren().add(hbox);  //now adding post (pane) to the vbox
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+
+    public void orderCafeByNormal(ActionEvent event) throws IOException {
+        cafeterias = CafeteriaDao.getAllCafeterias();
+        cafeVBoxID.getChildren().clear();
+        try {
+            for(int i = 0; i < cafeterias.size(); i++) {
+                fxmlLoader = new FXMLLoader(new File("src/app/view/CafeteriaPage/CafeNameHBox.fxml").toURI().toURL());
+                HBox hbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
+                CafeteriaNameController eventController = fxmlLoader.getController();
+                //now setting data (username, text ...) for each post
+                eventController.setData(cafeterias.get(i));
+//              eventController.setRightEventTabController(this);
+                cafeVBoxID.getChildren().add(hbox);  //now adding post (pane) to the vbox
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void orderCafeByRating(ActionEvent event) throws IOException {
+        cafeterias = CafeteriaDao.getAllCafeteriasByRating();
+        cafeVBoxID.getChildren().clear();
+        try {
+            for(int i = 0; i < cafeterias.size(); i++) {
+                fxmlLoader = new FXMLLoader(new File("src/app/view/CafeteriaPage/CafeNameHBox.fxml").toURI().toURL());
+                HBox hbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
+                CafeteriaNameController eventController = fxmlLoader.getController();
+                //now setting data (username, text ...) for each post
+                eventController.setData(cafeterias.get(i));
+//              eventController.setRightEventTabController(this);
+                cafeVBoxID.getChildren().add(hbox);  //now adding post (pane) to the vbox
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void orderCafePrice(ActionEvent event) throws IOException {
+        cafeterias = CafeteriaDao.getAllCafeteriasByPrice();
+        cafeVBoxID.getChildren().clear();
+        try {
+            for(int i = 0; i < cafeterias.size(); i++) {
+                fxmlLoader = new FXMLLoader(new File("src/app/view/CafeteriaPage/CafeNameHBox.fxml").toURI().toURL());
+                HBox hbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
+                CafeteriaNameController eventController = fxmlLoader.getController();
+                //now setting data (username, text ...) for each post
+                eventController.setData(cafeterias.get(i));
+//              eventController.setRightEventTabController(this);
+                cafeVBoxID.getChildren().add(hbox);  //now adding post (pane) to the vbox
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+//**********************************************************************************************
 
     ////// For filter button
     public void displayAddFilterPopup (ActionEvent event) throws IOException {
@@ -83,81 +202,17 @@ public class CafeteriaController implements Initializable {
         filterStage.showAndWait(); // This will block interaction with the main window
     }
 
-    //after user puts filter, use this code: (right now both addFilter and close are same)
-    public void applyFilter(ActionEvent event) throws IOException {
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        // Close the filter screen
-        stage.close();
-    }
 
-    public void cancelFilter(ActionEvent event) throws IOException {
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.close();
-    }
-
-    public void orderCafeByNormal(ActionEvent event) {
-
-    }
-
-    public void orderCafeByRating(ActionEvent event) {
-
-    }
-
-    public void orderCafePrice(ActionEvent event) {
-    }
-
-
-
-
-    private List<CafeMock> data() {
-        List<CafeMock> ls = new ArrayList<>();
-        CafeMock cafe1 = new CafeMock();
-        cafe1.setCafeName("Marmara");
-        cafe1.setCafeDescription("This is the best cafeteraia in the world");
-        cafe1.setCafeMenu(" Chicken Fiesta  100$-140$ \n Mac Cheese 50$-100$");
-        cafe1.setCafeRating("Rating 3/4");
-        cafe1.setCafePriceRange("100$-200$");
-
-        //mock review posts for dorm Marmara
-        List<ReviewMock> cafe1Reviews = new ArrayList<ReviewMock>();
-        ReviewMock m1 = new ReviewMock();
-        m1.setReviewTopInfo("Reviewed by Arhaan on 7-11-99");
-        m1.setReviewRating("Rated 3.1/44");
-        m1.setReviewText("This marmara is one of the best cafe in the campus ");
-        cafe1Reviews.add( m1 );
-        ReviewMock m2 = new ReviewMock();
-        m2.setReviewTopInfo("Reviewed by your on 3-1-19");
-        m2.setReviewRating("Rated 3.9/44");
-        m2.setReviewText("This 76 dorm is extremely big and modern ");
-        cafe1Reviews.add( m1 );
-        cafe1Reviews.add(m2);
-        cafe1.setCafeReviewList(cafe1Reviews);
-        ls.add(cafe1);
-
-
-
-        CafeMock cafe2 = new CafeMock();
-        cafe2.setCafeName("Bilka");
-        cafe2.setCafeDescription("Bilka is the most famous cafe in Bilkent University and has one of the best location and is situated near dorm 76");
-        cafe2.setCafeMenu(" Tavuk Doner  100$-140$ \n Kebab and Pilav 50$-100$");
-        cafe2.setCafeRating("Rating 3.9/4");
-        cafe2.setCafePriceRange("50$-150");
-
-        //mock review posts for Bilka
-        List<ReviewMock> cafe2Reviews = new ArrayList<ReviewMock>();
-        ReviewMock n1 = new ReviewMock();
-        n1.setReviewTopInfo("Reviewed by faizan on 5-5-2020");
-        n1.setReviewRating("Rated 4/4");
-        n1.setReviewText("I like Bilka dorm as is one of the smallest cafe in the campus ");
-        cafe2Reviews.add( n1 );
-        ReviewMock n2 = new ReviewMock();
-        n2.setReviewTopInfo("Reviewed by AG Guru on 3-1-19");
-        n2.setReviewRating("Rated 3.9/44");
-        n2.setReviewText("This bilka is extremely big and modern ");
-        cafe2.setCafeReviewList(cafe2Reviews);
-        ls.add(cafe2);
-        return ls;
-        // return ForumPostDao.getPostsByRecency();
-    }
+//    //after user puts filter, use this code: (right now both addFilter and close are same)
+//    public void applyFilter(ActionEvent event) throws IOException {
+//        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+//        // Close the filter screen
+//        stage.close();
+//    }
+//
+//    public void cancelFilter(ActionEvent event) throws IOException {
+//        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+//        stage.close();
+//    }
 
 }

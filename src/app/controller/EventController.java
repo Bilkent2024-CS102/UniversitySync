@@ -1,5 +1,8 @@
 package app.controller;
 
+import app.dao.UserDao;
+import app.model.userContent.post.EventPost;
+import app.dao.EventPostDao;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -10,49 +13,43 @@ import javafx.scene.control.ToggleButton;
 import java.io.IOException;
 
 public class EventController {
+    EventPost post;
+
     @FXML
     private TextArea eventTexArea_ID;
     @FXML
     private ToggleButton eventFollowButton_ID;
 
-    public void followEvent(ActionEvent event) throws IOException {
 
-        if (eventFollowButton_ID.getText().equalsIgnoreCase("Follow")) {
+    public void setData(EventPost event)
+    {
+        // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
+        // userImageOnPostID.setImage(image);
+        post = event;
+        eventTexArea_ID.setText(event.getMainText());
+        eventTexArea_ID.setEditable(false);
+
+        boolean isFollowed = EventPostDao.doesUserFollow(SessionManager.getCurrentUser().getUserId(), event.getUserContentItemId());
+        if (isFollowed)
+        {
             eventFollowButton_ID.setText("Unfollow");
-            // EventPostDao.addUser(SessionManager.getCurrentUser());
-            eventTexArea_ID.setText( eventTexArea_ID.getText() + "\n You are now following.");
+        }
+        else
+        {
+            eventFollowButton_ID.setText("Follow");
+        }
+    }
+
+    public void followButton(ActionEvent e)
+    {
+        if (eventFollowButton_ID.getText().equals("Follow")) {
+            eventFollowButton_ID.setText("Unfollow");
+            EventPostDao.addFollower(post.getUserContentItemId(), SessionManager.getCurrentUser().getUserId());
+            // eventTexArea_ID.setText( eventTexArea_ID.getText() + "\n You are now following.");
         }
         else {
             eventFollowButton_ID.setText("Follow");
-            // EventPostDao.removeUser(SessionManager.getCurrentUser());
+            EventPostDao.removeFollower(post.getUserContentItemId(), SessionManager.getCurrentUser().getUserId());
         }
-    }
-
-    //this method is used to set Info/data in other controllers for the components of this fxml file
-
-    public void setData(EventMock event) {
-        // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
-        // userImageOnPostID.setImage(image);
-        eventTexArea_ID.setText( event.getEventText());
-    }
-}
-
-//MOCK CLASS
-class EventMock {
-    private String eventText;
-    private String eventTitle;
-    public String getEventText() {
-        return eventText;
-    }
-    public void setEventText(String eventText) {
-        this.eventText = eventText;
-    }
-
-    public String getEventTitle() {
-        return eventTitle;
-    }
-
-    public void setEventTitle(String eventTitle) {
-        this.eventTitle = eventTitle;
     }
 }

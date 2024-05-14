@@ -160,7 +160,7 @@ public class UserDao {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
                 User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
-                                resultSet.getString("email"), resultSet.getString("pass"));
+                        resultSet.getString("email"), resultSet.getString("pass"));
                 students.add(u);
             }
             resultSet.close();
@@ -373,7 +373,7 @@ public class UserDao {
             pst.setString(1, email);
             pst.setString(2, password);
             ResultSet resultSet = pst.executeQuery();
-            
+
             if (resultSet.next())
             {
                 return true;
@@ -403,7 +403,7 @@ public class UserDao {
             ResultSet resultSet = pst.executeQuery();
             resultSet.next();
             User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
-                                resultSet.getString("email"), resultSet.getString("pass"));
+                    resultSet.getString("email"), resultSet.getString("pass"));
             return u;
         }
         catch (SQLException sqle)
@@ -444,7 +444,7 @@ public class UserDao {
      * @param receiverId id of the receiver
      * @return true boolean if it exists, false if not
      */
-    public static boolean doesFriendRequestExist(int senderId, int receiverId)
+    public static boolean friendRequestExist(int senderId, int receiverId)
     {
         try
         {

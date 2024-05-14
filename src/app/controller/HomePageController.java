@@ -12,6 +12,10 @@ import java.util.ResourceBundle;
 //import app.model.userContent.Reply;
 //import app.model.userContent.post.ForumPost;
 //import app.dao.ForumPostDao;
+import app.dao.DBConnectionManager;
+import app.dao.ForumPostDao;
+import app.dao.UserDao;
+import app.model.userContent.post.ForumPost;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,16 +33,26 @@ import javafx.stage.Stage;
 public class HomePageController implements Initializable
 {
     private Stage stage;
+    private static Stage stage2;
     private Scene scene;
+    private static Scene scene2;
     private FXMLLoader fxmlLoader;
+    private static FXMLLoader fxmlLoader2;
 
     // ******************************************************************* TEST ***************************************
     @FXML
     private VBox postVBoxID = new VBox();
-    private List<PostMock> posts;
+    private List<ForumPost> posts;
 
     public void initialize(URL location, ResourceBundle resources) {
-        posts = new ArrayList<>(data());
+        try {
+            DBConnectionManager.initializeConnection("jdbc:mysql://127.0.0.1:3306/?user=root", "root", "LkJhGfDs@10");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        SessionManager.setCurrentUser(UserDao.getUserById(1));
+        posts = ForumPostDao.getForumPostsByRecency();
 
         try {
             for(int i = 0; i < posts.size(); i++) {
@@ -55,21 +69,21 @@ public class HomePageController implements Initializable
     }
 
     // Creating a list of mock data for now (deleting later)
-    private List<PostMock> data() {
-        List<PostMock> ls = new ArrayList<>();
-        PostMock post = new PostMock();
-        post.setUsername("Musa");
-        post.setPostText("hello i am musa and");
-        ls.add(post);
-
-        PostMock post2 = new PostMock();
-        post2.setUsername("Atilla");
-        post2.setPostText("hello i am atilla and");
-        ls.add(post2);
-        return ls;
-
-        // return ForumPostDao.getPostsByRecency();
-    }
+//    private List<PostMock> data() {
+//        List<PostMock> ls = new ArrayList<>();
+//        PostMock post = new PostMock();
+//        post.setUsername("Musa");
+//        post.setPostText("hello i am musa and");
+//        ls.add(post);
+//
+//        PostMock post2 = new PostMock();
+//        post2.setUsername("Atilla");
+//        post2.setPostText("hello i am atilla and");
+//        ls.add(post2);
+//        return ls;
+//
+//        // return ForumPostDao.getPostsByRecency();
+//    }
 // ******************************************************************* TEST ***************************************
 
     public void refreshAndShowPosts(ActionEvent event) throws IOException {
@@ -86,122 +100,19 @@ public class HomePageController implements Initializable
 //        displayRecentPosts(posts);
     }
 
-//    /**
-//     * This method is invoked when like buttons of ForumPosts
-//     * are pressed. This method accessed the ForumPost object
-//     * of which like button is pressed and uses according DAO
-//     * class to add a like to the database. Also it updates the UI
-//     * so that the like button shows a red heart and user knows what happened.
-//     * @param e
-//     */
-//
-//    public void likePost(ActionEvent e) {
-        //        ForumPost post = e.getSource().getForumPost();
-//        ForumPostDao.addLike(post);
-//        // TODO for Zaeem.
-//        // The like button should be red or change in someway.//   }
-//
-//    public void messageUser(ActionEvent e)
-//    {
-//        ForumPost post = e.getSource().getForumPost();
-//        int user = post.getOwnerId();
-//        showMessageScreen(user);
-//    }
-//
-//    /**
-//     * TODO for Zaeem
-//     * This method should showCommentPane when comment button
-//     * of the ForumPost instance is clicked.
-//     */
-//    public void showCommentPane(ActionEvent e)
-//    {
-//        ForumPost post = e.getSource().getForumPost();
-//        ArrayList<Reply> comments = ForumPostDao.getReplies(post);
-//        // TODO: display comments and also a send button for
-//        //  currentUser's comment.
-//    }
-//
-//    /**
-//     * This buttons send the comment message.
-//     * @param e
-//     */
-//    public void sendComment(ActionEvent e)
-//    {
-//        // The below line accessed the post and the comment content
-//        // through thew commentPane invoked.
-//        int post = e.getSource().getForumPost();
-//        String commentContent = e.getSource().getCommentContent();
-//        Date createdAt = null;
-//        Date lastEdit = null;
-//        Reply comment = new Reply(SessionManager.getCurrentUser(), commentContent, createdAt, lastEdit, post);
-//        ForumPostDao.addComment(post, comment);
-//        // TODO: show success message.
-//    }
-//
-//    public void addFriendButton(ActionEvent e)
-//    {
-//        ForumPost post = e.getSource().getForumPost();
-//        int user = post.getOwnerId();
-//        UserDao.addFriendRequest(SessionManager.getCurrentUser(), user);
-//        // TODO: show success message.
-//    }
-//
-//    public void deletePostButton(ActionEvent e)
-//    {
-//        ForumPost post = e.getSource().getForumPost();
-//        if (post.getOwnerId().getUserId() == SessionManager.getCurrentUser().getUserId)
-//        {
-//            ForumPostDao.delete(post.getUserContentItemId());
-//        }
-//        // TODO: show success message.
-//    }
-//
-//    public void editPostButton(ActionEvent e)
-//    {
-//        ForumPost post = e.getSource().getForumPost();
-//        showEditDialog(post);
-//    }
-//
-//    public void sendEdit(ActionEvent e)
-//    {
-//        // Below line accesses the post and the edited text
-//        // through its UI EditDialog component.
-//        ForumPost post = e.getSource().getForumPost();
-//        String editedText = e.getSource().getEditedText();
-//        ForumPostDao.edit(post,editedText);
-//    }
-//
-//    public void showEditDialog(ForumPost post)
-//    {
-//        // Show edit dialog.
-//    }
-//
-//    /**
-//     * @TODO for Zaeem
-//     * This method should take the ArrayList of ForumPosts
-//     * and fill the fxml template displaying them for all
-//     * ForumPosts in the ArrayList.
-//     * Note: These components must have a getForumPost() method
-//     * to access the post object of which UI element is interacted
-//     * @see #likePost(ActionEvent)
-//     * @param posts
-//     */
-//    public void displayRecentPosts(ArrayList<ForumPost> posts)
-//    {
-//        for (ForumPost post1 : posts)
-//        {
-//            // Render FXML with info from post1.
-//        }
-//    }
-//
-//    /**
-//     * TODO for Zaeem and maybe some other guy.
-//     * This method should display messaging screen for given user.
-//     * @param user
-//     */
-//    public void showMessageScreen(int user)
-//    {
-//
-//    }
+    public static void refresh(ActionEvent event) throws IOException {
+
+        fxmlLoader2 = new FXMLLoader(new File("src/app/view/Homepage.fxml").toURI().toURL());
+        Parent root = fxmlLoader2.load();
+        stage2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene2 = new Scene(root);
+        stage2.setScene(scene2);
+        stage2.setFullScreen(true);
+        stage2.show();
+
+//        ArrayList<ForumPost> posts = ForumPostDao.getPostsByRecency();
+//        displayRecentPosts(posts);
+    }
+
 
 }

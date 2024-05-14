@@ -1,5 +1,6 @@
 package app.dao;
 
+import app.model.Campus;
 import app.model.location.Dormitory;
 import app.model.location.Room;
 
@@ -28,7 +29,7 @@ public class DormitoryDao {
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
                 Dormitory dorm = new Dormitory(resultSet.getInt("dormitory_location_id"), null, resultSet.getString("link_to_dormitory_picture"),
-                        resultSet.getString("dorm_name"), resultSet.getString("dorm_description"), 0, null, null);
+                        resultSet.getString("dorm_name"), resultSet.getString("dorm_description"), 0, CampusDao.getCampusById(resultSet.getInt("dormitory_in_campus_id")), null);
                 dorm.setReviews(ReviewDao.getReviewsOf(dorm.getLocationId()));
                 dorm.setRooms(DormitoryDao.getRoomTypesIn(dorm.getLocationId()));
                 dormitories.add(dorm);

@@ -1,5 +1,9 @@
 package app.controller;
 
+import app.dao.DBConnectionManager;
+import app.dao.EventPostDao;
+import app.dao.UserDao;
+import app.model.userContent.post.EventPost;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,13 +30,23 @@ public class RightEventTabController implements Initializable {
     private Stage stage;
     private FXMLLoader fxmlLoader;
 
-//*************************************************************************************
+    //*************************************************************************************
+    @FXML
+    private ToggleButton eventFollowButton_ID;
     @FXML
     private VBox Event_VBox_ID = new VBox();    //right Event VBox where we put our events
-    private List<EventMock> eventMock;
+    private List<EventPost> eventMock;
 
     public void initialize(URL location, ResourceBundle resources) {
-        eventMock = new ArrayList<>(data());
+        try {
+            DBConnectionManager.initializeConnection("jdbc:mysql://127.0.0.1:3306/?user=root", "root", "LkJhGfDs@10");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        SessionManager.setCurrentUser(UserDao.getUserById(1));
+
+        eventMock = EventPostDao.getAllEventPosts();
 
         try {
             for( int i = 0; i < eventMock.size(); i++) {
@@ -49,18 +63,7 @@ public class RightEventTabController implements Initializable {
         }
     }
 
-    private List<EventMock> data() {
-        List<EventMock> ls = new ArrayList<>();
-        EventMock event1 = new EventMock();
-        event1.setEventText("There is going to be an event today");
-        ls.add(event1);
 
-        EventMock event2 = new EventMock();
-        event2.setEventText("hello i am atilla and i am organizing the stuff in the");
-        ls.add(event2);
-        return ls;
-        // return ForumPostDao.getPostsByRecency();
-    }
 
 
     public void displayAddEventPopup (ActionEvent event) throws IOException {

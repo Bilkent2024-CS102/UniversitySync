@@ -21,29 +21,29 @@
          <content>
             <VBox fx:id="cafeVBoxID" prefWidth="1700.0" spacing="40.0" styleClass="cafeAndDormVBox">
 
-<!--                here we put our cafe name list-->
-<!--                  <HBox onMouseDragEntered="#switchToCafe1" prefHeight="110.0" prefWidth="1700.0" spacing="200.0">-->
-<!--                     <children>-->
-<!--                        <Button mnemonicParsing="false" onAction="#switchToCafe1" prefHeight="110.0" prefWidth="452.0" style="-fx-underline: true;" text="Cafe 1">-->
-<!--                           <font>-->
-<!--                              <Font name="SansSerif Regular" size="42.0" />-->
-<!--                           </font>-->
-<!--                        </Button>-->
-<!--                        <Label fx:id="food_cafeRating_ID" prefHeight="110.0" prefWidth="329.0" text="Rated 4.8/5">-->
-<!--                           <font>-->
-<!--                              <Font name="SansSerif Regular" size="42.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                        <Label fx:id="food_cafePriceRange_ID" prefHeight="110.0" prefWidth="502.0" text="Price Range: $100-$200">-->
-<!--                           <font>-->
-<!--                              <Font name="SansSerif Regular" size="42.0" />-->
-<!--                           </font>-->
-<!--                        </Label>-->
-<!--                     </children>-->
-<!--                     <VBox.margin>-->
-<!--                        <Insets top="20.0" />-->
-<!--                     </VBox.margin>-->
-<!--                  </HBox>-->
+               <!--                here we put our cafe name list-->
+               <!--                  <HBox onMouseDragEntered="#switchToCafe1" prefHeight="110.0" prefWidth="1700.0" spacing="200.0">-->
+               <!--                     <children>-->
+               <!--                        <Button mnemonicParsing="false" onAction="#switchToCafe1" prefHeight="110.0" prefWidth="452.0" style="-fx-underline: true;" text="Cafe 1">-->
+               <!--                           <font>-->
+               <!--                              <Font name="SansSerif Regular" size="42.0" />-->
+               <!--                           </font>-->
+               <!--                        </Button>-->
+               <!--                        <Label fx:id="food_cafeRating_ID" prefHeight="110.0" prefWidth="329.0" text="Rated 4.8/5">-->
+               <!--                           <font>-->
+               <!--                              <Font name="SansSerif Regular" size="42.0" />-->
+               <!--                           </font>-->
+               <!--                        </Label>-->
+               <!--                        <Label fx:id="food_cafePriceRange_ID" prefHeight="110.0" prefWidth="502.0" text="Price Range: $100-$200">-->
+               <!--                           <font>-->
+               <!--                              <Font name="SansSerif Regular" size="42.0" />-->
+               <!--                           </font>-->
+               <!--                        </Label>-->
+               <!--                     </children>-->
+               <!--                     <VBox.margin>-->
+               <!--                        <Insets top="20.0" />-->
+               <!--                     </VBox.margin>-->
+               <!--                  </HBox>-->
 
             </VBox>
          </content>

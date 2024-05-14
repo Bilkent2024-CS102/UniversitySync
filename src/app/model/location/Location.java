@@ -3,11 +3,13 @@ package app.model.location;
 import java.awt.*;
 import java.util.ArrayList;
 
+import app.dao.ReviewDao;
 import app.model.Campus;
 import app.model.Reviewable;
 import app.model.userContent.Review;
 
-public abstract class Location implements Reviewable {
+public abstract class Location implements Reviewable, Comparable<Location>
+{
     private static int numberOfInstances;
     private int locationId;
     private ArrayList<Review> reviews;
@@ -26,7 +28,13 @@ public abstract class Location implements Reviewable {
         setRating(rate);
         setCampus(c);
     }
-    
+
+    public int compareTo(Location loc)
+    {
+        int result = (int) Math.ceil(this.getRating() - loc.getRating());
+        return result;
+    }
+
     public static int getNumberOfInstances() {
         return numberOfInstances;
     }
@@ -64,7 +72,23 @@ public abstract class Location implements Reviewable {
         this.description = description;
     }
     public double getRating() {
-        return rating;
+        ArrayList<Review> reviews = ReviewDao.getReviewsOf(getLocationId());
+
+        double sum = 0;
+        int count = 0;
+
+        for (Review r : reviews)
+        {
+            sum += r.getRateGiven();
+            count++;
+        }
+
+        if (count == 0)
+        {
+            return -1;
+        }
+
+        return (sum/count);
     }
     public void setRating(double rating) {
         this.rating = rating;

@@ -1,26 +1,26 @@
 package app.controller;
 
+import app.dao.ReviewDao;
+import app.model.location.Location;
+import app.model.userContent.Review;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 //import com.mysql.cj.Session;
-import javafx.stage.StageStyle;
+
 
 public class ReviewPageController {
     private Stage stage;
@@ -28,33 +28,54 @@ public class ReviewPageController {
 
     @FXML
     private VBox reviewVBox_ID = new VBox();
-    private List<ReviewMock> reviewMock;
+    private List<Review> reviews;
+
+    @FXML
+    private TextArea reviewText;
+    @FXML
+    private TextField reviewRating;
 
     //USE THIS : private ...... dormOrCafeAssociatedWithThis;
-    private DormMock dormOrCafeAssociatedWithThis;
-    ////// ^^^^^^ HERE REPLACE DormMock with parent class of both dorm and cafe DATABASE
+    private Location location;
+    ////// ^^^^^^ HERE REPLACE Location with parent class of both dorm and cafe DATABASE
 
 
-    public void setData(DormMock associatedWithThis) {
-      //  this.dormAssociatedWithThis = dormAssociatedWithThis;
-        this.dormOrCafeAssociatedWithThis = associatedWithThis;
+    public void setData(Location loc) {
+        //  this.dormAssociatedWithThis = dormAssociatedWithThis;
+        this.location = loc;
+//        reviewVBox_ID.getChildren().clear();
 
-        reviewMock = new ArrayList<>( dormOrCafeAssociatedWithThis.getDormReviewList() );
+        reviews = ReviewDao.getReviewsOf(loc.getLocationId());
 
         try {
-            for( int i = 0; i < reviewMock.size(); i++) {
+            for(int i = 0; i < reviews.size(); i++) {
                 fxmlLoader = new FXMLLoader(new File("src/app/view/reviewPost.fxml").toURI().toURL());
                 VBox vbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
                 ReviewPostController eventController = fxmlLoader.getController();
                 //now setting data (username, text ...) for each post
-                eventController.setData(reviewMock.get(i));
+                eventController.setData(reviews.get(i));
                 reviewVBox_ID.getChildren().add(vbox);  //now adding post (pane) to the vbox
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
-
-
+    public void addReview(ActionEvent event) {
+        try {
+            String reviewMainText = reviewText.getText();
+            double rating = Double.parseDouble(reviewRating.getText());
+            Review review = new Review(SessionManager.getCurrentUser().getUserId(), reviewMainText, new Date(), new Date(), location.getLocationId(), rating);
+            reviewText.clear();
+            reviewRating.clear();
+            setData(location);
+        }
+        catch (NumberFormatException e)
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setContentText("Add a number rating to it");
+            alert.showAndWait();
+        }
     }
 }

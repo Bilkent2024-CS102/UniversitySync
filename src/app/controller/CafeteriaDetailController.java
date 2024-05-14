@@ -1,6 +1,6 @@
 package app.controller;
 
-import javafx.event.ActionEvent;
+import app.model.location.cafeteria.Cafeteria;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -33,18 +34,22 @@ public class CafeteriaDetailController {
     @FXML
     private TextField cafePriceRange_ID;
 
-    private CafeMock cafeAssociatedWithThis;
+    private Cafeteria thisCafeteria;
 
-    public void setData(CafeMock cafe) {
+    public void setData(Cafeteria cafe) {
+        thisCafeteria = cafe;
+        cafeName_ID.setText( cafe.getName());
+        //cafeImage_ID.setImage(cafe.getCafeImage().getImage());
+        cafeDescription_ID.setText(cafe.getDescription());
+        cafeMenuTextArea_ID.setText( cafe.getMenu());
+        String text = (cafe.getRating() < 0) ? ("No Reviews") : ("" + cafe.getRating());
+        cafeRateTextField_ID.setText(text);
+        cafePriceRange_ID.setText( cafe.getMinPrice() + "-" + cafe.getMaxPrice() + " TL");
 
-        cafeAssociatedWithThis = cafe;
-
-        cafeName_ID.setText( cafe.getCafeName());
-        //cafeImage_ID.setImage(event.getCafeImage().getImage());
-        cafeDescription_ID.setText(cafe.getCafeDescription());
-        cafeMenuTextArea_ID.setText( cafe.getCafeMenu());
-        cafeRateTextField_ID.setText( cafe.getCafeRating());
-        cafePriceRange_ID.setText( cafe.getCafePriceRange());
+        cafeDescription_ID.setEditable(false);
+        cafeMenuTextArea_ID.setEditable(false);
+        cafeRateTextField_ID.setEditable(false);
+        cafePriceRange_ID.setEditable(false);
     }
 
     public void switchToFXML(String fxmlFileName, MouseEvent event) throws IOException {
@@ -55,7 +60,7 @@ public class CafeteriaDetailController {
         // setting/sending the data of that particular cafe button to cafe details page
 
         ///////UNCOMMENT kARLO Neechai
-        //detailController.setData( cafeAssociatedWithThis);
+        detailController.setData(thisCafeteria);
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

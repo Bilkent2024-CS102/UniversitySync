@@ -2,46 +2,17 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <excludeFromCompile>
-      <file url="file://$PROJECT_DIR$/src/app/model/location/Location.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/userContent/Message.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/User.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/userContent/Reply.java" />
-      <file url="file://$PROJECT_DIR$/src/app/dao/ReplyDao.java" />
-      <file url="file://$PROJECT_DIR$/src/app/dao/ForumPostDao.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/userContent/post/ForumPost.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/userContent/UserContentItem.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/userContent/post/Post.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/userContent/Review.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/userContent/post/EventPost.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/Reviewable.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/userContent/post/DormTransferPost.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/location/Dormitory.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/location/cafeteria/Cafeteria.java" />
-      <file url="file://$PROJECT_DIR$/src/app/dao/Main.java" />
-      <file url="file://$PROJECT_DIR$/src/app/dao/ReviewDao.java" />
-      <file url="file://$PROJECT_DIR$/src/app/dao/DormitoryDao.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/Campus.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/location/Room.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/University.java" />
-      <file url="file://$PROJECT_DIR$/src/app/dao/CafeteriaDao.java" />
-      <file url="file://$PROJECT_DIR$/src/app/dao/DBAccessTestRunner.java" />
-      <file url="file://$PROJECT_DIR$/src/app/controller/CafeReviewController.java" />
-      <file url="file://$PROJECT_DIR$/src/app/dao/UserDao.java" />
-      <file url="file://$PROJECT_DIR$/src/app/controller/DormitoryTransferController.java" />
-      <file url="file://$PROJECT_DIR$/src/app/dao/EventPostDao.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/SocialAllMessagesController.java" />
       <file url="file://$PROJECT_DIR$/src/app/controller/SocialFriendRequestsController.java" />
-      <file url="file://$PROJECT_DIR$/src/app/dao/DormTransferPostDao.java" />
-      <file url="file://$PROJECT_DIR$/src/app/dao/MessageDao.java" />
-      <file url="file://$PROJECT_DIR$/src/app/model/FriendRequest.java" />
-      <file url="file://$PROJECT_DIR$/src/app/controller/SessionManager.java" />
-      <file url="file://$PROJECT_DIR$/src/app/dao/CampusDao.java" />
-      <file url="file://$PROJECT_DIR$/src/app/controller/RegistrationController.java" />
-      <file url="file://$PROJECT_DIR$/src/app/controller/LoginController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/SocialMyFriendsController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/SocialTopTabController.java" />
       <file url="file://$PROJECT_DIR$/src/app/controller/SocialMessageBoxController.java" />
       <file url="file://$PROJECT_DIR$/src/app/controller/SocialMessageOneUserController.java" />
-      <file url="file://$PROJECT_DIR$/src/app/controller/SocialAllMessagesController.java" />
-      <file url="file://$PROJECT_DIR$/src/app/controller/ProfileMyPostsController.java" />
-      <file url="file://$PROJECT_DIR$/src/app/controller/ProfileLikedPostsController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/SocialEventController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/SocialEventPageController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/SocialFriendReqPageController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/SocialFriendReqUserController.java" />
+      <file url="file://$PROJECT_DIR$/src/app/controller/SocialMyFriendsPageController.java" />
     </excludeFromCompile>
     <annotationProcessing>
       <profile name="Maven default annotation processors profile" enabled="true">

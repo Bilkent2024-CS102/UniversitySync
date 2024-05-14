@@ -104,17 +104,17 @@
                            <children>
                               <Pane prefHeight="387.0" prefWidth="1266.0" style="-fx-background-color: lightblue; -fx-background-radius: 20;">
                                  <children>
-                                    <TextArea layoutX="72.0" layoutY="96.0" prefHeight="193.0" prefWidth="1150.0" promptText="write your review">
+                                    <TextArea fx:id="reviewText" layoutX="72.0" layoutY="96.0" prefHeight="193.0" prefWidth="1150.0" promptText="write your review">
                                        <font>
                                           <Font size="35.0" />
                                        </font>
                                     </TextArea>
-                                    <TextField layoutX="70.0" layoutY="16.0" prefHeight="57.0" prefWidth="462.0" promptText="Review Out Of Five">
+                                    <TextField fx:id="reviewRating" layoutX="70.0" layoutY="16.0" prefHeight="57.0" prefWidth="462.0" promptText="Review Out Of Five">
                                        <font>
                                           <Font name="SansSerif Bold" size="28.0" />
                                        </font>
                                     </TextField>
-                                    <Button fx:id="postReviewButton_ID" layoutX="981.0" layoutY="306.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="247.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" text="Post Review" textFill="WHITE">
+                                    <Button fx:id="postReviewButton_ID" onAction="#addReview" layoutX="981.0" layoutY="306.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="247.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" text="Post Review" textFill="WHITE">
                                        <font>
                                           <Font name="Helvetica Bold" size="31.0" />
                                        </font>

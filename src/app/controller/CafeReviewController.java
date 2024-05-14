@@ -12,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class CafeReviewController {
-    
+
     @FXML
     private TextField review;
     @FXML
@@ -25,9 +25,9 @@ public class CafeReviewController {
         double rating = Double.parseDouble(ratingText);
         Cafeteria cafe = (Cafeteria) e.getSource();
         Date date = Date.valueOf(LocalDate.now());
-        
-        Review review = new Review(SessionManager.getCurrentUser().getUserId(), reviewText, date, date, cafe, rating);
-        
+
+        Review review = new Review(SessionManager.getCurrentUser().getUserId(), reviewText, date, date, cafe.getLocationId(), rating);
+
         ReviewDao.addReview(review);
     }
 

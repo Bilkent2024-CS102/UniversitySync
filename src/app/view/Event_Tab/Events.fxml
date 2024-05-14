@@ -17,7 +17,7 @@
             <Insets left="20.0" right="20.0" top="30.0" />
          </VBox.margin>
       </TextArea>
-      <ToggleButton fx:id="eventFollowButton_ID" mnemonicParsing="false" onAction="#followEvent" prefHeight="65.0" prefWidth="369.0" style="-fx-text-fill: white;" stylesheets="@../styles.css" text="Follow" textFill="WHITE">
+      <ToggleButton fx:id="eventFollowButton_ID" mnemonicParsing="false" onAction="#followButton" prefHeight="65.0" prefWidth="369.0" style="-fx-text-fill: white;" stylesheets="@../styles.css" text="Follow" textFill="WHITE">
          <font>
             <Font name="Helvetica Neue Bold" size="27.0" />
          </font>
