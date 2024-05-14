@@ -1,8 +1,11 @@
 package app.controller;
 
+import app.dao.EventPostDao;
+import app.model.userContent.post.EventPost;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -21,38 +24,47 @@ public class SocialEventPageController implements Initializable {
 
     @FXML
     private HBox socialEventsHBox_ID;   //h box where we put our events
-    private List<EventMock> eventMock;
+    private List<EventPost> eventMock;
 
     public void initialize(URL location, ResourceBundle resources) {
-        eventMock = new ArrayList<>(followedEventData());
+        eventMock = EventPostDao.getEventsOfUser(SessionManager.getCurrentUser().getUserId());
 
         try {
-            for( int i = 0; i < eventMock.size(); i++) {
-                fxmlLoader = new FXMLLoader(new File("src/app/view/SocialPage/SocialFollowedEvents.fxml").toURI().toURL());
-                BorderPane borderPane = fxmlLoader.load();
-                SocialEventController eventController = fxmlLoader.getController();
-                //now setting data (username, text ...) for each event
-                eventController.setData(eventMock.get(i));
-                socialEventsHBox_ID.getChildren().add(borderPane);  //now adding post (pane) to the vbox
+            if (eventMock != null)
+            {
+                for( int i = 0; i < eventMock.size(); i++) {
+                    fxmlLoader = new FXMLLoader(new File("src/app/view/SocialPage/SocialFollowedEvents.fxml").toURI().toURL());
+                    BorderPane borderPane = fxmlLoader.load();
+                    SocialEventController eventController = fxmlLoader.getController();
+                    //now setting data (username, text ...) for each event
+                    eventController.setData(eventMock.get(i));
+                    socialEventsHBox_ID.getChildren().add(borderPane);  //now adding post (pane) to the vbox
+                }
+            }
+            else
+            {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("You are currently not following any events");
+                alert.showAndWait();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-
-    private List<EventMock> followedEventData() {
-        List<EventMock> ls = new ArrayList<>();
-        EventMock event1 = new EventMock();
-        event1.setEventTitle("Mars Event 0A-3X");
-        event1.setEventText("A new event where all the famous musicians around the world are gonna dance and go to Mars together \n date: 2-2-3033");
-        ls.add(event1);
-
-        EventMock event2 = new EventMock();
-        event2.setEventTitle("Nep-Earth p4");
-        event2.setEventText("Location: planet Neptune \n Time: who cares \n Please Planet Earth do come to the event" );
-        ls.add(event2);
-        return ls;
-        // return ForumPostDao.getPostsByRecency();
-    }
+//
+//    private List<EventMock> followedEventData() {
+//        List<EventMock> ls = new ArrayList<>();
+//        EventMock event1 = new EventMock();
+//        event1.setEventTitle("Mars Event 0A-3X");
+//        event1.setEventText("A new event where all the famous musicians around the world are gonna dance and go to Mars together \n date: 2-2-3033");
+//        ls.add(event1);
+//
+//        EventMock event2 = new EventMock();
+//        event2.setEventTitle("Nep-Earth p4");
+//        event2.setEventText("Location: planet Neptune \n Time: who cares \n Please Planet Earth do come to the event" );
+//        ls.add(event2);
+//        return ls;
+//        // return ForumPostDao.getPostsByRecency();
+//    }
 }
