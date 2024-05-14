@@ -45,13 +45,13 @@ public class HomePageController implements Initializable
     private List<ForumPost> posts;
 
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            DBConnectionManager.initializeConnection("jdbc:mysql://127.0.0.1:3306/?user=root", "root", "atilla");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            DBConnectionManager.initializeConnection("jdbc:mysql://127.0.0.1:3306/?user=root", "root", "ben123**AA");
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
 
-        SessionManager.setCurrentUser(UserDao.getUserById(1));
+        //SessionManager.setCurrentUser(UserDao.getUserById(1));
         posts = ForumPostDao.getForumPostsByRecency();
 
         try {

@@ -25,7 +25,7 @@
                 <Insets bottom="25.0" />
             </VBox.margin>
         </Label>
-        <TextField prefHeight="50.0" promptText="Username">
+        <TextField fx:id="emailField" prefHeight="50.0" promptText="Username">
             <font>
                 <Font size="16.0" />
             </font>
@@ -33,7 +33,7 @@
                 <Insets bottom="20.0" left="40.0" right="40.0" />
             </VBox.margin>
         </TextField>
-        <TextField prefHeight="50.0" prefWidth="386.0" promptText="Password">
+        <TextField fx:id="passwordField" prefHeight="50.0" prefWidth="386.0" promptText="Password">
             <font>
                 <Font size="16.0" />
             </font>

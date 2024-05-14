@@ -15,9 +15,7 @@ import java.util.ArrayList;
  */
 public class DBAccessTestRunner {
     public static void main(String[] args) throws Exception{
-        String url = "jdbc:mysql://localhost:3306/university_sync";
-        String username = "root";
-        String password = "ben123**AA"; // TODO: type your own mysql server password here!
+
         /*
         Class.forName("com.mysql.cj.jdbc.Driver");
         //DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
@@ -35,6 +33,9 @@ public class DBAccessTestRunner {
             
         }*/
 
+        String url = "jdbc:mysql://localhost:3306/university_sync";
+        String username = "root";
+        String password = "ben123**AA"; // TODO: type your own mysql server password here!
         DBConnectionManager.initializeConnection(url, username, password);
 
         //User u = new User("hahahaha", "hahahahaha@gmail.com", "pass12345");
