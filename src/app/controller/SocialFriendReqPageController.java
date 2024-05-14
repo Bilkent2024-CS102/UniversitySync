@@ -1,7 +1,9 @@
 package app.controller;
 
 //import app.dao.UserDao;
-//import app.model.User;
+import app.model.User;
+import app.dao.UserDao;
+import com.mysql.cj.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,11 +22,11 @@ public class SocialFriendReqPageController implements Initializable {
     private FXMLLoader fxmlLoader;
     @FXML
     private VBox friendReqVBox_ID;
-    private List<FriendsMock> friendsMocks;
+    private List<User> friendsMocks;
 
 
     public void initialize(URL location, ResourceBundle resources) {
-        friendsMocks = new ArrayList<>(data());
+        friendsMocks = UserDao.getFriends(SessionManager.getCurrentUser().getUserId());
 
         try {
             for(int i = 0; i < friendsMocks.size(); i++) {
@@ -37,26 +39,6 @@ public class SocialFriendReqPageController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private List<FriendsMock> data() {
-        List<FriendsMock> tss = new ArrayList<>();
-
-        FriendsMock friend1 = new FriendsMock();
-        friend1.setFriendUsername("Khaitul");
-        tss.add(friend1);
-        FriendsMock friend2 = new FriendsMock();
-        friend2.setFriendUsername(" Taren Choi");
-        tss.add(friend2);
-        FriendsMock friend3 = new FriendsMock();
-        friend3.setFriendUsername("Badar");
-        tss.add(friend3);
-        FriendsMock friend4 = new FriendsMock();
-        friend4.setFriendUsername("Tauseef");
-        tss.add(friend4);
-
-        return tss;
-        // return ForumPostDao.getPostsByRecency();
     }
 
 

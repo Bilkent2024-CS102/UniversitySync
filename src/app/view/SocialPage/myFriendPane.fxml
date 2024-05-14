@@ -19,12 +19,12 @@
                 <Font name="SansSerif Bold" size="28.0" />
             </font>
         </Label>
-        <Button layoutX="395.0" layoutY="70.0" mnemonicParsing="false" onAction="#messageFriendButton" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="messageButton" stylesheets="@../styles.css" text="Message" textFill="WHITE">
+        <Button fx:id="messageButton" layoutX="395.0" layoutY="70.0" mnemonicParsing="false" onAction="#messageFriendButton" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="messageButton" stylesheets="@../styles.css" text="Message" textFill="WHITE">
             <font>
                 <Font name="Helvetica" size="13.0" />
             </font>
         </Button>
-        <Button layoutX="572.0" layoutY="70.0" mnemonicParsing="false" onAction="#unFriendButton" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
+        <Button fx:id="unfriendButton" layoutX="572.0" layoutY="70.0" mnemonicParsing="false" onAction="#unFriendButton" prefHeight="49.0" prefWidth="119.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" stylesheets="@../styles.css" text="Unfriend" textFill="WHITE">
             <font>
                 <Font name="Helvetica" size="13.0" />
             </font>

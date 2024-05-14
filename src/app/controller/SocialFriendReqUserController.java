@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,10 +16,10 @@ public class SocialFriendReqUserController {
     @FXML
     private Label username_ID;
 
-    public void setData(FriendsMock friendsMock) {
+    public void setData(User friendsMock) {
 //      Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
 //        userImage_ID.setImage(image);
-        username_ID.setText( friendsMock.getFriendUsername());
+        username_ID.setText( friendsMock.getName());
     }
 
     public void acceptRequest(ActionEvent e)

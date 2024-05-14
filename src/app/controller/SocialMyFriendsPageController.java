@@ -2,10 +2,15 @@ package app.controller;
 //import app.dao.UserDao;
 //import app.model.FriendRequest;
 //import app.model.User;
+import app.dao.UserDao;
+import app.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -19,12 +24,15 @@ import java.util.ResourceBundle;
 public class SocialMyFriendsPageController implements Initializable {
 
     private FXMLLoader fxmlLoader;
+    private Stage stage;
+    private Scene scene;
+
     @FXML
     private VBox myFriendsVBox_ID = new VBox();    //right Event VBox where we put our events
-    private List<FriendsMock> friendsMocks;
+    private List<User> friendsMocks;
 
     public void initialize(URL location, ResourceBundle resources) {
-        friendsMocks = new ArrayList<>(data());
+        friendsMocks = UserDao.getFriends(SessionManager.getCurrentUser().getUserId());
 
         try {
             for(int i = 0; i < friendsMocks.size(); i++) {
@@ -39,25 +47,9 @@ public class SocialMyFriendsPageController implements Initializable {
         }
     }
 
-    private List<FriendsMock> data() {
-        List<FriendsMock> tss = new ArrayList<>();
 
-        FriendsMock friend1 = new FriendsMock();
-        friend1.setFriendUsername("Atilla Akus");
-        tss.add(friend1);
-        FriendsMock friend2 = new FriendsMock();
-        friend2.setFriendUsername("Musa Quershi");
-        tss.add(friend2);
-        FriendsMock friend3 = new FriendsMock();
-        friend3.setFriendUsername("Zaeem Sheikh");
-        tss.add(friend3);
-        FriendsMock friend4 = new FriendsMock();
-        friend4.setFriendUsername("Saqib Sheikh");
-        tss.add(friend4);
 
-        return tss;
-        // return ForumPostDao.getPostsByRecency();
-    }
+
 
 //**********************************************************************************************************************
 
