@@ -39,6 +39,34 @@ public class DormTransferPostDao {
         }
     }
 
+    public static ArrayList<DormTransferPost> getAllPosts()
+    {
+        ArrayList<DormTransferPost> posts = new ArrayList<DormTransferPost>();
+        try
+        {
+            String query = "SELECT * FROM university_sync.dorm_transfer_post";
+            PreparedStatement st = DBConnectionManager.getConnection().prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            while (rs.next())
+            {
+                DormTransferPost post = new DormTransferPost(
+                        rs.getInt("dorm_transfer_post_id"),
+                        rs.getInt("owner_student_id"),
+                        rs.getString("main_text"),
+                        rs.getTimestamp("creation_date"),
+                        rs.getTimestamp("last_edit_date"),
+                        rs.getString("heading"),
+                        rs.getInt("posted_room_id")
+                );
+                posts.add(post);
+            }
+            return posts;
+        } catch (Exception sqle) {
+            sqle.printStackTrace();
+            return null;
+        }
+    }
+
     /**
      * @TESTED
      * Deletes from the dorm_transfer_post table if possible.

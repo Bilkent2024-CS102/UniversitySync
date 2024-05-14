@@ -39,7 +39,7 @@ public class RightEventTabController implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            DBConnectionManager.initializeConnection("jdbc:mysql://127.0.0.1:3306/?user=root", "root", "LkJhGfDs@10");
+            DBConnectionManager.initializeConnection("jdbc:mysql://127.0.0.1:3306/?user=root", "root", "atilla");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

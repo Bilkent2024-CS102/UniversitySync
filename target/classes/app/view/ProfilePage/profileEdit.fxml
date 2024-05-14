@@ -12,7 +12,8 @@
 
 <!--<fx:include source="../Profile_TOP_TAB.fxml"/>-->
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.PasswordField?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.profileEditController">
     <top>
         <fx:include source="../TOP_TAB.fxml" />
     </top>
@@ -56,7 +57,7 @@
                            <Font name="PT Serif Bold" size="24.0" />
                         </font>
                      </Label>
-                     <TextField prefHeight="40.0" prefWidth="419.0" promptText="first name">
+                     <TextField fx:id="firstNameTextField" prefHeight="40.0" prefWidth="419.0" promptText="first name">
                         <VBox.margin>
                            <Insets bottom="10.0" left="15.0" right="180.0" />
                         </VBox.margin>
@@ -72,7 +73,7 @@
                            <Insets bottom="10.0" top="15.0" />
                         </VBox.margin>
                      </Label>
-                     <TextField prefHeight="40.0" prefWidth="396.0" promptText="last name">
+                     <TextField fx:id="lastNameTextField" prefHeight="40.0" prefWidth="396.0" promptText="last name">
                         <VBox.margin>
                            <Insets bottom="10.0" left="15.0" right="180.0" />
                         </VBox.margin>
@@ -88,11 +89,11 @@
                            <Insets bottom="10.0" top="15.0" />
                         </VBox.margin>
                      </Label>
-                     <TextField prefHeight="40.0" prefWidth="396.0" promptText="old password">
+                     <PasswordField fx:id="oldPassTextField" prefHeight="40.0" prefWidth="396.0" promptText="old password">
                         <VBox.margin>
                            <Insets bottom="10.0" left="15.0" right="180.0" />
                         </VBox.margin>
-                     </TextField>
+                     </PasswordField>
                      <Label prefHeight="35.0" prefWidth="634.0" text="New Password">
                         <padding>
                            <Insets left="15.0" />
@@ -104,11 +105,11 @@
                            <Insets bottom="10.0" top="15.0" />
                         </VBox.margin>
                      </Label>
-                     <TextField prefHeight="40.0" prefWidth="396.0" promptText="new password">
+                     <PasswordField fx:id="newPassTextField" prefHeight="40.0" prefWidth="396.0" promptText="new password">
                         <VBox.margin>
                            <Insets bottom="10.0" left="15.0" right="180.0" />
                         </VBox.margin>
-                     </TextField>
+                     </PasswordField>
                      <Label prefHeight="35.0" prefWidth="634.0" text="Confirm New Password">
                         <padding>
                            <Insets left="15.0" />
@@ -120,11 +121,11 @@
                            <Insets bottom="10.0" top="15.0" />
                         </VBox.margin>
                      </Label>
-                     <TextField prefHeight="40.0" prefWidth="396.0" promptText="new password">
+                     <PasswordField fx:id="confirmPassTextField" prefHeight="40.0" prefWidth="396.0" promptText="new password">
                         <VBox.margin>
                            <Insets left="15.0" right="180.0" />
                         </VBox.margin>
-                     </TextField>
+                     </PasswordField>
                   </children>
                </VBox>
                <VBox prefHeight="569.0" prefWidth="680.0">
@@ -140,7 +141,7 @@
                            <Insets bottom="15.0" top="130.0" />
                         </VBox.margin>
                      </Label>
-                     <TextArea prefHeight="281.0" prefWidth="611.0" promptText="write your description here" text="Hello I am a first year undergraduate in Bilkent University. I am currently studying computer science. &#10;" wrapText="true">
+                     <TextArea fx:id="descriptionTextField" prefHeight="281.0" prefWidth="611.0" promptText="write your description here" text="Hello I am a first year undergraduate in Bilkent University. I am currently studying computer science. &#10;" wrapText="true">
                         <font>
                            <Font size="18.0" />
                         </font>
@@ -148,7 +149,7 @@
                            <Insets left="20.0" right="30.0" />
                         </VBox.margin>
                      </TextArea>
-                     <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="154.0" style="-fx-background-radius: 10;" styleClass="anyBlackButton" text="Submit" textFill="WHITE">
+                     <Button fx:id="submitButton" onAction="#updateUser" mnemonicParsing="false" prefHeight="55.0" prefWidth="154.0" style="-fx-background-radius: 10;" styleClass="anyBlackButton" text="Submit" textFill="WHITE">
                         <VBox.margin>
                            <Insets left="430.0" right="15.0" top="20.0" />
                         </VBox.margin>
