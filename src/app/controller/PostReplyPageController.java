@@ -47,7 +47,7 @@ public class PostReplyPageController {
     {
         thisPost = post;
         postReviewMock = ForumPostDao.getReplies(thisPost.getUserContentItemId());
-//        postReplyVBox_ID.getChildren().clear();
+        postReplyVBox_ID.getChildren().clear();
 
         try {
             for (int i = 0; i < postReviewMock.size(); i++) {

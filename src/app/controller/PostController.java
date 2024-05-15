@@ -260,7 +260,7 @@ public class PostController {
         if (editButton.getText().equals("Edit"))
         {
             postTextAreaID.setEditable(true);
-            editButton.setText("Unedit");
+            editButton.setText("Submit");
         }
         else
         {
