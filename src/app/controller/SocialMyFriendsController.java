@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.dao.UserDao;
+import app.model.FriendRequest;
 import app.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,6 +46,14 @@ public class SocialMyFriendsController {
 //      friendProfileImageID.setImage(image);
         thisFriend = friend;
         friendUsernameID.setText(friend.getName());
+        if (UserDao.isFriend(SessionManager.getCurrentUser().getUserId(), friend.getUserId()))
+        {
+            unfriendButton.setText("Add Friend");
+        }
+        else
+        {
+            unfriendButton.setText("Remove Friend");
+        }
     }
 
 //*******************************************************************************************************************
@@ -57,7 +66,15 @@ public class SocialMyFriendsController {
 
     }
     public void unFriendButton (ActionEvent event) throws IOException {
-        UserDao.removeFriend(SessionManager.getCurrentUser().getUserId(), thisFriend.getUserId());
+        if (unfriendButton.getText() == "Add Friend")
+        {
+            UserDao.removeFriend(SessionManager.getCurrentUser().getUserId(), thisFriend.getUserId());
+        }
+        else
+        {
+            FriendRequest fr = new FriendRequest(SessionManager.getCurrentUser().getUserId(), thisFriend.getUserId());
+            UserDao.addFriendRequest(fr);
+        }
         refresh(event);
     }
 
@@ -79,23 +96,3 @@ public class SocialMyFriendsController {
         switchToFXML("src/app/view/SocialPage/socialMyFriends.fxml", event);
     }
 }
-//
-//class FriendsMock {
-//    private String friendUsername;
-//    private String profileImageSrc;
-//
-//    public String getFriendUsername() {
-//        return friendUsername;
-//    }
-//
-//    public void setFriendUsername(String friendUsername) {
-//        this.friendUsername = friendUsername;
-//    }
-//
-//   /* public String getProfileImageSrc() {    // this is similar in other controllers as well
-//        return profileImageSrc;
-//    }
-//    public void setProfileImageSrc() {    // this is similar in other controllers as well
-//       this.profileImageSrc = ....;
-//    }*/
-//}
