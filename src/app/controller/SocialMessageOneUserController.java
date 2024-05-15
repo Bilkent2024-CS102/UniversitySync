@@ -1,6 +1,11 @@
 package app.controller;
 
+<<<<<<< Updated upstream
 import app.model.User;
+=======
+//controller of all usernames to display on right
+
+>>>>>>> Stashed changes
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 //import javafx.fxml.FXMLLoader;
