@@ -64,7 +64,7 @@ public class RegistrationController implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        //stage.setFullScreen(false);
+        stage.setFullScreen(false);
         stage.show();
     }
 

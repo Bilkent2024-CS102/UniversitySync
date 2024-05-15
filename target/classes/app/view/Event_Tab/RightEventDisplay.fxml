@@ -53,7 +53,7 @@
             <VBox fx:id="Event_VBox_ID" alignment="CENTER" prefWidth="476.0">
 
 <!--                  here we put our posts-->
-                     <fx:include source="Events.fxml" />
+
 
             </VBox>
          </content>

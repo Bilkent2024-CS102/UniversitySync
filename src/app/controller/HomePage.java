@@ -24,7 +24,11 @@ public class HomePage extends Application {
     public static void main(String[] args) throws Exception {
         String url = "jdbc:mysql://localhost:3306/university_sync";
         String username = "root";
+<<<<<<< Updated upstream
         String password = "LkJhGfDs@10"; // TODO: type your own mysql server password here!
+=======
+        String password = "12345678"; // TODO: type your own mysql server password here!
+>>>>>>> Stashed changes
         DBConnectionManager.initializeConnection(url, username, password);
         launch();
     }
