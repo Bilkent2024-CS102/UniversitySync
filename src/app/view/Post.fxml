@@ -68,7 +68,7 @@
             <Insets left="20.0" />
          </padding>
       </HBox>
-      <Label fx:id="postUsernameID" layoutX="119.0" layoutY="24.0" prefHeight="36.0" prefWidth="370.0" text="zaeem_sheikh383">
+      <Label fx:id="userName" layoutX="119.0" layoutY="24.0" prefHeight="36.0" prefWidth="370.0" text="zaeem_sheikh383">
          <font>
             <Font name="SansSerif Bold Italic" size="30.0" />
          </font>
@@ -98,17 +98,17 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextField fx:id="postTitle_ID" layoutX="20.0" layoutY="86.0" prefHeight="66.0" prefWidth="940.0" style="-fx-background-radius: 10;" text="ddfjdshfd">
+      <TextField fx:id="postHeading" layoutX="20.0" layoutY="86.0" prefHeight="66.0" prefWidth="940.0" style="-fx-background-radius: 10;" text="ddfjdshfd">
          <font>
             <Font name="Helvetica Neue Bold" size="35.0" />
          </font>
       </TextField>
-      <Label fx:id="noOfLikes_ID" layoutX="45.0" layoutY="455.0" text="20 Likes">
+      <Label fx:id="likeNumber" layoutX="45.0" layoutY="455.0" text="20 Likes">
          <font>
             <Font name="SansSerif Bold Italic" size="21.0" />
          </font>
       </Label>
-      <Label fx:id="noOfComments_ID" layoutX="166.0" layoutY="455.0" text="10 Comments">
+      <Label fx:id="commentNumber" layoutX="166.0" layoutY="455.0" text="10 Comments">
          <font>
             <Font name="SansSerif Bold Italic" size="21.0" />
          </font>

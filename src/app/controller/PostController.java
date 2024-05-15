@@ -37,8 +37,6 @@ public class PostController {
     @FXML
     private ImageView userImageOnPostID;
     @FXML
-    private Label postUsernameID;
-    @FXML
     private Button addFriendButtonID;
     @FXML
     private Button commentButtonID;
@@ -56,11 +54,14 @@ public class PostController {
     private Button deleteButton;
     @FXML
     private Button editButton;
-
-    // The below will be labels. They are strings just for now.
-    private String heading;
-    private String likeCount;
-    private String commentCount;
+    @FXML
+    private Label likeNumber;
+    @FXML
+    private Label commentNumber;
+    @FXML
+    private Label userName;
+    @FXML
+    private TextField postHeading;
 
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
@@ -91,12 +92,13 @@ public class PostController {
     {
         // Below works good.
         thisPost = post;
-        postUsernameID.setText("" + post.getOwnerId());
+        userName.setText("" + UserDao.getUserById(post.getOwnerId()).getName());
         postTextAreaID.setText(post.getMainText());
         postTextAreaID.setEditable(false);
-        heading = post.getHeading();
-        likeCount = post.getLikeCount() + " Likes";
-        commentCount = post.getCommentCount() + " Comments";
+        likeNumber.setText(post.getLikeCount() + " Likes");
+        commentNumber.setText(post.getCommentCount() + " Comments");
+        postHeading.setEditable(false);
+        postTextAreaID.setEditable(false);
 
         // This part has some problems.
         boolean isLiked = ForumPostDao.isLikedByUser(SessionManager.getCurrentUser().getUserId(), post.getUserContentItemId());
