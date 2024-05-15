@@ -16,32 +16,33 @@
    <top>
       <fx:include source="TOP_TAB.fxml" />
    </top>
-   <center>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="1050.0" BorderPane.alignment="CENTER">
-         <children>
-            <Hyperlink alignment="CENTER" onAction="#switchToLastPage_ID" prefHeight="136.0" prefWidth="226.0" styleClass="addFriendsButton">
-               <font>
-                  <Font size="30.0" />
-               </font>
-               <graphic>
-                  <Polygon fill="#d01e2d" points="-54.940162658691406, 40.14453887939453, 34.5164909362793, 40.17769241333008, -8.120521545410156, -44.389015197753906" rotate="-90.0" stroke="BLACK" strokeType="INSIDE" />
-               </graphic>
-            </Hyperlink>
-            <Button mnemonicParsing="false" onAction="#seeAttachedFiles" prefHeight="112.0" prefWidth="358.0" style="-fx-background-radius: 12;" styleClass="greyButton" text="See attached items" textFill="WHITE">
-               <font>
-                  <Font name="Helvetica Neue Bold" size="34.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
-   </center>
    <bottom>
-      <ScrollPane prefHeight="686.0" prefWidth="1700.0" BorderPane.alignment="CENTER">
-         <content>
-            <VBox fx:id="postReplyVBox_ID" alignment="TOP_CENTER" spacing="40.0">
+      <ScrollPane prefHeight="301.0" prefWidth="1700.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <VBox prefHeight="298.0" prefWidth="1700.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="1050.0" style="-fx-background-color: yellow;">
+               <children>
+                  <Hyperlink alignment="CENTER" onAction="#switchToLastPage_ID" prefHeight="136.0" prefWidth="226.0" styleClass="addFriendsButton">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <graphic>
+                        <Polygon fill="#d01e2d" points="-54.940162658691406, 40.14453887939453, 34.5164909362793, 40.17769241333008, -8.120521545410156, -44.389015197753906" rotate="-90.0" stroke="BLACK" strokeType="INSIDE" />
+                     </graphic>
+                  </Hyperlink>
+                  <Button mnemonicParsing="false" onAction="#seeAttachedFiles" prefHeight="112.0" prefWidth="358.0" style="-fx-background-radius: 12;" styleClass="greyButton" text="See attached items" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Neue Bold" size="34.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <VBox fx:id="postReplyVBox_ID" alignment="TOP_CENTER" prefHeight="470.0" prefWidth="1700.0" spacing="40.0">
 
                 <!--  here we display post replies-->
-               <Pane prefHeight="387.0" prefWidth="1266.0" style="-fx-background-color: lightblue; -fx-background-radius: 20;">
+               <Pane prefHeight="389.0" prefWidth="1300.0" style="-fx-background-color: lightblue; -fx-background-radius: 20;">
                   <children>
                      <TextArea fx:id="reviewText_ID" layoutX="47.0" layoutY="49.0" prefHeight="240.0" prefWidth="1175.0" promptText="write your review" wrapText="true">
                         <font>
@@ -59,10 +60,10 @@
                   </VBox.margin>
                </Pane>
                <padding>
-                  <Insets left="200.0" top="15.0" />
+                  <Insets left="200.0" right="200.0" top="15.0" />
                </padding>
             </VBox>
-         </content>
-      </ScrollPane>
-   </bottom>
+         </children>
+      </VBox>
+   </center>
 </BorderPane>
