@@ -243,6 +243,7 @@ public class PostController {
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("You have deleted.");
+        alert.initOwner((Stage) ((Button) e.getSource()).getScene().getWindow());
         alert.showAndWait();
         ForumPostDao.delete(thisPost.getUserContentItemId());
 //        Alert confirm = new Alert(Alert.AlertType.INFORMATION, "Post deleted");
