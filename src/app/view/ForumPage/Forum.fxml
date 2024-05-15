@@ -21,19 +21,19 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="190.0" prefWidth="1700.0" spacing="40.0" style="-fx-background-color: #20368f;">
                <children>
-                  <Label contentDisplay="RIGHT" graphicTextGap="5.0" prefHeight="84.0" prefWidth="342.0" text="Forum " textFill="WHITE">
+                  <Label contentDisplay="RIGHT" graphicTextGap="5.0" prefHeight="84.0" prefWidth="231.0" text="Forum " textFill="WHITE">
                      <font>
-                        <Font name="Helvetica Neue Bold" size="67.0" />
+                        <Font name="Helvetica Neue Bold" size="55.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="665.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+                  <HBox alignment="CENTER" prefHeight="71.0" prefWidth="591.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 20;">
                      <children>
                         <ImageView fitHeight="48.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/search.png" />
                            </image>
                         </ImageView>
-                        <TextField prefHeight="58.0" prefWidth="571.0" promptText="search content" style="-fx-background-radius: 10;">
+                        <TextField prefHeight="33.0" prefWidth="489.0" promptText="search content" style="-fx-background-radius: 10;">
                            <font>
                               <Font size="26.0" />
                            </font>
@@ -55,7 +55,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="switchPostsButton" contentDisplay="RIGHT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#switchPosts" prefHeight="69.0" prefWidth="205.0" style="-fx-background-radius: 10;" styleClass="greyButton" stylesheets="@../styles.css" text="Friend's Posts" textFill="WHITE">
+                  <Button fx:id="switchPostsButton" contentDisplay="RIGHT" graphicTextGap="20.0" mnemonicParsing="false" onAction="#switchPosts" prefHeight="69.0" prefWidth="365.0" style="-fx-background-radius: 10;" styleClass="greyButton" stylesheets="@../styles.css" text="Friend's Posts" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="34.0" />
                      </font>
@@ -74,10 +74,10 @@
             </HBox>
             <ScrollPane prefHeight="765.0" prefWidth="1222.0">
                <content>
-                  <VBox fx:id="forumVBoxID">
-<!--                      <BorderPane fx:id="borderTextBox_ID" prefHeight="600.0" prefWidth="1222.0" BorderPane.alignment="CENTER">-->
-<!--                     <fx:include source="Post.fxml"/>-->
-                  </VBox>
+                  <VBox fx:id="forumVBoxID" spacing="40.0">
+                     <padding>
+                        <Insets left="275.0" top="15.0" />
+                     </padding></VBox>
                </content>
             </ScrollPane>
          </children>

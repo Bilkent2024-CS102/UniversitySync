@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="379.0" prefWidth="1650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.PostReplyController">
+<HBox maxWidth="1300.0" prefHeight="379.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.PostReplyController">
     <children>
         <VBox alignment="CENTER" prefHeight="342.0" prefWidth="296.0" style="-fx-background-color: grey;">
             <children>
@@ -27,12 +27,15 @@
                 <HBox alignment="CENTER" prefHeight="61.0" prefWidth="1295.0" spacing="20.0" style="-fx-background-color: #4B8990;">
                     <children>
                        <!-- fx:id="postReplyUsername_ID"-->
-                        <Label fx:id="postReplyUsername_ID" prefHeight="61.0" prefWidth="1115.0" text="Musa on 3-01-2022">
+                        <Label fx:id="postReplyUsername_ID" prefHeight="61.0" prefWidth="845.0" text="Musa on 3-01-2022">
                             <font>
                                 <Font name="Helvetica Bold" size="30.0" />
                             </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
                         </Label>
-                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#deletePostReply" style="-fx-background-radius: 15;" styleClass="unfriendButton" stylesheets="@styles.css" text="Delete" textFill="WHITE">
+                        <Button contentDisplay="RIGHT" maxHeight="121.0" minWidth="121.0" mnemonicParsing="false" onAction="#deletePostReply" prefHeight="39.0" prefWidth="121.0" style="-fx-background-radius: 15;" styleClass="unfriendButton" stylesheets="@styles.css" text="Delete" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -43,6 +46,9 @@
                             <font>
                                 <Font name="SansSerif Bold" size="13.0" />
                             </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
                         </Button>
                     </children>
                 </HBox>

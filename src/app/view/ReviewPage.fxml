@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ReviewPageController" >
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ReviewPageController">
    <top>
       <fx:include source="TOP_TAB.fxml" />
    </top>
@@ -25,7 +25,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="138.0" prefWidth="1700.0" spacing="100.0" style="-fx-background-color: yellow;">
                <children>
-                  <Hyperlink alignment="CENTER" prefHeight="111.0" prefWidth="395.0" style="-fx-background-color: #67B2B7;">
+                  <Hyperlink alignment="CENTER" onAction="#goToPreviousPage" prefHeight="111.0" prefWidth="395.0" style="-fx-background-color: #67B2B7;">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -71,7 +71,7 @@
                   </Label>
                   <HBox prefHeight="67.0" prefWidth="392.0" spacing="15.0">
                      <children>
-                        <Label fx:id="reviewCountLabel" prefHeight="67.0" prefWidth="390.0" text="233 Reviews" textFill="YELLOW">
+                        <Label fx:id="reviewCountLabel" prefHeight="67.0" prefWidth="231.0" text="233 Reviews" textFill="YELLOW" translateX="20.0">
                            <font>
                               <Font name="PT Sans Bold" size="36.0" />
                            </font>
@@ -83,7 +83,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="67.0" prefWidth="392.0" spacing="15.0">
                      <children>
-                        <Label fx:id="ratingLabel" prefHeight="107.0" prefWidth="204.0" text="Rated 4.8/5" textFill="YELLOW">
+                        <Label fx:id="ratingLabel" prefHeight="107.0" prefWidth="204.0" text="Rated 4.8/5" textFill="YELLOW" translateX="20.0">
                            <font>
                               <Font name="PT Sans Bold" size="36.0" />
                            </font>
@@ -114,7 +114,7 @@
                                           <Font name="SansSerif Bold" size="28.0" />
                                        </font>
                                     </TextField>
-                                    <Button fx:id="postReviewButton" onAction="#addReview" layoutX="981.0" layoutY="306.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="247.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" text="Post Review" textFill="WHITE">
+                                    <Button fx:id="postReviewButton" layoutX="981.0" layoutY="306.0" mnemonicParsing="false" onAction="#addReview" prefHeight="67.0" prefWidth="247.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" text="Post Review" textFill="WHITE">
                                        <font>
                                           <Font name="Helvetica Bold" size="31.0" />
                                        </font>

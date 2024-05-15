@@ -135,4 +135,7 @@ public class ReviewPageController {
             alert.showAndWait();
         }
     }
+
+    public void goToPreviousPage(ActionEvent event) {
+    }
 }
