@@ -31,6 +31,11 @@
             <version>22-ea+11</version>
         </dependency>
         <dependency>
+            <groupId>com.sshtools</groupId>
+            <artifactId>two-slices</artifactId>
+            <version>0.9.3</version>
+        </dependency>
+        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-web</artifactId>
             <version>22-ea+11</version>

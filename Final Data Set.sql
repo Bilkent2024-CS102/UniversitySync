@@ -29,13 +29,13 @@ INSERT INTO university_sync.major (major_code, major_full_name) VALUES
 ('MBG', 'Molecular Biology and Genetics');
 
 INSERT INTO university_sync.dormitory (dormitory_location_id, dorm_name, dorm_description, link_to_dormitory_picture, dormitory_in_campus_id) VALUES
-(1, 'Dormitory 60', 'Double (Bunk Bed)', 'dorm60.jpg', 1),
-(2, 'Dormitory 64', 'Single, Suite', 'dorm64.jpg', 1),
-(3, 'Dormitory 70', 'Single Superior', 'dorm70.jpg', 1),
-(4, 'Dormitory 72', 'Triple', 'dorm72.jpg', 1),
-(5, 'Dormitory 76', 'Single', 'dorm76.jpg', 1),
-(6, 'Dormitory 77', 'This dorm has Double, Triple, Quadruple', 'dorm77.jpg', 1),
-(7, 'Dormitory 82', 'Double (Bathroom)', 'dorm82.jpg', 1);
+(1, '60', 'Double (Bunk Bed)', 'dorm60.jpg', 1),
+(2, '64', 'Single, Suite', 'dorm64.jpg', 1),
+(3, '70', 'Single Superior', 'dorm70.jpg', 1),
+(4, '72', 'Triple', 'dorm72.jpg', 1),
+(5, '76', 'Single', 'dorm76.jpg', 1),
+(6, '77', 'This dorm has Double, Triple, Quadruple', 'dorm77.jpg', 1),
+(7, '82', 'Double (Bathroom)', 'dorm82.jpg', 1);
 
 -- Insert data into room_type table based on provided dormitory data
 INSERT INTO university_sync.room_type (room_type_description, capacity, is_bunk, has_private_bathroom, room_in_dormitory_id) VALUES

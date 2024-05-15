@@ -3,6 +3,8 @@ import app.dao.CampusDao;
 import app.dao.DormitoryDao;
 import app.dao.UserDao;
 import app.model.userContent.post.DormTransferPost;
+import com.sshtools.twoslices.Toast;
+import com.sshtools.twoslices.ToastType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -95,6 +97,6 @@ public class DormitoryPostController {
     }
 
     public void transferDorm(ActionEvent event) throws AWTException {
-
+        Toast.toast(ToastType.INFO, "Transfer Request", "Transfer request has been sent.");
     }
 }
