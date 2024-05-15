@@ -19,7 +19,7 @@
                     <content>
                         <VBox fx:id="postVBoxID" spacing="40.0">
                             <!--                      <BorderPane fx:id="borderTextBox_ID" prefHeight="600.0" prefWidth="1222.0" BorderPane.alignment="CENTER">-->
-                            <fx:include source="../Post.fxml" />  <!--you can remove it later-->
+
                             <padding>
                                 <Insets top="20.0" />
                             </padding>

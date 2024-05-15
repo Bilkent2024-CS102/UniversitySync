@@ -65,6 +65,7 @@ public class ForumController implements Initializable {
     }
 
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
+
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
         Parent root = fxmlLoader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -138,10 +139,11 @@ public class ForumController implements Initializable {
         alert.showAndWait();
 
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
-        refresh(event);
+//        refresh(event);
     }
 
     public void refresh(ActionEvent event) throws IOException {
+
         switchToFXML("src/app/view/ForumPage/Forum.fxml", event);
     }
 }
