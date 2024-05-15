@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 
@@ -38,9 +39,9 @@ public class RegistrationController implements Initializable {
     @FXML
     private ChoiceBox<Room> dormChoiceBoxID;
     @FXML
-    private TextField passwordID;
+    private PasswordField passwordID;
     @FXML
-    private TextField confirmPasswordID;
+    private PasswordField confirmPasswordID;
 
     private Stage stage;
     private Scene scene;
