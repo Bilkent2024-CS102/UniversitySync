@@ -41,8 +41,6 @@ public class PostReplyPageController {
 
     @FXML
     private TextField reviewText_ID;
-    private List<PostReplyMock> postReviewMock;
-    private PostReplyMock replyAssociatedWithThisPost;
 
 
 
@@ -66,7 +64,7 @@ public class PostReplyPageController {
     }
 
 
-    public void switchToLastPage_ID(ActionEvent event) {
+    public void switchToLastPage_IDk(ActionEvent event) {}
 
     public void switchToLastPage_ID(ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File("src/app/view/Homepage.fxml").toURI().toURL());

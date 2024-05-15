@@ -114,17 +114,6 @@ public class profileEditController {
         switchToFXML("src/app/view/ProfilePage/profileMyPost.fxml", event);
     }
 
-    public void setProfileImage() throws IOException {
-        JFileChooser chooser = new JFileChooser();
-        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        chooser.addChoosableFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "png", "tif"));
-        chooser.showSaveDialog(null);
-        File file = chooser.getSelectedFile();
-        User u = SessionManager.getCurrentUser();
-        String newPath = "src/app/images/profilePictures/profilePicture" + u.getUserId() + ".jpg";
-        Files.copy(Paths.get(file.getAbsolutePath()), Paths.get(newPath), StandardCopyOption.REPLACE_EXISTING);
-        u.setProfilePicturePath(newPath);
-        UserDao.updateUser(u);
-    }
+
 }
 

@@ -1,6 +1,10 @@
 package app.controller;
 
 import app.dao.DormitoryDao;
+<<<<<<< Updated upstream
+=======
+import app.dao.UserDao;
+>>>>>>> Stashed changes
 import app.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,20 +16,29 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+<<<<<<< Updated upstream
 import javafx.scene.control.TextArea;
+=======
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+>>>>>>> Stashed changes
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
 
 public class profileDisplayController implements Initializable {
     private User profileUser;
     @FXML
     private Label nameLabel;
-    @FXML
-    private Label usernamenameLabel;
     @FXML
     private Label majorLabel;
     @FXML
@@ -48,6 +61,7 @@ public class profileDisplayController implements Initializable {
 //        usernamenameLabel.setText(SessionManager.getCurrentUser().getUsername());
         majorLabel.setText(SessionManager.getCurrentUser().getMajor());
         emailLabel.setText(SessionManager.getCurrentUser().getEmail());
+
         if (SessionManager.getCurrentUser().getRoomId() != 0)
         {
             dormLabel.setText(DormitoryDao.getRoomTypeById(SessionManager.getCurrentUser().getRoomId()).getDescription());
@@ -78,4 +92,42 @@ public class profileDisplayController implements Initializable {
 
         descriptionLabel.setText(user.getBiography());
     }
+    public void setProfileImage(ActionEvent event) throws IOException {
+//        JFileChooser chooser = new JFileChooser();
+//        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+//        chooser.addChoosableFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "png", "tif"));
+//        chooser.showSaveDialog(null);
+//        File file = chooser.getSelectedFile();
+//        User u = SessionManager.getCurrentUser();
+//        String newPath = "src/app/images/profilePictures/profilePicture" + u.getUserId() + ".jpg";
+//        Files.copy(Paths.get(file.getAbsolutePath()), Paths.get(newPath), StandardCopyOption.REPLACE_EXISTING);
+//        u.setProfilePicturePath(newPath);
+//        UserDao.updateUser(u);
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Profile Image");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.tif")
+        );
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+
+        if (file != null) {
+            User u = SessionManager.getCurrentUser();
+            String newPath = "src/app/images/profilePictures/profilePicture" + u.getUserId() + ".png";
+            Files.copy(Paths.get(file.getAbsolutePath()), Paths.get(newPath), StandardCopyOption.REPLACE_EXISTING);
+            u.setProfilePicturePath(newPath);
+            UserDao.updateUser(u);
+        }
+
+        Image newImage = new Image(file.toURI().toString());
+        imageUrl.setImage(newImage);
+
+
+
+    }
+
+
+
+
 }
