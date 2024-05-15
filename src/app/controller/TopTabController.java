@@ -1,5 +1,6 @@
 package app.controller;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -23,7 +25,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class TopTabController  {
+public class TopTabController implements Initializable {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
@@ -31,6 +33,8 @@ public class TopTabController  {
     private ImageView topImageIcon_ID;
     @FXML
     private MenuItem topTabUsername_ID;
+    @FXML
+    private MenuButton profileID;
 
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
@@ -46,8 +50,19 @@ public class TopTabController  {
         stage.setScene(scene);
         stage.setFullScreen(true);     //it should be after stage.setScene
         stage.show();
+
+
     }
 
+    public void initialize(URL location, ResourceBundle resources) {
+        File file = new File("src/app/images/profilePictures/profilePicture" + SessionManager.getCurrentUser().getUserId() + ".png");
+        Image image = new Image(file.toURI().toString());
+        topImageIcon_ID.setImage(image);
+
+        profileID.setText(SessionManager.getCurrentUser().getName());
+
+        //profileID.getItems().set(0, topTabUsername_ID);
+    }
 
     public void switchToSocial(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/SocialPage/socialMyFriends.fxml", event);
