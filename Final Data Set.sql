@@ -59,22 +59,22 @@ INSERT INTO university_sync.cafeteria (cafeteria_location_id, cafeteria_name, ca
 
 
 -- Insert data into menu_item table
-INSERT INTO university_sync.menu_item (menu_item_name, price, link_to_menu_item_picture, menu_item_in_cafeteria_id) VALUES
-('Changes Daily, 4 Plates', 60.00, 'marmara.jpg', 8),
-('Pizza', 8.50, 'burger.jpg', 9),
-('Salad', 60.00, 'salad.jpg', 9),
-('Pasta', 7.00, 'pasta.jpg', 9),
-('Cake', 4.50, 'cake.jpg', 9),
-('Muffin', 2.50, 'muffin.jpg', 10),
-('Burger', 10.00, 'burger.jpg', 12),
-('Donut', 1.75, 'donut.jpg', 9),
-('Fries', 3.00, 'fries.jpg', 12),
-('Wrap', 6.00, 'wrap.jpg', 11),
-('Lasagna', 14.00, 'lasagna.jpg', 9),
-('Salmon', 18.50, 'salmon.jpg', 12),
-('Falafel', 7.25, 'falafel.jpg', 10),
-('Waffle', 4.75, 'waffle.jpg', 10),
-('Pudding', 3.50, 'pudding.jpg', 12);
+INSERT INTO university_sync.menu_item (menu_item_name, price, menu_item_in_cafeteria_id) VALUES
+('Changes Daily, 4 Plates', 60.00, 8),
+('Pizza', 8.50, 9),
+('Salad', 60.00, 9),
+('Pasta', 7.00,  9),
+('Cake', 4.50, 9),
+('Muffin', 2.50, 10),
+('Burger', 10.00, 12),
+('Donut', 1.75,  9),
+('Fries', 3.00, 12),
+('Wrap', 6.00,  11),
+('Lasagna', 14.00,  9),
+('Salmon', 18.50, 12),
+('Falafel', 7.25, 10),
+('Waffle', 4.75, 10),
+('Pudding', 3.50, 12);
 
 -- Insert Students
 INSERT INTO university_sync.student (full_name, email, pass, biography, link_to_profile_picture, student_major, student_room_type_id) VALUES
