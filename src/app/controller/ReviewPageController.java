@@ -3,12 +3,15 @@ package app.controller;
 import app.dao.ReviewDao;
 import app.model.location.Dormitory;
 import app.model.location.Location;
+import app.model.location.cafeteria.Cafeteria;
 import app.model.userContent.Review;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.File;
@@ -45,6 +48,8 @@ public class ReviewPageController {
     private Label reviewCountLabel;
     @FXML
     private Label ratingLabel;
+    @FXML
+    private ImageView pictureInReviews;
 
 
     private Location location;
@@ -91,6 +96,16 @@ public class ReviewPageController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        String path = "";
+        if (loc instanceof Dormitory){
+            path = "src/app/images/dormitoryPictures/dormitoryPicture" + loc.getLocationId() + ".png";
+        }
+        else if (loc instanceof Cafeteria){
+            path = "src/app/images/cafeteriaPictures/cafeteriaPicture" + loc.getLocationId() + ".png";
+        }
+        File file = new File(path);
+        Image image = new Image(file.toURI().toString());
+        pictureInReviews.setImage(image);
     }
 
     public void addReview(ActionEvent event) {

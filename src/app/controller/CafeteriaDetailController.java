@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -52,6 +53,10 @@ public class CafeteriaDetailController {
         cafeMenuTextArea_ID.setEditable(false);
         cafeRateTextField_ID.setEditable(false);
         cafePriceRange_ID.setEditable(false);
+
+        File file = new File("src/app/images/cafeteriaPictures/cafeteriaPicture" + cafe.getLocationId() + ".png");
+        Image image = new Image(file.toURI().toString());
+        cafeImage_ID.setImage(image);
     }
 
     public void switchToFXML(String fxmlFileName, MouseEvent event) throws IOException {
