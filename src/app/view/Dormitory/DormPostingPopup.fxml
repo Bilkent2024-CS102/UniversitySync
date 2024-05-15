@@ -9,7 +9,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1062.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.DormitoryPostingPageController">
@@ -45,32 +44,9 @@
         </HBox>
     </top>
     <bottom>
-        <HBox prefHeight="84.0" prefWidth="1062.0" spacing="450.0" BorderPane.alignment="CENTER">
+        <HBox alignment="TOP_RIGHT" prefHeight="84.0" prefWidth="1062.0" spacing="450.0" BorderPane.alignment="CENTER">
             <children>
-                <Pane prefHeight="54.0" prefWidth="260.0" style="-fx-background-color: #6D87B8; -fx-background-radius: 15;">
-                    <children>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="134.0" text="Attach Images:">
-                            <font>
-                                <Font name="Helvetica Bold" size="16.0" />
-                            </font>
-                            <padding>
-                                <Insets left="10.0" />
-                            </padding>
-                        </Label>
-                        <Button layoutX="152.0" layoutY="8.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="83.0" style="-fx-background-radius: 10;" styleClass="anyBlueButton">
-                            <graphic>
-                                <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../icons/link-2.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic></Button>
-                    </children>
-                    <HBox.margin>
-                        <Insets bottom="30.0" />
-                    </HBox.margin>
-                </Pane>
-                <Button fx:id="makePostButton" onAction="#submitPost" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="128.0" style="-fx-background-radius: 10;" styleClass="anyBlueButton" text="Post">
+                <Button fx:id="makePostButton" graphicTextGap="7.0" mnemonicParsing="false" onAction="#submitPost" prefHeight="44.0" prefWidth="128.0" style="-fx-background-radius: 10;" styleClass="anyBlueButton" text="Post">
                     <font>
                         <Font name="Helvetica Neue Bold" size="23.0" />
                     </font>
@@ -86,9 +62,9 @@
                     </graphic>
                 </Button>
             </children>
-            <padding>
-                <Insets left="150.0" />
-            </padding>
+         <padding>
+            <Insets right="100.0" />
+         </padding>
         </HBox>
     </bottom>
     <left>

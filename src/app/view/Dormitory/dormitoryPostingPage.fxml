@@ -28,13 +28,9 @@
                         <Font name="SansSerif Bold" size="49.0" />
                      </font>
                   </Label>
-                  <Button fx:id="dormFilterID" layoutX="819.0" layoutY="32.0" mnemonicParsing="false" onAction="#displayFilterPopup" prefHeight="66.0" prefWidth="226.0" text="Filter">
+                  <Button fx:id="makePostButton" layoutX="1173.0" layoutY="32.0" mnemonicParsing="false" onAction="#displayMakePostPopup" prefHeight="75.0" prefWidth="241.0" style="-fx-background-radius: 15;" styleClass="anyBlueButton" text="Make a post">
                      <font>
-                        <Font name="System Italic" size="28.0" />
-                     </font></Button>
-                  <Button fx:id="makePostButton" layoutX="1173.0" layoutY="32.0" mnemonicParsing="false" onAction="#displayMakePostPopup" prefHeight="67.0" prefWidth="225.0" text="Make a post">
-                     <font>
-                        <Font name="System Italic" size="28.0" />
+                        <Font name="System Italic" size="31.0" />
                      </font>
                   </Button>
                </children>

@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -21,28 +20,11 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="190.0" prefWidth="1700.0" spacing="40.0" style="-fx-background-color: #20368f;">
                <children>
-                  <Label contentDisplay="RIGHT" graphicTextGap="5.0" prefHeight="84.0" prefWidth="231.0" text="Forum " textFill="WHITE">
+                  <Label contentDisplay="RIGHT" graphicTextGap="5.0" prefHeight="84.0" prefWidth="643.0" text="Forum " textFill="WHITE">
                      <font>
                         <Font name="Helvetica Neue Bold" size="55.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER" prefHeight="71.0" prefWidth="591.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 20;">
-                     <children>
-                        <ImageView fitHeight="48.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/search.png" />
-                           </image>
-                        </ImageView>
-                        <TextField prefHeight="33.0" prefWidth="489.0" promptText="search content" style="-fx-background-radius: 10;">
-                           <font>
-                              <Font size="26.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="26.0" top="26.0" />
-                     </HBox.margin>
-                  </HBox>
                   <Button fx:id="makePostButton" contentDisplay="RIGHT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#displayMakePostPopup" prefHeight="16.0" prefWidth="274.0" style="-fx-background-radius: 10;" styleClass="greyButton" stylesheets="@../styles.css" text="Make a post" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="33.0" />
