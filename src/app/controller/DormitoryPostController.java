@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -38,6 +40,8 @@ public class DormitoryPostController {
     private Button messageButton;
     @FXML
     private Button transferButton;
+    @FXML
+    private ImageView dormPostImageID;
 
     private FXMLLoader fxmlLoader;
 
@@ -59,6 +63,9 @@ public class DormitoryPostController {
             messageButton.setDisable(true);
             transferButton.setDisable(true);
         }
+        File file = new File("src/app/images/dormitoryPictures/dormitoryPicture" + DormitoryDao.getRoomTypeById(dtp.getRoomId()).getDormId() + ".png");
+        javafx.scene.image.Image image = new Image(file.toURI().toString());
+        dormPostImageID.setImage(image);
     }
 
 

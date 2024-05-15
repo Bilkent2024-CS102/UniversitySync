@@ -45,7 +45,6 @@ public class HomePageController implements Initializable
     private List<ForumPost> posts;
 
     public void initialize(URL location, ResourceBundle resources) {
-        SessionManager.setCurrentUser(UserDao.getUserById(1));
         posts = ForumPostDao.getForumPostsByRecency();
 
         try {
