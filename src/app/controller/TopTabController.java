@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -23,9 +24,13 @@ import java.util.ResourceBundle;
 
 
 public class TopTabController  {
-        private Stage stage;
-        private Scene scene;
-        private FXMLLoader fxmlLoader;
+    private Stage stage;
+    private Scene scene;
+    private FXMLLoader fxmlLoader;
+    @FXML
+    private ImageView topImageIcon_ID;
+    @FXML
+    private MenuItem topTabUsername_ID;
 
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());

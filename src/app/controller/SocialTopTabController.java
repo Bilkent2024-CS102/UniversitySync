@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
@@ -39,5 +40,6 @@ public class SocialTopTabController {
         switchToFXML("src/app/view/SocialPage/socialFriendRequest.fxml", event);
 //        social_friendRequestID
     }
+
 
 }
