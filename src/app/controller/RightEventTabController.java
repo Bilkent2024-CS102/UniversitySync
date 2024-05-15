@@ -38,10 +38,7 @@ public class RightEventTabController implements Initializable {
     private List<EventPost> eventMock;
 
     public void initialize(URL location, ResourceBundle resources) {
-
-
         SessionManager.setCurrentUser(UserDao.getUserById(1));
-
         eventMock = EventPostDao.getAllEventPosts();
 
         try {

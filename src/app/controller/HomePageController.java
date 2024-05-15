@@ -45,7 +45,7 @@ public class HomePageController implements Initializable
     private List<ForumPost> posts;
 
     public void initialize(URL location, ResourceBundle resources) {
-        //SessionManager.setCurrentUser(UserDao.getUserById(1));
+        SessionManager.setCurrentUser(UserDao.getUserById(1));
         posts = ForumPostDao.getForumPostsByRecency();
 
         try {
@@ -61,24 +61,6 @@ public class HomePageController implements Initializable
             throw new RuntimeException(e);
         }
     }
-
-    // Creating a list of mock data for now (deleting later)
-//    private List<PostMock> data() {
-//        List<PostMock> ls = new ArrayList<>();
-//        PostMock post = new PostMock();
-//        post.setUsername("Musa");
-//        post.setPostText("hello i am musa and");
-//        ls.add(post);
-//
-//        PostMock post2 = new PostMock();
-//        post2.setUsername("Atilla");
-//        post2.setPostText("hello i am atilla and");
-//        ls.add(post2);
-//        return ls;
-//
-//        // return ForumPostDao.getPostsByRecency();
-//    }
-// ******************************************************************* TEST ***************************************
 
     public void refreshAndShowPosts(ActionEvent event) throws IOException {
 

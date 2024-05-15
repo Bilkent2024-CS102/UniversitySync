@@ -29,6 +29,7 @@ public class SocialMessageBoxController {
     //when you type your new message and press enter this method acts
     public void sendText(ActionEvent event) throws IOException {
         String text = typeMessageTextfield_ID.getText();
+        typeMessageTextfield_ID.clear();
 
         Message message = new Message(
                 SessionManager.getCurrentUser().getUserId(),
@@ -43,7 +44,7 @@ public class SocialMessageBoxController {
         eventController.setData(message);
 
         if(message.getSenderId() == SessionManager.getCurrentUser().getUserId()) {
-            friendHBox.setTranslateX(200);
+            friendHBox.setTranslateX(350);
         }
         else {
             friendHBox.setTranslateX(30);
@@ -72,7 +73,7 @@ public class SocialMessageBoxController {
                 eventController.setData(  textList.get(i) );
 
                 if(textList.get(i).getSenderId() == SessionManager.getCurrentUser().getUserId()) {
-                    friendHBox.setTranslateX(200);
+                    friendHBox.setTranslateX(350);
                 }
                 else {
                     friendHBox.setTranslateX(30);

@@ -1,6 +1,7 @@
 package app.controller;
 
 //import app.dao.UserDao;
+import app.model.FriendRequest;
 import app.model.User;
 import app.dao.UserDao;
 import com.mysql.cj.Session;
@@ -22,11 +23,11 @@ public class SocialFriendReqPageController implements Initializable {
     private FXMLLoader fxmlLoader;
     @FXML
     private VBox friendReqVBox_ID;
-    private List<User> friendsMocks;
+    private List<FriendRequest> friendsMocks;
 
 
     public void initialize(URL location, ResourceBundle resources) {
-        friendsMocks = UserDao.getFriends(SessionManager.getCurrentUser().getUserId());
+        friendsMocks = UserDao.getFriendRequestsTo(SessionManager.getCurrentUser().getUserId());
 
         try {
             for(int i = 0; i < friendsMocks.size(); i++) {
