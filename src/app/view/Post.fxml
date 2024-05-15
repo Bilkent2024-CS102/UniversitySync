@@ -37,7 +37,7 @@
                <font>
                   <Font name="SansSerif Bold" size="18.0" />
                </font></Button>
-            <Button fx:id="commentButtonID" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="173.0" text="Reply" translateX="100.0">
+            <Button fx:id="commentButtonID" onAction="#commentButtonPressed" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="173.0" text="Reply" translateX="100.0">
                <graphic>
                   <ImageView fitHeight="37.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" translateX="11.0" translateY="4.0">
                      <image>
@@ -95,5 +95,4 @@
          </graphic>
       </Button>
    </children>
-
 </Pane>

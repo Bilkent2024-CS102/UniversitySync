@@ -1,9 +1,7 @@
 package app.controller;
 
-import app.dao.DBConnectionManager;
 import app.dao.ForumPostDao;
 import app.model.userContent.post.ForumPost;
-import app.model.userContent.post.Post;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +18,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;
@@ -76,6 +73,7 @@ public class ForumController implements Initializable {
         stage.setFullScreen(true);
         stage.show();
     }
+
     public void switchPosts(ActionEvent event) throws IOException {
         if (switchPostsButton.getText().equals("All posts"))
         {
@@ -114,6 +112,7 @@ public class ForumController implements Initializable {
             }
         }
     }
+
     public void displayMakePostPopup(ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File("src/app/view/ForumPage/MakePostPopup.fxml").toURI().toURL());
         Parent root = fxmlLoader.load();
@@ -145,14 +144,4 @@ public class ForumController implements Initializable {
     public void refresh(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/ForumPage/Forum.fxml", event);
     }
-//    public void addForumFilter(ActionEvent event) throws IOException {
-//        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-//        stage.close();
-//    }
-//
-//    public void cancelForumFilter(ActionEvent event) throws IOException {
-//        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-//        stage.close();
-//    }
-
 }

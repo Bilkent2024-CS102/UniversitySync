@@ -1,5 +1,7 @@
 package app.controller;
 
+import app.dao.UserDao;
+import app.model.userContent.Reply;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextArea;
 import javafx.event.ActionEvent;
@@ -24,44 +26,14 @@ public class PostReplyController {
     public void deletePostReply(ActionEvent event) {
     }
 
-    public void setData(PostReplyMock reply) {
+    public void setData(Reply reply) {
         // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
         // userImageOnPostID.setImage(image);
 
         //reviewPostImage_ID  ... s
-        postReplyUsername_ID.setText( reply.getReplyTopUsername());
       //  postReplyUserImage_ID.setImage( reply.getReplyUserImage() );
-        postReplyTextArea_ID.setText( reply.getReplyText() );
 
-    }
-}
-class PostReplyMock {
-    private String replyTopUsername;
-    private String replyText;
-    private ImageView replyUserImage ;
-
-
-    public String getReplyTopUsername() {
-        return replyTopUsername;
-    }
-
-    public void setReplyTopUsername(String replyTopUsername) {
-        this.replyTopUsername = replyTopUsername;
-    }
-
-    public ImageView getReplyUserImage() {
-        return replyUserImage;
-    }
-
-    public void setReplyUserImage(ImageView replyUserImage) {
-        this.replyUserImage = replyUserImage;
-    }
-
-    public String getReplyText() {
-        return replyText;
-    }
-
-    public void setReplyText(String replyText) {
-        this.replyText = replyText;
+        postReplyUsername_ID.setText(UserDao.getUserById(reply.getOwnerId()).getName());
+        postReplyTextArea_ID.setText(reply.getMainText());
     }
 }

@@ -1,15 +1,12 @@
 package app.controller;
 
-
 import app.dao.MessageDao;
 import app.dao.UserDao;
 import app.model.User;
 import app.model.userContent.Message;
-
 //controller of all message page
 
 import javafx.event.ActionEvent;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

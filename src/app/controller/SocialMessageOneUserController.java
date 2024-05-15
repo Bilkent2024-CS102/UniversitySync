@@ -1,6 +1,5 @@
 package app.controller;
 
-
 import app.model.User;
 
 import javafx.event.ActionEvent;

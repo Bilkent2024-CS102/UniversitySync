@@ -1,5 +1,8 @@
 package app.controller;
 
+import app.dao.ForumPostDao;
+import app.model.userContent.Reply;
+import app.model.userContent.post.ForumPost;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,14 +32,14 @@ public class PostReplyPageController {
 
     @FXML
     private VBox postReplyVBox_ID = new VBox();
-    private List<PostReplyMock> postReviewMock;
-    private PostReplyMock replyAssociatedWithThisPost;
+    private List<Reply> postReviewMock;
+    private ForumPost thisPost;
 
-    public void setData(PostReplyMock associatedWithThis) {
-        //  this.dormAssociatedWithThis = dormAssociatedWithThis;
-        this.replyAssociatedWithThisPost = associatedWithThis;
 
-        postReviewMock = new ArrayList<>(replyAssociatedWithThisPost.getWhateverList());
+    public void setData(ForumPost post)
+    {
+        thisPost = post;
+        postReviewMock = ForumPostDao.getReplies(thisPost.getUserContentItemId());
 
         try {
             for (int i = 0; i < postReviewMock.size(); i++) {
@@ -50,6 +53,12 @@ public class PostReplyPageController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
+
+    public void switchToLastPage_ID(ActionEvent event) {
+    }
+
+    public void seeAttachedFiles(ActionEvent event) {
+    }
+
 }
