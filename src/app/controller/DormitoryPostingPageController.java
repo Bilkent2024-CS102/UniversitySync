@@ -93,7 +93,7 @@ public class DormitoryPostingPageController implements Initializable{
     }
 
     public void refresh(ActionEvent event) throws IOException {
-        switchToFXML("src/app/view/ForumPage/Forum.fxml", event);
+        switchToFXML("src/app/view/Dormitory/dormitoryPostingPage.fxml", event);
     }
 
     public void displayFilterPopup(ActionEvent event) throws IOException {

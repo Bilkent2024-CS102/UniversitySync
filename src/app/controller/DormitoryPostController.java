@@ -31,11 +31,15 @@ public class DormitoryPostController {
     @FXML
     private Label dormPostTextID;
     @FXML
+    private Label dormPostHeading;
+    @FXML
     private Label dormPostCampusID;
     @FXML
     private Label dormPostFloorID;
     @FXML
     private Label dormPostTypeID;
+    @FXML
+    private Label dormPostDormID;
     @FXML
     private Button messageButton;
     @FXML
@@ -48,6 +52,8 @@ public class DormitoryPostController {
     public void setData(DormTransferPost dtp) {
 
         this.dtp = dtp;
+        dormPostHeading.setText(dtp.getHeading());
+        dormPostDormID.setText("" + DormitoryDao.getDormitoryById(DormitoryDao.getRoomTypeById(dtp.getRoomId()).getDormId()).getName());
         dormPostUsernameID.setText(UserDao.getUserById(dtp.getOwnerId()).getName());
         dormPostTextID.setText( dtp.getMainText());
         dormPostCampusID.setText
@@ -89,6 +95,6 @@ public class DormitoryPostController {
     }
 
     public void transferDorm(ActionEvent event) throws AWTException {
-        
+
     }
 }

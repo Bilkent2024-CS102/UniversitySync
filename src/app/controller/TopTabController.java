@@ -90,7 +90,7 @@ public class TopTabController implements Initializable {
         switchToFXML("src/app/view/ProfilePage/profileLikedPost.fxml", event);
     }
     public void switchToContactUsPage(ActionEvent event) throws IOException {
-        switchToFXML("", event);
+        switchToFXML("src/app/view/ProfilePage/profileContactUs.fxml", event);
     }
     public void logout(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/LoginPage.fxml", event);

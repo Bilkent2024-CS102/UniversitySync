@@ -39,7 +39,7 @@ public class LoginController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        //stage.setFullScreen(true);
+        stage.setFullScreen(true);
         stage.show();
     }
 
@@ -52,7 +52,6 @@ public class LoginController {
         {
             User currentUser = UserDao.getUserByEmail(email);
             SessionManager.setCurrentUser(currentUser);
-            System.out.println(SessionManager.getCurrentUser().getUserId());
             switchToFXML("src/app/view/Homepage.fxml", e);
         }
         else

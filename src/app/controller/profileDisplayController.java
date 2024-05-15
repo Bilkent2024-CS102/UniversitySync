@@ -52,7 +52,6 @@ public class profileDisplayController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        System.out.println(SessionManager.getCurrentUser().getUserId());
         nameLabel.setText(SessionManager.getCurrentUser().getName());
 //        usernamenameLabel.setText(SessionManager.getCurrentUser().getUsername());
         majorLabel.setText(SessionManager.getCurrentUser().getMajor());
@@ -93,17 +92,6 @@ public class profileDisplayController implements Initializable {
         descriptionLabel.setText(user.getBiography());
     }
     public void setProfileImage(ActionEvent event) throws IOException {
-//        JFileChooser chooser = new JFileChooser();
-//        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-//        chooser.addChoosableFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "png", "tif"));
-//        chooser.showSaveDialog(null);
-//        File file = chooser.getSelectedFile();
-//        User u = SessionManager.getCurrentUser();
-//        String newPath = "src/app/images/profilePictures/profilePicture" + u.getUserId() + ".jpg";
-//        Files.copy(Paths.get(file.getAbsolutePath()), Paths.get(newPath), StandardCopyOption.REPLACE_EXISTING);
-//        u.setProfilePicturePath(newPath);
-//        UserDao.updateUser(u);
-
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Profile Image");
         fileChooser.getExtensionFilters().addAll(

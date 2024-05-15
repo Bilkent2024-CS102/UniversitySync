@@ -70,9 +70,6 @@ public class HomePageController implements Initializable
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
-
-//        ArrayList<ForumPost> posts = ForumPostDao.getPostsByRecency();
-//        displayRecentPosts(posts);
     }
 
     public static void refresh(ActionEvent event) throws IOException {
@@ -84,9 +81,6 @@ public class HomePageController implements Initializable
         stage2.setScene(scene2);
         stage2.setFullScreen(true);
         stage2.show();
-
-//        ArrayList<ForumPost> posts = ForumPostDao.getPostsByRecency();
-//        displayRecentPosts(posts);
     }
 
 
