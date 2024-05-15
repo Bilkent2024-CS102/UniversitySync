@@ -78,6 +78,9 @@ public class Room {
     }
 
     public String toString(){
+        if (this.getRoomId() == 0){
+            return "--no room--";
+        }
         String retString = this.getCapacity() + " capacity, ";
         retString += (this.isBunked() ? "bunked, " : "flat bed, ");
         retString += (this.isPrivateBathroom() ? "with private bathroom, " : "");

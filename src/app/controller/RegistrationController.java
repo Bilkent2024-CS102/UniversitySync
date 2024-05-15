@@ -55,6 +55,7 @@ public class RegistrationController implements Initializable {
 
         ArrayList<Room> roomTypes = DormitoryDao.getAllRoomTypes();
         dormChoiceBoxID.getItems().addAll(roomTypes);
+        dormChoiceBoxID.getItems().add(new Room(0, 0, false, false, "", 0));
     }
 
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
@@ -91,12 +92,7 @@ public class RegistrationController implements Initializable {
         String email = universityEmailID.getText();
         String major = majorChoiceBoxID.getSelectionModel().getSelectedItem();
         int roomType;
-        if (dormChoiceBoxID.getSelectionModel().getSelectedItem() == null){
-            roomType = 0;
-        }
-        else{
-            roomType = dormChoiceBoxID.getSelectionModel().getSelectedItem().getRoomId();
-        }
+        roomType = dormChoiceBoxID.getSelectionModel().getSelectedItem().getRoomId();
         String password = passwordID.getText();
         String repeatPassword = confirmPasswordID.getText();
 
