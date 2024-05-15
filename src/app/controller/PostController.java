@@ -33,7 +33,6 @@ public class PostController {
     private FXMLLoader fxmlLoader;
     private ForumPost thisPost;
 
-
     @FXML
     private ImageView userImageOnPostID;
     @FXML
@@ -149,6 +148,11 @@ public class PostController {
             deleteButton.setDisable(true);
             editButton.setDisable(true);
         }
+
+        //image
+        File file = new File("src/app/images/profilePictures/profilePicture" + SessionManager.getCurrentUser().getUserId() + ".png");
+        Image image = new Image(file.toURI().toString());
+        userImageOnPostID.setImage(image);
 
     }
 
