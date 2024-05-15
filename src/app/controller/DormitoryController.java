@@ -85,6 +85,12 @@ public class DormitoryController implements Initializable {
         }
     }
 
+    public void orderByDefault(ActionEvent event) {
+    }
+
+    public void orderByRating(ActionEvent event) {
+    }
+
 //    public void orderByRatingClicked(ActionEvent event) {
 //        dormitories = DormitoryDao.getDormitoriesByRating(); // need method
 //

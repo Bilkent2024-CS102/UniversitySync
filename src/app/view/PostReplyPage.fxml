@@ -17,10 +17,17 @@
       <fx:include source="TOP_TAB.fxml" />
    </top>
    <bottom>
-      <ScrollPane prefHeight="301.0" prefWidth="1700.0" BorderPane.alignment="CENTER" />
+      <ScrollPane prefHeight="345.0" prefWidth="1700.0" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="postReplyVBox_ID" alignment="TOP_CENTER" prefWidth="1700.0" spacing="40.0">
+               <padding>
+                  <Insets left="200.0" right="200.0" top="15.0" />
+               </padding>
+            </VBox>
+         </content></ScrollPane>
    </bottom>
    <center>
-      <VBox prefHeight="298.0" prefWidth="1700.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="461.0" prefWidth="1700.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="1050.0" style="-fx-background-color: yellow;">
                <children>
@@ -39,30 +46,25 @@
                   </Button>
                </children>
             </HBox>
-            <VBox fx:id="postReplyVBox_ID" alignment="TOP_CENTER" prefHeight="470.0" prefWidth="1700.0" spacing="40.0">
 
-                <!--  here we display post replies-->
-               <Pane prefHeight="389.0" prefWidth="1300.0" style="-fx-background-color: lightblue; -fx-background-radius: 20;">
-                  <children>
-                     <TextArea fx:id="reviewText_ID" layoutX="47.0" layoutY="49.0" prefHeight="240.0" prefWidth="1175.0" promptText="write your review" wrapText="true">
-                        <font>
-                           <Font size="35.0" />
-                        </font>
-                     </TextArea>
-                     <Button fx:id="postReviewButton" layoutX="981.0" layoutY="306.0" mnemonicParsing="false" onAction="#addReview" prefHeight="67.0" prefWidth="247.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" text="Post Reply" textFill="WHITE">
-                        <font>
-                           <Font name="Helvetica Bold" size="31.0" />
-                        </font>
-                     </Button>
-                  </children>
-                  <VBox.margin>
-                     <Insets top="10.0" />
-                  </VBox.margin>
-               </Pane>
-               <padding>
-                  <Insets left="200.0" right="200.0" top="15.0" />
-               </padding>
-            </VBox>
+             <!--  here we display post replies-->
+            <Pane prefHeight="346.0" prefWidth="1460.0" style="-fx-background-color: lightblue; -fx-background-radius: 20;">
+               <children>
+                  <TextArea fx:id="reviewText_ID" layoutX="52.0" layoutY="19.0" prefHeight="234.0" prefWidth="1357.0" promptText="write your review" wrapText="true">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </TextArea>
+                  <Button fx:id="postReviewButton" layoutX="1152.0" layoutY="269.0" mnemonicParsing="false" onAction="#addReview" prefHeight="67.0" prefWidth="247.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" text="Post Reply" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="31.0" />
+                     </font>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets left="100.0" right="140.0" top="13.0" />
+               </VBox.margin>
+            </Pane>
          </children>
       </VBox>
    </center>
