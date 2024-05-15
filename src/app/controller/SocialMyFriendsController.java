@@ -50,11 +50,11 @@ public class SocialMyFriendsController {
         friendUsernameID.setText(friend.getName());
         if (UserDao.isFriend(SessionManager.getCurrentUser().getUserId(), friend.getUserId()))
         {
-            unfriendButton.setText("Add Friend");
+            unfriendButton.setText("Unfriend");
         }
         else
         {
-            unfriendButton.setText("Remove Friend");
+            unfriendButton.setText("Add Friend");
         }
     }
 
@@ -87,7 +87,7 @@ public class SocialMyFriendsController {
 
     }
     public void unFriendButton (ActionEvent event) throws IOException {
-        if (unfriendButton.getText() == "Add Friend")
+        if (unfriendButton.getText().equals("Unfriend"))
         {
             UserDao.removeFriend(SessionManager.getCurrentUser().getUserId(), thisFriend.getUserId());
         }

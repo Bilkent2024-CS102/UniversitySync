@@ -38,7 +38,7 @@ public class DormitoryController implements Initializable {
     //     // Need to implement dormRoomTypeLabel if we decide to include it
     // }
 
-//*******************************************************************************************************************
+    //*******************************************************************************************************************
     @FXML
     private VBox dormVBoxID = new VBox();
 
@@ -53,7 +53,7 @@ public class DormitoryController implements Initializable {
         dormitories = DormitoryDao.getAllDormitories();
 
         try {
-            for(int i = 0; i < dormitories.size(); i++) {
+            for (int i = 0; i < dormitories.size(); i++) {
                 fxmlLoader = new FXMLLoader(new File("src/app/view/Dormitory/DormNameHBox.fxml").toURI().toURL());
                 HBox hbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
                 DormitoryNameController eventController = fxmlLoader.getController();
@@ -71,7 +71,7 @@ public class DormitoryController implements Initializable {
         dormitories = DormitoryDao.getAllDormitories();
 
         try {
-            for(int i = 0; i < dormitories.size(); i++) {
+            for (int i = 0; i < dormitories.size(); i++) {
                 fxmlLoader = new FXMLLoader(new File("src/app/view/Dormitory/DormNameHBox.fxml").toURI().toURL());
                 HBox hbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
                 DormitoryNameController eventController = fxmlLoader.getController();
@@ -86,9 +86,39 @@ public class DormitoryController implements Initializable {
     }
 
     public void orderByDefault(ActionEvent event) {
+        dormitories = DormitoryDao.getAllDormitories();
+        dormVBoxID.getChildren().clear();
+        try {
+            for (int i = 0; i < dormitories.size(); i++) {
+                fxmlLoader = new FXMLLoader(new File("src/app/view/Dormitory/DormNameHBox.fxml").toURI().toURL());
+                HBox hbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
+                DormitoryNameController eventController = fxmlLoader.getController();
+                //now setting data (username, text ...) for each post
+                eventController.setData(dormitories.get(i));
+//              eventController.setRightEventTabController(this);
+                dormVBoxID.getChildren().add(hbox);  //now adding post (pane) to the vbox
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void orderByRating(ActionEvent event) {
+        dormitories = DormitoryDao.getAllDormitoriesByRating();
+        dormVBoxID.getChildren().clear();
+        try {
+            for (int i = 0; i < dormitories.size(); i++) {
+                fxmlLoader = new FXMLLoader(new File("src/app/view/Dormitory/DormNameHBox.fxml").toURI().toURL());
+                HBox hbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
+                DormitoryNameController eventController = fxmlLoader.getController();
+                //now setting data (username, text ...) for each post
+                eventController.setData(dormitories.get(i));
+//              eventController.setRightEventTabController(this);
+                dormVBoxID.getChildren().add(hbox);  //now adding post (pane) to the vbox
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 //    public void orderByRatingClicked(ActionEvent event) {
@@ -108,16 +138,4 @@ public class DormitoryController implements Initializable {
 //            throw new RuntimeException(e);
 //        }
 //    }
-
-
-
-
-    //*********************************( FOR DORM FILTER *************************************
-//    @FXML
-//    private ChoiceBox dormChoiceBoxID = new ChoiceBox();
-//
-//    public void addDormNames() {
-//        dormChoiceBoxID.getItems().addAll("61", "62", "63", "70", "71", "74");
-//    }
-
 }

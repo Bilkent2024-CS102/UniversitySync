@@ -14,6 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 //import com.mysql.cj.Session;
@@ -80,6 +81,7 @@ public class DormitoryPostController {
         switchToFXML2("src/app/view/MessagePopup.fxml", event);
     }
 
-    public void transferDorm(ActionEvent event) {
+    public void transferDorm(ActionEvent event) throws AWTException {
+        
     }
 }
