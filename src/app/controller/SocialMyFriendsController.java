@@ -50,7 +50,8 @@ public class SocialMyFriendsController {
 //*******************************************************************************************************************
 
     public void messageFriendButton (ActionEvent event) throws IOException {
-       // 2 Steps:
+       switchToMessages(event);
+        // 2 Steps:
                 // Takes you to the all messages social page
                 // and opens the message pane of this particular user
 
@@ -68,6 +69,10 @@ public class SocialMyFriendsController {
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
+    }
+
+    public void switchToMessages(ActionEvent event) throws IOException {
+        switchToFXML("src/app/view/SocialPage/socialAllMessages.fxml", event);
     }
 
     public void refresh(ActionEvent event) throws IOException {

@@ -37,7 +37,7 @@
                   <Font name="PT Serif Bold" size="26.0" />
                </font>
             </Label>
-            <TextField fx:id="addEventName" layoutX="70.0" layoutY="190.0" prefHeight="39.0" prefWidth="304.0" promptText="Name">
+            <TextField fx:id="eventNameTextField" layoutX="70.0" layoutY="190.0" prefHeight="39.0" prefWidth="304.0" promptText="Name">
                <font>
                   <Font size="20.0" />
                </font>
@@ -47,7 +47,7 @@
                   <Font name="PT Serif Bold" size="26.0" />
                </font>
             </Label>
-            <TextField fx:id="addEventLocation" layoutX="500.0" layoutY="190.0" prefHeight="39.0" prefWidth="304.0" promptText="Location">
+            <TextField fx:id="eventLocationTextField" layoutX="500.0" layoutY="190.0" prefHeight="39.0" prefWidth="304.0" promptText="Location">
                <font>
                   <Font size="20.0" />
                </font>
@@ -57,18 +57,18 @@
                   <Font name="PT Serif Bold" size="26.0" />
                </font>
             </Label>
-            <DatePicker layoutX="70.0" layoutY="330.0" prefHeight="39.0" prefWidth="227.0" promptText="Click Here" />
+            <DatePicker fx:id="eventDatePicker" layoutX="70.0" layoutY="330.0" prefHeight="39.0" prefWidth="227.0" promptText="Click Here" />
             <Label layoutX="70.0" layoutY="420.0" prefHeight="48.0" prefWidth="188.0" text="Choose Time">
                <font>
                   <Font name="PT Serif Bold" size="26.0" />
                </font>
             </Label>
-            <TextField layoutX="70.0" layoutY="470.0" prefHeight="39.0" prefWidth="231.0" promptText="Time">
+            <TextField fx:id="eventTitleTextField" layoutX="70.0" layoutY="470.0" prefHeight="39.0" prefWidth="231.0" promptText="Title">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
-            <TextArea layoutX="500.0" layoutY="330.0" prefHeight="178.0" prefWidth="365.0" promptText="Description">
+            <TextArea fx:id="eventDescriptionTextField" layoutX="500.0" layoutY="330.0" prefHeight="178.0" prefWidth="365.0" promptText="Description">
                <font>
                   <Font size="17.0" />
                </font>
@@ -78,7 +78,7 @@
                   <Font name="PT Serif Bold" size="26.0" />
                </font>
             </Label>
-            <Button alignment="BOTTOM_LEFT" contentDisplay="RIGHT" layoutX="780.0" layoutY="560.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="53.0" prefWidth="127.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Add" textFill="WHITE">
+            <Button fx:id="addEventButton" alignment="BOTTOM_LEFT" contentDisplay="RIGHT" layoutX="780.0" layoutY="560.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="53.0" prefWidth="127.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Add" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="28.0" />
                </font>
