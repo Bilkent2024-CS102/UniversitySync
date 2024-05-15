@@ -3,6 +3,7 @@ package app.controller;
 import app.dao.DBConnectionManager;
 import app.dao.ForumPostDao;
 import app.model.userContent.post.ForumPost;
+import app.model.userContent.post.Post;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,16 +11,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ForumController implements Initializable {
@@ -30,6 +37,11 @@ public class ForumController implements Initializable {
     @FXML
     private VBox forumVBoxID = new VBox();
     private ArrayList<ForumPost> posts;
+
+    @FXML
+    private TextField titleField;
+    @FXML
+    private TextArea postTextArea;
 
     @FXML
     private Button switchPostsButton;
@@ -110,6 +122,28 @@ public class ForumController implements Initializable {
         filterStage.initStyle(StageStyle.UTILITY);
         filterStage.setScene(new Scene(root));
         filterStage.showAndWait();
+    }
+
+    public void submitPost(ActionEvent event) throws IOException {
+        ForumPost post = new ForumPost(
+                SessionManager.getCurrentUser().getUserId(),
+                postTextArea.getText(),
+                new Date(),
+                new Date(),
+                titleField.getText()
+                );
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Post created succesfully!");
+        alert.initOwner((Stage) ((Button) event.getSource()).getScene().getWindow());
+        alert.showAndWait();
+
+        ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
+        refresh(event);
+    }
+
+    public void refresh(ActionEvent event) throws IOException {
+        switchToFXML("src/app/view/ForumPage/Forum.fxml", event);
     }
 //    public void addForumFilter(ActionEvent event) throws IOException {
 //        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();

@@ -314,18 +314,17 @@ public class ForumPostDao {
     public static int addForumPost(ForumPost forumPost)
     {
         String query = "INSERT INTO university_sync.forum_post " +
-                "(forum_post_id, owner_student_id, creation_date, last_edit_date, heading, main_text, like_count) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                "(owner_student_id, creation_date, last_edit_date, heading, main_text, like_count) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
         try
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            pst.setInt(1, forumPost.getUserContentItemId());
-            pst.setInt(2, forumPost.getOwnerId());
-            pst.setTimestamp(3, new java.sql.Timestamp(forumPost.getCreationDate().getTime()));
-            pst.setTimestamp(4, new java.sql.Timestamp(forumPost.getLastEditDate().getTime()));
-            pst.setString(5, forumPost.getHeading());
-            pst.setString(6, forumPost.getMainText());
-            pst.setInt(7,  forumPost.getLikeCount());
+            pst.setInt(1, forumPost.getOwnerId());
+            pst.setTimestamp(2, new java.sql.Timestamp(forumPost.getCreationDate().getTime()));
+            pst.setTimestamp(3, new java.sql.Timestamp(forumPost.getLastEditDate().getTime()));
+            pst.setString(4, forumPost.getHeading());
+            pst.setString(5, forumPost.getMainText());
+            pst.setInt(6,  forumPost.getLikeCount());
 
             pst.executeUpdate();
 

@@ -33,7 +33,7 @@
                   <Font name="Helvetica Bold" size="27.0" />
                </font>
             </Label>
-            <TextField prefHeight="61.0" prefWidth="751.0" promptText="Write your title here">
+            <TextField fx:id="titleField" prefHeight="61.0" prefWidth="751.0" promptText="Write your title here">
                <HBox.margin>
                   <Insets top="21.0" />
                </HBox.margin>
@@ -70,7 +70,7 @@
                   <Insets bottom="30.0" />
                </HBox.margin>
             </Pane>
-            <Button graphicTextGap="7.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="128.0" style="-fx-background-radius: 10;" styleClass="anyBlueButton" text="Post">
+            <Button fx:id="makePostButton" onAction="#submitPost" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="128.0" style="-fx-background-radius: 10;" styleClass="anyBlueButton" text="Post">
                <font>
                   <Font name="Helvetica Neue Bold" size="23.0" />
                </font>
@@ -102,7 +102,7 @@
                   <Font name="Helvetica Bold" size="27.0" />
                </font>
             </Label>
-            <TextArea prefHeight="441.0" prefWidth="693.0" promptText="Insert Post Text Here" wrapText="true">
+            <TextArea fx:id="postTextArea" prefHeight="441.0" prefWidth="693.0" promptText="Insert Post Text Here" wrapText="true">
                <HBox.margin>
                   <Insets bottom="40.0" top="20.0" />
                </HBox.margin>
