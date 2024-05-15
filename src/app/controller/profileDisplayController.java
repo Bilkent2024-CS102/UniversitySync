@@ -67,7 +67,8 @@ public class profileDisplayController implements Initializable {
             dormLabel.setText("");
         }
         descriptionLabel.setText(SessionManager.getCurrentUser().getBiography());
-        Image image = new Image("src/app/images/profilePictures/profilePicture" + SessionManager.getCurrentUser().getUserId() + ".png");
+        File file = new File("src/app/images/profilePictures/profilePicture" + SessionManager.getCurrentUser().getUserId() + ".png");
+        Image image = new Image(file.toURI().toString());
         imageUrl.setImage(image);
     }
 
