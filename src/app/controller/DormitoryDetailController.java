@@ -43,7 +43,8 @@ public class DormitoryDetailController {
         //dormImage_ID.setImage( dorm.getDormImage().getImage());
         dormDescription_ID.setText( dorm.getDescription());
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
-        dormRateTextField_ID.setText("" + decimalFormat.format(dorm.getRating()));
+        String text = (dorm.getRating() < 0) ? ("No Reviews") : ("" + decimalFormat.format(dorm.getRating()));
+        dormRateTextField_ID.setText(text);
         dormCampus_ID.setText(dorm.getCampus().getName());
 
         dormDescription_ID.setEditable(false);

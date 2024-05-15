@@ -35,7 +35,7 @@
                         <Insets left="20.0" />
                      </padding>
                         </Label>
-                        <Button contentDisplay="RIGHT" maxHeight="121.0" minWidth="121.0" mnemonicParsing="false" onAction="#deletePostReply" prefHeight="39.0" prefWidth="121.0" style="-fx-background-radius: 15;" styleClass="unfriendButton" stylesheets="@styles.css" text="Delete" textFill="WHITE">
+                        <Button fx:id="deleteButton" contentDisplay="RIGHT" maxHeight="121.0" minWidth="121.0" mnemonicParsing="false" onAction="#deletePostReply" prefHeight="39.0" prefWidth="121.0" style="-fx-background-radius: 15;" styleClass="unfriendButton" stylesheets="@styles.css" text="Delete" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                     <image>

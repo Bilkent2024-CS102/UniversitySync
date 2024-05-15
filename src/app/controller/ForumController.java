@@ -2,6 +2,8 @@ package app.controller;
 
 import app.dao.ForumPostDao;
 import app.model.userContent.post.ForumPost;
+import com.sshtools.twoslices.Toast;
+import com.sshtools.twoslices.ToastType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -65,7 +67,6 @@ public class ForumController implements Initializable {
     }
 
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
-
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
         Parent root = fxmlLoader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -138,12 +139,14 @@ public class ForumController implements Initializable {
         alert.initOwner((Stage) ((Button) event.getSource()).getScene().getWindow());
         alert.showAndWait();
 
+
+
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
-//        refresh(event);
+        refresh(event);
+        Toast.toast(ToastType.INFO, "Successful Operation", "Post has been successfully made.");
     }
 
     public void refresh(ActionEvent event) throws IOException {
-
         switchToFXML("src/app/view/ForumPage/Forum.fxml", event);
     }
 }

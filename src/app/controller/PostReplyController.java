@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.dao.ForumPostDao;
 import app.dao.UserDao;
 import app.model.userContent.Reply;
 import javafx.event.ActionEvent;
@@ -19,13 +20,20 @@ public class PostReplyController {
     @FXML
     private TextArea postReplyTextArea_ID;
 
+    private Reply thisReply;
+
     @FXML
     private ImageView postReplyUserImage_ID;
+
+    @FXML
+    private Button deleteButton;
 
     @FXML
     private Label postReplyUsername_ID;
 
     public void deletePostReply(ActionEvent event) {
+        System.out.println(thisReply.getUserContentItemId());
+        ForumPostDao.deleteComment(thisReply.getUserContentItemId());
     }
 
     public void setData(Reply reply) {
@@ -34,11 +42,15 @@ public class PostReplyController {
 
         //reviewPostImage_ID  ... s
       //  postReplyUserImage_ID.setImage( reply.getReplyUserImage() );
-
+        thisReply = reply;
         postReplyUsername_ID.setText(UserDao.getUserById(reply.getOwnerId()).getName());
         postReplyTextArea_ID.setText(reply.getMainText());
         File file = new File("src/app/images/profilePictures/profilePicture" + reply.getOwnerId() + ".png");
         Image image = new Image(file.toURI().toString());
         postReplyUserImage_ID.setImage(image);
+        if (reply.getOwnerId() != SessionManager.getCurrentUser().getUserId())
+        {
+            deleteButton.setDisable(true);
+        }
     }
 }
