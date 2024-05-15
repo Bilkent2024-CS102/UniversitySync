@@ -1,10 +1,7 @@
 package app.controller;
 
 import app.dao.DormitoryDao;
-<<<<<<< Updated upstream
-=======
 import app.dao.UserDao;
->>>>>>> Stashed changes
 import app.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,13 +13,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-<<<<<<< Updated upstream
 import javafx.scene.control.TextArea;
-=======
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
->>>>>>> Stashed changes
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -53,6 +47,8 @@ public class profileDisplayController implements Initializable {
     private Button messageButton;
     @FXML
     private Button unfriendButton;
+    @FXML
+    private ImageView imageUrl;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -71,6 +67,8 @@ public class profileDisplayController implements Initializable {
             dormLabel.setText("");
         }
         descriptionLabel.setText(SessionManager.getCurrentUser().getBiography());
+        Image image = new Image("src/app/images/profilePictures/profilePicture" + SessionManager.getCurrentUser().getUserId() + ".png");
+        imageUrl.setImage(image);
     }
 
     public void displayFriendProfile(User user)
