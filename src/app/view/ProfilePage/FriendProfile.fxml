@@ -127,7 +127,7 @@
                         <Font size="31.0" />
                      </font>
                   </Button>
-                  <Button fx:id="unfriendButton" mnemonicParsing="false" prefHeight="67.0" prefWidth="181.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" text="Unfriend" textFill="WHITE">
+                  <Button fx:id="unfriendButton" onAction="#unfriendButtonClicked" mnemonicParsing="false" prefHeight="67.0" prefWidth="181.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" text="Unfriend" textFill="WHITE">
                      <font>
                         <Font size="31.0" />
                      </font>

@@ -52,9 +52,7 @@ public class DormitoryDao {
      * @return An ArrayList containing all Dormitory instances.
      */
     public static ArrayList<Dormitory> getAllDormitoriesByRating(){
-        String query = "SELECT d.* " +
-                "FROM university_sync.dormitory d " +
-                "ORDER BY (SELECT AVG(rating_given) AS avg_rating FROM university_sync.review WHERE review_to_location_id = d.dormitory_location_id) DESC;";
+        String query = "SELECT d.* FROM university_sync.dormitory d ORDER BY (SELECT AVG(rating_given) AS avg_rating FROM university_sync.review WHERE review_to_location_id = d.dormitory_location_id) DESC;";
         ArrayList<Dormitory> dormitories = new ArrayList<>();
 
         try{
@@ -63,7 +61,9 @@ public class DormitoryDao {
             while (resultSet.next()) {
                 Dormitory dorm = new Dormitory(resultSet.getInt("dormitory_location_id"), null,
                         resultSet.getString("link_to_dormitory_picture"),
-                        resultSet.getString("dorm_name"), resultSet.getString("dorm_description"), 0, null, null);
+                        resultSet.getString("dorm_name"), resultSet.getString("dorm_description"), 0,
+                        CampusDao.getCampusById(resultSet.getInt("dormitory_in_campus_id"))
+                        , null);
                 dorm.setReviews(ReviewDao.getReviewsOf(dorm.getLocationId()));
                 dorm.setRooms(DormitoryDao.getRoomTypesIn(dorm.getLocationId()));
                 dormitories.add(dorm);

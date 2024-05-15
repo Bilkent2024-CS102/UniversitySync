@@ -2,6 +2,7 @@ package app.controller;
 
 import app.dao.DormitoryDao;
 import app.dao.UserDao;
+import app.model.FriendRequest;
 import app.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -61,6 +62,22 @@ public class otherUserProfileDisplayController {
         }
         descriptionArea.setText(searchedUser.getBiography());
         descriptionArea.setEditable(false);
+        if (UserDao.isFriend(SessionManager.getCurrentUser().getUserId(), profileUser.getUserId()))
+        {
+            unfriendButton.setText("Unfriend");
+        }
+        else if (UserDao.friendRequestExist(SessionManager.getCurrentUser().getUserId(), profileUser.getUserId()))
+        {
+            unfriendButton.setText("Cancel Request");
+        }
+        else if (UserDao.friendRequestExist(profileUser.getUserId(), SessionManager.getCurrentUser().getUserId()))
+        {
+            unfriendButton.setText("View Request");
+        }
+        else
+        {
+            unfriendButton.setText("Send Request");
+        }
     }
 
     public void messagePopUp(ActionEvent event) throws IOException {
@@ -84,5 +101,46 @@ public class otherUserProfileDisplayController {
     public void messageUser(ActionEvent event) throws IOException {
         //showMessageScreen(thisPost.getOwnerId());
         switchToFXML2("src/app/view/MessagePopup.fxml", event);
+    }
+
+    public void unfriendButtonClicked(ActionEvent event) throws IOException {
+        boolean isFriend = UserDao.isFriend(SessionManager.getCurrentUser().getUserId(), profileUser.getUserId());
+        if (unfriendButton.getText().equals("Unfriend"))
+        {
+            UserDao.removeFriend(profileUser.getUserId(), SessionManager.getCurrentUser().getUserId());
+            unfriendButton.setText("Send Request");
+        }
+        else if (unfriendButton.getText().equals("Cancel Request"))
+        {
+            UserDao.concludeFriendRequest(SessionManager.getCurrentUser().getUserId(), profileUser.getUserId(), false);
+            unfriendButton.setText("Send Request");
+        }
+        else if (unfriendButton.getText().equals("View Request"))
+        {
+            switchToSocialPage(event);
+        }
+        else
+        {
+            FriendRequest fr = new FriendRequest(SessionManager.getCurrentUser().getUserId(), profileUser.getUserId());
+            UserDao.addFriendRequest(fr);
+            unfriendButton.setText("Cancel Request");
+        }
+    }
+
+    private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
+        Parent root = fxmlLoader.load();
+
+        // Create a new stage for the filter screen
+        Stage filterStage = new Stage();
+        filterStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
+        filterStage.initStyle(StageStyle.UTILITY);
+        filterStage.setScene(new Scene(root));
+        // Show the filter screen
+        filterStage.showAndWait();
+    }
+
+    public void switchToSocialPage(ActionEvent event) throws IOException {
+        switchToFXML("src/app/view/SocialPage/socialMyFriends.fxml", event);
     }
 }

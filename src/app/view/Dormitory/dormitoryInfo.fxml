@@ -28,11 +28,11 @@
                         <Font size="78.0" />
                      </font>
                   </Label>
-                  <Button layoutX="773.0" layoutY="41.0" mnemonicParsing="false" onAction="#orderByDefault" prefHeight="74.0" prefWidth="239.0" style="-fx-background-radius: 15;" styleClass="greyButton" text="Default">
+                  <Button fx:id="defaultOrderButton" layoutX="773.0" layoutY="41.0" mnemonicParsing="false" onAction="#orderByDefault" prefHeight="74.0" prefWidth="239.0" style="-fx-background-radius: 15;" styleClass="greyButton" text="Default">
                      <font>
                         <Font name="System Italic" size="28.0" />
                      </font></Button>
-                  <Button layoutX="1079.0" layoutY="41.0" mnemonicParsing="false" onAction="#orderByRating" prefHeight="74.0" prefWidth="239.0" style="-fx-background-radius: 15;" styleClass="greyButton" text="Order By Rating">
+                  <Button fx:id="orderByRatingButton" layoutX="1079.0" layoutY="41.0" mnemonicParsing="false" onAction="#orderByRating" prefHeight="74.0" prefWidth="239.0" style="-fx-background-radius: 15;" styleClass="greyButton" text="Order By Rating">
                      <font>
                         <Font name="System Italic" size="28.0" />
                      </font>
