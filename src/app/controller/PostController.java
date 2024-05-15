@@ -21,6 +21,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -155,9 +157,17 @@ public class PostController {
 
 
     // TODO for zaeem
-    public void messageUser(ActionEvent e)
-    {
+    public void messageUser(ActionEvent event) throws IOException {
         //showMessageScreen(thisPost.getOwnerId());
+        fxmlLoader = new FXMLLoader(new File("src/app/view/MessagePopup.fxml").toURI().toURL());
+        Parent root = fxmlLoader.load();
+        // Create a new stage for the filter screen
+        Stage filterStage = new Stage();
+        filterStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
+        filterStage.initStyle(StageStyle.UTILITY);
+        filterStage.setScene(new Scene(root));
+        // Show the filter screen
+        filterStage.showAndWait();
     }
 
 
