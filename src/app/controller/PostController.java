@@ -80,6 +80,20 @@ public class PostController {
         stage.show();
     }
 
+    private void switchToFXML2(String fxmlFileName, ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
+        Parent root = fxmlLoader.load();
+        MessagePopupController newController = fxmlLoader.getController();
+        newController.setData(UserDao.getUserById(thisPost.getOwnerId()));
+        // Create a new stage for the filter screen
+        Stage filterStage = new Stage();
+        filterStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
+        filterStage.initStyle(StageStyle.UTILITY);
+        filterStage.setScene(new Scene(root));
+        // Show the filter screen
+        filterStage.showAndWait();
+    }
+
 
     public void switchToPostReply(ActionEvent event) throws IOException {
         //TODO: after pressing reply under post, this opens the reply page associated with that particular post
@@ -91,7 +105,7 @@ public class PostController {
     {
         // Below works good.
         thisPost = post;
-        postUsernameID.setText("" + post.getOwnerId());
+        postUsernameID.setText("" + UserDao.getUserById(post.getOwnerId()).getName());
         postTextAreaID.setText(post.getMainText());
         postTextAreaID.setEditable(false);
         heading = post.getHeading();
@@ -160,16 +174,7 @@ public class PostController {
 
     // TODO for zaeem
     public void messageUser(ActionEvent event) throws IOException {
-        //showMessageScreen(thisPost.getOwnerId());
-        fxmlLoader = new FXMLLoader(new File("src/app/view/MessagePopup.fxml").toURI().toURL());
-        Parent root = fxmlLoader.load();
-        // Create a new stage for the filter screen
-        Stage filterStage = new Stage();
-        filterStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
-        filterStage.initStyle(StageStyle.UTILITY);
-        filterStage.setScene(new Scene(root));
-        // Show the filter screen
-        filterStage.showAndWait();
+        switchToFXML2("src/app/view/MessagePopup.fxml", event);
     }
 
 
@@ -239,7 +244,7 @@ public class PostController {
         }
         catch (IOException exception)
         {
-            System.out.println("IO Exception found");
+            // nothing :)
         }
     }
 

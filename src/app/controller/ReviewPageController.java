@@ -112,10 +112,20 @@ public class ReviewPageController {
         try {
             String reviewMainText = reviewText.getText();
             double rating = Double.parseDouble(reviewRating.getText());
-            Review review = new Review(SessionManager.getCurrentUser().getUserId(), reviewMainText, new Date(), new Date(), location.getLocationId(), rating);
-            reviewText.clear();
-            reviewRating.clear();
-            setData(location);
+            if (rating < 0 || rating > 5)
+            {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning");
+                alert.setContentText("Please enter a valid rating");
+                alert.showAndWait();
+            }
+            else
+            {
+                Review review = new Review(SessionManager.getCurrentUser().getUserId(), reviewMainText, new Date(), new Date(), location.getLocationId(), rating);
+                reviewText.clear();
+                reviewRating.clear();
+                setData(location);
+            }
         }
         catch (NumberFormatException e)
         {
@@ -125,9 +135,4 @@ public class ReviewPageController {
             alert.showAndWait();
         }
     }
-
-//    public static void refresh(Location loc)
-//    {
-//        setData(loc);
-//    }
 }

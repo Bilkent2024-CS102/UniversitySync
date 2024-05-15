@@ -122,7 +122,7 @@
             </HBox>
             <HBox prefHeight="146.0" prefWidth="1231.0" spacing="300.0">
                <children>
-                  <Button fx:id="messageButton" mnemonicParsing="false" prefHeight="67.0" prefWidth="181.0" style="-fx-background-radius: 10;" styleClass="messageButton" text="Message" textFill="WHITE">
+                  <Button fx:id="messageButton" onAction="#messagePopUp" mnemonicParsing="false" prefHeight="67.0" prefWidth="181.0" style="-fx-background-radius: 10;" styleClass="messageButton" text="Message" textFill="WHITE">
                      <font>
                         <Font size="31.0" />
                      </font>

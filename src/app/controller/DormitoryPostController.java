@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -33,7 +34,10 @@ public class DormitoryPostController {
     @FXML
     private Label dormPostTypeID;
     @FXML
-    private Label dormPostHeading;
+    private Button messageButton;
+    @FXML
+    private Button transferButton;
+
     private FXMLLoader fxmlLoader;
 
     public void setData(DormTransferPost dtp) {
@@ -50,14 +54,18 @@ public class DormitoryPostController {
                 );
         dormPostFloorID.setText( "" + dtp.getOwnerId()%5);
         dormPostTypeID.setText( DormitoryDao.getRoomTypeById(dtp.getRoomId()).getDescription());
-        dormPostHeading.setText(dtp.getHeading());
+        if (dtp.getOwnerId() == SessionManager.getCurrentUser().getUserId()) {
+            messageButton.setDisable(true);
+            transferButton.setDisable(true);
+        }
     }
 
 
-    public void messageUser(ActionEvent event) throws IOException {
-        //showMessageScreen(thisPost.getOwnerId());
-        fxmlLoader = new FXMLLoader(new File("src/app/view/MessagePopup.fxml").toURI().toURL());
+    private void switchToFXML2(String fxmlFileName, ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
         Parent root = fxmlLoader.load();
+        MessagePopupController newController = fxmlLoader.getController();
+        newController.setData(UserDao.getUserById(dtp.getOwnerId()));
         // Create a new stage for the filter screen
         Stage filterStage = new Stage();
         filterStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
@@ -67,74 +75,11 @@ public class DormitoryPostController {
         filterStage.showAndWait();
     }
 
+    public void messageUser(ActionEvent event) throws IOException {
+        //showMessageScreen(thisPost.getOwnerId());
+        switchToFXML2("src/app/view/MessagePopup.fxml", event);
+    }
+
     public void transferDorm(ActionEvent event) {
     }
 }
-
-
-
-//class DormPostMock {
-//    private ImageView postImage;
-//    private String username;
-//    private String postText;
-//    private String campus;
-//    private String floor;
-//    private String dorm;
-//    private String type;
-//
-//    public void setPostImage(ImageView postImage) {
-//        this.postImage = postImage;
-//    }
-//
-//    public void setUsername(String username) {
-//        this.username = username;
-//    }
-//
-//    public void setPostText(String postText) {
-//        this.postText = postText;
-//    }
-//
-//    public void setCampus(String campus) {
-//        this.campus = campus;
-//    }
-//
-//    public void setFloor(String floor) {
-//        this.floor = floor;
-//    }
-//
-//    public void setType(String type) {
-//        this.type = type;
-//    }
-//
-//    public void setDorm(String dorm) {
-//        this.dorm = dorm;
-//    }
-//
-//    public ImageView getPostImage() {
-//        return postImage;
-//    }
-//
-//    public String getType() {
-//        return type;
-//    }
-//
-//    public String getDorm() {
-//        return dorm;
-//    }
-//
-//    public String getPostText() {
-//        return postText;
-//    }
-//
-//    public String getUsername() {
-//        return username;
-//    }
-//
-//    public String getFloor() {
-//        return floor;
-//    }
-//
-//    public String getCampus() {
-//        return campus;
-//    }
-//}
