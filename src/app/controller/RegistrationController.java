@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import app.dao.UserDao;
 import app.model.User;
@@ -69,6 +71,20 @@ public class RegistrationController implements Initializable {
         return pass.equals(passRepeat) && pass.length() >= 8;
     }
 
+    public static boolean isValidEmailFormat(String email) {
+        // Regular expression pattern for email matching
+        String emailRegex = "^[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\\.bilkent\\.edu\\.tr$";
+
+        // Compile the pattern
+        Pattern pattern = Pattern.compile(emailRegex);
+
+        // Create a matcher object
+        Matcher matcher = pattern.matcher(email);
+
+        // Check if the email matches the pattern
+        return matcher.matches();
+    }
+
     public void registerUser(ActionEvent e) throws IOException {
         String name = fullnameID.getText();
         String email = universityEmailID.getText();
@@ -82,7 +98,16 @@ public class RegistrationController implements Initializable {
         }
         String password = passwordID.getText();
         String repeatPassword = confirmPasswordID.getText();
-        if (isPasswordValid(password, repeatPassword) && validateInputs(name, email, password, repeatPassword))
+
+        if (!isValidEmailFormat(email))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Registration Error");
+            alert.setHeaderText("Non-university email");
+            alert.setContentText("Please make sure your email is university email.");
+            alert.showAndWait();
+        }
+        else if (isPasswordValid(password, repeatPassword) && validateInputs(name, email, password, repeatPassword))
         {
             User newUser = new User(name, email, password, major, "", roomType); //initially 0 as roomId indicating no room
 
