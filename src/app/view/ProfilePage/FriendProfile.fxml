@@ -14,7 +14,7 @@
 
 <!--<fx:include source="../Profile_TOP_TAB.fxml"/>-->
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.otherUserProfileDisplayController">
     <top>
         <fx:include source="../TOP_TAB.fxml" />
     </top>
@@ -24,7 +24,7 @@
             <Insets top="20.0" />
          </BorderPane.margin>
          <children>
-            <Label alignment="CENTER" prefHeight="106.0" prefWidth="1231.0" style="-fx-background-color: lightgrey;" text="Friend's Profile">
+            <Label alignment="CENTER" prefHeight="106.0" prefWidth="1231.0" style="-fx-background-color: lightgrey;" text="User's Profile">
                <font>
                   <Font name="PT Sans Bold" size="52.0" />
                </font>
@@ -39,7 +39,7 @@
                         <Font name="SansSerif Bold" size="37.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="102.0" prefWidth="373.0" text="Atilla Akus">
+                  <Label fx:id="nameLabel" alignment="CENTER" prefHeight="102.0" prefWidth="373.0" text="Atilla Akus">
                      <font>
                         <Font name="Times New Roman" size="37.0" />
                      </font>
@@ -56,7 +56,7 @@
                         <Font name="SansSerif Bold" size="37.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="102.0" prefWidth="373.0" text="cs">
+                  <Label fx:id="majorLabel" alignment="CENTER" prefHeight="102.0" prefWidth="373.0" text="cs">
                      <font>
                         <Font name="Times New Roman" size="37.0" />
                      </font>
@@ -73,7 +73,7 @@
                         <Font name="SansSerif Bold" size="37.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="102.0" prefWidth="373.0" text="atilla3@gmail.com">
+                  <Label fx:id="emailLabel" alignment="CENTER" prefHeight="102.0" prefWidth="373.0" text="atilla3@gmail.com">
                      <font>
                         <Font name="Times New Roman" size="37.0" />
                      </font>
@@ -90,7 +90,7 @@
                         <Font name="SansSerif Bold" size="37.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="102.0" prefWidth="373.0" text="76">
+                  <Label fx:id="dormLabel" alignment="CENTER" prefHeight="102.0" prefWidth="373.0" text="76">
                      <font>
                         <Font name="Times New Roman" size="37.0" />
                      </font>
@@ -107,7 +107,7 @@
                         <Font name="SansSerif Bold" size="37.0" />
                      </font>
                   </Label>
-                  <TextArea editable="false" maxHeight="277.0" maxWidth="780.0" prefHeight="277.0" prefWidth="780.0" text="dlijefjds&#10;" wrapText="true">
+                  <TextArea fx:id="descriptionArea" editable="false" maxHeight="277.0" maxWidth="780.0" prefHeight="277.0" prefWidth="780.0" text="dlijefjds&#10;" wrapText="true">
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -122,12 +122,12 @@
             </HBox>
             <HBox prefHeight="146.0" prefWidth="1231.0" spacing="300.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="181.0" style="-fx-background-radius: 10;" styleClass="messageButton" text="Message" textFill="WHITE">
+                  <Button fx:id="messageButton" mnemonicParsing="false" prefHeight="67.0" prefWidth="181.0" style="-fx-background-radius: 10;" styleClass="messageButton" text="Message" textFill="WHITE">
                      <font>
                         <Font size="31.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="67.0" prefWidth="181.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" text="Unfriend" textFill="WHITE">
+                  <Button fx:id="unfriendButton" mnemonicParsing="false" prefHeight="67.0" prefWidth="181.0" style="-fx-background-radius: 10;" styleClass="unfriendButton" text="Unfriend" textFill="WHITE">
                      <font>
                         <Font size="31.0" />
                      </font>
@@ -148,11 +148,6 @@
                        <Image url="@../icons/user_8742495.png" />
                    </image>
                </ImageView>
-               <Label alignment="CENTER" contentDisplay="CENTER" layoutX="67.0" layoutY="475.0" prefHeight="45.0" prefWidth="329.0" text="Friend Username">
-                   <font>
-                       <Font name="SansSerif Bold" size="34.0" />
-                   </font>
-               </Label>
            </children>
        </Pane>
    </left>

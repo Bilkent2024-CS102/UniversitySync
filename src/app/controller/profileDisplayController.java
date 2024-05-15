@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.dao.DormitoryDao;
+import app.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -18,6 +21,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class profileDisplayController implements Initializable {
+    private User profileUser;
     @FXML
     private Label nameLabel;
     @FXML
@@ -30,10 +34,16 @@ public class profileDisplayController implements Initializable {
     private Label dormLabel;
     @FXML
     private Label descriptionLabel;
+    @FXML
+    private TextArea descriptionArea;
+    @FXML
+    private Button messageButton;
+    @FXML
+    private Button unfriendButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(SessionManager.getCurrentUser().getUserId());
+//        System.out.println(SessionManager.getCurrentUser().getUserId());
         nameLabel.setText(SessionManager.getCurrentUser().getName());
 //        usernamenameLabel.setText(SessionManager.getCurrentUser().getUsername());
         majorLabel.setText(SessionManager.getCurrentUser().getMajor());
@@ -47,5 +57,25 @@ public class profileDisplayController implements Initializable {
             dormLabel.setText("");
         }
         descriptionLabel.setText(SessionManager.getCurrentUser().getBiography());
+    }
+
+    public void displayFriendProfile(User user)
+    {
+        profileUser = user;
+
+        nameLabel.setText(user.getName());
+        majorLabel.setText(user.getMajor());
+        emailLabel.setText(user.getEmail());
+
+        if (user.getRoomId() != 0)
+        {
+            dormLabel.setText(DormitoryDao.getRoomTypeById(user.getRoomId()).getDescription());
+        }
+        else
+        {
+            dormLabel.setText("");
+        }
+
+        descriptionLabel.setText(user.getBiography());
     }
 }
