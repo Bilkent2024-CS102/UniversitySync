@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -12,7 +13,10 @@
 
 <Pane prefHeight="592.0" prefWidth="978.0" style="-fx-background-color: #829CD0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.PostController">
    <children>
-      <TextArea fx:id="postTextAreaID" layoutX="20.0" layoutY="84.0" prefHeight="401.0" prefWidth="938.0" />
+      <TextArea fx:id="postTextAreaID" layoutX="20.0" layoutY="161.0" prefHeight="324.0" prefWidth="938.0" text="djfhjdskhfs&#10;" wrapText="true">
+         <font>
+            <Font size="30.0" />
+         </font></TextArea>
       <HBox layoutX="45.0" layoutY="505.0" prefHeight="70.0" prefWidth="911.0">
          <children>
             <Button fx:id="likeButtonID" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" mnemonicParsing="false" onAction="#likeButton" prefHeight="70.0" prefWidth="170.0" text="Like">
@@ -37,7 +41,7 @@
                <font>
                   <Font name="SansSerif Bold" size="18.0" />
                </font></Button>
-            <Button fx:id="commentButtonID" onAction="#commentButtonPressed" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="173.0" text="Reply" translateX="100.0">
+            <Button fx:id="commentButtonID" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" mnemonicParsing="false" onAction="#commentButtonPressed" prefHeight="70.0" prefWidth="173.0" text="Reply" translateX="100.0">
                <graphic>
                   <ImageView fitHeight="37.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" translateX="11.0" translateY="4.0">
                      <image>
@@ -94,5 +98,20 @@
             </ImageView>
          </graphic>
       </Button>
+      <TextField fx:id="postTitle_ID" layoutX="20.0" layoutY="86.0" prefHeight="66.0" prefWidth="940.0" style="-fx-background-radius: 10;" text="ddfjdshfd">
+         <font>
+            <Font name="Helvetica Neue Bold" size="35.0" />
+         </font>
+      </TextField>
+      <Label fx:id="noOfLikes_ID" layoutX="45.0" layoutY="455.0" text="20 Likes">
+         <font>
+            <Font name="SansSerif Bold Italic" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="noOfComments_ID" layoutX="166.0" layoutY="455.0" text="10 Comments">
+         <font>
+            <Font name="SansSerif Bold Italic" size="21.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
