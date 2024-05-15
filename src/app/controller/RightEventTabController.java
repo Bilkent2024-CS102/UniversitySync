@@ -8,11 +8,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -20,7 +19,9 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 //import com.mysql.cj.Session;
@@ -35,6 +36,63 @@ public class RightEventTabController implements Initializable {
     private ToggleButton eventFollowButton_ID;
     @FXML
     private VBox Event_VBox_ID = new VBox();    //right Event VBox where we put our events
+
+    @FXML
+    private TextField eventNameTextField;
+    @FXML
+    private TextField eventLocationTextField;
+    @FXML
+    private DatePicker eventDatePicker;
+    @FXML
+    private TextField eventTitleTextField;
+    @FXML
+    private TextArea eventDescriptionTextField;
+
+    private Scene scene;
+
+    private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
+        Parent root = fxmlLoader.load();
+
+        if (event.getSource() instanceof Node) {                                    //FOR Buttons
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        }
+        else if (event.getSource() instanceof MenuItem menuItem)  {                 //FOR MenuButtons
+            stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+        }
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);     //it should be after stage.setScene
+        stage.show();
+    }
+
+
+    public void refresh(ActionEvent event) throws IOException {
+        switchToFXML("src/app/view/Homepage.fxml", event);
+    }
+
+    //after user adds Name, Location, and other things, this method adds
+    //it to the event pool that user can see and follow
+    public void addEvent(ActionEvent event) throws IOException {
+        /*
+        The code checks which window (stage) the button belongs to and then closes that window.
+        This is a common pattern in JavaFX for closing the window (stage) associated with a
+        button or any other UI element.
+        */
+        String eventName = eventNameTextField.getText();
+        String eventLocation = eventLocationTextField.getText();
+        LocalDate eventDate = eventDatePicker.getValue();
+        String eventTitle = eventTitleTextField.getText();
+        String eventDescription = eventDescriptionTextField.getText();
+        EventPost newEvent = new EventPost(SessionManager.getCurrentUser().getUserId(), eventDescription,
+                new java.sql.Timestamp(new Date().getTime()), new java.sql.Timestamp(new Date().getTime()),
+                eventTitle, eventLocation, java.sql.Date.valueOf(eventDate));
+        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        // Close the filter screen
+        stage.close();
+        refresh(event);
+    }
+
     private List<EventPost> eventMock;
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,18 +132,7 @@ public class RightEventTabController implements Initializable {
         filterStage.showAndWait(); // This will block interaction with the main window
     }
 
-    //after user adds Name, Location, and other things, this method adds
-    //it to the event pool that user can see and follow
-    public void addEvent(ActionEvent event) throws IOException {
-        /*
-        The code checks which window (stage) the button belongs to and then closes that window.
-        This is a common pattern in JavaFX for closing the window (stage) associated with a
-        button or any other UI element.
-        */
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        // Close the filter screen
-        stage.close();
-    }
+
 
     public void cancelButton(ActionEvent event) throws IOException {
         stage = (Stage) ((Button) event.getSource()).getScene().getWindow();

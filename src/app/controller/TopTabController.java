@@ -27,9 +27,6 @@ public class TopTabController  {
         private Scene scene;
         private FXMLLoader fxmlLoader;
 
-//        @FXML
-//        private MenuButton profileID = new MenuButton(SessionManager.getCurrentUser().getName());
-
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
         Parent root = fxmlLoader.load();

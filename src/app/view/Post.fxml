@@ -15,7 +15,7 @@
       <TextArea fx:id="postTextAreaID" layoutX="20.0" layoutY="84.0" prefHeight="401.0" prefWidth="938.0" />
       <HBox layoutX="45.0" layoutY="505.0" prefHeight="70.0" prefWidth="911.0">
          <children>
-            <Button fx:id="likeButtonID" onAction="#likeButton" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="170.0" text="Like">
+            <Button fx:id="likeButtonID" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" mnemonicParsing="false" onAction="#likeButton" prefHeight="70.0" prefWidth="170.0" text="Like">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" translateX="10.0" translateY="2.0">
                      <image>
@@ -26,7 +26,7 @@
                <font>
                   <Font name="SansSerif Bold" size="18.0" />
                </font></Button>
-            <Button fx:id="messageButtonID" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="169.0" text="Message" translateX="50.0">
+            <Button fx:id="messageButtonID" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#messageUser" prefHeight="70.0" prefWidth="169.0" text="Message" translateX="50.0">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -48,7 +48,7 @@
                <font>
                   <Font name="SansSerif Bold" size="18.0" />
                </font></Button>
-            <Button fx:id="addFriendButtonID" onAction="#addFriendButton" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="172.0" text="Add Friend" translateX="150.0">
+            <Button fx:id="addFriendButtonID" alignment="CENTER" contentDisplay="RIGHT" graphicTextGap="0.0" mnemonicParsing="false" onAction="#addFriendButton" prefHeight="70.0" prefWidth="172.0" text="Add Friend" translateX="150.0">
                <graphic>
                   <ImageView fitHeight="37.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
                      <image>
@@ -82,7 +82,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="deleteButton" onAction="#deleteButton" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="841.0" layoutY="19.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="121.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Delete">
+      <Button fx:id="deleteButton" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="841.0" layoutY="19.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="45.0" prefWidth="121.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Delete">
          <font>
             <Font size="19.0" />
          </font>

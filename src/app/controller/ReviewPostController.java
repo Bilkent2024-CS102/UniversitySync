@@ -16,16 +16,12 @@ public class ReviewPostController {
 
     @FXML
     private ImageView reviewPostImage_ID;
-
     @FXML
     private Label reviewPost_TopInfo_ID;
-
     @FXML
     private Label reviewPost_TopRating_ID;
-
     @FXML
     private Button reviewPost_deleteButton_ID;
-
     @FXML
     private TextArea reviewPost_textArea_ID;
 

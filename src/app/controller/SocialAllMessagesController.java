@@ -1,9 +1,15 @@
 package app.controller;
 
+
 import app.dao.MessageDao;
 import app.dao.UserDao;
 import app.model.User;
 import app.model.userContent.Message;
+
+//controller of all message page
+
+import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -69,6 +75,8 @@ public class SocialAllMessagesController implements Initializable {
         {
             messageFriends.add(UserDao.getUserById(i));
         }
+
+
 
         try {
             for(int i = 0; i < messageFriends.size(); i++) {

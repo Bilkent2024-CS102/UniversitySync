@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MessagePopupController">
+    <top>
+        <!--      <fx:include source="TOP_TAB.fxml" />-->
+    </top>
+    <right>
+        <!--      <fx:include source="RightEventDisplay.fxml" />-->
+    </right>
+   <bottom>
+        <Pane prefHeight="647.0" prefWidth="800.0" style="-fx-background-color: #B7B7B7;" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="246.0" layoutY="27.0" prefHeight="59.0" prefWidth="347.0" text="Send Message">
+                    <font>
+                        <Font name="Arial Black" size="40.0" />
+                    </font>
+                </Label>
+                <Label layoutX="156.0" layoutY="96.0" prefHeight="48.0" prefWidth="511.0" text="Type the message that you want to send" textFill="WHITE">
+                    <font>
+                        <Font name="PT Serif Bold" size="26.0" />
+                    </font>
+                </Label>
+                <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="488.0" layoutY="560.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="53.0" prefWidth="121.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" stylesheets="@styles.css" text="Cancel" textFill="WHITE">
+                    <font>
+                        <Font name="Helvetica Bold" size="25.0" />
+                    </font>
+                </Button>
+            <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="646.0" layoutY="560.0" mnemonicParsing="false" onAction="#sendMessageButton" prefHeight="53.0" prefWidth="119.0" style="-fx-background-radius: 20;" styleClass="anyBlackButton" stylesheets="@styles.css" text="Send" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Bold" size="25.0" />
+               </font>
+            </Button>
+            <TextArea fx:id="sendTextArea_ID" layoutX="44.0" layoutY="197.0" prefHeight="303.0" prefWidth="706.0" promptText="Type Your Message" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextArea>
+            </children>
+        </Pane>
+   </bottom>
+</BorderPane>

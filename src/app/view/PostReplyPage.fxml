@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1700.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.PostReplyPageController">
+   <top>
+      <fx:include source="TOP_TAB.fxml" />
+   </top>
+   <center>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="1050.0" BorderPane.alignment="CENTER">
+         <children>
+            <Hyperlink alignment="CENTER" onAction="#switchToLastPage_ID" prefHeight="136.0" prefWidth="226.0" styleClass="addFriendsButton">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <graphic>
+                  <Polygon fill="#d01e2d" points="-54.940162658691406, 40.14453887939453, 34.5164909362793, 40.17769241333008, -8.120521545410156, -44.389015197753906" rotate="-90.0" stroke="BLACK" strokeType="INSIDE" />
+               </graphic>
+            </Hyperlink>
+            <Button mnemonicParsing="false" onAction="#seeAttachedFiles" prefHeight="112.0" prefWidth="358.0" style="-fx-background-radius: 12;" styleClass="greyButton" text="See attached items" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica Neue Bold" size="34.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </center>
+   <bottom>
+      <ScrollPane prefHeight="686.0" prefWidth="1700.0" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="postReplyVBox_ID" alignment="TOP_CENTER" spacing="40.0">
+
+                <!--  here we display post replies-->
+
+               <padding>
+                  <Insets left="20.0" top="15.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </bottom>
+</BorderPane>
