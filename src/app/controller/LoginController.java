@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.event.Event;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -25,13 +26,12 @@ public class LoginController {
     @FXML
     private TextField emailField;
     @FXML
-    private TextField passwordField;
+    private PasswordField passwordField;
 
 
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
-    UserDao userDao = new UserDao();
 
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
@@ -48,7 +48,7 @@ public class LoginController {
         String email = emailField.getText();
         String password = passwordField.getText();
 
-        if (userDao.authenticate(email, password)) // need method to validate email and password
+        if (UserDao.authenticate(email, password)) // need method to validate email and password
         {
             User currentUser = UserDao.getUserByEmail(email);
             SessionManager.setCurrentUser(currentUser);

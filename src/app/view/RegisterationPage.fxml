@@ -10,6 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.PasswordField?>
+<?import org.controlsfx.control.textfield.CustomPasswordField?>
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.RegistrationController">
     <children>
         <Label alignment="CENTER" prefHeight="64.0" prefWidth="500.0" text="Register Your Account">
@@ -64,22 +66,22 @@
             <ChoiceBox fx:id="dormChoiceBoxID" prefWidth="150.0" />
          </children>
       </HBox>
-      <TextField fx:id="passwordID" prefHeight="35.0" prefWidth="386.0" promptText="Password" translateY="-14.0">
+      <PasswordField fx:id="passwordID" prefHeight="35.0" prefWidth="386.0" promptText="Password" translateY="-14.0">
          <font>
             <Font size="16.0" />
          </font>
          <VBox.margin>
             <Insets left="40.0" right="40.0" />
          </VBox.margin>
-      </TextField>
-      <TextField fx:id="confirmPasswordID" prefHeight="35.0" prefWidth="386.0" promptText="Confirm Pasword" translateY="-14.0">
+      </PasswordField>
+      <PasswordField fx:id="confirmPasswordID" prefHeight="35.0" prefWidth="386.0" promptText="Confirm Pasword" translateY="-14.0">
          <font>
             <Font size="16.0" />
          </font>
          <VBox.margin>
             <Insets left="40.0" right="40.0" />
          </VBox.margin>
-      </TextField>
+      </PasswordField>
         <Button mnemonicParsing="false" onAction="#registerUser" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #68c151;" text="Register" textFill="WHITE" translateY="-10.0">
             <font>
                 <Font size="18.0" />

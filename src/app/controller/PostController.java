@@ -65,6 +65,8 @@ public class PostController {
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
         Parent root = fxmlLoader.load();
+        PostReplyPageController newController = fxmlLoader.getController();
+        newController.setData(thisPost);
 
         if (event.getSource() instanceof Node) {                                    //FOR Buttons
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -198,23 +200,6 @@ public class PostController {
         // Load UI page of homepage
     }
 
-    // THIS METHOD BELOW MIGHT NEED TO BE IN ANOTHER CONTROLLER.
-//    /**
-//     * This buttons send the comment message.
-//     * @param e
-//     */
-//    public void sendComment(ActionEvent e)
-//    {
-//        // The below line accessed the post and the comment content
-//        // through thew commentPane invoked.
-//        int post = e.getSource().getForumPost();
-//        String commentContent = e.getSource().getCommentContent();
-//        Reply comment = new Reply(SessionManager.getCurrentUser().getUserId(), )
-//        Reply comment = new Reply(SessionManager.getCurrentUser(), commentContent, createdAt, lastEdit, post);
-//        ForumPostDao.addComment(post, comment);
-//        // TODO: show success message.
-//    }
-
     public void addFriendButton(ActionEvent e)
     {
         boolean isFriend = UserDao.isFriend(SessionManager.getCurrentUser().getUserId(), thisPost.getOwnerId());
@@ -268,30 +253,17 @@ public class PostController {
         {
             String newPostText = postTextAreaID.getText();
             thisPost.setMainText(newPostText);
-//            ForumPostDao.updatePost(thisPost.getUserContentItemId());
             ForumPostDao.edit(thisPost.getUserContentItemId(), newPostText);
             postTextAreaID.setEditable(false);
             editButton.setText("Edit");
         }
     }
 
-//
-//    public void deletePostButton(ActionEvent e)
-//    {
-//        ForumPost post = e.getSource().getForumPost();
-//        if (post.getOwnerId().getUserId() == SessionManager.getCurrentUser().getUserId)
-//        {
-//            ForumPostDao.delete(post.getUserContentItemId());
-//        }
-//        // TODO: show success message.
-//    }
-//
-//    public void editPostButton(ActionEvent e)
-//    {
-//        ForumPost post = e.getSource().getForumPost();
-//        showEditDialog(post);
-//    }
-//
+    public void commentButtonPressed(ActionEvent event) throws IOException {
+
+        switchToFXML("src/app/view/PostReplyPage.fxml", event);
+    }
+
 //    public void sendEdit(ActionEvent e)
 //    {
 //        // Below line accesses the post and the edited text
