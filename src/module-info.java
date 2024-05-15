@@ -13,6 +13,7 @@ module src.app.controller {
     requires eu.hansolo.tilesfx;
     requires java.desktop;
     requires mysql.connector.j;
+    requires jakarta.persistence;
 
     opens app.controller to javafx.fxml;
     exports app.controller;

@@ -8,8 +8,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.File;
 import java.io.IOException;
 
 public class ReviewPostController {
@@ -51,5 +53,8 @@ public class ReviewPostController {
         {
             deleteReviewButton.setDisable(true);
         }
+        File file = new File("src/app/images/profilePictures/profilePicture" + review.getOwnerId() + ".png");
+        Image image = new Image(file.toURI().toString());
+        reviewPostImage_ID.setImage(image);
     }
 }
