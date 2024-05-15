@@ -157,7 +157,7 @@ public class CafeteriaDao {
             while (resultSet.next()) {
                 MenuItem m = new MenuItem(resultSet.getInt("menu_item_in_cafeteria_id"), resultSet.getInt("menu_item_id"),
                         resultSet.getString("menu_item_name"), resultSet.getFloat("price"),
-                        resultSet.getString("link_to_menu_item_picture"));
+                        "");
                 menuItems.add(m);
             }
             resultSet.close();

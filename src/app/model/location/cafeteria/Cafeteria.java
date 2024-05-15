@@ -33,9 +33,11 @@ public class Cafeteria extends Location{
     public String getMenu()
     {
         String menu = "";
-        for (MenuItem item : CafeteriaDao.getMenuItemsIn(getLocationId()))
-        {
-            menu = menu + item.getName() + " - " + item.getPrice() + " TL\n";
+        if (CafeteriaDao.getMenuItemsIn(getLocationId()) != null){
+            for (MenuItem item : CafeteriaDao.getMenuItemsIn(getLocationId()))
+            {
+                menu = menu + item.getName() + " - " + item.getPrice() + " TL\n";
+            }
         }
         return menu;
     }
