@@ -76,7 +76,6 @@ public class RightEventTabController implements Initializable {
             }
         }
 
-//        fxmlLoader = new FXMLLoader(new File("src/app/view/ProfilePage/FriendProfile.fxml").toURI().toURL());
         if (searchedUser != null)
         {
             switchToFriendProfile(event);
@@ -110,7 +109,6 @@ public class RightEventTabController implements Initializable {
 
 
     public void displayAddEventPopup (ActionEvent event) throws IOException {
-//        switchToFXML("Add_New_Event.fxml", event);
 
         // Load the FXML file for the filter screen
         fxmlLoader = new FXMLLoader(new File("src/app/view/Event_Tab/Add_New_Event.fxml").toURI().toURL());
