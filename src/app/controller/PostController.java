@@ -153,11 +153,10 @@ public class PostController {
             editButton.setDisable(true);
         }
 
-        //image
-        File file = new File("src/app/images/profilePictures/profilePicture" + SessionManager.getCurrentUser().getUserId() + ".png");
+
+        File file = new File("src/app/images/profilePictures/profilePicture" + post.getOwnerId() + ".png");
         Image image = new Image(file.toURI().toString());
         userImageOnPostID.setImage(image);
-
     }
 
     public void setData(Reply reply)
