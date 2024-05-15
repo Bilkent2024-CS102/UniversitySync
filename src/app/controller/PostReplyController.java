@@ -9,8 +9,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.File;
 import java.io.IOException;
 
 public class PostReplyController {
@@ -35,5 +37,8 @@ public class PostReplyController {
 
         postReplyUsername_ID.setText(UserDao.getUserById(reply.getOwnerId()).getName());
         postReplyTextArea_ID.setText(reply.getMainText());
+        File file = new File("src/app/images/profilePictures/profilePicture" + reply.getOwnerId() + ".png");
+        Image image = new Image(file.toURI().toString());
+        postReplyUserImage_ID.setImage(image);
     }
 }
