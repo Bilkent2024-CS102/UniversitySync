@@ -18,6 +18,7 @@ public class ReviewPostController {
 
     @FXML
     private ImageView reviewPostImage_ID;
+
     @FXML
     private Label reviewPost_TopInfo_ID;
     @FXML
