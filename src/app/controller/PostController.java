@@ -37,6 +37,8 @@ public class PostController {
     @FXML
     private ImageView userImageOnPostID;
     @FXML
+    private Label postUsernameID;
+    @FXML
     private Button addFriendButtonID;
     @FXML
     private Button commentButtonID;
@@ -79,6 +81,20 @@ public class PostController {
         stage.setScene(scene);
         stage.setFullScreen(true);     //it should be after stage.setScene
         stage.show();
+    }
+
+    private void switchToFXML2(String fxmlFileName, ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
+        Parent root = fxmlLoader.load();
+        MessagePopupController newController = fxmlLoader.getController();
+        newController.setData(UserDao.getUserById(thisPost.getOwnerId()));
+        // Create a new stage for the filter screen
+        Stage filterStage = new Stage();
+        filterStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
+        filterStage.initStyle(StageStyle.UTILITY);
+        filterStage.setScene(new Scene(root));
+        // Show the filter screen
+        filterStage.showAndWait();
     }
 
 
@@ -162,16 +178,7 @@ public class PostController {
 
     // TODO for zaeem
     public void messageUser(ActionEvent event) throws IOException {
-        //showMessageScreen(thisPost.getOwnerId());
-        fxmlLoader = new FXMLLoader(new File("src/app/view/MessagePopup.fxml").toURI().toURL());
-        Parent root = fxmlLoader.load();
-        // Create a new stage for the filter screen
-        Stage filterStage = new Stage();
-        filterStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
-        filterStage.initStyle(StageStyle.UTILITY);
-        filterStage.setScene(new Scene(root));
-        // Show the filter screen
-        filterStage.showAndWait();
+        switchToFXML2("src/app/view/MessagePopup.fxml", event);
     }
 
 
@@ -241,7 +248,7 @@ public class PostController {
         }
         catch (IOException exception)
         {
-            System.out.println("IO Exception found");
+            // nothing :)
         }
     }
 

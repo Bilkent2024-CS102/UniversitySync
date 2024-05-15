@@ -9,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
@@ -46,9 +45,8 @@ public class DormitoryDetailController {
         dormRateTextField_ID.setText("" + decimalFormat.format(dorm.getRating()));
         dormCampus_ID.setText(dorm.getCampus().getName());
 
-        File file = new File("src/app/images/dormitoryPictures/dormitoryPicture" + dorm.getLocationId() + ".png");
-        Image image = new Image(file.toURI().toString());
-        dormImage_ID.setImage(image);
+        dormDescription_ID.setEditable(false);
+        dormRateTextField_ID.setEditable(false);
     }
 
     public void switchToFXML(String fxmlFileName, MouseEvent event) throws IOException {

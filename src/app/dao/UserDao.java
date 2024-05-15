@@ -203,7 +203,6 @@ public class UserDao {
         }
         catch (SQLException sqle)
         {
-            System.out.println("No such user with id " + ID + " exists!");
             return null;
         }
     }
@@ -219,7 +218,6 @@ public class UserDao {
     public static boolean addFriend(int u1, int u2){
 
         if(isFriend(u1, u2)){
-            System.out.println("they are friends");
             return false;
         }
         try{
@@ -285,7 +283,6 @@ public class UserDao {
     public static boolean removeFriend(int u1, int u2){
 
         if(!isFriend(u1, u2)){
-            System.out.println("they are not friends");
             return false;
         }
         try{
@@ -363,7 +360,6 @@ public class UserDao {
             return true;
 
         } catch (SQLException sqle) {
-            System.out.println("Unable to conclude friend request/no such friend request!");
             return false;
         }
     }
@@ -420,7 +416,6 @@ public class UserDao {
         }
         catch (SQLException sqle)
         {
-            System.out.println("Such user does not exist!");
             return null;
         }
     }

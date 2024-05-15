@@ -15,7 +15,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 //import javafx.stage.Modality;
 //import javafx.stage.Stage;
 //import javafx.stage.StageStyle;
@@ -58,8 +60,27 @@ public class SocialMyFriendsController {
 
 //*******************************************************************************************************************
 
+    private void switchToFXML2(String fxmlFileName, ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
+        Parent root = fxmlLoader.load();
+        MessagePopupController newController = fxmlLoader.getController();
+        newController.setData(thisFriend);
+        // Create a new stage for the filter screen
+        Stage filterStage = new Stage();
+        filterStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
+        filterStage.initStyle(StageStyle.UTILITY);
+        filterStage.setScene(new Scene(root));
+        // Show the filter screen
+        filterStage.showAndWait();
+    }
+
+    public void messagePopUp(ActionEvent event) throws IOException {
+        switchToFXML2("src/app/view/MessagePopup.fxml", event);
+    }
+
     public void messageFriendButton (ActionEvent event) throws IOException {
-       switchToMessages(event);
+//       switchToMessages(event);
+        messagePopUp(event);
         // 2 Steps:
                 // Takes you to the all messages social page
                 // and opens the message pane of this particular user
