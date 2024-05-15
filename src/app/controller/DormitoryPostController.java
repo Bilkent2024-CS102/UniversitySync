@@ -32,6 +32,8 @@ public class DormitoryPostController {
     private Label dormPostFloorID;
     @FXML
     private Label dormPostTypeID;
+    @FXML
+    private Label dormPostHeading;
     private FXMLLoader fxmlLoader;
 
     public void setData(DormTransferPost dtp) {
@@ -48,6 +50,7 @@ public class DormitoryPostController {
                 );
         dormPostFloorID.setText( "" + dtp.getOwnerId()%5);
         dormPostTypeID.setText( DormitoryDao.getRoomTypeById(dtp.getRoomId()).getDescription());
+        dormPostHeading.setText(dtp.getHeading());
     }
 
 
