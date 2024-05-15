@@ -23,7 +23,7 @@
                 <Image url="@../icons/61orm_IMG_4929.jpeg" />
             </image>
         </ImageView>
-        <Label alignment="CENTER" layoutX="18.0" layoutY="145.0" prefHeight="42.0" prefWidth="669.0" style="-fx-text-fill: black;" text="Transfer Posting" translateY="-55.0">
+        <Label fx:id="dormPostHeading" alignment="CENTER" layoutX="18.0" layoutY="145.0" prefHeight="42.0" prefWidth="669.0" style="-fx-text-fill: black;" text="Transfer Posting" translateY="-55.0">
             <font>
                 <Font name="Apple SD Gothic Neo ExtraBold" size="40.0" />
             </font>
