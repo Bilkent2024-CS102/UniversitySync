@@ -110,8 +110,9 @@ public class PostController {
         userName.setText("" + UserDao.getUserById(post.getOwnerId()).getName());
         postTextAreaID.setText(post.getMainText());
         postTextAreaID.setEditable(false);
-        likeNumber.setText(post.getLikeCount() + " Likes");
+        likeNumber.setText(ForumPostDao.getPostLikes(post.getUserContentItemId()) + " Likes");
         commentNumber.setText(post.getCommentCount() + " Comments");
+        postHeading.setText(post.getHeading());
         postHeading.setEditable(false);
         postTextAreaID.setEditable(false);
 

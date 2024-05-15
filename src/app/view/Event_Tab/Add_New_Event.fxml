@@ -58,7 +58,7 @@
                </font>
             </Label>
             <DatePicker fx:id="eventDatePicker" layoutX="70.0" layoutY="330.0" prefHeight="39.0" prefWidth="227.0" promptText="Click Here" />
-            <Label layoutX="70.0" layoutY="420.0" prefHeight="48.0" prefWidth="188.0" text="Choose Time">
+            <Label layoutX="70.0" layoutY="420.0" prefHeight="48.0" prefWidth="188.0" text="Enter Title">
                <font>
                   <Font name="PT Serif Bold" size="26.0" />
                </font>

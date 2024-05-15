@@ -443,4 +443,17 @@ public class ForumPostDao {
             return null;
         }
     }
+
+    public static int getPostLikes(int postID) {
+        ArrayList<User> users = UserDao.getUsers();
+        int count = 0;
+        for (int i = 0; i < users.size(); i++)
+        {
+            if (ForumPostDao.isLikedByUser(users.get(i).getUserId(), postID))
+            {
+                count++;
+            }
+        }
+        return count;
+    }
 }

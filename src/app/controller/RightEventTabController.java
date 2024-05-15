@@ -21,7 +21,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 //import com.mysql.cj.Session;
@@ -41,6 +43,17 @@ public class RightEventTabController implements Initializable {
     private TextField searchUserField;
     //right Event VBox where we put our events
     private List<EventPost> eventMock;
+
+    @FXML
+    private TextField eventNameTextField;
+    @FXML
+    private TextField eventLocationTextField;
+    @FXML
+    private DatePicker eventDatePicker;
+    @FXML
+    private TextField eventTitleTextField;
+    @FXML
+    private TextArea eventDescriptionTextField;
 
     private User searchedUser;
 
@@ -122,16 +135,16 @@ public class RightEventTabController implements Initializable {
         filterStage.showAndWait(); // This will block interaction with the main window
     }
 
-    //after user adds Name, Location, and other things, this method adds
-    //it to the event pool that user can see and follow
-    public void addEvent(ActionEvent event) throws IOException {
-        /*
-        The code checks which window (stage) the button belongs to and then closes that window.
-        This is a common pattern in JavaFX for closing the window (stage) associated with a
-        button or any other UI element.
-        */
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        // Close the filter screen
+    public void addEvent(ActionEvent e) throws IOException {
+        String eventName = eventNameTextField.getText();
+        String location = eventLocationTextField.getText();
+        LocalDate date = eventDatePicker.getValue();
+        String title = eventTitleTextField.getText();
+        String description = eventDescriptionTextField.getText();
+        EventPost event = new EventPost(SessionManager.getCurrentUser().getUserId(), description,
+                new java.sql.Timestamp(new Date().getTime()), new java.sql.Timestamp(new Date().getTime()), title,
+                location, java.sql.Date.valueOf(date));
+        stage = (Stage) ((Button) e.getSource()).getScene().getWindow();
         stage.close();
     }
 
