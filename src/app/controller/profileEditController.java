@@ -11,8 +11,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public class profileEditController {
     @FXML
@@ -108,4 +113,18 @@ public class profileEditController {
 //        switchToFXML("src/app/view/ProfilePage/profile_LEFT_DISPLAY.fxml", event);
         switchToFXML("src/app/view/ProfilePage/profileMyPost.fxml", event);
     }
+
+    public void setProfileImage() throws IOException {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.addChoosableFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "png", "tif"));
+        chooser.showSaveDialog(null);
+        File file = chooser.getSelectedFile();
+        User u = SessionManager.getCurrentUser();
+        String newPath = "src/app/images/profilePictures/profilePicture" + u.getUserId() + ".jpg";
+        Files.copy(Paths.get(file.getAbsolutePath()), Paths.get(newPath), StandardCopyOption.REPLACE_EXISTING);
+        u.setProfilePicturePath(newPath);
+        UserDao.updateUser(u);
+    }
 }
+

@@ -148,8 +148,8 @@ public class RegistrationController implements Initializable {
     public void registerButton(ActionEvent event) {
     }
 
-    public void takeToLoginPage(ActionEvent event) {
-        //use fxml loader to take back to login page
+    public void takeToLoginPage(ActionEvent event) throws IOException {
+        switchToFXML("src/app/view/LoginPage.fxml", event);
     }
 
 

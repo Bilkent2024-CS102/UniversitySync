@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -30,6 +32,8 @@ public class profileDisplayController implements Initializable {
     private Label dormLabel;
     @FXML
     private Label descriptionLabel;
+    @FXML
+    private ImageView imageUrl;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,5 +51,7 @@ public class profileDisplayController implements Initializable {
             dormLabel.setText("");
         }
         descriptionLabel.setText(SessionManager.getCurrentUser().getBiography());
+        Image i = new Image(new File("src/app/images/profilePictures/profilePicture" + SessionManager.getCurrentUser().getUserId() + ".png").toURI().toString());
+        imageUrl.setImage(i);
     }
 }
