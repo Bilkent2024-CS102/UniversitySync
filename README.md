@@ -1,5 +1,5 @@
 # UniversitySync
-Term project for CS102.
+Term project for CS102, Spring 2023-2024.
 ## IMPORTANT WARNING
 If you get some import or package errors double-check that the only source path is UniversitySync\src.
 You can do this by CTRL+SHIFT+P (Command palette), choose "Java: Configure Classpath" and change it to UniversitySync\src ONLY and "Apply Settings" below.
@@ -13,5 +13,22 @@ You can find the text file for generating the whole UML diagram (uml.txt). To ac
 
 The current diagram is as follows:
 ![image](https://github.com/Bilkent2024-CS102/UniversitySync/assets/74462484/a7393158-4514-4c0d-9c43-e33cbf067b0e)
+(how the uml be in the final? from planttext or from auto generated uml by IntelliJ?)
 
 You can download and zoom it. But after we completely agree on the diagram, we can divide it into smaller parts for convenience.
+
+## Requirements and steps for the database to work properly:
+This project uses a MySQL database hosted locally. To be able to run the program with the database, you need to do following:
+1) Download a version of MySQL server and MySQL Workbench suitable for you from https://dev.mysql.com/downloads/workbench/ . In the current project, version 8.0.x works fine.
+2) During the installation process, ensure that you installed both workbench and the server.
+3) Open MySQL Workbench. Create a new connection with username 'root' and password you choose. A sample tutorial can be found here: https://www.youtube.com/watch?v=b6Dme76UzmQ
+4) Connect to server using that connection, save your password to vault if you choose so.
+5) Click 'Open a SQL script file' option and open both 'Final Data Set.sql' and 'createInitialDatabaseTables.sql'.
+6) Run first createInitialDatabaseTables and then Final Data Set. Do it only once, not before everytime before running the project code.
+7) Open the project code, and in the HomePage.java file main method, change 'password' variable to your own MySQL password.
+8) In case you think there is something unwanted happened regarding the database or you want to reset sample data, you can repeat step 6. This will delete all the tables and reconstruct them.
+
+## Requirements for the app and the ui to work properly:
+This project uses JDK version 22 and the corresponding JavaFX version. We developed this project as a Maven project on the IntelliJ IDEA. The app runs properly in IntelliJ IDEA while other IDEs are not tested.
+UI works best on a 1920x1080 screen.
+(is there any another thing to mention?)
