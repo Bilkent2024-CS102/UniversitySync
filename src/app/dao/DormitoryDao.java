@@ -1,6 +1,5 @@
 package app.dao;
 
-import app.model.Campus;
 import app.model.location.Dormitory;
 import app.model.location.Room;
 
@@ -28,7 +27,8 @@ public class DormitoryDao {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
-                Dormitory dorm = new Dormitory(resultSet.getInt("dormitory_location_id"), null, resultSet.getString("link_to_dormitory_picture"),
+                Dormitory dorm = new Dormitory(resultSet.getInt("dormitory_location_id"),
+                        null, resultSet.getString("link_to_dormitory_picture"),
                         resultSet.getString("dorm_name"), resultSet.getString("dorm_description"),
                         0, CampusDao.getCampusById(resultSet.getInt("dormitory_in_campus_id")), null);
                 dorm.setReviews(ReviewDao.getReviewsOf(dorm.getLocationId()));
@@ -52,7 +52,8 @@ public class DormitoryDao {
      * @return An ArrayList containing all Dormitory instances.
      */
     public static ArrayList<Dormitory> getAllDormitoriesByRating(){
-        String query = "SELECT d.* FROM university_sync.dormitory d ORDER BY (SELECT AVG(rating_given) AS avg_rating FROM university_sync.review WHERE review_to_location_id = d.dormitory_location_id) DESC;";
+        String query = "SELECT d.* FROM university_sync.dormitory d ORDER BY (SELECT AVG(rating_given) AS avg_rating " +
+                "FROM university_sync.review WHERE review_to_location_id = d.dormitory_location_id) DESC;";
         ArrayList<Dormitory> dormitories = new ArrayList<>();
 
         try{
@@ -96,7 +97,7 @@ public class DormitoryDao {
             dorm = new Dormitory(resultSet.getInt("dormitory_location_id"),
                     null,
                     resultSet.getString("link_to_dormitory_picture"),
-                        resultSet.getString("dorm_name"),
+                    resultSet.getString("dorm_name"),
                     resultSet.getString("dorm_description"),
                     0, CampusDao.getCampusById(resultSet.getInt("dormitory_in_campus_id")),
                     null);
@@ -127,8 +128,9 @@ public class DormitoryDao {
             pst.setInt(1, dormId);
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
-                Room roomType = new Room(resultSet.getInt("room_type_id"), resultSet.getInt("capacity"), resultSet.getBoolean("is_bunk"),
-                        resultSet.getBoolean("has_private_bathroom"), resultSet.getString("room_type_description"), dormId);
+                Room roomType = new Room(resultSet.getInt("room_type_id"), resultSet.getInt("capacity"),
+                        resultSet.getBoolean("is_bunk"), resultSet.getBoolean("has_private_bathroom"),
+                        resultSet.getString("room_type_description"), dormId);
                 rooms.add(roomType);
             }
             resultSet.close();
@@ -156,8 +158,9 @@ public class DormitoryDao {
             ResultSet resultSet = pst.executeQuery();
             Room room;
             resultSet.next();
-            room = new Room(resultSet.getInt("room_type_id"), resultSet.getInt("capacity"), resultSet.getBoolean("is_bunk"),
-                    resultSet.getBoolean("has_private_bathroom"), resultSet.getString("room_type_description"), resultSet.getInt("room_in_dormitory_id"));
+            room = new Room(resultSet.getInt("room_type_id"), resultSet.getInt("capacity"),
+                    resultSet.getBoolean("is_bunk"), resultSet.getBoolean("has_private_bathroom"),
+                    resultSet.getString("room_type_description"), resultSet.getInt("room_in_dormitory_id"));
             resultSet.close();
             pst.close();
             return room;

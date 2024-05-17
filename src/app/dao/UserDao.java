@@ -21,7 +21,8 @@ public class UserDao {
      */
     public static int addUser(User u){
         try{
-            String query = "INSERT INTO university_sync.student (full_name, email, pass, student_major, student_room_type_id) VALUES (?, ? ,?, ?, ?);";
+            String query = "INSERT INTO university_sync.student " +
+                    "(full_name, email, pass, student_major, student_room_type_id) VALUES (?, ? ,?, ?, ?);";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setString(1, u.getName());
             pst.setString(2, u.getEmail());
@@ -167,7 +168,8 @@ public class UserDao {
             while (resultSet.next()) {
                 User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
                         resultSet.getString("email"), resultSet.getString("pass"),
-                        resultSet.getString("student_major"), resultSet.getString("biography"), resultSet.getInt("student_room_type_id"));
+                        resultSet.getString("student_major"), resultSet.getString("biography"),
+                        resultSet.getInt("student_room_type_id"));
                 students.add(u);
             }
             resultSet.close();
@@ -198,7 +200,8 @@ public class UserDao {
             resultSet.next();
             User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
                     resultSet.getString("email"), resultSet.getString("pass"),
-                    resultSet.getString("student_major"), resultSet.getString("biography"), resultSet.getInt("student_room_type_id"));
+                    resultSet.getString("student_major"), resultSet.getString("biography"),
+                    resultSet.getInt("student_room_type_id"));
             return u;
         }
         catch (SQLException sqle)
@@ -252,13 +255,8 @@ public class UserDao {
         try{
             String query = "SELECT * FROM university_sync.student_friendship WHERE first_student_id = ? AND second_student_id = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-            int firstId = u1;
-            int secondId = u2;
-            if (firstId == secondId){
-                return false;
-            }
-            pst.setInt(1, Math.min(firstId, secondId));
-            pst.setInt(2, Math.max(firstId, secondId));
+            pst.setInt(1, Math.min(u1, u2));
+            pst.setInt(2, Math.max(u1, u2));
             ResultSet rs = pst.executeQuery();
             boolean isFriend = false;
             while (rs.next()){
@@ -309,7 +307,7 @@ public class UserDao {
      * Adds a friend request to the database.
      *
      * @param fr The friend request to be added.
-     * @return The ID of the newly added friend request, or -1 if an error occurred.
+     * @return true if request is added, false if the request shouldn't be added or an error occurs
      */
     public static boolean addFriendRequest(FriendRequest fr){
 
@@ -325,10 +323,6 @@ public class UserDao {
             pst.setInt(2, secondId);
             pst.executeUpdate();
 
-            Statement st = DBConnectionManager.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
-            rs.next();
-            int idOfNewFriendRequest = rs.getInt(1);
             return true;
 
         } catch (SQLException sqle) {
@@ -411,7 +405,8 @@ public class UserDao {
             resultSet.next();
             User u = new User(resultSet.getInt("student_id"), resultSet.getString("full_name"),
                     resultSet.getString("email"), resultSet.getString("pass"),
-                    resultSet.getString("student_major"), resultSet.getString("biography"), resultSet.getInt("student_room_type_id"));
+                    resultSet.getString("student_major"), resultSet.getString("biography"),
+                    resultSet.getInt("student_room_type_id"));
             return u;
         }
         catch (SQLException sqle)
@@ -421,6 +416,7 @@ public class UserDao {
     }
 
     /**
+     * @TESTED
      * adds a request to admin according to the field in the profile page
      * @param userId id of the user that submitted the request
      * @param text the text of the suggestion
@@ -444,8 +440,7 @@ public class UserDao {
     }
 
     /**
-     * TESTED
-     *
+     * @TESTED
      * Checks if a friend request exists between users
      * @param senderId id of the sender
      * @param receiverId id of the receiver
@@ -475,7 +470,7 @@ public class UserDao {
     }
 
     /**
-     * @return all the majors as arraylist
+     * @return all the majors in the database as arraylist
      */
     public static ArrayList<String> getMajors()
     {

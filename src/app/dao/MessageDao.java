@@ -5,13 +5,11 @@ import app.model.userContent.Message;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 /**
  * The MessageDao class provides methods for interacting with messages in the database.
@@ -31,7 +29,9 @@ public class MessageDao {
         int receiver = message.getReceiverId();
         String text = message.getMainText();
 
-        String query = "INSERT INTO university_sync.message (owner_student_id, receiver_student_id, creation_date, last_edit_date, main_text) VALUES (?, ? ,?, ?, ?);";
+        String query = "INSERT INTO university_sync.message" +
+                " (owner_student_id, receiver_student_id, creation_date, last_edit_date, main_text) " +
+                "VALUES (?, ? ,?, ?, ?);";
         try {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, sender);
@@ -56,37 +56,13 @@ public class MessageDao {
         }
     }
 
-//    public static ArrayList<Integer> getUserIdsMessagedWith(int userId){
-//        try
-//        {
-//            ArrayList<Integer> ids = new ArrayList<>();
-//            String query = "SELECT DISTINCT receiver_student_id FROM university_sync.message WHERE owner_student_id = ?";
-//            PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
-//            pst.setInt(1, userId);
-//            ResultSet resultSet = pst.executeQuery();
-//            while (resultSet.next())
-//            {
-//                ids.add(resultSet.getInt(1));
-//            }
-//
-//            query = "SELECT DISTINCT owner_student_id FROM university_sync.message WHERE receiver_student_id = ?";
-//            pst = DBConnectionManager.getConnection().prepareStatement(query);
-//            pst.setInt(1, userId);
-//            resultSet = pst.executeQuery();
-//            while (resultSet.next())
-//            {
-//                ids.add(resultSet.getInt(1));
-//            }
-//
-//            return ids;
-//        }
-//        catch (SQLException e)
-//        {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
 
+    /**
+     * @TESTED
+     * gets all user ids that is messaged with, ignoring duplicates
+     * @param userId
+     * @return ArrayList of ids
+     */
     public static ArrayList<Integer> getUserIdsMessagedWith(int userId) {
         try {
             ArrayList<Integer> ids = new ArrayList<>();

@@ -1,12 +1,9 @@
 package app.dao;
 
-import app.model.FriendRequest;
-import app.model.User;
 import app.model.userContent.post.EventPost;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class EventPostDao
 {
@@ -104,16 +101,6 @@ public class EventPostDao
     }
 
     /**
-     * MAYBE TODO.
-     * @param editedText is the new text.
-     * @return Whether the deletion was successful or not.
-     */
-    public static boolean editEvent(String editedText)
-    {
-        return false;
-    }
-
-    /**
      * @TESTED
      * Add a {@code User} instance as follower of an {@code EventPost}.
      * @param eventId id of the {@code EventPost}
@@ -122,7 +109,8 @@ public class EventPostDao
      */
     public static boolean addFollower(int eventId, int userId){
         try {
-            String query = "INSERT INTO university_sync.follow_event_post (followed_by_student_id, followed_event_post_id) VALUES (?, ?)";
+            String query = "INSERT INTO university_sync.follow_event_post (followed_by_student_id, followed_event_post_id)" +
+                    " VALUES (?, ?)";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
 
             pst.setInt(1, userId);
@@ -168,8 +156,9 @@ public class EventPostDao
             pst.setInt(1, ID);
             ResultSet rs = pst.executeQuery();
             rs.next();
-            EventPost u = new EventPost(rs.getInt("event_post_id"), rs.getInt("owner_student_id"), rs.getString("main_text"),
-                    rs.getDate("creation_date"), rs.getDate("last_edit_date"), rs.getString("heading"),
+            EventPost u = new EventPost(rs.getInt("event_post_id"), rs.getInt("owner_student_id"),
+                    rs.getString("main_text"), rs.getDate("creation_date"),
+                    rs.getDate("last_edit_date"), rs.getString("heading"),
                     rs.getString("location"), rs.getDate("event_date"));
             return u;
         }
@@ -192,7 +181,8 @@ public class EventPostDao
     {
         try
         {
-            String query = "SELECT followed_by_student_id FROM university_sync.follow_event_post WHERE followed_event_post_id = ? AND followed_by_student_id = ?;";
+            String query = "SELECT followed_by_student_id FROM university_sync.follow_event_post" +
+                    " WHERE followed_event_post_id = ? AND followed_by_student_id = ?;";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, eventId);
             pst.setInt(2, userId);
@@ -213,7 +203,7 @@ public class EventPostDao
     }
 
     /**
-     * @NOT TESTED
+     * @TESTED
      *
      * Returns event posts a specific user is following
      * @param userId id of the user

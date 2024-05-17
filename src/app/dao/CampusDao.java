@@ -1,7 +1,6 @@
 package app.dao;
 
 import app.model.Campus;
-import app.model.User;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

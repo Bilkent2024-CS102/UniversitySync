@@ -1,6 +1,5 @@
 package app.dao;
 
-import app.controller.SessionManager;
 import app.model.User;
 import app.model.userContent.Reply;
 import app.model.userContent.post.ForumPost;
@@ -164,7 +163,9 @@ public class ForumPostDao {
         int postId = comment.getPostId();
         ForumPost post = ForumPostDao.getPostById(postId);
         try {
-            String query = "INSERT INTO university_sync.reply (owner_student_id, creation_date, last_edit_date, main_text, replies_to_forum_post_id) VALUES (?,?,?,?,?)";
+            String query = "INSERT INTO university_sync.reply " +
+                    "(owner_student_id, creation_date, last_edit_date, main_text, replies_to_forum_post_id) " +
+                    "VALUES (?,?,?,?,?)";
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, comment.getOwnerId());
             pst.setTimestamp(2, new Timestamp(comment.getCreationDate().getTime()));
@@ -228,7 +229,6 @@ public class ForumPostDao {
                         rs.getTimestamp("last_edit_date"),
                         rs.getInt("replies_to_forum_post_id")
                 );
-                //r.setReplyId(rs.getInt("reply_id"));
                 result.add(r);
             }
             return result;
@@ -271,7 +271,6 @@ public class ForumPostDao {
             query = "DELETE FROM university_sync.forum_post WHERE forum_post_id = ?;";
             PreparedStatement ps = DBConnectionManager.getConnection().prepareStatement(query);
             ps.setInt(1, postId);
-            ResultSet rs = ps.getResultSet();
             ps.executeUpdate();
         }
         catch (SQLException sqle)
@@ -291,10 +290,12 @@ public class ForumPostDao {
      */
     public static boolean edit(int postId, String editedText)
     {
-        String query = "UPDATE university_sync.forum_post SET main_text='" + editedText + "' WHERE forum_post_id=" + postId;
+        String query = "UPDATE university_sync.forum_post SET main_text= ? WHERE forum_post_id= ?";
         try
         {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
+            pst.setString(1, editedText);
+            pst.setInt(2, postId);
             pst.executeUpdate();
             return true;
         }
@@ -342,7 +343,7 @@ public class ForumPostDao {
     }
 
     /**
-     * @NOT TESTED
+     * @TESTED
      * Returns the posts that were liked by user
      *
      * @param userId ID of the user whose liked posts to get
@@ -371,6 +372,7 @@ public class ForumPostDao {
     }
 
     /**
+     * @TESTED
      * Returns forum posts made by the user
      *
      * @param userId id of the user whose posts are to be pulled
@@ -407,6 +409,7 @@ public class ForumPostDao {
     }
 
     /**
+     * @TESTED
      * Returns forum posts made by the user's friends
      *
      * @param userId id of the user whose friends' posts are to be pulled

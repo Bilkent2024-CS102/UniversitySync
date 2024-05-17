@@ -1,4 +1,4 @@
-package app.dao; // TODO: be sure to correct this!
+package app.dao;
 
 import app.model.User;
 import app.model.location.Dormitory;

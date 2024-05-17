@@ -10,7 +10,7 @@ public class DormTransferPostDao {
     /**
      * @TESTED
      * Takes integer id and makes a 'SELECT' query.
-     * @param id
+     * @param id id of the dorm transfer post in the database
      * @return the DormTransferPost instance by given id from database.
      */
     public static DormTransferPost getPostById(int id)
@@ -125,7 +125,9 @@ public class DormTransferPostDao {
      */
     public static int addDormTransferPost(DormTransferPost post)
     {
-        String query = "INSERT INTO university_sync.dorm_transfer_post (owner_student_id, creation_date, last_edit_date, heading, main_text, posted_room_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO university_sync.dorm_transfer_post " +
+                "(owner_student_id, creation_date, last_edit_date, heading, main_text, posted_room_id) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             pst.setInt(1, post.getOwnerId());

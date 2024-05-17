@@ -1,12 +1,12 @@
 package app.dao;
 
-import app.model.location.Dormitory;
 import app.model.location.cafeteria.Cafeteria;
 import app.model.location.cafeteria.MenuItem;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 /**
@@ -28,10 +28,12 @@ public class CafeteriaDao {
             PreparedStatement pst = DBConnectionManager.getConnection().prepareStatement(query);
             ResultSet resultSet = pst.executeQuery();
             while (resultSet.next()) {
-                Cafeteria cafeteria = new Cafeteria(resultSet.getInt("cafeteria_location_id"), null, resultSet.getString("link_to_cafeteria_picture"),
+                Cafeteria cafe = new Cafeteria(resultSet.getInt("cafeteria_location_id"), null, resultSet.getString("link_to_cafeteria_picture"),
                         resultSet.getString("cafeteria_name"), resultSet.getString("cafeteria_description"), 0, null, null,
                         resultSet.getFloat("min_price"), resultSet.getFloat("max_price"));
-                cafeterias.add(cafeteria);
+                cafe.setReviews(ReviewDao.getReviewsOf(cafe.getLocationId()));
+                cafe.setItems(CafeteriaDao.getMenuItemsIn(cafe.getLocationId()));
+                cafeterias.add(cafe);
             }
             resultSet.close();
             pst.close();
@@ -112,7 +114,7 @@ public class CafeteriaDao {
     }
 
     /**
-     * TESTED
+     * @TESTED
      * Retrieves a cafeteria by its ID from the database.
      *
      * @param id The ID of the cafeteria to retrieve.
@@ -129,6 +131,8 @@ public class CafeteriaDao {
             cafe = new Cafeteria(resultSet.getInt("cafeteria_location_id"), null, resultSet.getString("link_to_Cafeteria_picture"),
                     resultSet.getString("cafeteria_name"), resultSet.getString("cafeteria_description"), 0, null, null,
                     resultSet.getFloat("min_price"), resultSet.getFloat("max_price"));
+            cafe.setReviews(ReviewDao.getReviewsOf(cafe.getLocationId()));
+            cafe.setItems(CafeteriaDao.getMenuItemsIn(cafe.getLocationId()));
             resultSet.close();
             pst.close();
             return cafe;
@@ -140,7 +144,7 @@ public class CafeteriaDao {
     }
 
     /**
-     * TESTED
+     * @TESTED
      * Retrieves menu items in a cafeteria from the database.
      *
      * @param cafeteriaId The ID of the cafeteria.
