@@ -31,9 +31,14 @@ This project uses a MySQL database hosted locally. To be able to run the program
 This project uses JDK version 22 and the corresponding JavaFX version. We developed this project as a Maven project on the IntelliJ IDEA. The app runs properly in IntelliJ IDEA while other IDEs are not tested (except VSC). We HIGHLY suggest you use IntelliJ, as VSC was tested to be very unreliable.
 UI works best on a 1920x1080 screen, but in case of display errors on Windows display scaling can be altered for the UI to work more fluently on other resolutions.
 
-## Dependencies:
-Maven v4.0.0
-JavaFX v22.0.1
-JDK v22
-MySQL Workbench v8.0.37
-MySQL Connector Java v8.0.33
+## Troubleshooting
+In IntelliJ if you encounter problems,
+1) Ensure that your source and target paths for the project are set correctly, src directory should be set as source and target directory should be set as target.
+2) Make sure no classes are excluded from the compiler.
+
+## Dependencies
+1) Maven
+2) JavaFX v22.0.1
+3) JDK v22
+4) MySQL Workbench v8.0.37
+5) MySQL Connector Java v8.0.33
