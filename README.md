@@ -13,9 +13,8 @@ You can find the text file for generating the whole UML diagram (uml.txt). To ac
 
 The current diagram is as follows:
 ![image](https://github.com/Bilkent2024-CS102/UniversitySync/assets/74462484/a7393158-4514-4c0d-9c43-e33cbf067b0e)
-(how the uml be in the final? from planttext or from auto generated uml by IntelliJ?)
 
-You can download and zoom it. But after we completely agree on the diagram, we can divide it into smaller parts for convenience.
+You can download and zoom it. Note that the image here is not the final version of the uml but rather a demonstration to how to display the uml.
 
 ## Requirements and steps for the database to work properly:
 This project uses a MySQL database hosted locally. To be able to run the program with the database, you need to do following:
@@ -31,4 +30,3 @@ This project uses a MySQL database hosted locally. To be able to run the program
 ## Requirements for the app and the ui to work properly:
 This project uses JDK version 22 and the corresponding JavaFX version. We developed this project as a Maven project on the IntelliJ IDEA. The app runs properly in IntelliJ IDEA while other IDEs are not tested.
 UI works best on a 1920x1080 screen.
-(is there any another thing to mention?)
