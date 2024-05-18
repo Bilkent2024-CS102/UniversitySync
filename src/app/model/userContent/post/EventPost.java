@@ -11,7 +11,6 @@ public class EventPost extends Post{
     Date eventDate;
     String importantInfo;
     ArrayList<User> followers;
-    int eventPostId;
 
     /**
      * the constructor that is used when event post is just created. this constructor inserts the event post to database and assigns

@@ -3,7 +3,6 @@ package app.model.userContent;
 import java.util.Date;
 
 public abstract class UserContentItem {
-    private static int numberOfInstances;
     private int userContentItemId;
 
     private int ownerId;
@@ -49,10 +48,6 @@ public abstract class UserContentItem {
      * Getters
      * TODO add validation
      */
-    public static int getNumberOfInstances() {
-        return numberOfInstances;
-    }
-
     public Date getCreationDate() {
         return creationDate;
     }

@@ -2,7 +2,6 @@ package app.model;
 
 import java.util.ArrayList;
 
-import app.model.location.Room;
 import app.model.userContent.post.EventPost;
 import app.model.userContent.post.ForumPost;
 import app.model.userContent.post.Post;
@@ -11,14 +10,13 @@ import app.dao.UserDao;
 
 public class User {
 
-    private static int numberOfInstances;
     private int userId;
 
     private String name;
     private int roomId;
     private String email;
     private String password;
-    private String profilePicturePath; //What is Image class?
+    private String profilePicturePath;
     private String major;
     private String biography;
 
@@ -71,10 +69,6 @@ public class User {
     /*
      * Getters
      */
-    public static int getNumberOfInstances()
-    {
-        return numberOfInstances;
-    }
     public int getUserId() {
         return userId;
     }
@@ -169,8 +163,7 @@ public class User {
     {
         this.followedEvents = followedEvents;
     }
-    public void setPendingIncomingRequests(ArrayList<FriendRequest> pendingIncomingRequests)
-    {
+    public void setPendingIncomingRequests(ArrayList<FriendRequest> pendingIncomingRequests) {
         this.pendingIncomingRequests = pendingIncomingRequests;
     }
     public void setPendingRequests(ArrayList<FriendRequest> pendingRequests)

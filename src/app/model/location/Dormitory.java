@@ -8,8 +8,9 @@ import java.util.ArrayList;
 public class Dormitory extends Location{
     private ArrayList<Room> rooms;
 
-    public Dormitory (int id, ArrayList<Review> revs, String imagePath, String n, String desc, double rate, Campus c, ArrayList<Room> rooms){
-        super(id, revs, imagePath, n, desc, rate, c);
+    public Dormitory (int id, ArrayList<Review> revs, String imagePath,
+                      String name, String description, double rate, Campus campus, ArrayList<Room> rooms){
+        super(id, revs, imagePath, name, description, rate, campus);
         setRooms(rooms);
     }
     /*
