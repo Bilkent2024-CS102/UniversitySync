@@ -48,7 +48,7 @@ public class HomePageController implements Initializable
         posts = ForumPostDao.getForumPostsByRecency();
 
         try {
-            for(int i = 0; i < posts.size(); i++) {
+            for(int i = 0; i < 3; i++) {
                 fxmlLoader = new FXMLLoader(new File("src/app/view/Post.fxml").toURI().toURL());
                 Pane postPane = fxmlLoader.load();
                 PostController postController = fxmlLoader.getController();

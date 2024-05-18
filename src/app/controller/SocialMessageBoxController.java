@@ -64,7 +64,7 @@ public class SocialMessageBoxController {
                 HBox friendHBox = fxmlLoader.load();
 
                 SocialEachTextController eventController = fxmlLoader.getController();
-                eventController.setData(  textList.get(i) );
+                eventController.setData(textList.get(i) );
 
                 if(textList.get(i).getSenderId() == SessionManager.getCurrentUser().getUserId()) {
                     friendHBox.setTranslateX(350);
