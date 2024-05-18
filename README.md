@@ -1,5 +1,5 @@
 # UniversitySync
-Term project for CS102, Spring 2023-2024. Meeting dates and contents, along with general timestamps in development can be found under Meetings 3I.txt
+Term project for CS102, Spring 2023-2024. Meeting dates and contents, along with general time stamps in development can be found under Meetings 3I.txt
 ## IMPORTANT WARNING
 If you get some import or package errors double-check that the only source path is UniversitySync\src.
 You can do this by CTRL+SHIFT+P (Command palette), choose "Java: Configure Classpath" and change it to UniversitySync\src ONLY and "Apply Settings" below.
@@ -12,7 +12,7 @@ You can find the text file for generating the whole UML diagram (uml.txt). To ac
 ![image](https://github.com/Bilkent2024-CS102/UniversitySync/assets/74462484/4b75ca16-7f44-43be-ad8c-9a13b1c79e7d)
 
 The current diagram is as follows:
-![image](https://github.com/Bilkent2024-CS102/UniversitySync/assets/74462484/a7393158-4514-4c0d-9c43-e33cbf067b0e)
+![image](https://github.com/Bilkent2024-CS102/UniversitySync/blob/main/uml.png)
 
 You can download and zoom it. Note that the image here is not the final version of the uml but rather a demonstration to how to display the uml.
 
@@ -24,9 +24,9 @@ This project uses a MySQL database hosted locally. To be able to run the program
 4) Connect to server using that connection, save your password to vault if you choose so.
 5) Click 'Open a SQL script file' option and open both 'Final Data Set.sql' and 'createInitialDatabaseTables.sql'.
 6) Run first createInitialDatabaseTables and then Final Data Set. Do it only once, not before everytime before running the project code.
-7) Open the project code, and in the HomePage.java file main method, change 'password' variable to your own MySQL password.
+7) Open the project code, and in the HomePage.java file (located in src\app\controller\) main method, change 'password' variable to your own MySQL password.
 8) In case you think there is something unwanted happened regarding the database or you want to reset sample data, you can repeat step 6. This will delete all the tables and reconstruct them.
 
 ## Requirements for the app and the ui to work properly:
 This project uses JDK version 22 and the corresponding JavaFX version. We developed this project as a Maven project on the IntelliJ IDEA. The app runs properly in IntelliJ IDEA while other IDEs are not tested.
-UI works best on a 1920x1080 screen.
+UI works best on a 1920x1080 screen, but in case of display errors on Windows display scaling can be altered for the UI to work more fluently.
