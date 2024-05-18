@@ -104,7 +104,7 @@
                            <children>
                               <Pane prefHeight="387.0" prefWidth="1266.0" style="-fx-background-color: lightblue; -fx-background-radius: 20;">
                                  <children>
-                                    <TextArea fx:id="reviewText" layoutX="72.0" layoutY="96.0" prefHeight="193.0" prefWidth="1150.0" promptText="write your review">
+                                    <TextArea fx:id="reviewText" layoutX="72.0" layoutY="96.0" prefHeight="193.0" prefWidth="1150.0" promptText="Write your review">
                                        <font>
                                           <Font size="35.0" />
                                        </font>

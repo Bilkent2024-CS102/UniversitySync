@@ -25,7 +25,7 @@
                <Insets top="10.0" />
             </VBox.margin>
          </Label>
-         <TextArea fx:id="contactUsTextInput" prefHeight="394.0" prefWidth="1031.0" promptText="wrire your message here" wrapText="true">
+         <TextArea fx:id="contactUsTextInput" prefHeight="394.0" prefWidth="1031.0" promptText="Write your message here" wrapText="true">
             <VBox.margin>
                <Insets left="100.0" right="100.0" top="30.0" />
             </VBox.margin>

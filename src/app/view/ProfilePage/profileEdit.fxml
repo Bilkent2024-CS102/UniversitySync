@@ -57,7 +57,7 @@
                            <Font name="PT Serif Bold" size="24.0" />
                         </font>
                      </Label>
-                     <TextField fx:id="firstNameTextField" prefHeight="40.0" prefWidth="419.0" promptText="first name">
+                     <TextField fx:id="firstNameTextField" prefHeight="40.0" prefWidth="419.0" promptText="First Name">
                         <VBox.margin>
                            <Insets bottom="10.0" left="15.0" right="180.0" />
                         </VBox.margin>
@@ -73,7 +73,7 @@
                            <Insets bottom="10.0" top="15.0" />
                         </VBox.margin>
                      </Label>
-                     <TextField fx:id="lastNameTextField" prefHeight="40.0" prefWidth="396.0" promptText="last name">
+                     <TextField fx:id="lastNameTextField" prefHeight="40.0" prefWidth="396.0" promptText="Last Name">
                         <VBox.margin>
                            <Insets bottom="10.0" left="15.0" right="180.0" />
                         </VBox.margin>
@@ -89,7 +89,7 @@
                            <Insets bottom="10.0" top="15.0" />
                         </VBox.margin>
                      </Label>
-                     <PasswordField fx:id="oldPassTextField" prefHeight="40.0" prefWidth="396.0" promptText="old password">
+                     <PasswordField fx:id="oldPassTextField" prefHeight="40.0" prefWidth="396.0" promptText="Old Password">
                         <VBox.margin>
                            <Insets bottom="10.0" left="15.0" right="180.0" />
                         </VBox.margin>
@@ -105,7 +105,7 @@
                            <Insets bottom="10.0" top="15.0" />
                         </VBox.margin>
                      </Label>
-                     <PasswordField fx:id="newPassTextField" prefHeight="40.0" prefWidth="396.0" promptText="new password">
+                     <PasswordField fx:id="newPassTextField" prefHeight="40.0" prefWidth="396.0" promptText="New Password">
                         <VBox.margin>
                            <Insets bottom="10.0" left="15.0" right="180.0" />
                         </VBox.margin>
@@ -121,7 +121,7 @@
                            <Insets bottom="10.0" top="15.0" />
                         </VBox.margin>
                      </Label>
-                     <PasswordField fx:id="confirmPassTextField" prefHeight="40.0" prefWidth="396.0" promptText="new password">
+                     <PasswordField fx:id="confirmPassTextField" prefHeight="40.0" prefWidth="396.0" promptText="Confirm New Password">
                         <VBox.margin>
                            <Insets left="15.0" right="180.0" />
                         </VBox.margin>
@@ -141,7 +141,7 @@
                            <Insets bottom="15.0" top="130.0" />
                         </VBox.margin>
                      </Label>
-                     <TextArea fx:id="descriptionTextField" prefHeight="281.0" prefWidth="611.0" promptText="write your description here" text="Hello I am a first year undergraduate in Bilkent University. I am currently studying computer science. &#10;" wrapText="true">
+                     <TextArea fx:id="descriptionTextField" prefHeight="281.0" prefWidth="611.0" promptText="Write your description here" wrapText="true">
                         <font>
                            <Font size="18.0" />
                         </font>
