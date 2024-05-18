@@ -1,16 +1,11 @@
 package app.controller;
 
-import app.dao.UserDao;
 import app.model.userContent.post.EventPost;
 import app.dao.EventPostDao;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
-
-import java.io.IOException;
 
 public class EventController {
     EventPost post;
@@ -23,8 +18,6 @@ public class EventController {
 
     public void setData(EventPost event)
     {
-        // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
-        // userImageOnPostID.setImage(image);
         post = event;
         eventTexArea_ID.setText(event.getMainText());
         eventTexArea_ID.setEditable(false);
@@ -45,7 +38,6 @@ public class EventController {
         if (eventFollowButton_ID.getText().equals("Follow")) {
             eventFollowButton_ID.setText("Unfollow");
             EventPostDao.addFollower(post.getUserContentItemId(), SessionManager.getCurrentUser().getUserId());
-            // eventTexArea_ID.setText( eventTexArea_ID.getText() + "\n You are now following.");
         }
         else {
             eventFollowButton_ID.setText("Follow");

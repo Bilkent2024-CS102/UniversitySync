@@ -1,7 +1,5 @@
 package app.controller;
 
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -28,7 +26,6 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
-
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
@@ -48,7 +45,7 @@ public class LoginController {
         String email = emailField.getText();
         String password = passwordField.getText();
 
-        if (UserDao.authenticate(email, password)) // need method to validate email and password
+        if (UserDao.authenticate(email, password))
         {
             User currentUser = UserDao.getUserByEmail(email);
             SessionManager.setCurrentUser(currentUser);

@@ -11,15 +11,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
-public class profileEditController {
+public class ProfileEditController {
+
+    private Stage stage;
+    private Scene scene;
+    private FXMLLoader fxmlLoader;
+
     @FXML
     private TextField firstNameTextField;
     @FXML
@@ -32,10 +32,6 @@ public class profileEditController {
     private PasswordField confirmPassTextField;
     @FXML
     private TextArea descriptionTextField;
-
-    private Stage stage;
-    private Scene scene;
-    private FXMLLoader fxmlLoader;
 
     public void updateUser(ActionEvent event) throws IOException {
         String firstName = firstNameTextField.getText();
@@ -77,7 +73,7 @@ public class profileEditController {
             alert.showAndWait();
         }
 
-        if(valid){
+        if (valid) {
             UserDao.updateUser(current);
             refresh(event);
             firstNameTextField.clear();
@@ -110,10 +106,6 @@ public class profileEditController {
     }
 
     public void refresh(ActionEvent event) throws IOException {
-//        switchToFXML("src/app/view/ProfilePage/profile_LEFT_DISPLAY.fxml", event);
         switchToFXML("src/app/view/ProfilePage/profileMyPost.fxml", event);
     }
-
-
 }
-

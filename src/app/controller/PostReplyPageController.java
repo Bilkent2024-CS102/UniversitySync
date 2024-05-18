@@ -36,12 +36,11 @@ public class PostReplyPageController {
 
     @FXML
     private VBox postReplyVBox_ID = new VBox();
-    private List<Reply> postReviewMock;
-    private ForumPost thisPost;
-
     @FXML
     private TextArea reviewText_ID;
 
+    private List<Reply> postReviewMock;
+    private ForumPost thisPost;
 
     public void setData(ForumPost post)
     {
@@ -63,18 +62,14 @@ public class PostReplyPageController {
         }
     }
 
-
     public void switchToLastPage_ID(ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File("src/app/view/Homepage.fxml").toURI().toURL());
         Parent root = fxmlLoader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-         stage.setFullScreen(true);
+        stage.setFullScreen(true);
         stage.show();
-    }
-
-    public void seeAttachedFiles(ActionEvent event) {
     }
 
     public void addReview(ActionEvent event) {

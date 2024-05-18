@@ -1,9 +1,7 @@
 package app.controller;
 
 import app.dao.DormTransferPostDao;
-import app.dao.DormitoryDao;
 import app.model.userContent.post.DormTransferPost;
-import app.model.userContent.post.ForumPost;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +20,6 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -37,24 +34,22 @@ public class DormitoryPostingPageController implements Initializable{
     @FXML
     private VBox dormitoryPostingPageVbox_ID = new VBox();
     @FXML
-    private Button makePostButton;
-    @FXML
     private TextField headerField;
     @FXML
     private TextArea postMessageArea;
-    private List<DormTransferPost> dtps;
+
+    private List<DormTransferPost> posts;
 
     public void initialize(URL location, ResourceBundle resources) {
-        dtps = DormTransferPostDao.getAllPosts();
+        posts = DormTransferPostDao.getAllPosts();
 
         try {
-            for(int i = 0; i < dtps.size(); i++) {
+            for(int i = 0; i < posts.size(); i++) {
                 fxmlLoader = new FXMLLoader(new File("src/app/view/Dormitory/dormPosts.fxml").toURI().toURL());
-                Pane postPane = fxmlLoader.load();              //the pane that contains posts in the post fxml
+                Pane postPane = fxmlLoader.load();
                 DormitoryPostController dormController = fxmlLoader.getController();
                 //now setting data (username, text ...) for each post
-                dormController.setData(dtps.get(i));
-//              eventController.setRightEventTabController(this);
+                dormController.setData(posts.get(i));
                 dormitoryPostingPageVbox_ID.getChildren().add(postPane);  //now adding post (pane) to the vbox
             }
         } catch (IOException e) {
@@ -96,25 +91,6 @@ public class DormitoryPostingPageController implements Initializable{
         switchToFXML("src/app/view/Dormitory/dormitoryPostingPage.fxml", event);
     }
 
-    public void displayFilterPopup(ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(new File("src/app/view/Dormitory/dormFilterPopup.fxml").toURI().toURL());
-        Parent root = fxmlLoader.load();
-        Stage filterStage = new Stage();
-        filterStage.initModality(Modality.APPLICATION_MODAL);
-        filterStage.initStyle(StageStyle.UTILITY);
-        filterStage.setScene(new Scene(root));
-        filterStage.showAndWait();
-    }
-    public void addFilter(ActionEvent event) throws IOException {
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.close();
-    }
-
-    public void cancelFilter(ActionEvent event) throws IOException {
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.close();
-    }
-
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
         Parent root = fxmlLoader.load();
@@ -124,5 +100,4 @@ public class DormitoryPostingPageController implements Initializable{
         stage.setFullScreen(true);
         stage.show();
     }
-
 }

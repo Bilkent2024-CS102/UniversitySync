@@ -1,6 +1,5 @@
 package app.controller;
 
-import app.dao.MessageDao;
 import app.model.User;
 import app.model.userContent.Message;
 import javafx.event.ActionEvent;
@@ -15,7 +14,6 @@ public class MessagePopupController {
     private TextArea sendTextArea_ID;
 
     private User receiver;
-
 
     public void sendMessageButton(ActionEvent event) {
         String messageText = sendTextArea_ID.getText();
@@ -32,6 +30,4 @@ public class MessagePopupController {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();
     }
-
-
 }

@@ -22,6 +22,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SocialFriendReqUserController {
+
     @FXML
     private ImageView userImage_ID;
     @FXML
@@ -34,8 +35,6 @@ public class SocialFriendReqUserController {
     private User thisSender;
 
     public void setData(FriendRequest friendsMock) {
-//      Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
-//        userImage_ID.setImage(image);
         User senderUser = UserDao.getUserById(friendsMock.getSenderId());
         thisSender = senderUser;
         username_ID.setText("" + UserDao.getUserById(friendsMock.getSenderId()).getName());

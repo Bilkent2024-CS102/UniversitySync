@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class DormitoryDetailController {
+
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
@@ -35,13 +36,11 @@ public class DormitoryDetailController {
     @FXML
     private Label dormCampus_ID;
 
-
     public void setData(Dormitory dorm) {
 
         this.dorm = dorm;
-        dormName_ID.setText( dorm.getName());
-        //dormImage_ID.setImage( dorm.getDormImage().getImage());
-        dormDescription_ID.setText( dorm.getDescription());
+        dormName_ID.setText(dorm.getName());
+        dormDescription_ID.setText(dorm.getDescription());
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         String text = (dorm.getRating() < 0) ? ("No Reviews") : ("" + decimalFormat.format(dorm.getRating()));
         dormRateTextField_ID.setText(text);
@@ -70,9 +69,6 @@ public class DormitoryDetailController {
     }
 
     public void switchToReviews(MouseEvent event) throws IOException {
-        //suppose user clicks dorm 76, it will take it to dorm 76 detail page
         switchToFXML("src/app/view/ReviewPage.fxml", event);
     }
-
-
 }

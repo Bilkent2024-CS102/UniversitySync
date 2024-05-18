@@ -27,13 +27,8 @@ import java.io.IOException;
 
 public class SocialMyFriendsController {
 
-    //*******************************************************************************************************************
-    @FXML
-    private ImageView friendProfileImageID;
     @FXML
     private Label friendUsernameID;
-    @FXML
-    private Button messageButton;
     @FXML
     private Button unfriendButton;
 
@@ -44,10 +39,9 @@ public class SocialMyFriendsController {
     private Scene scene;
 
     public void setData(User friend) {
-//      Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
-//      friendProfileImageID.setImage(image);
         thisFriend = friend;
         friendUsernameID.setText(friend.getName());
+
         if (UserDao.isFriend(SessionManager.getCurrentUser().getUserId(), friend.getUserId()))
         {
             unfriendButton.setText("Unfriend");
@@ -57,8 +51,6 @@ public class SocialMyFriendsController {
             unfriendButton.setText("Add Friend");
         }
     }
-
-//*******************************************************************************************************************
 
     private void switchToFXML2(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
@@ -79,12 +71,7 @@ public class SocialMyFriendsController {
     }
 
     public void messageFriendButton (ActionEvent event) throws IOException {
-//       switchToMessages(event);
         messagePopUp(event);
-        // 2 Steps:
-                // Takes you to the all messages social page
-                // and opens the message pane of this particular user
-
     }
     public void unFriendButton (ActionEvent event) throws IOException {
         if (unfriendButton.getText().equals("Unfriend"))
@@ -107,10 +94,6 @@ public class SocialMyFriendsController {
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
-    }
-
-    public void switchToMessages(ActionEvent event) throws IOException {
-        switchToFXML("src/app/view/SocialPage/socialAllMessages.fxml", event);
     }
 
     public void refresh(ActionEvent event) throws IOException {

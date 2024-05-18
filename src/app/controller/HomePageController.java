@@ -39,9 +39,9 @@ public class HomePageController implements Initializable
     private FXMLLoader fxmlLoader;
     private static FXMLLoader fxmlLoader2;
 
-    // ******************************************************************* TEST ***************************************
     @FXML
     private VBox postVBoxID = new VBox();
+
     private List<ForumPost> posts;
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,7 +50,7 @@ public class HomePageController implements Initializable
         try {
             for(int i = 0; i < posts.size(); i++) {
                 fxmlLoader = new FXMLLoader(new File("src/app/view/Post.fxml").toURI().toURL());
-                Pane postPane = fxmlLoader.load();              //the pane that contains posts in the post fxml
+                Pane postPane = fxmlLoader.load();
                 PostController postController = fxmlLoader.getController();
                 //now setting data (username, text ...) for each post
                 postController.setData(posts.get(i));
@@ -62,7 +62,6 @@ public class HomePageController implements Initializable
     }
 
     public void refreshAndShowPosts(ActionEvent event) throws IOException {
-
         fxmlLoader = new FXMLLoader(new File("src/app/view/Homepage.fxml").toURI().toURL());
         Parent root = fxmlLoader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -72,8 +71,8 @@ public class HomePageController implements Initializable
         stage.show();
     }
 
+    // this method is used statically to bring back to the homepage and refresh posts (used when new ForumPost is created)
     public static void refresh(ActionEvent event) throws IOException {
-
         fxmlLoader2 = new FXMLLoader(new File("src/app/view/Homepage.fxml").toURI().toURL());
         Parent root = fxmlLoader2.load();
         stage2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -82,6 +81,4 @@ public class HomePageController implements Initializable
         stage2.setFullScreen(true);
         stage2.show();
     }
-
-
 }

@@ -1,13 +1,10 @@
 package app.controller;
-
 import app.dao.DBConnectionManager;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -25,9 +22,7 @@ public class HomePage extends Application {
     public static void main(String[] args) throws Exception {
         String url = "jdbc:mysql://localhost:3306/university_sync";
         String username = "root";
-
-        String password = "ben123**AA"; // TODO: type your own mysql server password here!
-
+        String password = "LkJhGfDs@10"; // TODO: type your own mysql server password here!
         DBConnectionManager.initializeConnection(url, username, password);
         launch();
     }

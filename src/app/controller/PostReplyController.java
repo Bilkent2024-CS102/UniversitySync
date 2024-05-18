@@ -17,19 +17,17 @@ import java.io.File;
 import java.io.IOException;
 
 public class PostReplyController {
+
     @FXML
     private TextArea postReplyTextArea_ID;
-
-    private Reply thisReply;
-
     @FXML
     private ImageView postReplyUserImage_ID;
-
     @FXML
     private Button deleteButton;
-
     @FXML
     private Label postReplyUsername_ID;
+
+    private Reply thisReply;
 
     public void deletePostReply(ActionEvent event) {
         System.out.println(thisReply.getUserContentItemId());
@@ -37,11 +35,6 @@ public class PostReplyController {
     }
 
     public void setData(Reply reply) {
-        // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
-        // userImageOnPostID.setImage(image);
-
-        //reviewPostImage_ID  ... s
-      //  postReplyUserImage_ID.setImage( reply.getReplyUserImage() );
         thisReply = reply;
         postReplyUsername_ID.setText(UserDao.getUserById(reply.getOwnerId()).getName());
         postReplyTextArea_ID.setText(reply.getMainText());

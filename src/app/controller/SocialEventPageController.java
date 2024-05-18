@@ -19,11 +19,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SocialEventPageController implements Initializable {
-    private Stage stage;
     private FXMLLoader fxmlLoader;
 
     @FXML
-    private HBox socialEventsHBox_ID;   //h box where we put our events
+    private HBox socialEventsHBox_ID;   //H box where we put our events
+
     private List<EventPost> eventMock;
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,20 +51,4 @@ public class SocialEventPageController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-
-//
-//    private List<EventMock> followedEventData() {
-//        List<EventMock> ls = new ArrayList<>();
-//        EventMock event1 = new EventMock();
-//        event1.setEventTitle("Mars Event 0A-3X");
-//        event1.setEventText("A new event where all the famous musicians around the world are gonna dance and go to Mars together \n date: 2-2-3033");
-//        ls.add(event1);
-//
-//        EventMock event2 = new EventMock();
-//        event2.setEventTitle("Nep-Earth p4");
-//        event2.setEventText("Location: planet Neptune \n Time: who cares \n Please Planet Earth do come to the event" );
-//        ls.add(event2);
-//        return ls;
-//        // return ForumPostDao.getPostsByRecency();
-//    }
 }

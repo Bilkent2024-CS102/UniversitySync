@@ -1,6 +1,5 @@
 package app.controller;
 
-//import app.dao.UserDao;
 import app.model.FriendRequest;
 import app.model.User;
 import app.dao.UserDao;
@@ -21,10 +20,11 @@ import java.util.ResourceBundle;
 
 public class SocialFriendReqPageController implements Initializable {
     private FXMLLoader fxmlLoader;
+
     @FXML
     private VBox friendReqVBox_ID;
-    private List<FriendRequest> friendsMocks;
 
+    private List<FriendRequest> friendsMocks;
 
     public void initialize(URL location, ResourceBundle resources) {
         friendsMocks = UserDao.getFriendRequestsTo(SessionManager.getCurrentUser().getUserId());
@@ -41,6 +41,4 @@ public class SocialFriendReqPageController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-
-
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="820.0" prefWidth="469.0" style="-fx-background-color: #67B2B7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.profileDisplayController">
+<Pane prefHeight="820.0" prefWidth="469.0" style="-fx-background-color: #67B2B7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ProfileDisplayController">
    <children>
       <VBox alignment="CENTER" prefHeight="820.0" prefWidth="468.0" spacing="25.0">
          <children>

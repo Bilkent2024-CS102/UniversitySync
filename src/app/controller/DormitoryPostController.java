@@ -1,5 +1,4 @@
 package app.controller;
-import app.dao.CampusDao;
 import app.dao.DormitoryDao;
 import app.dao.UserDao;
 import app.model.userContent.post.DormTransferPost;
@@ -21,12 +20,11 @@ import javafx.stage.StageStyle;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-//import com.mysql.cj.Session;
 
 
 public class DormitoryPostController {
 
-    private DormTransferPost dtp;
+    private DormTransferPost thisDormPost;
 
     @FXML
     private Label dormPostUsernameID;
@@ -53,7 +51,7 @@ public class DormitoryPostController {
 
     public void setData(DormTransferPost dtp) {
 
-        this.dtp = dtp;
+        this.thisDormPost = dtp;
         dormPostHeading.setText(dtp.getHeading());
         dormPostDormID.setText("" + DormitoryDao.getDormitoryById(DormitoryDao.getRoomTypeById(dtp.getRoomId()).getDormId()).getName());
         dormPostUsernameID.setText(UserDao.getUserById(dtp.getOwnerId()).getName());
@@ -81,7 +79,7 @@ public class DormitoryPostController {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
         Parent root = fxmlLoader.load();
         MessagePopupController newController = fxmlLoader.getController();
-        newController.setData(UserDao.getUserById(dtp.getOwnerId()));
+        newController.setData(UserDao.getUserById(thisDormPost.getOwnerId()));
         // Create a new stage for the filter screen
         Stage filterStage = new Stage();
         filterStage.initModality(Modality.APPLICATION_MODAL); // Make it modal
@@ -92,7 +90,6 @@ public class DormitoryPostController {
     }
 
     public void messageUser(ActionEvent event) throws IOException {
-        //showMessageScreen(thisPost.getOwnerId());
         switchToFXML2("src/app/view/MessagePopup.fxml", event);
     }
 

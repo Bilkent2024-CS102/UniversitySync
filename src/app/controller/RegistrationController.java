@@ -46,7 +46,6 @@ public class RegistrationController implements Initializable {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
-    UserDao userDao = new UserDao();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -107,7 +106,6 @@ public class RegistrationController implements Initializable {
         else if (isPasswordValid(password, repeatPassword) && validateInputs(name, email, password, repeatPassword))
         {
             User newUser = new User(name, email, password, major, "", roomType); //initially 0 as roomId indicating no room
-
             switchToFXML("src/app/view/LoginPage.fxml", e); // need to replace null with login page's fxml path
         }
         else
@@ -127,9 +125,6 @@ public class RegistrationController implements Initializable {
         if (!email.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}")) {
             return false;
         }
-        /*if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")) {
-            return false;
-        }*/
         if (!password.equals(confirmPassword)) {
             return false;
         }
@@ -142,12 +137,7 @@ public class RegistrationController implements Initializable {
         return u != null;
     }
 
-    public void registerButton(ActionEvent event) {
-    }
-
     public void takeToLoginPage(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/LoginPage.fxml", event);
     }
-
-
 }

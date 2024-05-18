@@ -22,24 +22,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-//import com.mysql.cj.Session;
-
 
 public class ReviewPageController {
-    private Stage stage;
     private FXMLLoader fxmlLoader;
 
     @FXML
     private VBox reviewVBox_ID = new VBox();
-    private List<Review> reviews;
-
     @FXML
     private TextArea reviewText;
     @FXML
     private TextField reviewRating;
     @FXML
     private Button postReviewButton;
-
     @FXML
     private Label locationNameLabel;
     @FXML
@@ -51,9 +45,8 @@ public class ReviewPageController {
     @FXML
     private ImageView pictureInReviews;
 
-
     private Location location;
-
+    private List<Review> reviews;
 
     public void setData(Location loc) {
         this.location = loc;
@@ -74,10 +67,7 @@ public class ReviewPageController {
         reviews = ReviewDao.getReviewsOf(loc.getLocationId());
 
         reviewCountLabel.setText(reviews.size() + " Reviews");
-        if (loc.getRating() < 0)
-        {
-            ratingLabel.setText("No reviews");
-        }
+        if (loc.getRating() < 0) {ratingLabel.setText("No reviews");}
         else
         {
             DecimalFormat decimalFormat = new DecimalFormat("0.00");
@@ -87,7 +77,7 @@ public class ReviewPageController {
         try {
             for(int i = reviews.size() - 1; i >= 0; i--) {
                 fxmlLoader = new FXMLLoader(new File("src/app/view/reviewPost.fxml").toURI().toURL());
-                VBox vbox = fxmlLoader.load();              //the pane that contains posts in the post fxml
+                VBox vbox = fxmlLoader.load();
                 ReviewPostController eventController = fxmlLoader.getController();
                 //now setting data (username, text ...) for each post
                 eventController.setData(reviews.get(i), location);

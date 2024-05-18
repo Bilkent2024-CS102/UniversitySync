@@ -20,7 +20,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -35,27 +34,23 @@ public class ForumController implements Initializable {
 
     @FXML
     private VBox forumVBoxID = new VBox();
-    private ArrayList<ForumPost> posts;
-
     @FXML
     private TextField titleField;
     @FXML
     private TextArea postTextArea;
-
     @FXML
     private Button switchPostsButton;
-    @FXML
-    private Button makePostButton;
-    
+
+    private ArrayList<ForumPost> posts;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
         posts = ForumPostDao.getForumPostsByRecency();
+
         try {
             for(int i = 0; i < posts.size(); i++) {
                 fxmlLoader = new FXMLLoader(new File("src/app/view/Post.fxml").toURI().toURL());
-                Pane postPane = fxmlLoader.load();              //the pane that contains posts in the post fxml
+                Pane postPane = fxmlLoader.load();
                 PostController postController = fxmlLoader.getController();
                 //now setting data (username, text ...) for each post
                 postController.setData(posts.get(i));
@@ -82,10 +77,11 @@ public class ForumController implements Initializable {
             switchPostsButton.setText("Friends' posts");
             posts = ForumPostDao.getForumPostsByRecency();
             forumVBoxID.getChildren().clear();
+
             try {
                 for(int i = 0; i < posts.size(); i++) {
                     fxmlLoader = new FXMLLoader(new File("src/app/view/Post.fxml").toURI().toURL());
-                    Pane postPane = fxmlLoader.load();              //the pane that contains posts in the post fxml
+                    Pane postPane = fxmlLoader.load();
                     PostController postController = fxmlLoader.getController();
                     //now setting data (username, text ...) for each post
                     postController.setData(posts.get(i));
@@ -100,10 +96,11 @@ public class ForumController implements Initializable {
             switchPostsButton.setText("All posts");
             posts = ForumPostDao.getForumPostsOfFriends(SessionManager.getCurrentUser().getUserId());
             forumVBoxID.getChildren().clear();
+
             try {
                 for(int i = 0; i < posts.size(); i++) {
                     fxmlLoader = new FXMLLoader(new File("src/app/view/Post.fxml").toURI().toURL());
-                    Pane postPane = fxmlLoader.load();              //the pane that contains posts in the post fxml
+                    Pane postPane = fxmlLoader.load();
                     PostController postController = fxmlLoader.getController();
                     //now setting data (username, text ...) for each post
                     postController.setData(posts.get(i));
@@ -138,8 +135,6 @@ public class ForumController implements Initializable {
         alert.setTitle("Post created succesfully!");
         alert.initOwner((Stage) ((Button) event.getSource()).getScene().getWindow());
         alert.showAndWait();
-
-
 
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         refresh(event);

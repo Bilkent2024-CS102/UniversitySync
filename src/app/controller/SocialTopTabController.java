@@ -26,20 +26,14 @@ public class SocialTopTabController {
     }
     public void switchToMyFriends(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/SocialPage/socialMyFriends.fxml", event);
-        //social_myFriendsID.setBackground(Color.RED);
     }
     public void switchToAllMessages(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/SocialPage/socialAllMessages.fxml", event);
-//       social_allMessagesID
     }
     public void switchToEvents(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/SocialPage/socialEventsPage.fxml", event);
-//        social_allMessagesID
     }
     public void switchToFriendRequests(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/SocialPage/socialFriendRequest.fxml", event);
-//        social_friendRequestID
     }
-
-
 }

@@ -1,6 +1,5 @@
 package app.controller;
 
-
 import app.dao.EventPostDao;
 import app.model.User;
 import app.model.userContent.post.EventPost;
@@ -16,7 +15,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-
 
 public class SocialEventController {
 
@@ -47,6 +45,7 @@ public class SocialEventController {
         stage.setFullScreen(true);     //it should be after stage.setScene
         stage.show();
     }
+
     public void refresh(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/SocialPage/socialEventsPage.fxml", event);
     }

@@ -7,25 +7,19 @@ import app.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class otherUserProfileDisplayController {
-    private User profileUser;
+public class OtherUserProfileDisplayController {
+
     @FXML
     private Label nameLabel;
     @FXML
@@ -34,24 +28,20 @@ public class otherUserProfileDisplayController {
     private Label emailLabel;
     @FXML
     private Label dormLabel;
-//    @FXML
-//    private Label descriptionLabel;
     @FXML
     private TextArea descriptionArea;
-    @FXML
-    private Button messageButton;
     @FXML
     private Button unfriendButton;
 
     private FXMLLoader fxmlLoader;
+    private User profileUser;
 
     public void setData(User searchedUser) {
-//        System.out.println(SessionManager.getCurrentUser().getUserId());
         profileUser = searchedUser;
         nameLabel.setText(searchedUser.getName());
-//        usernamenameLabel.setText(SessionManager.getCurrentUser().getUsername());
         majorLabel.setText(searchedUser.getMajor());
         emailLabel.setText(searchedUser.getEmail());
+
         if (searchedUser.getRoomId() != 0)
         {
             dormLabel.setText(DormitoryDao.getRoomTypeById(searchedUser.getRoomId()).getDescription());
@@ -60,24 +50,17 @@ public class otherUserProfileDisplayController {
         {
             dormLabel.setText("");
         }
+
         descriptionArea.setText(searchedUser.getBiography());
         descriptionArea.setEditable(false);
+
         if (UserDao.isFriend(SessionManager.getCurrentUser().getUserId(), profileUser.getUserId()))
-        {
-            unfriendButton.setText("Unfriend");
-        }
+        {unfriendButton.setText("Unfriend");}
         else if (UserDao.friendRequestExist(SessionManager.getCurrentUser().getUserId(), profileUser.getUserId()))
-        {
-            unfriendButton.setText("Cancel Request");
-        }
+        {unfriendButton.setText("Cancel Request");}
         else if (UserDao.friendRequestExist(profileUser.getUserId(), SessionManager.getCurrentUser().getUserId()))
-        {
-            unfriendButton.setText("View Request");
-        }
-        else
-        {
-            unfriendButton.setText("Send Request");
-        }
+        {unfriendButton.setText("View Request");}
+        else {unfriendButton.setText("Send Request");}
     }
 
     public void messagePopUp(ActionEvent event) throws IOException {
@@ -98,11 +81,6 @@ public class otherUserProfileDisplayController {
         filterStage.showAndWait();
     }
 
-    public void messageUser(ActionEvent event) throws IOException {
-        //showMessageScreen(thisPost.getOwnerId());
-        switchToFXML2("src/app/view/MessagePopup.fxml", event);
-    }
-
     public void unfriendButtonClicked(ActionEvent event) throws IOException {
         boolean isFriend = UserDao.isFriend(SessionManager.getCurrentUser().getUserId(), profileUser.getUserId());
         if (unfriendButton.getText().equals("Unfriend"))
@@ -115,10 +93,7 @@ public class otherUserProfileDisplayController {
             UserDao.concludeFriendRequest(SessionManager.getCurrentUser().getUserId(), profileUser.getUserId(), false);
             unfriendButton.setText("Send Request");
         }
-        else if (unfriendButton.getText().equals("View Request"))
-        {
-            switchToSocialPage(event);
-        }
+        else if (unfriendButton.getText().equals("View Request")) {switchToSocialPage(event);}
         else
         {
             FriendRequest fr = new FriendRequest(SessionManager.getCurrentUser().getUserId(), profileUser.getUserId());

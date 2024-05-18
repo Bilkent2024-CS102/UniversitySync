@@ -1,14 +1,9 @@
 package app.controller;
 
-//import app.dao.UserDao;
-//import app.model.User;
-//import app.model.userContent.post.ForumPost;
 import app.dao.ForumPostDao;
 import app.dao.UserDao;
 import app.model.FriendRequest;
-import app.model.User;
 import app.model.userContent.post.ForumPost;
-import app.model.userContent.Reply;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,25 +13,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class PostController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
-    private ForumPost thisPost;
+    private FXMLLoader fxmlLoader2;
 
     @FXML
     private ImageView userImageOnPostID;
-    @FXML
-    private Label postUsernameID;
     @FXML
     private Button addFriendButtonID;
     @FXML
@@ -47,10 +37,6 @@ public class PostController {
     private Button messageButtonID;
     @FXML
     private TextArea postTextAreaID;
-    @FXML
-    private TextArea commentTextAreaID;
-    @FXML
-    private Button commentSendButtonID;
     @FXML
     private Button deleteButton;
     @FXML
@@ -63,6 +49,8 @@ public class PostController {
     private Label userName;
     @FXML
     private TextField postHeading;
+
+    private ForumPost thisPost;
 
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
@@ -96,16 +84,8 @@ public class PostController {
         filterStage.showAndWait();
     }
 
-
-    public void switchToPostReply(ActionEvent event) throws IOException {
-        //TODO: after pressing reply under post, this opens the reply page associated with that particular post
-        //TODO: UI > PostReply.fxml
-    }
-
-
     public void setData(ForumPost post)
     {
-        // Below works good.
         thisPost = post;
         userName.setText("" + UserDao.getUserById(post.getOwnerId()).getName());
         postTextAreaID.setText(post.getMainText());
@@ -116,30 +96,16 @@ public class PostController {
         postHeading.setEditable(false);
         postTextAreaID.setEditable(false);
 
-        // This part has some problems.
         boolean isLiked = ForumPostDao.isLikedByUser(SessionManager.getCurrentUser().getUserId(), post.getUserContentItemId());
-        if (isLiked)
-        {
-            likeButtonID.setText("Unlike");
-        }
+        if (isLiked) {likeButtonID.setText("Unlike");}
 
         boolean isFriend = UserDao.isFriend(SessionManager.getCurrentUser().getUserId(), thisPost.getOwnerId());
-        if (isFriend)
-        {
-            addFriendButtonID.setText("Unfriend");
-        }
+        if (isFriend) {addFriendButtonID.setText("Unfriend");}
         else if (UserDao.friendRequestExist(SessionManager.getCurrentUser().getUserId(), thisPost.getOwnerId()))
-        {
-            addFriendButtonID.setText("Cancel Request");
-        }
+        {addFriendButtonID.setText("Cancel Request");}
         else if (UserDao.friendRequestExist(thisPost.getOwnerId(), SessionManager.getCurrentUser().getUserId()))
-        {
-            addFriendButtonID.setText("View Request");
-        }
-        else
-        {
-            addFriendButtonID.setText("Send Request");
-        }
+        {addFriendButtonID.setText("View Request");}
+        else {addFriendButtonID.setText("Send Request");}
 
         if (post.getOwnerId() == SessionManager.getCurrentUser().getUserId())
         {
@@ -154,15 +120,9 @@ public class PostController {
             editButton.setDisable(true);
         }
 
-
         File file = new File("src/app/images/profilePictures/profilePicture" + post.getOwnerId() + ".png");
         Image image = new Image(file.toURI().toString());
         userImageOnPostID.setImage(image);
-    }
-
-    public void setData(Reply reply)
-    {
-
     }
 
     public void likeButton(ActionEvent e)
@@ -179,42 +139,11 @@ public class PostController {
         }
     }
 
-
-    // TODO for zaeem
     public void messageUser(ActionEvent event) throws IOException {
         switchToFXML2("src/app/view/MessagePopup.fxml", event);
     }
 
-
-    /**
-     * TODO for Zaeem
-     * This method should showCommentPane when comment button
-     * of the ForumPost instance is clicked.
-     */
-    public void showCommentPane(ActionEvent e)
-    {
-//        UI method for comment page
-
-        ArrayList<Reply> comments = ForumPostDao.getReplies(thisPost.getUserContentItemId());
-        // TODO: display comments and also a send button for
-//        Use a for loop to display all the comments in the new UI page
-        //  currentUser's comment.
-    }
-
-    public void submitComment(ActionEvent e)
-    {
-        String comment = commentTextAreaID.getText();
-        Reply reply = new Reply(SessionManager.getCurrentUser().getUserId(), comment, thisPost.getUserContentItemId());
-        ForumPostDao.addComment(reply);
-    }
-
-    public void returnBack(ActionEvent e)
-    {
-        // Load UI page of homepage
-    }
-
-    public void addFriendButton(ActionEvent e)
-    {
+    public void addFriendButton(ActionEvent e) throws IOException {
         boolean isFriend = UserDao.isFriend(SessionManager.getCurrentUser().getUserId(), thisPost.getOwnerId());
         if (addFriendButtonID.getText().equals("Unfriend"))
         {
@@ -226,10 +155,22 @@ public class PostController {
             UserDao.concludeFriendRequest(SessionManager.getCurrentUser().getUserId(), thisPost.getOwnerId(), false);
             addFriendButtonID.setText("Send Request");
         }
-        else if (addFriendButtonID.getText().equals("Accept OR Deny?"))
+        else if (addFriendButtonID.getText().equals("View Request"))
         {
-            // Change the UI to friend request page.
-            // UI part Zaeem.
+            String fxmlFileName = "src/app/view/SocialPage/socialFriendRequest.fxml";
+            fxmlLoader2 = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
+            Parent root = fxmlLoader2.load();
+
+            if (e.getSource() instanceof Node) {                                    //FOR Buttons
+                stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            }
+            else if (e.getSource() instanceof MenuItem menuItem)  {                 //FOR MenuButtons
+                stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+            }
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setFullScreen(true);     //it should be after stage.setScene
+            stage.show();
         }
         else
         {
@@ -246,7 +187,6 @@ public class PostController {
         alert.initOwner((Stage) ((Button) e.getSource()).getScene().getWindow());
         alert.showAndWait();
         ForumPostDao.delete(thisPost.getUserContentItemId());
-//        Alert confirm = new Alert(Alert.AlertType.INFORMATION, "Post deleted");
 
         try {
             HomePageController.refresh(e);
@@ -277,49 +217,4 @@ public class PostController {
 
         switchToFXML("src/app/view/PostReplyPage.fxml", event);
     }
-
-//    public void sendEdit(ActionEvent e)
-//    {
-//        // Below line accesses the post and the edited text
-//        // through its UI EditDialog component.
-//        ForumPost post = e.getSource().getForumPost();
-//        String editedText = e.getSource().getEditedText();
-//        ForumPostDao.edit(post,editedText);
-//    }
-//
-//    public void showEditDialog(ForumPost post)
-//    {
-//        // Show edit dialog.
-//    }
-//
-//    /**
-//     * @TODO for Zaeem
-//     * This method should take the ArrayList of ForumPosts
-//     * and fill the fxml template displaying them for all
-//     * ForumPosts in the ArrayList.
-//     * Note: These components must have a getForumPost() method
-//     * to access the post object of which UI element is interacted
-//     * @see #likePost(ActionEvent)
-//     * @param posts
-//     */
-//    public void displayRecentPosts(ArrayList<ForumPost> posts)
-//    {
-//        for (ForumPost post1 : posts)
-//        {
-//            // Render FXML with info from post1.
-//        }
-//    }
-//
-//    /**
-//     * TODO for Zaeem and maybe some other guy.
-//     * This method should display messaging screen for given user.
-//     * @param user
-//     */
-//    public void showMessageScreen(int user)
-//    {
-//
-//    }
-
-
-
 }

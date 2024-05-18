@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class CafeteriaDetailController {
+
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
@@ -40,14 +41,13 @@ public class CafeteriaDetailController {
 
     public void setData(Cafeteria cafe) {
         thisCafeteria = cafe;
-        cafeName_ID.setText( cafe.getName());
-        //cafeImage_ID.setImage(cafe.getCafeImage().getImage());
+        cafeName_ID.setText(cafe.getName());
         cafeDescription_ID.setText(cafe.getDescription());
-        cafeMenuTextArea_ID.setText( cafe.getMenu());
+        cafeMenuTextArea_ID.setText(cafe.getMenu());
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         String text = (cafe.getRating() < 0) ? ("No Reviews") : ("" + decimalFormat.format(cafe.getRating()));
         cafeRateTextField_ID.setText(text);
-        cafePriceRange_ID.setText( cafe.getMinPrice() + "-" + cafe.getMaxPrice() + " TL");
+        cafePriceRange_ID.setText(cafe.getMinPrice() + "-" + cafe.getMaxPrice() + " TL");
 
         cafeDescription_ID.setEditable(false);
         cafeMenuTextArea_ID.setEditable(false);
@@ -65,8 +65,6 @@ public class CafeteriaDetailController {
 
         ReviewPageController detailController = fxmlLoader.getController();
         // setting/sending the data of that particular cafe button to cafe details page
-
-        ///////UNCOMMENT kARLO Neechai
         detailController.setData(thisCafeteria);
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

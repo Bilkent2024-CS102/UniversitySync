@@ -14,6 +14,7 @@ public class ProfileTopTabController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
+
     private void switchToFXML(String fxmlFileName, ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(new File(fxmlFileName).toURI().toURL());
         Parent root = fxmlLoader.load();
@@ -23,6 +24,7 @@ public class ProfileTopTabController {
         stage.setFullScreen(true);
         stage.show();
     }
+
     public void switchToMyPosts(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/ProfilePage/profileMyPost.fxml", event);
     }
@@ -35,5 +37,4 @@ public class ProfileTopTabController {
     public void switchToContactUs(ActionEvent event) throws IOException {
         switchToFXML("src/app/view/ProfilePage/profileContactUs.fxml", event);
     }
-
 }

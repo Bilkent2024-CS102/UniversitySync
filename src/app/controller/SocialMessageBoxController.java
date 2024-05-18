@@ -15,18 +15,18 @@ import java.io.IOException;
 import java.util.List;
 
 public class SocialMessageBoxController {
-    private FXMLLoader fxmlLoader;
+
     @FXML
     private VBox MessageBoxVBox_ID;
     @FXML
     private TextField typeMessageTextfield_ID;
 
-    private List<Message> textList;
+    private FXMLLoader fxmlLoader;
 
+    private List<Message> textList;
     private User associatedFriend;
 
 
-    //when you type your new message and press enter this method acts
     public void sendText(ActionEvent event) throws IOException {
         String text = typeMessageTextfield_ID.getText();
         typeMessageTextfield_ID.clear();
@@ -43,20 +43,14 @@ public class SocialMessageBoxController {
         SocialEachTextController eventController = fxmlLoader.getController();
         eventController.setData(message);
 
-        if(message.getSenderId() == SessionManager.getCurrentUser().getUserId()) {
-            friendHBox.setTranslateX(350);
-        }
-        else {
-            friendHBox.setTranslateX(30);
-        }
+        if(message.getSenderId() == SessionManager.getCurrentUser().getUserId()) {friendHBox.setTranslateX(350);}
+        else {friendHBox.setTranslateX(30);}
 
         //adds each message to the vBox
         MessageBoxVBox_ID.getChildren().add(friendHBox);
-
     }
 
     public void setData(User associatedFriend) {
-
         this.associatedFriend = associatedFriend;
 
         textList = MessageDao.getMessagesBetween(
@@ -75,15 +69,12 @@ public class SocialMessageBoxController {
                 if(textList.get(i).getSenderId() == SessionManager.getCurrentUser().getUserId()) {
                     friendHBox.setTranslateX(350);
                 }
-                else {
-                    friendHBox.setTranslateX(30);
-                }
+                else {friendHBox.setTranslateX(30);}
                 //adds each message to the vBox
                 MessageBoxVBox_ID.getChildren().add(friendHBox);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

@@ -1,6 +1,5 @@
 package app.controller;
 
-//import jakarta.persistence.criteria.CriteriaBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,16 +11,10 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -29,10 +22,9 @@ public class TopTabController implements Initializable {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
+
     @FXML
     private ImageView topImageIcon_ID;
-    @FXML
-    private MenuItem topTabUsername_ID;
     @FXML
     private MenuButton profileID;
 
@@ -50,8 +42,6 @@ public class TopTabController implements Initializable {
         stage.setScene(scene);
         stage.setFullScreen(true);     //it should be after stage.setScene
         stage.show();
-
-
     }
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -60,8 +50,6 @@ public class TopTabController implements Initializable {
         topImageIcon_ID.setImage(image);
 
         profileID.setText(SessionManager.getCurrentUser().getName());
-
-        //profileID.getItems().set(0, topTabUsername_ID);
     }
 
     public void switchToSocial(ActionEvent event) throws IOException {
@@ -74,7 +62,6 @@ public class TopTabController implements Initializable {
         switchToFXML("src/app/view/ProfilePage/profileMyPost.fxml", event);
     }
     public void switchToCafeteriaPage(ActionEvent event) throws IOException {
-        /*switchToFXML("CafeteriaPage/CafeInfo.fxml", event);*/
         switchToFXML("src/app/view/CafeteriaPage/CafeInfo.fxml", event);
     }
     public void switchToDormitoryPosting(ActionEvent event) throws IOException {
@@ -96,5 +83,4 @@ public class TopTabController implements Initializable {
         switchToFXML("src/app/view/LoginPage.fxml", event);
         SessionManager.setCurrentUser(null);
     }
-
 }

@@ -64,20 +64,17 @@ public class ReviewPostController {
     public void deleteMyReview(ActionEvent event) throws IOException {
         ReviewDao.removeReview(thisReview.getUserContentItemId());
         switchToHomePage(event);
-//        ReviewPageController.refresh(thisLocation);
     }
 
     public void setData(Review review, Location location) {
-        // Image image = new Image(getClass().getResourceAsStream(post.getProfileImageSrc()));
-        // userImageOnPostID.setImage(image);
-
-        //reviewPostImage_ID  ... s
         thisReview = review;
         thisLocation = location;
+
         reviewPost_TopInfo_ID.setText( "Review by " + UserDao.getUserById(review.getOwnerId()).getName() + " on " + review.getCreationDate());
         reviewPost_TopRating_ID.setText( "" + review.getRateGiven());
         reviewPost_textArea_ID.setText( review.getMainText());
         reviewPost_textArea_ID.setEditable(false);
+
         if (review.getOwnerId() != SessionManager.getCurrentUser().getUserId())
         {
             deleteReviewButton.setDisable(true);

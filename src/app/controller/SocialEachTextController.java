@@ -14,5 +14,4 @@ public class SocialEachTextController {
         thisMessage = message;
         eachText_ID.setText(message.getMainText());
     }
-
 }
