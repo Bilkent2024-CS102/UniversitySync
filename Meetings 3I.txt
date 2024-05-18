@@ -1,0 +1,24 @@
+---MEETINGS---
+
+February 7 - Met for the first time to make sure we can work together as a team.
+February 11 - Discussed potential project ideas
+February 21 - Finalized our project theme of a social app/platform, started working on the Requirements report
+March 6 - Met to finalize the requirements report v1, talked about UI ideas.
+March 18 - Discussed potential UI designs that we sketched and designed in Figma
+March 25 - Met to finalize the UI design and wrote the UI report
+March 26 - Met to discuss and complete the requirements report v2
+March 28 - Created a mock UML together
+April 1 - Created our project's repository
+April 18 - "Finalized" the first version of the UML diagram
+April 25 - Met to talk about the UI report v2 and the Design report, couldn't reach a consensus.
+April 26 - Met again to finalize our design decisions on UI and the detailed design reports
+April 27 - Finalized the UI v2 and detailed design v1 reports
+April 29 - Database team created the database tables according to the UML design
+April 30 / May 1 - Converted everything to the MVC design
+May 2 - Database team started working on DAO
+May 5 - UI and controller team met to connect the classes together
+May 9 - Met to discuss our progress
+May 13/14/15 - Met to finalize everything for the demo, program is finished
+May 18 - Met to finalize the code for submission, recorded a demo video and finished detailed design report v2
+
+
