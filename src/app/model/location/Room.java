@@ -3,15 +3,12 @@ package app.model.location;
 import app.dao.DormitoryDao;
 
 public class Room {
-    private static int numberOfInstances;
     private int dormitoryID;
-    private int roomNo;
     private int capacity;
     private int roomId;
     private int availableBed;
     private boolean isBunked;
     private boolean privateBathroom;
-
     private String description;
 
     public Room(int id, int capacity, boolean bunk, boolean bathroom, String desc, int dormitoryID){
@@ -23,17 +20,11 @@ public class Room {
         setDormId(dormitoryID);
     }
     
-    public static int getNumberOfInstances() {
-        return numberOfInstances;
-    }
     public int getRoomId() {
         return roomId;
     }
     public int getDormId() {
         return dormitoryID;
-    }
-    public int getRoomNo() {
-        return roomNo;
     }
     public int getCapacity() {
         return capacity;
@@ -47,12 +38,12 @@ public class Room {
     public boolean isBunked() {
         return isBunked;
     }
+    public String getDescription() {
+        return description;
+    }
 
     public void setRoomId(int roomId) {
         this.roomId = roomId;
-    }
-    public static void setNumberOfInstances(int numberOfInstances) {
-        Room.numberOfInstances = numberOfInstances;
     }
     public void setAvailableBed(int availableBed) {
         this.availableBed = availableBed;
@@ -68,10 +59,6 @@ public class Room {
     }
     public void setDormId(int dormId) {
         this.dormitoryID = dormId;
-    }
-
-    public String getDescription() {
-        return description;
     }
     public void setDescription(String description) {
         this.description = description;

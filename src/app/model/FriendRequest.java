@@ -1,10 +1,8 @@
 package app.model;
 
-import app.dao.UserDao;
 
 public class FriendRequest {
     
-    private static int numberOfInstances;
 
     private int senderId;
     private int receiverId;
@@ -20,26 +18,17 @@ public class FriendRequest {
         setReceiver(receiverId);
     }
 
-    
-    public static int getNumberOfInstances() {
-        return numberOfInstances;
-    }
-    public static void setNumberOfInstances(int numberOfInstances) {
-        FriendRequest.numberOfInstances = numberOfInstances;
-    }
-
     public int getSenderId() {
         return senderId;
-    }
-    public void setSenderId(int senderId) {
-        this.senderId = senderId;
     }
     public int getReceiverId() {
         return receiverId;
     }
+
+    public void setSenderId(int senderId) {
+        this.senderId = senderId;
+    }
     public void setReceiver(int receiverId) {
         this.receiverId = receiverId;
     }
-
-    
 }

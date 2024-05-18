@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import app.dao.CafeteriaDao;
 import app.model.Campus;
 import app.model.location.Location;
-import app.model.location.Room;
 import app.model.userContent.Review;
 
 public class Cafeteria extends Location{
@@ -16,15 +15,15 @@ public class Cafeteria extends Location{
     public Cafeteria (int id,
                       ArrayList<Review> revs,
                       String imagePath,
-                      String n,
+                      String name,
                       String desc,
                       double rate,
-                      Campus c,
+                      Campus campus,
                       ArrayList<MenuItem> items,
                       double minPrice,
                       double maxPrice)
     {
-        super(id, revs, imagePath, n, desc, rate, c);
+        super(id, revs, imagePath, name, desc, rate, campus);
         setItems(items);
         setMaxPrice(maxPrice);
         setMinPrice(minPrice);

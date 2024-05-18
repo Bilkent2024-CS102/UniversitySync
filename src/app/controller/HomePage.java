@@ -1,14 +1,15 @@
 package app.controller;
+
 import app.dao.DBConnectionManager;
-import app.dao.UserDao;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 public class HomePage extends Application {
     @Override
@@ -25,7 +26,7 @@ public class HomePage extends Application {
         String url = "jdbc:mysql://localhost:3306/university_sync";
         String username = "root";
 
-        String password = "12345678"; // TODO: type your own mysql server password here!
+        String password = "ben123**AA"; // TODO: type your own mysql server password here!
 
         DBConnectionManager.initializeConnection(url, username, password);
         launch();

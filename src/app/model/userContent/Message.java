@@ -1,7 +1,6 @@
 package app.model.userContent;
 
 import app.dao.MessageDao;
-import app.model.User;
 
 public class Message extends UserContentItem {
 

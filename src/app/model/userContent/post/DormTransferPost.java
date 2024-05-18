@@ -1,10 +1,7 @@
 package app.model.userContent.post;
 
 import app.dao.DormTransferPostDao;
-import app.model.User;
-import app.model.location.Room;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class DormTransferPost extends Post{

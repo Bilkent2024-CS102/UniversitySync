@@ -1,6 +1,5 @@
 package app.model.location;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 import app.dao.ReviewDao;
@@ -10,7 +9,6 @@ import app.model.userContent.Review;
 
 public abstract class Location implements Reviewable, Comparable<Location>
 {
-    private static int numberOfInstances;
     private int locationId;
     private ArrayList<Review> reviews;
     private String imagePath;
@@ -19,14 +17,15 @@ public abstract class Location implements Reviewable, Comparable<Location>
     private double rating;
     private Campus campus;
 
-    public Location (int id, ArrayList<Review> revs, String imagePath, String n, String desc, double rate, Campus c){
+    public Location (int id, ArrayList<Review> revs, String imagePath,
+                     String name, String desc, double rate, Campus campus){
         setLocationId(id);
         setReviews(revs);
         setImagePath(imagePath);
-        setName(n);
+        setName(name);
         setDescription(desc);
         setRating(rate);
-        setCampus(c);
+        setCampus(campus);
     }
 
     public int compareTo(Location loc)
@@ -35,12 +34,6 @@ public abstract class Location implements Reviewable, Comparable<Location>
         return result;
     }
 
-    public static int getNumberOfInstances() {
-        return numberOfInstances;
-    }
-    public static void setNumberOfInstances(int numberOfInstances) {
-        Location.numberOfInstances = numberOfInstances;
-    }
     public int getLocationId() {
         return locationId;
     }
@@ -71,6 +64,10 @@ public abstract class Location implements Reviewable, Comparable<Location>
     public void setDescription(String description) {
         this.description = description;
     }
+
+    /**
+     * @return average rate given of all reviews as rating
+     */
     public double getRating() {
         ArrayList<Review> reviews = ReviewDao.getReviewsOf(getLocationId());
 

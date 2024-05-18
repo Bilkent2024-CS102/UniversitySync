@@ -82,6 +82,9 @@ public class ForumPost extends Post{
     {
         return likedBy;
     }
+    public int getCommentCount() {
+        return ForumPostDao.getReplies(this.getUserContentItemId()).size();
+    }
 
     /*
      * Setters
@@ -103,7 +106,5 @@ public class ForumPost extends Post{
         this.likedBy = likedBy;
     }
 
-    public int getCommentCount() {
-        return ForumPostDao.getReplies(this.getUserContentItemId()).size();
-    }
+
 }

@@ -1,9 +1,7 @@
 package app.model.location.cafeteria;
 
-import java.awt.*;
 
 public class MenuItem {
-    private static int numberOfInstances;
     private int cafeteriaId;
     private int menuItemId;
     private String name;
@@ -21,10 +19,6 @@ public class MenuItem {
     /*
     * Getters
     */
-    public static int getNumberOfInstances()
-    {
-        return numberOfInstances;
-    }
     public int getMenuItemId()
     {
         return menuItemId;
@@ -40,6 +34,9 @@ public class MenuItem {
     public String getImagePath()
     {
         return imagePath;
+    }
+    public int getCafeteriaId() {
+        return cafeteriaId;
     }
 
     /*
@@ -62,11 +59,6 @@ public class MenuItem {
     {
         this.imagePath = imagePath;
     }
-    
-    public int getCafeteriaId() {
-        return cafeteriaId;
-    }
-
     public void setCafeteriaId(int cafeteriaId) {
         this.cafeteriaId = cafeteriaId;
     }

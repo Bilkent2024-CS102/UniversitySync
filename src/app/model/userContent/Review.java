@@ -7,7 +7,6 @@ import java.util.Date;
 public class Review extends UserContentItem {
     private int reviewableId;
     private double rateGiven;
-    private int reviewId;
 
     /**
      * when adding a new review to database (i.e. posting a review) add review without id and then pull the auto assigned

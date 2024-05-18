@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 
-import app.model.User;
 import app.model.userContent.UserContentItem;
 
 public abstract class Post extends UserContentItem {
@@ -40,6 +39,7 @@ public abstract class Post extends UserContentItem {
     public void setHeading(String heading) {
         this.heading = heading;
     }
+
     public ArrayList<File> getAttachments() {
         return attachments;
     }
