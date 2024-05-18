@@ -28,5 +28,5 @@ This project uses a MySQL database hosted locally. To be able to run the program
 8) In case you think there is something unwanted happened regarding the database or you want to reset sample data, you can repeat step 6. This will delete all the tables and reconstruct them.
 
 ## Requirements for the app and the ui to work properly:
-This project uses JDK version 22 and the corresponding JavaFX version. We developed this project as a Maven project on the IntelliJ IDEA. The app runs properly in IntelliJ IDEA while other IDEs are not tested.
+This project uses JDK version 22 and the corresponding JavaFX version. We developed this project as a Maven project on the IntelliJ IDEA. The app runs properly in IntelliJ IDEA while other IDEs are not tested (except VSC). We HIGHLY suggest you use IntelliJ, as VSC was tested to be very unreliable.
 UI works best on a 1920x1080 screen, but in case of display errors on Windows display scaling can be altered for the UI to work more fluently.
