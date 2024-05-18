@@ -1,5 +1,5 @@
 # UniversitySync
-Term project for CS102, Spring 2023-2024.
+Term project for CS102, Spring 2023-2024. Meeting dates and contents, along with general timestamps in development can be found under Meetings 3I.txt
 ## IMPORTANT WARNING
 If you get some import or package errors double-check that the only source path is UniversitySync\src.
 You can do this by CTRL+SHIFT+P (Command palette), choose "Java: Configure Classpath" and change it to UniversitySync\src ONLY and "Apply Settings" below.
